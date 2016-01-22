@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - 3.5.1
+
+sudo: false
+
+branches:
+  except:
+    - master
+
+install:
+    - pip install coveralls
+
+after_success: coveralls
