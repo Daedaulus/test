@@ -1,3 +1,3 @@
-from guessit import guessit
+import requests
 
-print(guessit('test s01e02'))
+print (requests.get(http://github.com/daedaulus/test).text)
