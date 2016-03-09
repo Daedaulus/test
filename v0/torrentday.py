@@ -111,7 +111,7 @@ class TorrentDayProvider:
 
                 for torrent in torrents:
 
-                    title = re.sub(r'\[.*\=.*\].*\[/.*\]', '', torrent['name']) if torrent['name'] else None
+                    title = re.sub(r'\[.*=.*\].*\[/.*\]', '', torrent['name']) if torrent['name'] else None
                     download_url = urljoin(self.urls['download'], '{}/{}'.format(torrent['id'], torrent['fname'])) if torrent['id'] and torrent['fname'] else None
 
                     if not all([title, download_url]):
