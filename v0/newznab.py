@@ -1,3 +1,9 @@
+import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
 class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attributes, too-many-arguments
     """
     Generic provider for built in and custom providers who expose a newznab

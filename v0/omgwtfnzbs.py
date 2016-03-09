@@ -1,3 +1,9 @@
+import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
 class OmgwtfnzbsProvider(NZBProvider):
     def __init__(self):
         NZBProvider.__init__(self, 'OMGWTFNZBs')

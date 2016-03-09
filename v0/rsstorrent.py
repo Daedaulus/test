@@ -1,3 +1,9 @@
+import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
 class TorrentRssProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self, name, url, cookies='',  # pylint: disable=too-many-arguments

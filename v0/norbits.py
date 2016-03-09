@@ -1,3 +1,9 @@
+import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
 class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
     '''Main provider object'''
 

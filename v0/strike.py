@@ -1,3 +1,9 @@
+import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
 class StrikeProvider(TorrentProvider):
 
     def __init__(self):

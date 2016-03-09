@@ -1,4 +1,10 @@
-﻿class TorrentBytesProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+﻿import logging
+
+log = logging.getLogger(__name__)
+log.addHandler(logging.NullHandler)
+
+
+class TorrentBytesProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
 
