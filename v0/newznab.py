@@ -1,6 +1,8 @@
 import logging
 
+from requests import Session
 from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
 
 from v0 import BS4Parser
 
@@ -18,6 +20,8 @@ class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many
 
     def __init__(self, name, url, key='0', catIDs='5030,5040', search_mode='eponly',
                  search_fallback=False, enable_daily=True, enable_backlog=False):
+
+        self.session = Session()
 
         self.url = url
         self.key = key

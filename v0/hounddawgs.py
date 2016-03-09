@@ -1,5 +1,7 @@
 import logging
 
+from requests import Session
+from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
 
 from v0 import BS4Parser
@@ -12,6 +14,9 @@ class HoundDawgsProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
 
+        self.session = Session()
+
+        # Credentials
         self.username = None
         self.password = None
         self.minseed = None

@@ -1,5 +1,9 @@
 import logging
 
+from requests import Session
+from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
@@ -8,6 +12,10 @@ log.addHandler(logging.NullHandler)
 
 class OmgwtfnzbsProvider:
     def __init__(self):
+
+        self.session = Session()
+
+        # Credentials
         self.username = None
         self.api_key = None
 

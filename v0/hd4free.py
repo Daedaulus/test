@@ -1,6 +1,8 @@
 import logging
 
+from requests import Session
 from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
 
 from v0 import BS4Parser
 
@@ -11,6 +13,8 @@ log.addHandler(logging.NullHandler)
 class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
+
+        self.session = Session()
 
         self.url = 'https://hd4free.xyz'
         self.urls = {'search': urljoin(self.url, '/searchapi.php')}

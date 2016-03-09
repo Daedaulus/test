@@ -1,5 +1,9 @@
 import logging
 
+from requests import Session
+from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
@@ -9,6 +13,8 @@ log.addHandler(logging.NullHandler)
 class NyaaProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
+
+        self.session = Session()
 
         self.public = True
         self.supports_absolute_numbering = True

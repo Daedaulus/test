@@ -1,5 +1,9 @@
 import logging
 
+from requests import Session
+from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
@@ -11,6 +15,8 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
     def __init__(self, name, url, cookies='',  # pylint: disable=too-many-arguments
                  titleTAG='title', search_mode='eponly', search_fallback=False,
                  enable_daily=False, enable_backlog=False):
+
+        self.session = Session()
 
         self.cache = TorrentRssCache(self, min_time=15)
         self.url = url.rstrip('/')
