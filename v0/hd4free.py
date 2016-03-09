@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
+class HD4FreeProvider:
 
     def __init__(self):
 
@@ -32,7 +32,7 @@ class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
         log.warn('Your authentication credentials for %s are missing, check your config.' % self.name)
         return False
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self._check_auth:
             return results

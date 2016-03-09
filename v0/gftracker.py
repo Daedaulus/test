@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class GFTrackerProvider:  # pylint: disable=too-many-instance-attributes
+class GFTrackerProvider:
 
     def __init__(self):
 
@@ -63,7 +63,7 @@ class GFTrackerProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

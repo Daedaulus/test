@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class IPTorrentsProvider:  # pylint: disable=too-many-instance-attributes
+class IPTorrentsProvider:
 
     def __init__(self):
 
@@ -64,7 +64,7 @@ class IPTorrentsProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

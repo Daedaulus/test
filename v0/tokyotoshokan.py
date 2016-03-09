@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
+class TokyoToshokanProvider:
 
     def __init__(self):
 
@@ -29,7 +29,7 @@ class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
             'rss': self.url + 'rss.php'
         }
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self.show or not self.show.is_anime:
             return results

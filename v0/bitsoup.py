@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BitSoupProvider:  # pylint: disable=too-many-instance-attributes
+class BitSoupProvider:
 
     def __init__(self):
 
@@ -62,7 +62,7 @@ class BitSoupProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

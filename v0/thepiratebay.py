@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class ThePirateBayProvider:  # pylint: disable=too-many-instance-attributes
+class ThePirateBayProvider:
 
     def __init__(self):
 
@@ -33,7 +33,7 @@ class ThePirateBayProvider:  # pylint: disable=too-many-instance-attributes
         self.custom_url = None
 
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         """
         205 = SD, 208 = HD, 200 = All Videos

@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
+class NorbitsProvider:
 
     def __init__(self):
 
@@ -33,7 +33,7 @@ class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def _checkAuthFromData(self, parsed_json):  # pylint: disable=invalid-name
+    def _checkAuthFromData(self, parsed_json):
         """ Check that we are authenticated. """
 
         if 'status' in parsed_json and 'message' in parsed_json:
@@ -42,7 +42,7 @@ class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_params, age=0, ep_obj=None):
         """ Do the actual searching and JSON parsing"""
 
         results = []

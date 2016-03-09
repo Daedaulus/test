@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TNTVillageProvider:  # pylint: disable=too-many-instance-attributes
+class TNTVillageProvider:
 
     def __init__(self):
 
@@ -117,7 +117,7 @@ class TNTVillageProvider:  # pylint: disable=too-many-instance-attributes
         return quality_string
 
     @staticmethod
-    def _episodeQuality(torrent_rows):  # pylint: disable=too-many-return-statements, too-many-branches
+    def _episodeQuality(torrent_rows):
         """
             Return The quality from the scene episode HTML row.
         """
@@ -222,7 +222,7 @@ class TNTVillageProvider:  # pylint: disable=too-many-instance-attributes
         if int(episodes[0]['count']) == len(parse_result.episode_numbers):
             return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

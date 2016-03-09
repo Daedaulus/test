@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class SceneTimeProvider:  # pylint: disable=too-many-instance-attributes
+class SceneTimeProvider:
 
     def __init__(self):
 
@@ -52,7 +52,7 @@ class SceneTimeProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

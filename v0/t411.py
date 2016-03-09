@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class T411Provider:  # pylint: disable=too-many-instance-attributes
+class T411Provider:
 
     def __init__(self):
 
@@ -62,7 +62,7 @@ class T411Provider:  # pylint: disable=too-many-instance-attributes
             log.warn('Token not found in authentication response')
             return False
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals, too-many-statements
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results
@@ -141,7 +141,7 @@ class T411Provider:  # pylint: disable=too-many-instance-attributes
         return results
 
 
-class T411Auth(AuthBase):  # pylint: disable=too-few-public-methods
+class T411Auth(AuthBase):
     """Attaches HTTP Authentication to the given Request object."""
     def __init__(self, token):
         self.token = token

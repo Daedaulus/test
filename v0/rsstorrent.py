@@ -10,9 +10,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
+class TorrentRssProvider:
 
-    def __init__(self, name, url, cookies='',  # pylint: disable=too-many-arguments
+    def __init__(self, name, url, cookies='',
                  titleTAG='title', search_mode='eponly', search_fallback=False,
                  enable_daily=False, enable_backlog=False):
 
@@ -30,7 +30,7 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
         self.cookies = cookies
         self.titleTAG = titleTAG
 
-    def configStr(self):  # pylint: disable=too-many-arguments
+    def configStr(self):
         return '{}|{}|{}|{}|{}|{}|{}|{}|{}'.format(
             self.name or '',
             self.url or '',
@@ -120,7 +120,7 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
 
         return new_provider
 
-    def validateRSS(self):  # pylint: disable=too-many-return-statements
+    def validateRSS(self):
 
         try:
             if self.cookies:
@@ -129,7 +129,7 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
                     return False, 'Cookie is not correctly formatted: {}'.format(self.cookies)
                 add_dict_to_cookiejar(self.session.cookies, dict(x.rsplit('=', 1) for x in self.cookies.split(';')))
 
-            # pylint: disable=protected-access
+
             # Access to a protected member of a client class
             data = self.cache._getRSSData()['entries']
             if not data:

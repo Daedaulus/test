@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class PretomeProvider:  # pylint: disable=too-many-instance-attributes
+class PretomeProvider:
 
     def __init__(self):
 
@@ -61,7 +61,7 @@ class PretomeProvider:  # pylint: disable=too-many-instance-attributes
 
         return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-statements, too-many-locals
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

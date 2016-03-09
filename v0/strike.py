@@ -21,7 +21,7 @@ class StrikeProvider:
         params = {'RSS': ['x264']}  # Use this hack for RSS search since most results will use this codec
         self.minseed, self.minleech = 2 * [None]
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []

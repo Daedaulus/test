@@ -25,7 +25,7 @@ class BTDiggProvider:
         # Use this hacky way for RSS search since most results will use this codecs
         cache_params = {'RSS': ['x264', 'x264.HDTV', '720.HDTV.x264']}
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         search_params = {'p': 0}
         for mode in search_strings:

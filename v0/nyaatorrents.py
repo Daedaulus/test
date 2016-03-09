@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class NyaaProvider:  # pylint: disable=too-many-instance-attributes
+class NyaaProvider:
 
     def __init__(self):
 
@@ -28,7 +28,7 @@ class NyaaProvider:  # pylint: disable=too-many-instance-attributes
 
         self.regex = re.compile(r'(\d+) seeder\(s\), (\d+) leecher\(s\), \d+ download\(s\) - (\d+.?\d* [KMGT]iB)(.*)', re.DOTALL)
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if self.show and not self.show.is_anime:
             return results

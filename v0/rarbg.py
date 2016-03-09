@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class RarbgProvider:  # pylint: disable=too-many-instance-attributes
+class RarbgProvider:
 
     def __init__(self):
 
@@ -49,7 +49,7 @@ class RarbgProvider:  # pylint: disable=too-many-instance-attributes
         self.token_expires = datetime.datetime.now() + datetime.timedelta(minutes=14) if self.token else None
         return self.token is not None
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals, too-many-statements
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class LimeTorrentsProvider:  # pylint: disable=too-many-instance-attributes
+class LimeTorrentsProvider:
 
     def __init__(self):
 
@@ -30,7 +30,7 @@ class LimeTorrentsProvider:  # pylint: disable=too-many-instance-attributes
         self.headers.update({'User-Agent': USER_AGENT})
         self.proper_strings = ['PROPER', 'REPACK', 'REAL']
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches,too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         for mode in search_strings:
             items = []

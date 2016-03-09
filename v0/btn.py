@@ -45,7 +45,7 @@ class BTNProvider:
 
         return True
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint:disable=too-many-locals
+    def search(self, search_params, age=0, ep_obj=None):
 
         self._check_auth()
 

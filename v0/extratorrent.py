@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class ExtraTorrentProvider:  # pylint: disable=too-many-instance-attributes
+class ExtraTorrentProvider:
 
     def __init__(self):
 
@@ -31,7 +31,7 @@ class ExtraTorrentProvider:  # pylint: disable=too-many-instance-attributes
         self.headers.update({'User-Agent': USER_AGENT})
         self.search_params = {'cid': 8}
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         for mode in search_strings:
             items = []

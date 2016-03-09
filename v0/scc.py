@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class SCCProvider:  # pylint: disable=too-many-instance-attributes
+class SCCProvider:
 
     def __init__(self):
 
@@ -67,7 +67,7 @@ class SCCProvider:  # pylint: disable=too-many-instance-attributes
         title = r'<title>.+? \| %s</title>' % section
         return re.search(title, text, re.IGNORECASE)
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals,too-many-branches, too-many-statements
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

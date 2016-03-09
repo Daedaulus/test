@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
+class TorrentDayProvider:
 
     def __init__(self):
 
@@ -76,7 +76,7 @@ class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
             log.warn('Unable to obtain cookie')
             return False
 
-    def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_params, age=0, ep_obj=None):
         results = []
         if not self.login():
             return results

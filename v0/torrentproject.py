@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentProjectProvider:  # pylint: disable=too-many-instance-attributes
+class TorrentProjectProvider:
 
     def __init__(self):
 
@@ -29,7 +29,7 @@ class TorrentProjectProvider:  # pylint: disable=too-many-instance-attributes
         self.custom_url = None
         self.headers.update({'User-Agent': USER_AGENT})
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
 
         search_params = {

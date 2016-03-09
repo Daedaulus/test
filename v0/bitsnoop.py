@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BitSnoopProvider:  # pylint: disable=too-many-instance-attributes
+class BitSnoopProvider:
 
     def __init__(self):
 
@@ -30,7 +30,7 @@ class BitSnoopProvider:  # pylint: disable=too-many-instance-attributes
 
         self.proper_strings = ['PROPER', 'REPACK']
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches,too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
         for mode in search_strings:
             items = []

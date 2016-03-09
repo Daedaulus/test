@@ -59,4 +59,4 @@ class ShazbatCache(tvcache.TVCache):
         return self.getRSSFeed(self.urls['rss_recent'], params=params)
 
     def _checkAuth(self, data):
-        return self._checkAuthFromData(data)  # pylint: disable=protected-access
+        return self._checkAuthFromData(data)

@@ -21,7 +21,7 @@ class newpctProvider:
         self.url = 'http://www.newpct.com'
         self.urls = {'search': urljoin(self.url, 'index.php')}
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
+    def search(self, search_strings, age=0, ep_obj=None):
         """
         Search query:
         http://www.newpct.com/index.php?l=doSearch&q=fringe&category_=All&idioma_=1&bus_de_=All
@@ -106,7 +106,7 @@ class newpctProvider:
 
         return results
 
-    def get_url(self, url, post_data=None, params=None, timeout=30, **kwargs):  # pylint: disable=too-many-arguments
+    def get_url(self, url, post_data=None, params=None, timeout=30, **kwargs):
         """
         returns='content' when trying access to torrent info (For calling torrent client). Previously we must parse
         the URL to get torrent file

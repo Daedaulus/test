@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class KatProvider:  # pylint: disable=too-many-instance-attributes
+class KatProvider:
 
     def __init__(self):
 
@@ -27,7 +27,7 @@ class KatProvider:  # pylint: disable=too-many-instance-attributes
 
         self.custom_url = None
 
-    def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals, too-many-statements
+    def search(self, search_strings, age=0, ep_obj=None):
         results = []
 
         anime = (self.show and self.show.anime) or (ep_obj and ep_obj.show and ep_obj.show.anime) or False
