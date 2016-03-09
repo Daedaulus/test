@@ -1,4 +1,5 @@
 import logging
+import re
 
 from requests import Session
 from requests.compat import urljoin
