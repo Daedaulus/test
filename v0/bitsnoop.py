@@ -24,8 +24,6 @@ class BitSnoopProvider:  # pylint: disable=too-many-instance-attributes
 
         self.proper_strings = ['PROPER', 'REPACK']
 
-        self.cache = tvcache.TVCache(self, search_params={'RSS': ['rss']})
-
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches,too-many-locals
         results = []
         for mode in search_strings:

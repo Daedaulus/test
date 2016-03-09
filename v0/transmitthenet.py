@@ -26,11 +26,6 @@ class TransmitTheNetProvider:  # pylint: disable=too-many-instance-attributes
             'search': urljoin(self.url, '/torrents.php'),
         }
 
-        # Proper Strings
-
-        # Cache
-        self.cache = tvcache.TVCache(self)
-
     def _check_auth(self):
 
         if not self.username or not self.password:

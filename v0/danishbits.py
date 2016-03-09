@@ -26,11 +26,6 @@ class DanishbitsProvider:  # pylint: disable=too-many-instance-attributes
             'search': self.url + 'torrents.php',
         }
 
-        # Proper Strings
-
-        # Cache
-        self.cache = tvcache.TVCache(self, min_time=10)  # Only poll Danishbits every 10 minutes max
-
     def login(self):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True

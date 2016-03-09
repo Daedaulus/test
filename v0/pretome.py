@@ -28,8 +28,6 @@ class PretomeProvider:  # pylint: disable=too-many-instance-attributes
 
         self.proper_strings = ['PROPER', 'REPACK']
 
-        self.cache = tvcache.TVCache(self)
-
     def _check_auth(self):
 
         if not self.username or not self.password or not self.pin:

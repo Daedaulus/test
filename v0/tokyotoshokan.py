@@ -22,7 +22,6 @@ class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
             'search': self.url + 'search.php',
             'rss': self.url + 'rss.php'
         }
-        self.cache = tvcache.TVCache(self, min_time=15)  # only poll TokyoToshokan every 15 minutes max
 
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
         results = []

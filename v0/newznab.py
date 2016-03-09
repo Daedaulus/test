@@ -39,8 +39,6 @@ class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many
         # self.cap_movie_search = None
         # self.cap_audio_search = None
 
-        self.cache = tvcache.TVCache(self, min_time=30)  # only poll newznab providers every 30 minutes max
-
     def configStr(self):
         """
         Generates a '|' delimited string of instance attributes, for saving to config.ini

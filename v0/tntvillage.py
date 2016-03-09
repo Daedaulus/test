@@ -56,8 +56,6 @@ class TNTVillageProvider:  # pylint: disable=too-many-instance-attributes
 
         self.categories = 'cat=29'
 
-        self.cache = tvcache.TVCache(self, min_time=30)  # only poll TNTVillage every 30 minutes max
-
     def _check_auth(self):
 
         if not self.username or not self.password:

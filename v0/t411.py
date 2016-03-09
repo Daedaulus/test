@@ -15,8 +15,6 @@ class T411Provider:  # pylint: disable=too-many-instance-attributes
         self.token = None
         self.tokenLastUpdate = None
 
-        self.cache = tvcache.TVCache(self, min_time=10)  # Only poll T411 every 10 minutes max
-
         self.urls = {'base_url': 'http://www.t411.ch/',
                      'search': 'https://api.t411.ch/torrents/search/%s*?cid=%s&limit=100',
                      'rss': 'https://api.t411.ch/torrents/top/today',

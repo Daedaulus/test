@@ -24,8 +24,6 @@ class TVChaosUKProvider:  # pylint: disable=too-many-instance-attributes
             'search': self.url + 'browse.php'
         }
 
-        self.cache = tvcache.TVCache(self)
-
     def _check_auth(self):
         if self.username and self.password:
             return True

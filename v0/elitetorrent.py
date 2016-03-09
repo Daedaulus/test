@@ -12,7 +12,6 @@ class elitetorrentProvider:
         self.onlyspasearch = None
         self.minseed = None
         self.minleech = None
-        self.cache = tvcache.TVCache(self)  # Only poll EliteTorrent every 20 minutes max
 
         self.urls = {
             'base_url': 'http://www.elitetorrent.net',

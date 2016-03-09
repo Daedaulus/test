@@ -26,10 +26,6 @@ class ThePirateBayProvider:  # pylint: disable=too-many-instance-attributes
         }
         self.custom_url = None
 
-        # Proper Strings
-
-        # Cache
-        self.cache = tvcache.TVCache(self, min_time=30)  # only poll ThePirateBay every 30 minutes max
 
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
         results = []

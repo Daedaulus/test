@@ -18,8 +18,6 @@ class FreshOnTVProvider:  # pylint: disable=too-many-instance-attributes
         self.minleech = None
         self.freeleech = False
 
-        self.cache = tvcache.TVCache(self)
-
         self.urls = {'base_url': 'https://freshon.tv/',
                      'login': 'https://freshon.tv/login.php?action=makelogin',
                      'detail': 'https://freshon.tv/details.php?id=%s',

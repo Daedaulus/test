@@ -15,8 +15,6 @@ class newpctProvider:
         self.url = 'http://www.newpct.com'
         self.urls = {'search': urljoin(self.url, 'index.php')}
 
-        self.cache = tvcache.TVCache(self, min_time=20)
-
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
         """
         Search query:

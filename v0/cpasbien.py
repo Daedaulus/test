@@ -16,7 +16,6 @@ class CpasbienProvider:
         self.url = 'http://www.cpasbien.io'
 
         self.proper_strings = ['PROPER', 'REPACK']
-        self.cache = tvcache.TVCache(self)
 
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals
         results = []

@@ -15,8 +15,6 @@ class HDSpaceProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self, min_time=10)  # only poll HDSpace every 10 minutes max
-
         self.urls = {'base_url': 'https://hd-space.org/',
                      'login': 'https://hd-space.org/index.php?page=login',
                      'search': 'https://hd-space.org/index.php?page=torrents&search=%s&active=1&options=0',

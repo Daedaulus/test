@@ -25,8 +25,6 @@ class BitSoupProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self)
-
         self.search_params = {
             'c42': 1, 'c45': 1, 'c49': 1, 'c7': 1
         }

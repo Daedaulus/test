@@ -33,9 +33,6 @@ class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
         self.categories = {'Season': {'c14': 1}, 'Episode': {'c2': 1, 'c26': 1, 'c7': 1, 'c24': 1},
                            'RSS': {'c2': 1, 'c26': 1, 'c7': 1, 'c24': 1, 'c14': 1}}
 
-        # Cache
-        self.cache = tvcache.TVCache(self, min_time=10)  # Only poll IPTorrents every 10 minutes max
-
     def login(self):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True

@@ -27,8 +27,6 @@ class HDTorrentsProvider:  # pylint: disable=too-many-instance-attributes
         self.categories = '&category[]=59&category[]=60&category[]=30&category[]=38'
         self.proper_strings = ['PROPER', 'REPACK']
 
-        self.cache = tvcache.TVCache(self, min_time=30)  # only poll HDTorrents every 30 minutes max
-
     def _check_auth(self):
 
         if not self.username or not self.password:

@@ -15,8 +15,6 @@ class SceneTimeProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self)  # only poll SceneTime every 20 minutes max
-
         self.urls = {'base_url': 'https://www.scenetime.com',
                      'login': 'https://www.scenetime.com/takelogin.php',
                      'detail': 'https://www.scenetime.com/details.php?id=%s',

@@ -21,8 +21,6 @@ class KatProvider:  # pylint: disable=too-many-instance-attributes
 
         self.custom_url = None
 
-        self.cache = tvcache.TVCache(self, search_params={'RSS': ['tv', 'anime']})
-
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals, too-many-statements
         results = []
 

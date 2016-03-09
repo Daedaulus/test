@@ -13,7 +13,6 @@ class StrikeProvider:
         self.public = True
         self.url = 'https://getstrike.net/'
         params = {'RSS': ['x264']}  # Use this hack for RSS search since most results will use this codec
-        self.cache = tvcache.TVCache(self, min_time=10, search_params=params)
         self.minseed, self.minleech = 2 * [None]
 
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals

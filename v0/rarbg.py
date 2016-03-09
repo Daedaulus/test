@@ -24,8 +24,6 @@ class RarbgProvider:  # pylint: disable=too-many-instance-attributes
 
         self.proper_strings = ['{{PROPER|REPACK}}']
 
-        self.cache = tvcache.TVCache(self, min_time=10)  # only poll RARBG every 10 minutes max
-
     def login(self):
         if self.token and self.token_expires and datetime.datetime.now() < self.token_expires:
             return True

@@ -28,9 +28,6 @@ class TorrentLeechProvider:  # pylint: disable=too-many-instance-attributes
         # Proper Strings
         self.proper_strings = ['PROPER', 'REPACK']
 
-        # Cache
-        self.cache = tvcache.TVCache(self)
-
     def login(self):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True

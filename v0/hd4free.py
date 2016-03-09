@@ -19,8 +19,6 @@ class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self, min_time=10)  # Only poll HD4Free every 10 minutes max
-
     def _check_auth(self):
         if self.username and self.api_key:
             return True

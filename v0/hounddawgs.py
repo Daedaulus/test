@@ -41,8 +41,6 @@ class HoundDawgsProvider:  # pylint: disable=too-many-instance-attributes
             'searchtags': ''
         }
 
-        self.cache = tvcache.TVCache(self)
-
     def login(self):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True

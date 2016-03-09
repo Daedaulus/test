@@ -14,8 +14,6 @@ class BlueTigersProvider:  # pylint: disable=too-many-instance-attributes
         self.password = None
         self.token = None
 
-        self.cache = tvcache.TVCache(self, min_time=10)  # Only poll BLUETIGERS every 10 minutes max
-
         self.urls = {
             'base_url': 'https://www.bluetigers.ca/',
             'search': 'https://www.bluetigers.ca/torrents-search.php',

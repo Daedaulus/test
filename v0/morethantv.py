@@ -31,9 +31,6 @@ class MoreThanTVProvider:  # pylint: disable=too-many-instance-attributes
         # Proper Strings
         self.proper_strings = ['PROPER', 'REPACK']
 
-        # Cache
-        self.cache = tvcache.TVCache(self)
-
     def _check_auth(self):
 
         if not self.username or not self.password:

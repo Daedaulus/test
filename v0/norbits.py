@@ -15,8 +15,6 @@ class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self, min_time=20)  # only poll Norbits every 15 minutes max
-
         self.url = 'https://norbits.net'
         self.urls = {'search': self.url + '/api2.php?action=torrents',
                      'download': self.url + '/download.php?'}

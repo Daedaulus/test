@@ -27,11 +27,6 @@ class TorrentzProvider:  # pylint: disable=too-many-instance-attributes
         }
         self.headers.update({'User-Agent': USER_AGENT})
 
-        # Proper Strings
-
-        # Cache
-        self.cache = tvcache.TVCache(self, min_time=15)  # only poll Torrentz every 15 minutes max
-
     @staticmethod
     def _split_description(description):
         match = re.findall(r'[0-9]+', description)

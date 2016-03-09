@@ -22,7 +22,6 @@ class ExtraTorrentProvider:  # pylint: disable=too-many-instance-attributes
         self.minleech = None
         self.custom_url = None
 
-        self.cache = tvcache.TVCache(self, min_time=30)  # Only poll ExtraTorrent every 30 minutes max
         self.headers.update({'User-Agent': USER_AGENT})
         self.search_params = {'cid': 8}
 

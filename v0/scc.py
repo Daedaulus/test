@@ -15,8 +15,6 @@ class SCCProvider:  # pylint: disable=too-many-instance-attributes
         self.minseed = None
         self.minleech = None
 
-        self.cache = tvcache.TVCache(self)  # only poll SCC every 20 minutes max
-
         self.urls = {
             'base_url': 'https://sceneaccess.eu',
             'login': 'https://sceneaccess.eu/login',
