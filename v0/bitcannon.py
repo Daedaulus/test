@@ -1,11 +1,12 @@
 import logging
-import re
+# import re
 
+import validators
 from requests import Session
 from requests.compat import urljoin
-from requests.utils import dict_from_cookiejar
-
-from v0 import BS4Parser
+# from requests.utils import dict_from_cookiejar
+#
+# from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
@@ -22,7 +23,7 @@ class BitCannonProvider:
         self.custom_url = None
         self.api_key = None
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings, ep_obj=None):
         results = []
 
         url = 'http://localhost:3000/'
