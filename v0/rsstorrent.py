@@ -176,7 +176,7 @@ class TorrentRssProvider:
         return True
 
 
-class TorrentRssCache(tvcache.TVCache):
+class TorrentRssCache:
     def _getRSSData(self):
         if self.cookies:
             add_dict_to_cookiejar(self.session.cookies, dict(x.rsplit('=', 1) for x in self.cookies.split(';')))

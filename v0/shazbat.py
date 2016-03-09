@@ -48,7 +48,7 @@ class ShazbatProvider:
         return True
 
 
-class ShazbatCache(tvcache.TVCache):
+class ShazbatCache:
     def _getRSSData(self):
         params = {
             'passkey': self.passkey,

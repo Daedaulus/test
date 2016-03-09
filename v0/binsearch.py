@@ -26,7 +26,7 @@ class BinSearchProvider:
         self.cache = BinSearchCache(self, min_time=30)  # only poll Binsearch every 30 minutes max
 
 
-class BinSearchCache(tvcache.TVCache):
+class BinSearchCache:
     def __init__(self, provider_obj, **kwargs):
         kwargs.pop('search_params', None)  # does not use _getRSSData so strip param from kwargs...
         search_params = None  # ...and pass None instead

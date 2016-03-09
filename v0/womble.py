@@ -27,7 +27,7 @@ class WombleProvider:
         self.cache = WombleCache(self, min_time=20)
 
 
-class WombleCache(tvcache.TVCache):
+class WombleCache:
     def updateCache(self):
 
         if not self.shouldUpdate():

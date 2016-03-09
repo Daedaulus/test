@@ -109,7 +109,7 @@ class OmgwtfnzbsProvider:
         return results
 
 
-class OmgwtfnzbsCache(tvcache.TVCache):
+class OmgwtfnzbsCache:
     def _get_title_and_url(self, item):
         title = item.get('title')
         if title:
