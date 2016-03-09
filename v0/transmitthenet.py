@@ -1,6 +1,7 @@
 import logging
 
 from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
 
 from v0 import BS4Parser
 

@@ -1,5 +1,7 @@
 import logging
 
+from requests.utils import dict_from_cookiejar
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
