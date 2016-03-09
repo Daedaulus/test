@@ -126,7 +126,6 @@ class TorrentDayProvider:
                         continue
 
                     torrent_size = torrent['size']
-                    size = convert_size(torrent_size) or -1
 
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
@@ -135,8 +134,6 @@ class TorrentDayProvider:
 
                     items.append(item)
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

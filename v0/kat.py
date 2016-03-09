@@ -81,8 +81,8 @@ class KatProvider:
                             if not (title and download_url):
                                 continue
 
-                            seeders = try_int(item.find('torrent:seeds').get_text(strip=True))
-                            leechers = try_int(item.find('torrent:peers').get_text(strip=True))
+                            seeders = item.find('torrent:seeds').get_text(strip=True)
+                            leechers = item.find('torrent:peers').get_text(strip=True)
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -90,14 +90,13 @@ class KatProvider:
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
-                            verified = bool(try_int(item.find('torrent:verified').get_text(strip=True)))
+                            verified = bool(int(item.find('torrent:verified').get_text(strip=True)))
                             if self.confirmed and not verified:
                                 if mode != 'RSS':
                                     log.debug('Found result ' + title + ' but that doesn\'t seem like a verified result so I\'m ignoring it')
                                 continue
 
                             torrent_size = item.find('torrent:contentlength').get_text(strip=True)
-                            size = convert_size(torrent_size) or -1
                             info_hash = item.find('torrent:infohash').get_text(strip=True)
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
@@ -108,9 +107,6 @@ class KatProvider:
 
                         except (AttributeError, TypeError, KeyError, ValueError):
                             continue
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

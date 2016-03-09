@@ -84,8 +84,8 @@ class elitetorrentProvider:
                             try:
                                 download_url = self.urls['base_url'] + row.find('a')['href']
                                 title = self._processTitle(row.find('a', class_='nombre')['title'])
-                                seeders = try_int(row.find('td', class_='semillas').get_text(strip=True))
-                                leechers = try_int(row.find('td', class_='clientes').get_text(strip=True))
+                                seeders = row.find('td', class_='semillas').get_text(strip=True)
+                                leechers = row.find('td', class_='clientes').get_text(strip=True)
 
                                 # Provider does not provide size
                                 size = -1
@@ -110,9 +110,6 @@ class elitetorrentProvider:
 
                 except Exception:
                     log.warn('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

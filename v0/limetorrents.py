@@ -82,17 +82,15 @@ class LimeTorrentsProvider:
                                 # Category: <a href='http://www.limetorrents.cc/browse-torrents/TV-shows/'>TV shows</a><br /> Seeds: 1<br />Leechers: 0<br />Size: 7.71 GB<br /><br /><a href='http://www.limetorrents.cc/Owen-Hart-of-Gold-Djon91-torrent-7180661.html'>More @ limetorrents.cc</a><br />
                                 # ]]>
                                 description = item.find('description')
-                                seeders = try_int(description.find_all('br')[0].next_sibling.strip().lstrip('Seeds: '))
-                                leechers = try_int(description.find_all('br')[1].next_sibling.strip().lstrip('Leechers: '))
+                                seeders = description.find_all('br')[0].next_sibling.strip().lstrip('Seeds: ')
+                                leechers = description.find_all('br')[1].next_sibling.strip().lstrip('Leechers: ')
                             else:
                                 # <description>Seeds: 6982 , Leechers 734</description>
                                 description = item.find('description').text.partition(',')
-                                seeders = try_int(description[0].lstrip('Seeds: ').strip())
-                                leechers = try_int(description[2].lstrip('Leechers ').strip())
+                                seeders = description[0].lstrip('Seeds: ').strip()
+                                leechers = description[2].lstrip('Leechers ').strip()
 
                             torrent_size = item.find('size').text
-
-                            size = convert_size(torrent_size) or -1
 
                         except (AttributeError, TypeError, KeyError, ValueError):
                             continue
@@ -111,9 +109,6 @@ class LimeTorrentsProvider:
 
                 except (AttributeError, TypeError, KeyError, ValueError):
                     log.error('Failed parsing provider. Traceback: %r' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

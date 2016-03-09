@@ -115,7 +115,6 @@ class PretomeProvider:
                                 # Need size for failed downloads handling
                                 if size is None:
                                     torrent_size = cells[7].text
-                                    size = convert_size(torrent_size) or -1
 
                             except (AttributeError, TypeError):
                                 continue
@@ -137,9 +136,6 @@ class PretomeProvider:
 
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

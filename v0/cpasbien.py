@@ -51,8 +51,8 @@ class CpasbienProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(result.find(class_='up').get_text(strip=True))
-                            leechers = try_int(result.find(class_='down').get_text(strip=True))
+                            seeders = result.find(class_='up').get_text(strip=True)
+                            leechers = result.find(class_='down').get_text(strip=True)
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
@@ -61,7 +61,6 @@ class CpasbienProvider:
                             torrent_size = result.find(class_='poid').get_text(strip=True)
 
                             units = ['o', 'Ko', 'Mo', 'Go', 'To', 'Po']
-                            size = convert_size(torrent_size, units=units) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -71,8 +70,6 @@ class CpasbienProvider:
                         except Exception:
                             continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

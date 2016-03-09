@@ -106,8 +106,8 @@ class ThePirateBayProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(cells[labels.index('SE')].get_text(strip=True))
-                            leechers = try_int(cells[labels.index('LE')].get_text(strip=True))
+                            seeders = cells[labels.index('SE')].get_text(strip=True)
+                            leechers = cells[labels.index('LE')].get_text(strip=True)
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -121,10 +121,8 @@ class ThePirateBayProvider:
                                     log.debug('Found result {} but that doesn\'t seem like a trusted result so I\'m ignoring it'.format(title))
                                 continue
 
-                            # Convert size after all possible skip scenarios
                             torrent_size = cells[labels.index('Name')].find(class_='detDesc').get_text(strip=True).split(', ')[1]
                             torrent_size = re.sub(r'Size ([\d.]+).+([KMGT]iB)', r'\1 \2', torrent_size)
-                            size = convert_size(torrent_size, units=units) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -134,8 +132,6 @@ class ThePirateBayProvider:
                         except Exception:
                             continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

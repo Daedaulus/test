@@ -64,7 +64,6 @@ class BTDiggProvider:
                         leechers = 0
 
                         torrent_size = torrent.pop('size')
-                        size = convert_size(torrent_size) or -1
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':

@@ -101,7 +101,6 @@ class BitSoupProvider:
                                 seeders = int(cells[10].getText().replace(',', ''))
                                 leechers = int(cells[11].getText().replace(',', ''))
                                 torrent_size = cells[8].getText()
-                                size = convert_size(torrent_size) or -1
                             except (AttributeError, TypeError):
                                 continue
 
@@ -125,9 +124,6 @@ class BitSoupProvider:
 
                 except Exception:
                     log.warn('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

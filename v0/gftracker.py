@@ -131,8 +131,8 @@ class GFTrackerProvider:
                                 continue
 
                             peers = cells[labels.index('S/L')].get_text(strip=True).split('/', 1)
-                            seeders = try_int(peers[0])
-                            leechers = try_int(peers[1])
+                            seeders = peers[0]
+                            leechers = peers[1]
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -141,7 +141,6 @@ class GFTrackerProvider:
                                 continue
 
                             torrent_size = cells[labels.index('Size/Snatched')].get_text(strip=True).split('/', 1)[0]
-                            size = convert_size(torrent_size, units=units) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -151,8 +150,6 @@ class GFTrackerProvider:
                         except Exception:
                             continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

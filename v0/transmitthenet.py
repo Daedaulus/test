@@ -123,8 +123,8 @@ class TransmitTheNetProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(temp_anchor.text.strip())
-                            leechers = try_int(temp_anchor.find_next_sibling().text.strip())
+                            seeders = temp_anchor.text.strip()
+                            leechers = temp_anchor.find_next_sibling().text.strip()
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -134,7 +134,6 @@ class TransmitTheNetProvider:
 
                             cells = torrent_row.find_all('td')
                             torrent_size = cells[5].text.strip()
-                            size = convert_size(torrent_size) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -144,8 +143,6 @@ class TransmitTheNetProvider:
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
-            # For each search mode sort all the items by seeders
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

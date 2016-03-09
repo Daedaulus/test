@@ -73,7 +73,7 @@ class XthorProvider:
 
         # Search Params
         search_params = {
-            'only_free': try_int(self.freeleech),
+            'only_free': self.freeleech,
             'searchin': 'title',
             'incldead': 0,
             'type': 'desc',
@@ -137,8 +137,8 @@ class XthorProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(cells[labels.index('Seeders')].get_text(strip=True))
-                            leechers = try_int(cells[labels.index('Leechers')].get_text(strip=True))
+                            seeders = cells[labels.index('Seeders')].get_text(strip=True)
+                            leechers = cells[labels.index('Leechers')].get_text(strip=True)
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -147,7 +147,6 @@ class XthorProvider:
                                 continue
 
                             torrent_size = cells[labels.index('Taille')].get_text()
-                            size = convert_size(torrent_size, units=units) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -157,8 +156,6 @@ class XthorProvider:
                         except Exception:
                             continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

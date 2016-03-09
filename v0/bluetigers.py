@@ -115,9 +115,6 @@ class BlueTigersProvider:
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
-
             results += items
 
         return results

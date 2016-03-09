@@ -326,13 +326,11 @@ class NewznabProvider:
                                 item_size = item.size.get_text(strip=True) if item.size else -1
                                 for attr in item.find_all('newznab:attr') + item.find_all('torznab:attr'):
                                     item_size = attr['value'] if attr['name'] == 'size' else item_size
-                                    seeders = try_int(attr['value']) if attr['name'] == 'seeders' else seeders
-                                    leechers = try_int(attr['value']) if attr['name'] == 'peers' else leechers
+                                    seeders = attr['value'] if attr['name'] == 'seeders' else seeders
+                                    leechers = attr['value'] if attr['name'] == 'peers' else leechers
 
                             if not item_size or (torznab and (seeders is None or leechers is None)):
                                 continue
-
-                            size = convert_size(item_size) or -1
 
                             result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                             items.append(result)
@@ -344,8 +342,6 @@ class NewznabProvider:
                 if 'tvdbid' in search_params:
                     break
 
-            if torznab:
-                results.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results
@@ -355,4 +351,4 @@ class NewznabProvider:
         Gets size info from a result item
         Returns int size or -1
         """
-        return try_int(item.get('size', -1), -1)
+        return item.get('size', -1)

@@ -71,10 +71,9 @@ class BitSnoopProvider:
                             if not (title and download_url):
                                 continue
 
-                            seeders = try_int(item.find('numseeders').text)
-                            leechers = try_int(item.find('numleechers').text)
+                            seeders = item.find('numseeders').text
+                            leechers = item.find('numleechers').text
                             torrent_size = item.find('size').text
-                            size = convert_size(torrent_size) or -1
 
                             info_hash = item.find('infohash').text
 
@@ -96,8 +95,6 @@ class BitSnoopProvider:
                 except (AttributeError, TypeError, KeyError, ValueError):
                     log.error('Failed parsing provider. Traceback: %r' % traceback.format_exc())
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

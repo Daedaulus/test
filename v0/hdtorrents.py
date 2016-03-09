@@ -124,11 +124,10 @@ class HDTorrentsProvider:
                                 continue
 
                             title = cells[labels.index('Filename')].a.get_text(strip=True)
-                            seeders = try_int(cells[labels.index('S')].get_text(strip=True))
-                            leechers = try_int(cells[labels.index('L')].get_text(strip=True))
+                            seeders = cells[labels.index('S')].get_text(strip=True)
+                            leechers = cells[labels.index('L')].get_text(strip=True)
                             torrent_size = cells[labels.index('Size')].get_text()
 
-                            size = convert_size(torrent_size) or -1
                             download_url = self.url + '/' + cells[labels.index('Dl')].a['href']
                         except (AttributeError, TypeError, KeyError, ValueError, IndexError):
                             continue
@@ -147,9 +146,6 @@ class HDTorrentsProvider:
                             log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                         items.append(item)
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

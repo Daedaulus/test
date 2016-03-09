@@ -118,7 +118,6 @@ class HDSpaceProvider:
                         seeders = int(result.find('span', attrs={'class': 'seedy'}).find('a').text)
                         leechers = int(result.find('span', attrs={'class': 'leechy'}).find('a').text)
                         torrent_size = re.match(r'.*?([0-9]+,?\.?[0-9]* [KkMmGg]+[Bb]+).*', str(result), re.DOTALL).group(1)
-                        size = convert_size(torrent_size) or -1
 
                         if not all([title, download_url]):
                             continue
@@ -138,8 +137,6 @@ class HDSpaceProvider:
                     except (AttributeError, TypeError, KeyError, ValueError):
                         continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

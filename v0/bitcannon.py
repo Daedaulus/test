@@ -67,8 +67,8 @@ class BitCannonProvider:
 
                         swarm = result.pop('swarm', None)
                         if swarm:
-                            seeders = try_int(swarm.pop('seeders', 0))
-                            leechers = try_int(swarm.pop('leechers', 0))
+                            seeders = swarm.pop('seeders', 0)
+                            leechers = swarm.pop('leechers', 0)
                         else:
                             seeders = leechers = 0
 
@@ -77,7 +77,7 @@ class BitCannonProvider:
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
-                        size = convert_size(result.pop('size', -1)) or -1
+                        size = result.pop('size', -1)
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
@@ -86,8 +86,6 @@ class BitCannonProvider:
                     except (AttributeError, TypeError, KeyError, ValueError):
                         continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

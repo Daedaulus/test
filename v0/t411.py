@@ -93,7 +93,7 @@ class T411Provider:
                             continue
 
                         for torrent in torrents:
-                            if mode == 'RSS' and 'category' in torrent and try_int(torrent['category'], 0) not in self.subcategories:
+                            if mode == 'RSS' and 'category' in torrent and torrent['category'] not in self.subcategories:
                                 continue
 
                             try:
@@ -103,8 +103,8 @@ class T411Provider:
                                 if not all([title, download_url]):
                                     continue
 
-                                seeders = try_int(torrent['seeders'])
-                                leechers = try_int(torrent['leechers'])
+                                seeders = torrent['seeders']
+                                leechers = torrent['leechers']
                                 verified = bool(torrent['isVerified'])
                                 torrent_size = torrent['size']
 
@@ -118,7 +118,6 @@ class T411Provider:
                                     log.debug('Found result ' + title + ' but that doesn\'t seem like a verified result so I\'m ignoring it')
                                     continue
 
-                                size = convert_size(torrent_size) or -1
                                 item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                                 if mode != 'RSS':
                                     log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
@@ -132,9 +131,6 @@ class T411Provider:
 
                     except Exception:
                         log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

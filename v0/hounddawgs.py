@@ -130,10 +130,8 @@ class HoundDawgsProvider:
                                 title = allAs[2].string
                                 download_url = self.urls['base_url'] + allAs[0].attrs['href']
                                 torrent_size = result.find('td', class_='nobr').find_next_sibling('td').string
-                                if torrent_size:
-                                    size = convert_size(torrent_size) or -1
-                                seeders = try_int((result.findAll('td')[6]).text)
-                                leechers = try_int((result.findAll('td')[7]).text)
+                                seeders = (result.findAll('td')[6]).text
+                                leechers = (result.findAll('td')[7]).text
 
                             except (AttributeError, TypeError):
                                 continue
@@ -155,9 +153,6 @@ class HoundDawgsProvider:
 
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

@@ -288,7 +288,6 @@ class TNTVillageProvider:
                                     seeders = result.find_all('td')[3].find_all('td')[2].text
                                     seeders = int(seeders.strip('[]'))
                                     torrent_size = result.find_all('td')[3].find_all('td')[3].text.strip('[]') + ' GB'
-                                    size = convert_size(torrent_size) or -1
                                 except (AttributeError, TypeError):
                                     continue
 
@@ -340,9 +339,6 @@ class TNTVillageProvider:
 
                     except Exception:
                         log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
-
-                # For each search mode sort all the items by seeders if available if available
-                items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
                 results += items
 

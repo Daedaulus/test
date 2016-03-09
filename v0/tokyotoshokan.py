@@ -68,12 +68,12 @@ class TokyoToshokanProvider:
                             download_url = desc_top.find('a')['href']
 
                             desc_bottom = bot.find('td', class_='desc-bot').get_text(strip=True)
-                            size = convert_size(desc_bottom.split('|')[1].strip('Size: ')) or -1
+                            size = desc_bottom.split('|')[1].strip('Size: ')
 
                             stats = bot.find('td', class_='stats').get_text(strip=True)
                             sl = re.match(r'S:(?P<seeders>\d+)L:(?P<leechers>\d+)C:(?:\d+)ID:(?:\d+)', stats.replace(' ', ''))
-                            seeders = try_int(sl.group('seeders')) if sl else 0
-                            leechers = try_int(sl.group('leechers')) if sl else 0
+                            seeders = sl.group('seeders') if sl else 0
+                            leechers = sl.group('leechers') if sl else 0
                         except Exception:
                             continue
 
@@ -92,8 +92,6 @@ class TokyoToshokanProvider:
 
                         items.append(item)
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

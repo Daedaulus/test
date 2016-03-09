@@ -113,7 +113,6 @@ class IPTorrentsProvider:
                                 seeders = int(result.find('td', attrs={'class': 'ac t_seeders'}).text)
                                 leechers = int(result.find('td', attrs={'class': 'ac t_leechers'}).text)
                                 torrent_size = result.find_all('td')[5].text
-                                size = convert_size(torrent_size) or -1
                             except (AttributeError, TypeError, KeyError):
                                 continue
 
@@ -134,9 +133,6 @@ class IPTorrentsProvider:
 
                 except Exception as e:
                     log.error('Failed parsing provider. Error: %r' % ex(e))
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

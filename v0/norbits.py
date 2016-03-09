@@ -84,15 +84,15 @@ class NorbitsProvider:
                         if not all([title, download_url]):
                             continue
 
-                        seeders = try_int(item.pop('seeders', 0))
-                        leechers = try_int(item.pop('leechers', 0))
+                        seeders = item.pop('seeders', 0)
+                        leechers = item.pop('leechers', 0)
 
                         if seeders < self.minseed or leechers < self.minleech:
                             log.debug('Discarding torrent because it does not meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         info_hash = item.pop('info_hash', '')
-                        size = convert_size(item.pop('size', -1), -1)
+                        size = item.pop('size', -1)
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
@@ -100,8 +100,6 @@ class NorbitsProvider:
                                 title, seeders, leechers))
 
                         items.append(item)
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

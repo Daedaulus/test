@@ -120,8 +120,8 @@ class TorrentLeechProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(result.find('td', class_='seeders').get_text(strip=True))
-                            leechers = try_int(result.find('td', class_='leechers').get_text(strip=True))
+                            seeders = result.find('td', class_='seeders').get_text(strip=True)
+                            leechers = result.find('td', class_='leechers').get_text(strip=True)
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -130,7 +130,6 @@ class TorrentLeechProvider:
                                 continue
 
                             torrent_size = result.find_all('td')[labels.index('Size')].get_text()
-                            size = convert_size(torrent_size, units=units) or -1
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
@@ -139,9 +138,6 @@ class TorrentLeechProvider:
                             items.append(item)
                         except Exception:
                             continue
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

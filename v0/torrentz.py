@@ -72,7 +72,6 @@ class TorrentzProvider:
 
                             download_url = 'magnet:?xt=urn:btih:' + t_hash + '&dn=' + title + self._custom_trackers
                             torrent_size, seeders, leechers = self._split_description(item.find('description').text)
-                            size = convert_size(torrent_size) or -1
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -85,8 +84,6 @@ class TorrentzProvider:
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %r' % traceback.format_exc())
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

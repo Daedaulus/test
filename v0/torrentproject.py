@@ -67,8 +67,8 @@ class TorrentProjectProvider:
                 results = []
                 for i in torrents:
                     title = torrents[i]['title']
-                    seeders = try_int(torrents[i]['seeds'], 1)
-                    leechers = try_int(torrents[i]['leechs'], 0)
+                    seeders = torrents[i]['seeds']
+                    leechers = torrents[i]['leechs']
                     if seeders < self.minseed or leechers < self.minleech:
                         if mode != 'RSS':
                             log.debug('Torrent doesn\'t meet minimum seeds & leechers not selecting : %s' % title)
@@ -76,7 +76,6 @@ class TorrentProjectProvider:
 
                     t_hash = torrents[i]['torrent_hash']
                     torrent_size = torrents[i]['torrent_size']
-                    size = convert_size(torrent_size) or -1
 
                     try:
                         assert seeders < 10
@@ -110,8 +109,6 @@ class TorrentProjectProvider:
 
                     items.append(item)
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

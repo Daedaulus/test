@@ -67,8 +67,6 @@ class NyaaProvider:
                             continue
 
                         seeders, leechers, torrent_size, verified = item_info.groups()
-                        seeders = try_int(seeders)
-                        leechers = try_int(leechers)
 
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
@@ -79,7 +77,6 @@ class NyaaProvider:
                             log.debug('Found result {} but that doesn\'t seem like a verified result so I\'m ignoring it'.format(title))
                             continue
 
-                        size = convert_size(torrent_size) or -1
                         result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
@@ -88,8 +85,6 @@ class NyaaProvider:
                     except Exception:
                         continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

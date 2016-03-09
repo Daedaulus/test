@@ -56,10 +56,9 @@ class ExtraTorrentProvider:
                     for item in parser.findAll('item'):
                         try:
                             title = re.sub(r'^<!\[CDATA\[|\]\]>$', '', item.find('title').get_text(strip=True))
-                            seeders = try_int(item.find('seeders').get_text(strip=True))
-                            leechers = try_int(item.find('leechers').get_text(strip=True))
+                            seeders = item.find('seeders').get_text(strip=True)
+                            leechers = item.find('leechers').get_text(strip=True)
                             torrent_size = item.find('size').get_text()
-                            size = convert_size(torrent_size) or -1
 
                             if sickbeard.TORRENT_METHOD == 'blackhole':
                                 enclosure = item.find('enclosure')  # Backlog doesnt have enclosure
@@ -87,8 +86,6 @@ class ExtraTorrentProvider:
 
                         items.append(item)
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

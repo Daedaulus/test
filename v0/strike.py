@@ -44,7 +44,6 @@ class StrikeProvider:
                     leechers = ('leeches' in item and item['leeches']) or 0
                     title = ('torrent_title' in item and item['torrent_title']) or ''
                     torrent_size = ('size' in item and item['size'])
-                    size = convert_size(torrent_size) or -1
                     download_url = ('magnet_uri' in item and item['magnet_uri']) or ''
 
                     if not all([title, download_url]):
@@ -61,9 +60,6 @@ class StrikeProvider:
 
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                     items.append(item)
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

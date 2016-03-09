@@ -57,11 +57,11 @@ class RarbgProvider:
         search_params = {
             'app_id': 'sickrage2',
             'category': 'tv',
-            'min_seeders': try_int(self.minseed),
-            'min_leechers': try_int(self.minleech),
+            'min_seeders': self.minseed,
+            'min_leechers': self.minleech,
             'limit': 100,
             'format': 'json_extended',
-            'ranked': try_int(self.ranked),
+            'ranked': self.ranked,
             'token': self.token,
         }
 
@@ -105,7 +105,7 @@ class RarbgProvider:
                 # Don't log when {'error':'No results found','error_code':20}
                 # List of errors: https://github.com/rarbg/torrentapi/issues/1#issuecomment-114763312
                 if error:
-                    if try_int(error_code) != 20:
+                    if error_code != 20:
                         log.info(error)
                     continue
 
@@ -129,7 +129,6 @@ class RarbgProvider:
                             continue
 
                         torrent_size = item.pop('size', -1)
-                        size = convert_size(torrent_size) or -1
 
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
@@ -139,8 +138,6 @@ class RarbgProvider:
                     except Exception:
                         continue
 
-            # For each search mode sort all the items by seeders
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

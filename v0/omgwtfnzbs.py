@@ -65,7 +65,7 @@ class OmgwtfnzbsProvider:
         return item['release'], item['getnzb']
 
     def _get_size(self, item):
-        return try_int(item['sizebytes'], -1)
+        return item['sizebytes']
 
     def search(self, search_strings, age=0, ep_obj=None):
         results = []

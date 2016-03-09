@@ -85,7 +85,6 @@ class HD4FreeProvider:
                             continue
 
                         torrent_size = str(jdata[i]['size']) + ' MB'
-                        size = convert_size(torrent_size) or -1
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
                         if mode != 'RSS':
@@ -94,9 +93,6 @@ class HD4FreeProvider:
                         items.append(item)
                     except Exception:
                         continue
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

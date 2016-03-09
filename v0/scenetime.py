@@ -97,11 +97,9 @@ class SceneTimeProvider:
                             title = link.get_text(strip=True)
                             download_url = self.urls['download'] % (torrent_id, '%s.torrent' % title.replace(' ', '.'))
 
-                            seeders = try_int(cells[labels.index('Seeders')].get_text(strip=True))
-                            leechers = try_int(cells[labels.index('Leechers')].get_text(strip=True))
+                            seeders = cells[labels.index('Seeders')].get_text(strip=True)
+                            leechers = cells[labels.index('Leechers')].get_text(strip=True)
                             torrent_size = cells[labels.index('Size')].get_text()
-
-                            size = convert_size(torrent_size) or -1
 
                         except (AttributeError, TypeError, KeyError, ValueError):
                             continue
@@ -120,9 +118,6 @@ class SceneTimeProvider:
                             log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                         items.append(item)
-
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
 
             results += items
 

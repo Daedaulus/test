@@ -176,10 +176,9 @@ class FreshOnTVProvider:
                                     details_url = individual_torrent.find('a', {'class': 'torrent_name_link'})['href']
                                     torrent_id = int((re.match('.*?([0-9]+)$', details_url).group(1)).strip())
                                     download_url = self.urls['download'] % (str(torrent_id))
-                                    seeders = try_int(individual_torrent.find('td', {'class': 'table_seeders'}).find('span').text.strip(), 1)
-                                    leechers = try_int(individual_torrent.find('td', {'class': 'table_leechers'}).find('a').text.strip(), 0)
+                                    seeders = individual_torrent.find('td', {'class': 'table_seeders'}).find('span').text.strip()
+                                    leechers = individual_torrent.find('td', {'class': 'table_leechers'}).find('a').text.strip()
                                     torrent_size = individual_torrent.find('td', {'class': 'table_size'}).get_text()
-                                    size = convert_size(torrent_size) or -1
                                 except Exception:
                                     continue
 
@@ -201,8 +200,6 @@ class FreshOnTVProvider:
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results

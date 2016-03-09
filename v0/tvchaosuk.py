@@ -117,8 +117,8 @@ class TVChaosUKProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            seeders = try_int(torrent.find(title='Seeders').get_text(strip=True))
-                            leechers = try_int(torrent.find(title='Leechers').get_text(strip=True))
+                            seeders = torrent.find(title='Seeders').get_text(strip=True)
+                            leechers = torrent.find(title='Leechers').get_text(strip=True)
 
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
@@ -141,7 +141,6 @@ class TVChaosUKProvider:
                             title = re.sub(r'\s+', r' ', title)
 
                             torrent_size = torrent.find_all('td')[labels.index('Size')].get_text(strip=True)
-                            size = convert_size(torrent_size, units=units) or -1
 
                             if mode != 'RSS':
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
@@ -151,8 +150,6 @@ class TVChaosUKProvider:
                         except Exception:
                             continue
 
-            # For each search mode sort all the items by seeders if available
-            items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
             results += items
 
         return results
