@@ -80,7 +80,7 @@ class TorrentzProvider:
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
-                            result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': t_hash}
+                            result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': t_hash}
                             items.append(result)
                 except Exception:
                     log.error('Failed parsing provider. Traceback: %r' % traceback.format_exc())

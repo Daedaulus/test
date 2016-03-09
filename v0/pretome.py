@@ -98,7 +98,7 @@ class PretomeProvider:
 
                         for result in torrent_rows:
                             cells = result('td')
-                            size = None
+                            torrent_size = None
                             link = cells[1].find('a', attrs={'style': 'font-size: 1.25em; font-weight: bold;'})
 
                             torrent_id = link['href'].replace('details.php?id=', '')
@@ -114,7 +114,7 @@ class PretomeProvider:
                                 leechers = int(cells[10].contents[0])
 
                                 # Need size for failed downloads handling
-                                if size is None:
+                                if torrent_size is None:
                                     torrent_size = cells[7].text
 
                             except (AttributeError, TypeError):
@@ -129,7 +129,7 @@ class PretomeProvider:
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
-                            item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                            item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
                                 log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

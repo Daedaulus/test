@@ -103,7 +103,7 @@ class TorrentProjectProvider:
                     if not all([title, download_url]):
                         continue
 
-                    item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': t_hash}
+                    item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': t_hash}
 
                     if mode != 'RSS':
                         log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))

@@ -78,8 +78,8 @@ class BitCannonProvider:
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
-                        size = result.pop('size', -1)
-                        item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                        torrent_size = result.pop('size', -1)
+                        item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 

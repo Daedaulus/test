@@ -100,7 +100,7 @@ class KatProvider:
                             torrent_size = item.find('torrent:contentlength').get_text(strip=True)
                             info_hash = item.find('torrent:infohash').get_text(strip=True)
 
-                            item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
+                            item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                             if mode != 'RSS':
                                 log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

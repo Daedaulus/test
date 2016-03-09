@@ -94,7 +94,7 @@ class BlueTigersProvider:
                                 download_url = self.urls['base_url'] + link['href']
                                 download_url = download_url.replace('torrents-details', 'download')
                                 # FIXME
-                                size = -1
+                                torrent_size = -1
                                 seeders = 1
                                 leechers = 0
 
@@ -107,7 +107,7 @@ class BlueTigersProvider:
                                 #        log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 #    continue
 
-                                item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                                item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                                 if mode != 'RSS':
                                     log.debug('Found result: %s ' % title)
 

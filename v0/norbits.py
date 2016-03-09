@@ -93,9 +93,9 @@ class NorbitsProvider:
                             continue
 
                         info_hash = item.pop('info_hash', '')
-                        size = item.pop('size', -1)
+                        torrent_size = item.pop('size', -1)
 
-                        item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
+                        item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(
                                 title, seeders, leechers))

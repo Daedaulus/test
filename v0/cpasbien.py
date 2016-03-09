@@ -63,7 +63,7 @@ class CpasbienProvider:
 
                             units = ['o', 'Ko', 'Mo', 'Go', 'To', 'Po']
 
-                            item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                            item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
                                 log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

@@ -87,7 +87,7 @@ class BitSnoopProvider:
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
-                        item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
+                        item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
                             log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

@@ -144,7 +144,7 @@ class MoreThanTVProvider:
 
                             torrent_size = cells[labels.index('Size')].get_text(strip=True)
 
-                            item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                            item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 

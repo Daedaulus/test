@@ -78,7 +78,7 @@ class NyaaProvider:
                             log.debug('Found result {} but that doesn\'t seem like a verified result so I\'m ignoring it'.format(title))
                             continue
 
-                        result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
+                        result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers}
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 

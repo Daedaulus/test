@@ -130,7 +130,7 @@ class PhxBitProvider:
 
                             torrent_size = cells[labels.index('Taille')].get_text(strip=True)
 
-                            item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                            item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
                                 log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

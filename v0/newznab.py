@@ -333,7 +333,7 @@ class NewznabProvider:
                             if not item_size or (torznab and (seeders is None or leechers is None)):
                                 continue
 
-                            result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
+                            result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers}
                             items.append(result)
                         except Exception:
                             continue

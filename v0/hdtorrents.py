@@ -93,7 +93,7 @@ class HDTorrentsProvider:
                 # We cut everything before the table that contains the data we are interested in thus eliminating
                 # the invalid html portions
                 try:
-                    index = data.lower().index('<table class='mainblockcontenttt'')
+                    index = data.lower().index('<table class="mainblockcontenttt"')
                 except ValueError:
                     log.debug('Could not find table of torrents mainblockcontenttt')
                     continue
@@ -142,7 +142,7 @@ class HDTorrentsProvider:
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
-                        item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                        item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
                             log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 

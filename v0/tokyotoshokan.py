@@ -69,7 +69,7 @@ class TokyoToshokanProvider:
                             download_url = desc_top.find('a')['href']
 
                             desc_bottom = bot.find('td', class_='desc-bot').get_text(strip=True)
-                            size = desc_bottom.split('|')[1].strip('Size: ')
+                            torrent_size = desc_bottom.split('|')[1].strip('Size: ')
 
                             stats = bot.find('td', class_='stats').get_text(strip=True)
                             sl = re.match(r'S:(?P<seeders>\d+)L:(?P<leechers>\d+)C:(?:\d+)ID:(?:\d+)', stats.replace(' ', ''))
@@ -87,7 +87,7 @@ class TokyoToshokanProvider:
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
-                        item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+                        item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
                             log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
