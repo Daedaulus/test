@@ -1,5 +1,7 @@
 ﻿import logging
 
+from v0 import BS4Parser
+
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
