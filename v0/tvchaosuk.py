@@ -100,14 +100,14 @@ class TVChaosUKProvider:
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find(id='sortabletable')
-                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
+                    torrent_rows = torrent_table('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
                         log.debug('Data returned from provider does not contain any torrents')
                         continue
 
-                    labels = [label.img['title'] if label.img else label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]
+                    labels = [label.img['title'] if label.img else label.get_text(strip=True) for label in torrent_rows[0]('td')]
                     for torrent in torrent_rows[1:]:
                         try:
                             if self.freeleech and not torrent.find('img', alt=re.compile('Free Torrent')):
@@ -141,7 +141,7 @@ class TVChaosUKProvider:
                             title = re.sub(r'(.*)[\. ]?\(\d{4}\)', r'\1', title)
                             title = re.sub(r'\s+', r' ', title)
 
-                            torrent_size = torrent.find_all('td')[labels.index('Size')].get_text(strip=True)
+                            torrent_size = torrent('td')[labels.index('Size')].get_text(strip=True)
 
                             if mode != 'RSS':
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))

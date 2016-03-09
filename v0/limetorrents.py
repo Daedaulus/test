@@ -83,8 +83,8 @@ class LimeTorrentsProvider:
                                 # Category: <a href='http://www.limetorrents.cc/browse-torrents/TV-shows/'>TV shows</a><br /> Seeds: 1<br />Leechers: 0<br />Size: 7.71 GB<br /><br /><a href='http://www.limetorrents.cc/Owen-Hart-of-Gold-Djon91-torrent-7180661.html'>More @ limetorrents.cc</a><br />
                                 # ]]>
                                 description = item.find('description')
-                                seeders = description.find_all('br')[0].next_sibling.strip().lstrip('Seeds: ')
-                                leechers = description.find_all('br')[1].next_sibling.strip().lstrip('Leechers: ')
+                                seeders = description('br')[0].next_sibling.strip().lstrip('Seeds: ')
+                                leechers = description('br')[1].next_sibling.strip().lstrip('Leechers: ')
                             else:
                                 # <description>Seeds: 6982 , Leechers 734</description>
                                 description = item.find('description').text.partition(',')

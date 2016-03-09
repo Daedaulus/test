@@ -150,10 +150,10 @@ class NewznabProvider:
             if just_caps:
                 return
 
-            for category in html.find_all('category'):
+            for category in html('category'):
                 if 'TV' in category.get('name', '') and category.get('id', ''):
                     return_categories.append({'id': category['id'], 'name': category['name']})
-                    for subcat in category.find_all('subcat'):
+                    for subcat in category('subcat'):
                         if subcat.get('name', '') and subcat.get('id', ''):
                             return_categories.append({'id': subcat['id'], 'name': subcat['name']})
 
@@ -188,7 +188,7 @@ class NewznabProvider:
         Checks that the returned data is valid
         Returns: _check_auth if valid otherwise False if there is an error
         """
-        if data.find_all('categories') + data.find_all('item'):
+        if data('categories') + data('item'):
             return self._check_auth()
 
         try:
@@ -302,7 +302,7 @@ class NewznabProvider:
                     except AttributeError:
                         torznab = False
 
-                    for item in html.find_all('item'):
+                    for item in html('item'):
                         try:
                             title = item.title.get_text(strip=True)
                             download_url = None
@@ -325,7 +325,7 @@ class NewznabProvider:
                                 item_size = size_regex.group() if size_regex else -1
                             else:
                                 item_size = item.size.get_text(strip=True) if item.size else -1
-                                for attr in item.find_all('newznab:attr') + item.find_all('torznab:attr'):
+                                for attr in item('newznab:attr') + item('torznab:attr'):
                                     item_size = attr['value'] if attr['name'] == 'size' else item_size
                                     seeders = attr['value'] if attr['name'] == 'seeders' else seeders
                                     leechers = attr['value'] if attr['name'] == 'peers' else leechers

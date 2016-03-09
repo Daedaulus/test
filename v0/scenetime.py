@@ -86,11 +86,11 @@ class SceneTimeProvider:
                     # Scenetime apparently uses different number of cells in #torrenttable based
                     # on who you are. This works around that by extracting labels from the first
                     # <tr> and using their index to find the correct download/seeders/leechers td.
-                    labels = [label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]
+                    labels = [label.get_text(strip=True) for label in torrent_rows[0]('td')]
 
                     for result in torrent_rows[1:]:
                         try:
-                            cells = result.find_all('td')
+                            cells = result('td')
 
                             link = cells[labels.index('Name')].find('a')
                             torrent_id = link['href'].replace('details.php?id=', '').split('&')[0]

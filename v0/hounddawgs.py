@@ -114,11 +114,11 @@ class HoundDawgsProvider:
 
                         for result in entries[1:]:
 
-                            torrent = result.find_all('td')
+                            torrent = result('td')
                             if len(torrent) <= 1:
                                 break
 
-                            allAs = (torrent[1]).find_all('a')
+                            allAs = (torrent[1])('a')
 
                             try:
                                 notinternal = result.find('img', src='/static//common/user_upload.png')

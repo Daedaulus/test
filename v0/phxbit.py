@@ -97,7 +97,7 @@ class PhxBitProvider:
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find('table')
-                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
+                    torrent_rows = torrent_table('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
@@ -105,11 +105,11 @@ class PhxBitProvider:
                         continue
 
                     # Catégorie, Nom,  DL, Com, Taille, C, Seed, Leech,	Share
-                    labels = [process_column_header(label) for label in torrent_rows[0].find_all('td')]
+                    labels = [process_column_header(label) for label in torrent_rows[0]('td')]
 
                     # Skip column headers
                     for result in torrent_rows[1:]:
-                        cells = result.find_all('td')
+                        cells = result('td')
                         if len(cells) < len(labels):
                             continue
 

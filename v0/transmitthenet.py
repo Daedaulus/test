@@ -133,7 +133,7 @@ class TransmitTheNetProvider:
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
-                            cells = torrent_row.find_all('td')
+                            cells = torrent_row('td')
                             torrent_size = cells[5].text.strip()
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}

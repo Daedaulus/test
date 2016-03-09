@@ -116,7 +116,7 @@ class XthorProvider:
                     torrent_table = html.find('table', class_='table2 table-bordered2')
                     torrent_rows = []
                     if torrent_table:
-                        torrent_rows = torrent_table.find_all('tr')
+                        torrent_rows = torrent_table('tr')
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
@@ -124,11 +124,11 @@ class XthorProvider:
                         continue
 
                     # Catégorie, Nom du Torrent, (Download), (Bookmark), Com., Taille, Compl�t�, Seeders, Leechers
-                    labels = [process_column_header(label) for label in torrent_rows[0].find_all('td')]
+                    labels = [process_column_header(label) for label in torrent_rows[0]('td')]
 
                     # Skip column headers
                     for row in torrent_rows[1:]:
-                        cells = row.find_all('td')
+                        cells = row('td')
                         if len(cells) < len(labels):
                             continue
 

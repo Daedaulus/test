@@ -110,7 +110,7 @@ class FreshOnTVProvider:
                         # Check to see if there is more than 1 page of results
                         pager = init_soup.find('div', {'class': 'pager'})
                         if pager:
-                            page_links = pager.find_all('a', href=True)
+                            page_links = pager('a', href=True)
                         else:
                             page_links = []
 

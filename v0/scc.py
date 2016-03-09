@@ -94,14 +94,14 @@ class SCCProvider:
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find('table', attrs={'id': 'torrents-table'})
-                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
+                    torrent_rows = torrent_table('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
                         log.debug('Data returned from provider does not contain any torrents')
                         continue
 
-                    for result in torrent_table.find_all('tr')[1:]:
+                    for result in torrent_table('tr')[1:]:
 
                         try:
                             link = result.find('td', attrs={'class': 'ttr_name'}).find('a')

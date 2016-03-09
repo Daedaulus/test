@@ -99,7 +99,7 @@ class DanishbitsProvider:
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find('table', id='torrent_table')
-                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
+                    torrent_rows = torrent_table('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
@@ -108,7 +108,7 @@ class DanishbitsProvider:
 
                     # Literal:     Navn, Størrelse, Kommentarer, Tilføjet, Snatches, Seeders, Leechers
                     # Translation: Name, Size,      Comments,    Added,    Snatches, Seeders, Leechers
-                    labels = [process_column_header(label) for label in torrent_rows[0].find_all('td')]
+                    labels = [process_column_header(label) for label in torrent_rows[0]('td')]
 
                     # Skip column headers
                     for result in torrent_rows[1:]:
@@ -119,7 +119,7 @@ class DanishbitsProvider:
                             if not all([title, download_url]):
                                 continue
 
-                            cells = result.find_all('td')
+                            cells = result('td')
 
                             seeders = cells[labels.index('Seeders')].get_text(strip=True)
                             leechers = cells[labels.index('Leechers')].get_text(strip=True)

@@ -85,19 +85,19 @@ class ThePirateBayProvider:
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find('table', id='searchResult')
-                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
+                    torrent_rows = torrent_table('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
                         log.debug('Data returned from provider does not contain any torrents')
                         continue
 
-                    labels = [process_column_header(label) for label in torrent_rows[0].find_all('th')]
+                    labels = [process_column_header(label) for label in torrent_rows[0]('th')]
 
                     # Skip column headers
                     for result in torrent_rows[1:]:
                         try:
-                            cells = result.find_all('td')
+                            cells = result('td')
 
                             title = result.find(class_='detName').get_text(strip=True)
                             download_url = result.find(title='Download this torrent using magnet')['href'] + self._custom_trackers

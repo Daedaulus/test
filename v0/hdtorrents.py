@@ -108,14 +108,14 @@ class HDTorrentsProvider:
                     torrent_rows = []
                     torrent_table = html.find('table', class_='mainblockcontenttt')
                     if torrent_table:
-                        torrent_rows = torrent_table.find_all('tr')
+                        torrent_rows = torrent_table('tr')
 
                     if not torrent_rows:
                         log.debug('Could not find results in returned data')
                         continue
 
                     # Cat., Active, Filename, Dl, Wl, Added, Size, Uploader, S, L, C
-                    labels = [label.a.get_text(strip=True) if label.a else label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]
+                    labels = [label.a.get_text(strip=True) if label.a else label.get_text(strip=True) for label in torrent_rows[0]('td')]
 
                     # Skip column headers
                     for result in torrent_rows[1:]:
