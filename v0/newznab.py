@@ -12,12 +12,6 @@ log.addHandler(logging.NullHandler)
 
 
 class NewznabProvider:
-    """
-    Generic provider for built in and custom providers who expose a newznab
-    compatible api.
-    Tested with: newznab, nzedb, spotweb, torznab
-    """
-
 
     def __init__(self, name, url, key='0', catIDs='5030,5040', search_mode='eponly',
                  search_fallback=False, enable_daily=True, enable_backlog=False):
@@ -47,9 +41,6 @@ class NewznabProvider:
         # self.cap_audio_search = None
 
     def configStr(self):
-        """
-        Generates a '|' delimited string of instance attributes, for saving to config.ini
-        """
         return self.name + '|' + self.url + '|' + self.key + '|' + self.catIDs + '|' + str(
             int(self.enabled)) + '|' + self.search_mode + '|' + str(int(self.search_fallback)) + '|' + str(
                 int(self.enable_daily)) + '|' + str(int(self.enable_backlog))
@@ -92,10 +83,6 @@ class NewznabProvider:
         return [x for x in providers_list if x]
 
     def image_name(self):
-        """
-        Checks if we have an image for this provider already.
-        Returns found image or the default newznab image
-        """
         if ek(os.path.isfile,
               ek(os.path.join, sickbeard.PROG_DIR, 'gui', sickbeard.GUI_NAME, 'images', 'providers',
                  self.get_id() + '.png')):
@@ -119,12 +106,6 @@ class NewznabProvider:
         self.caps = any([self.cap_tv_search])
 
     def get_newznab_categories(self, just_caps=False):
-        """
-        Uses the newznab provider url and apikey to get the capabilities.
-        Makes use of the default newznab caps param. e.a. http://yournewznab/api?t=caps&apikey=skdfiw7823sdkdsfjsfk
-        Returns a tuple with (succes or not, array with dicts [{'id': '5070', 'name': 'Anime'},
-        {'id': '5080', 'name': 'Documentary'}, {'id': '5020', 'name': 'Foreign'}...etc}], error message)
-        """
         return_categories = []
 
         if not self._check_auth():
@@ -173,10 +154,6 @@ class NewznabProvider:
             'DOGnzb|https://api.dognzb.cr/||5030,5040,5060,5070|0|eponly|0|1|1'
 
     def _check_auth(self):
-        """
-        Checks that user has set their api key if it is needed
-        Returns: True/False
-        """
         if self.needs_auth and not self.key:
             log.warn('Invalid api key. Check your settings')
             return False
@@ -184,10 +161,6 @@ class NewznabProvider:
         return True
 
     def _checkAuthFromData(self, data):
-        """
-        Checks that the returned data is valid
-        Returns: _check_auth if valid otherwise False if there is an error
-        """
         if data('categories') + data('item'):
             return self._check_auth()
 
@@ -236,10 +209,6 @@ class NewznabProvider:
         return new_provider
 
     def search(self, search_strings, age=0, ep_obj=None):
-        """
-        Searches indexer using the params in search_strings, either for latest releases, or a string/id search
-        Returns: list of results in dict form
-        """
         results = []
         if not self._check_auth():
             return results
@@ -348,8 +317,4 @@ class NewznabProvider:
         return results
 
     def _get_size(self, item):
-        """
-        Gets size info from a result item
-        Returns int size or -1
-        """
         return item.get('size', -1)

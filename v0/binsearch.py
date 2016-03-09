@@ -44,14 +44,6 @@ class BinSearchCache:
         ]
 
     def _get_title_and_url(self, item):
-        """
-        Retrieves the title and URL data from the item XML node
-
-        item: An elementtree.ElementTree element representing the <item> tag of the RSS feed
-
-        Returns: A tuple containing two strings representing title and URL respectively
-        """
-
         title = item.get('description')
         if title:
             if self.descTitleStart.match(title):

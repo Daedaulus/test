@@ -32,17 +32,6 @@ class elitetorrentProvider:
         results = []
         lang_info = '' if not ep_obj or not ep_obj.show else ep_obj.show.lang
 
-        """
-        Search query:
-        http://www.elitetorrent.net/torrents.php?cat=4&modo=listado&orden=fecha&pag=1&buscar=fringe
-
-        cat = 4 => Shows
-        modo = listado => display results mode
-        orden = fecha => order
-        buscar => Search show
-        pag = 1 => page number
-        """
-
         search_params = {
             'cat': 4,
             'modo': 'listado',

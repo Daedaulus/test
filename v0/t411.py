@@ -139,7 +139,6 @@ class T411Provider:
 
 
 class T411Auth(AuthBase):
-    """Attaches HTTP Authentication to the given Request object."""
     def __init__(self, token):
         self.token = token
 

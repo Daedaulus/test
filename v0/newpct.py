@@ -23,16 +23,6 @@ class newpctProvider:
         self.urls = {'search': urljoin(self.url, 'index.php')}
 
     def search(self, search_strings, age=0, ep_obj=None):
-        """
-        Search query:
-        http://www.newpct.com/index.php?l=doSearch&q=fringe&category_=All&idioma_=1&bus_de_=All
-
-        q => Show name
-        category_ = Category 'Shows' (767)
-        idioma_ = Language Spanish (1)
-        bus_de_ = Date from (All, hoy)
-
-        """
         results = []
 
         # Only search if user conditions are true
@@ -107,10 +97,6 @@ class newpctProvider:
         return results
 
     def get_url(self, url, post_data=None, params=None, timeout=30, **kwargs):
-        """
-        returns='content' when trying access to torrent info (For calling torrent client). Previously we must parse
-        the URL to get torrent file
-        """
         trickery = kwargs.pop('returns', '')
         if trickery == 'content':
             kwargs['returns'] = 'text'
@@ -122,10 +108,6 @@ class newpctProvider:
                                                    timeout=timeout, kwargs=kwargs)
 
     def download_result(self, result):
-        """
-        Save the result to disk.
-        """
-
         # check for auth
         if not self.login():
             return False

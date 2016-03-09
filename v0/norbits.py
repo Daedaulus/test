@@ -35,8 +35,6 @@ class NorbitsProvider:
         return True
 
     def _checkAuthFromData(self, parsed_json):
-        """ Check that we are authenticated. """
-
         if 'status' in parsed_json and 'message' in parsed_json:
             if parsed_json.get('status') == 3:
                 log.warn('Invalid username or password. Check your settings')
@@ -44,8 +42,6 @@ class NorbitsProvider:
         return True
 
     def search(self, search_params, age=0, ep_obj=None):
-        """ Do the actual searching and JSON parsing"""
-
         results = []
 
         for mode in search_params:

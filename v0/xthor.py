@@ -62,16 +62,6 @@ class XthorProvider:
         if not self.login():
             return results
 
-        """
-        Séries / Pack TV 13
-        Séries / TV FR 14
-        Séries / HD FR 15
-        Séries / TV VOSTFR 16
-        Séries / HD VOSTFR 17
-        Mangas (Anime) 32
-        Sport 34
-        """
-
         # Search Params
         search_params = {
             'only_free': self.freeleech,

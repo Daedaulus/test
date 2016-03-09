@@ -36,10 +36,7 @@ class ThePirateBayProvider:
 
     def search(self, search_strings, age=0, ep_obj=None):
         results = []
-        """
-        205 = SD, 208 = HD, 200 = All Videos
-        https://pirateproxy.pl/s/?q=Game of Thrones&type=search&orderby=7&page=0&category=200
-        """
+
         search_params = {
             'q': '',
             'type': 'search',

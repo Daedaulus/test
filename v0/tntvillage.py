@@ -119,9 +119,6 @@ class TNTVillageProvider:
 
     @staticmethod
     def _episodeQuality(torrent_rows):
-        """
-            Return The quality from the scene episode HTML row.
-        """
         file_quality = ''
 
         img_all = (torrent_rows('td'))[1]('img')
