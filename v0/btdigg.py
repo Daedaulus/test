@@ -66,7 +66,7 @@ class BTDiggProvider:
 
                         items.append(item)
 
-                    except StandardError:
+                    except Exception:
                         continue
 
             results += items

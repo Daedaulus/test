@@ -139,7 +139,7 @@ class TVChaosUKProvider:  # pylint: disable=too-many-instance-attributes
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                             items.append(item)
-                        except StandardError:
+                        except Exception:
                             continue
 
             # For each search mode sort all the items by seeders if available

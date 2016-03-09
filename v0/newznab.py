@@ -332,7 +332,7 @@ class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many
 
                             result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                             items.append(result)
-                        except StandardError:
+                        except Exception:
                             continue
 
                 # Since we arent using the search string,

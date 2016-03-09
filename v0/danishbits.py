@@ -135,7 +135,7 @@ class DanishbitsProvider:  # pylint: disable=too-many-instance-attributes
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
-                        except StandardError:
+                        except Exception:
                             continue
 
             # For each search mode sort all the items by seeders if available

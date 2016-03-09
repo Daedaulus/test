@@ -68,7 +68,7 @@ class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
                             sl = re.match(r'S:(?P<seeders>\d+)L:(?P<leechers>\d+)C:(?:\d+)ID:(?:\d+)', stats.replace(' ', ''))
                             seeders = try_int(sl.group('seeders')) if sl else 0
                             leechers = try_int(sl.group('leechers')) if sl else 0
-                        except StandardError:
+                        except Exception:
                             continue
 
                         if not all([title, download_url]):

@@ -130,7 +130,7 @@ class RarbgProvider:  # pylint: disable=too-many-instance-attributes
 
                         result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                         items.append(result)
-                    except StandardError:
+                    except Exception:
                         continue
 
             # For each search mode sort all the items by seeders

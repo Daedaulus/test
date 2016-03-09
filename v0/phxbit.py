@@ -131,7 +131,7 @@ class PhxBitProvider:  # pylint: disable=too-many-instance-attributes
                                 log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                             items.append(item)
-                        except StandardError:
+                        except Exception:
                             continue
 
             # For each search mode sort all the items by seeders if available
