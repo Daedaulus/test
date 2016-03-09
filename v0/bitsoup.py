@@ -1,8 +1,9 @@
 import logging
 import re
+import traceback
 
 from requests import Session
-from requests.compat import urljoin
+# from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
 
 from v0 import BS4Parser
@@ -63,7 +64,7 @@ class BitSoupProvider:
 
         return True
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings):
         results = []
         if not self.login():
             return results

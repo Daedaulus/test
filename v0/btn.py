@@ -1,11 +1,11 @@
 import logging
-import re
+# import re
 
 from requests import Session
-from requests.compat import urljoin
-from requests.utils import dict_from_cookiejar
-
-from v0 import BS4Parser
+# from requests.compat import urljoin
+# from requests.utils import dict_from_cookiejar
+#
+# from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
@@ -21,7 +21,7 @@ class BTNProvider:
 
         self.api_key = None
 
-        self.cache = BTNCache(self, min_time=15)  # Only poll BTN every 15 minutes max
+        self.cache = BTNCache()  # Only poll BTN every 15 minutes max
 
         self.urls = {'base_url': 'http://api.btnapps.net',
                      'website': 'http://broadcasthe.net/', }
@@ -100,7 +100,6 @@ class BTNProvider:
                     log.debug('Found result: %s ' % title)
                     results.append(torrent_info)
 
-        # FIXME SORT RESULTS
         return results
 
     def _api_call(self, apikey, params=None, results_per_page=1000, offset=0):
@@ -135,7 +134,8 @@ class BTNProvider:
 
         return parsedJSON
 
-    def _get_title_and_url(self, parsedJSON):
+    @staticmethod
+    def _get_title_and_url(parsedJSON):
 
         # The BTN API gives a lot of information in response,
         # however SickRage is built mostly around Scene or
@@ -169,7 +169,8 @@ class BTNProvider:
 
         return title, url
 
-    def _get_season_search_strings(self, ep_obj):
+    @staticmethod
+    def _get_season_search_strings(ep_obj):
         search_params = []
         current_params = {'category': 'Season'}
 
@@ -196,7 +197,8 @@ class BTNProvider:
 
         return search_params
 
-    def _get_episode_search_strings(self, ep_obj, add_string=''):
+    @staticmethod
+    def _get_episode_search_strings(ep_obj):
 
         if not ep_obj:
             return [{}]
