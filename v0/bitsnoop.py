@@ -32,7 +32,7 @@ class BitSnoopProvider:
 
         self.proper_strings = ['PROPER', 'REPACK']
 
-    def search(self, search_strings):
+    def search(self, search_strings, torrent_method):
         results = []
         for mode in search_strings:
             items = []
@@ -67,7 +67,7 @@ class BitSnoopProvider:
                             # because we want to use magnets if connecting direct to client
                             # so that proxies work.
                             download_url = item.enclosure['url']
-                            if sickbeard.TORRENT_METHOD != 'blackhole' or 'torcache' not in download_url:
+                            if torrent_method != 'blackhole' or 'torcache' not in download_url:
                                 download_url = item.find('magneturi').next.replace('CDATA', '').strip('[]') + self._custom_trackers
 
                             if not (title and download_url):
