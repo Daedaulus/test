@@ -1,5 +1,7 @@
 import logging
 
+from requests.compat import urljoin
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
