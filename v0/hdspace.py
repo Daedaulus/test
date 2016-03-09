@@ -91,7 +91,7 @@ class HDSpaceProvider:
                 # We cut everything before the table that contains the data we are interested in thus eliminating
                 # the invalid html portions
                 try:
-                    data = data.split('<div id='information'></div>')[1]
+                    data = data.split('<div id="information"></div>')[1]
                     index = data.index('<table')
                 except ValueError:
                     log.error('Could not find main torrent table')

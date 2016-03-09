@@ -112,7 +112,7 @@ class SCCProvider:
                                 data = self.session.get(urljoin(self.url, link['href']), returns='text')
                                 if data:
                                     with BS4Parser(data) as details_html:
-                                        title = re.search('(?<=').+(?<!')', details_html.title.string).group(0)
+                                        title = re.search('(?<=").+(?<!")', details_html.title.string).group(0)
                             download_url = self.urls['download'] % url['href']
                             seeders = int(result.find('td', attrs={'class': 'ttr_seeders'}).string)
                             leechers = int(result.find('td', attrs={'class': 'ttr_leechers'}).string)
