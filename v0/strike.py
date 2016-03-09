@@ -8,7 +8,7 @@ class StrikeProvider(TorrentProvider):
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "Strike")
+        TorrentProvider.__init__(self, 'Strike')
 
         self.public = True
         self.url = 'https://getstrike.net/'
@@ -20,16 +20,16 @@ class StrikeProvider(TorrentProvider):
         results = []
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u"Search string: " + search_string.strip(), logger.DEBUG)
+                    logger.log(u'Search string: ' + search_string.strip(), logger.DEBUG)
 
-                search_url = self.url + "api/v2/torrents/search/?category=TV&phrase=" + search_string
+                search_url = self.url + 'api/v2/torrents/search/?category=TV&phrase=' + search_string
                 jdata = self.get_url(search_url, returns='json')
                 if not jdata:
-                    logger.log(u"No data returned from provider", logger.DEBUG)
+                    logger.log(u'No data returned from provider', logger.DEBUG)
                     return []
 
                 results = []
@@ -48,12 +48,12 @@ class StrikeProvider(TorrentProvider):
                     # Filter unseeded torrent
                     if seeders < self.minseed or leechers < self.minleech:
                         if mode != 'RSS':
-                            logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                            logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                        (title, seeders, leechers), logger.DEBUG)
                         continue
 
                     if mode != 'RSS':
-                        logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                        logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                     items.append(item)

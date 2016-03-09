@@ -8,7 +8,7 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "HoundDawgs")
+        TorrentProvider.__init__(self, 'HoundDawgs')
 
         self.username = None
         self.password = None
@@ -26,19 +26,19 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
         self.url = self.urls['base_url']
 
         self.search_params = {
-            "filter_cat[85]": 1,
-            "filter_cat[58]": 1,
-            "filter_cat[57]": 1,
-            "filter_cat[74]": 1,
-            "filter_cat[92]": 1,
-            "filter_cat[93]": 1,
-            "order_by": "s3",
-            "order_way": "desc",
-            "type": '',
-            "userid": '',
-            "searchstr": '',
-            "searchimdb": '',
-            "searchtags": ''
+            'filter_cat[85]': 1,
+            'filter_cat[58]': 1,
+            'filter_cat[57]': 1,
+            'filter_cat[74]': 1,
+            'filter_cat[92]': 1,
+            'filter_cat[93]': 1,
+            'order_by': 's3',
+            'order_way': 'desc',
+            'type': '',
+            'userid': '',
+            'searchstr': '',
+            'searchimdb': '',
+            'searchtags': ''
         }
 
         self.cache = tvcache.TVCache(self)
@@ -57,13 +57,13 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
         self.get_url(self.urls['base_url'], returns='text')
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u"Unable to connect to provider", logger.WARNING)
+            logger.log(u'Unable to connect to provider', logger.WARNING)
             return False
 
         if re.search('Dit brugernavn eller kodeord er forkert.', response) \
                 or re.search('<title>Login :: HoundDawgs</title>', response) \
                 or re.search('Dine cookies er ikke aktiveret.', response):
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
             return False
 
         return True
@@ -75,11 +75,11 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 self.search_params['searchstr'] = search_string
@@ -89,7 +89,7 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                     logger.log(u'URL did not return data', logger.DEBUG)
                     continue
 
-                strTableStart = "<table class=\"torrent_table"
+                strTableStart = '<table class=\'torrent_table'
                 startTableIndex = data.find(strTableStart)
                 trimmedData = data[startTableIndex:]
                 if not trimmedData:
@@ -100,7 +100,7 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         result_table = html.find('table', {'id': 'torrent_table'})
 
                         if not result_table:
-                            logger.log(u"Data returned from provider does not contain any torrents", logger.DEBUG)
+                            logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                             continue
 
                         result_tbody = result_table.find('tbody')
@@ -118,14 +118,14 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                             try:
                                 notinternal = result.find('img', src='/static//common/user_upload.png')
                                 if self.ranked and notinternal:
-                                    logger.log(u"Found a user uploaded release, Ignoring it..", logger.DEBUG)
+                                    logger.log(u'Found a user uploaded release, Ignoring it..', logger.DEBUG)
                                     continue
                                 freeleech = result.find('img', src='/static//common/browse/freeleech.png')
                                 if self.freeleech and not freeleech:
                                     continue
                                 title = allAs[2].string
                                 download_url = self.urls['base_url'] + allAs[0].attrs['href']
-                                torrent_size = result.find("td", class_="nobr").find_next_sibling("td").string
+                                torrent_size = result.find('td', class_='nobr').find_next_sibling('td').string
                                 if torrent_size:
                                     size = convert_size(torrent_size) or -1
                                 seeders = try_int((result.findAll('td')[6]).text)
@@ -140,18 +140,18 @@ class HoundDawgsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                    logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                                logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
 
                 except Exception:
-                    logger.log(u"Failed parsing provider. Traceback: %s" % traceback.format_exc(), logger.ERROR)
+                    logger.log(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.ERROR)
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

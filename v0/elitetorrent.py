@@ -8,7 +8,7 @@ class elitetorrentProvider(TorrentProvider):
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "EliteTorrent")
+        TorrentProvider.__init__(self, 'EliteTorrent')
 
         self.onlyspasearch = None
         self.minseed = None
@@ -48,16 +48,16 @@ class elitetorrentProvider(TorrentProvider):
 
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             # Only search if user conditions are true
             if self.onlyspasearch and lang_info != 'es' and mode != 'RSS':
-                logger.log(u"Show info is not spanish, skipping provider search", logger.DEBUG)
+                logger.log(u'Show info is not spanish, skipping provider search', logger.DEBUG)
                 continue
 
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_string = re.sub(r'S0*(\d*)E(\d*)', r'\1x\2', search_string)
@@ -73,7 +73,7 @@ class elitetorrentProvider(TorrentProvider):
                         torrent_rows = torrent_table.find_ll('tr') if torrent_table else []
 
                         if len(torrent_rows) < 2:
-                            logger.log(u"Data returned from provider does not contain any torrents", logger.DEBUG)
+                            logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                             continue
 
                         for row in torrent_rows[1:]:
@@ -95,18 +95,18 @@ class elitetorrentProvider(TorrentProvider):
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                    logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                                logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
 
                 except Exception:
-                    logger.log(u"Failed parsing provider. Traceback: %s" % traceback.format_exc(), logger.WARNING)
+                    logger.log(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.WARNING)
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

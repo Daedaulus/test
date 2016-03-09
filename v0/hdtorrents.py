@@ -8,7 +8,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "HDTorrents")
+        TorrentProvider.__init__(self, 'HDTorrents')
 
         self.username = None
         self.password = None
@@ -24,7 +24,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         self.url = self.urls['base_url']
 
-        self.categories = "&category[]=59&category[]=60&category[]=30&category[]=38"
+        self.categories = '&category[]=59&category[]=60&category[]=30&category[]=38'
         self.proper_strings = ['PROPER', 'REPACK']
 
         self.cache = tvcache.TVCache(self, min_time=30)  # only poll HDTorrents every 30 minutes max
@@ -32,7 +32,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
     def _check_auth(self):
 
         if not self.username or not self.password:
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
 
         return True
 
@@ -46,11 +46,11 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u"Unable to connect to provider", logger.WARNING)
+            logger.log(u'Unable to connect to provider', logger.WARNING)
             return False
 
         if re.search('You need cookies enabled to log in.', response):
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
             return False
 
         return True
@@ -62,12 +62,12 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
                     search_url = self.urls['search'] % (quote_plus(search_string), self.categories)
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
                 else:
                     search_url = self.urls['rss'] % self.categories
@@ -77,27 +77,27 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
                 data = self.get_url(search_url, returns='text')
                 if not data or 'please try later' in data:
-                    logger.log(u"No data returned from provider", logger.DEBUG)
+                    logger.log(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 if data.find('No torrents here') != -1:
-                    logger.log(u"Data returned from provider does not contain any torrents", logger.DEBUG)
+                    logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                     continue
 
                 # Search result page contains some invalid html that prevents html parser from returning all data.
                 # We cut everything before the table that contains the data we are interested in thus eliminating
                 # the invalid html portions
                 try:
-                    index = data.lower().index('<table class="mainblockcontenttt"')
+                    index = data.lower().index('<table class='mainblockcontenttt'')
                 except ValueError:
-                    logger.log(u"Could not find table of torrents mainblockcontenttt", logger.DEBUG)
+                    logger.log(u'Could not find table of torrents mainblockcontenttt', logger.DEBUG)
                     continue
 
                 data = data[index:]
 
                 with BS4Parser(data, 'html5lib') as html:
                     if not html:
-                        logger.log(u"No html data parsed from provider", logger.DEBUG)
+                        logger.log(u'No html data parsed from provider', logger.DEBUG)
                         continue
 
                     torrent_rows = []
@@ -106,7 +106,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         torrent_rows = torrent_table.find_all('tr')
 
                     if not torrent_rows:
-                        logger.log(u"Could not find results in returned data", logger.DEBUG)
+                        logger.log(u'Could not find results in returned data', logger.DEBUG)
                         continue
 
                     # Cat., Active, Filename, Dl, Wl, Added, Size, Uploader, S, L, C
@@ -135,13 +135,13 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         # Filter unseeded torrent
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
 

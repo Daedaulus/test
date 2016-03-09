@@ -8,7 +8,7 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "ExtraTorrent")
+        TorrentProvider.__init__(self, 'ExtraTorrent')
 
         self.urls = {
             'index': 'http://extratorrent.cc',
@@ -30,10 +30,10 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
         results = []
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 self.search_params.update({'type': ('search', 'rss')[mode == 'RSS'], 'search': search_string})
@@ -41,7 +41,7 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
                 data = self.get_url(search_url, params=self.search_params, returns='text')
                 if not data:
-                    logger.log(u"No data returned from provider", logger.DEBUG)
+                    logger.log(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 if not data.startswith('<?xml'):
@@ -63,7 +63,7 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
                                 download_url = re.sub(r'(.*)/torrent/(.*).html', r'\1/download/\2.torrent', download_url)
                             else:
                                 info_hash = item.find('info_hash').get_text(strip=True)
-                                download_url = "magnet:?xt=urn:btih:" + info_hash + "&dn=" + title + self._custom_trackers
+                                download_url = 'magnet:?xt=urn:btih:' + info_hash + '&dn=' + title + self._custom_trackers
 
                         except (AttributeError, TypeError, KeyError, ValueError):
                             continue
@@ -74,13 +74,13 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
                             # Filter unseeded torrent
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
 

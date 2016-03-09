@@ -8,7 +8,7 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "BitSnoop")
+        TorrentProvider.__init__(self, 'BitSnoop')
 
         self.urls = {
             'index': 'http://bitsnoop.com',
@@ -30,11 +30,11 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
         results = []
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 try:
@@ -42,7 +42,7 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
 
                     data = self.get_url(search_url, returns='text')
                     if not data:
-                        logger.log(u"No data returned from provider", logger.DEBUG)
+                        logger.log(u'No data returned from provider', logger.DEBUG)
                         continue
 
                     if not data.startswith('<?xml'):
@@ -62,7 +62,7 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
                             # because we want to use magnets if connecting direct to client
                             # so that proxies work.
                             download_url = item.enclosure['url']
-                            if sickbeard.TORRENT_METHOD != "blackhole" or 'torcache' not in download_url:
+                            if sickbeard.TORRENT_METHOD != 'blackhole' or 'torcache' not in download_url:
                                 download_url = item.find('magneturi').next.replace('CDATA', '').strip('[]') + self._custom_trackers
 
                             if not (title and download_url):
@@ -81,18 +81,18 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
                             # Filter unseeded torrent
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
-                            logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
 
                 except (AttributeError, TypeError, KeyError, ValueError):
-                    logger.log(u"Failed parsing provider. Traceback: %r" % traceback.format_exc(), logger.ERROR)
+                    logger.log(u'Failed parsing provider. Traceback: %r' % traceback.format_exc(), logger.ERROR)
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

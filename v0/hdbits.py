@@ -8,7 +8,7 @@ class HDBitsProvider(TorrentProvider):
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "HDBits")
+        TorrentProvider.__init__(self, 'HDBits')
 
         self.username = None
         self.passkey = None
@@ -25,7 +25,7 @@ class HDBitsProvider(TorrentProvider):
     def _check_auth(self):
 
         if not self.username or not self.passkey:
-            raise AuthException("Your authentication credentials for " + self.name + " are missing, check your config.")
+            raise AuthException('Your authentication credentials for ' + self.name + ' are missing, check your config.')
 
         return True
 
@@ -33,7 +33,7 @@ class HDBitsProvider(TorrentProvider):
 
         if 'status' in parsedJSON and 'message' in parsedJSON:
             if parsedJSON.get('status') == 5:
-                logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+                logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
 
         return True
 
@@ -56,7 +56,7 @@ class HDBitsProvider(TorrentProvider):
         # FIXME
         results = []
 
-        logger.log(u"Search string: %s" % search_params, logger.DEBUG)
+        logger.log(u'Search string: %s' % search_params, logger.DEBUG)
 
         self._check_auth()
 
@@ -68,7 +68,7 @@ class HDBitsProvider(TorrentProvider):
             if parsedJSON and 'data' in parsedJSON:
                 items = parsedJSON['data']
             else:
-                logger.log(u"Resulting JSON from provider isn't correct, not parsing it", logger.ERROR)
+                logger.log(u'Resulting JSON from provider isn't correct, not parsing it', logger.ERROR)
                 items = []
 
             for item in items:
@@ -119,7 +119,7 @@ class HDBitsProvider(TorrentProvider):
             elif show.anime:
                 post_data['tvdb'] = {
                     'id': show.indexerid,
-                    'episode': "%i" % int(episode.scene_absolute_number)
+                    'episode': '%i' % int(episode.scene_absolute_number)
                 }
             else:
                 post_data['tvdb'] = {
@@ -137,7 +137,7 @@ class HDBitsProvider(TorrentProvider):
             elif show.anime:
                 post_data['tvdb'] = {
                     'id': show.indexerid,
-                    'season': "%d" % season.scene_absolute_number,
+                    'season': '%d' % season.scene_absolute_number,
                 }
             else:
                 post_data['tvdb'] = {

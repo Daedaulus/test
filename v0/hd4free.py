@@ -8,7 +8,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "HD4Free")
+        TorrentProvider.__init__(self, 'HD4Free')
 
         self.url = 'https://hd4free.xyz'
         self.urls = {'search': urljoin(self.url, '/searchapi.php')}
@@ -41,7 +41,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if self.freeleech:
                     search_params['fl'] = 'true'
@@ -49,44 +49,44 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                     search_params.pop('fl', '')
 
                 if mode != 'RSS':
-                    logger.log(u"Search string: " + search_string.strip(), logger.DEBUG)
+                    logger.log(u'Search string: ' + search_string.strip(), logger.DEBUG)
                     search_params['search'] = search_string
                 else:
                     search_params.pop('search', '')
 
                 jdata = self.get_url(self.urls['search'], params=search_params, returns='json')
                 if not jdata:
-                    logger.log(u"No data returned from provider", logger.DEBUG)
+                    logger.log(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 try:
                     if jdata['0']['total_results'] == 0:
-                        logger.log(u"Provider has no results for this search", logger.DEBUG)
+                        logger.log(u'Provider has no results for this search', logger.DEBUG)
                         continue
                 except StandardError:
                     continue
 
                 for i in jdata:
                     try:
-                        title = jdata[i]["release_name"]
-                        download_url = jdata[i]["download_url"]
+                        title = jdata[i]['release_name']
+                        download_url = jdata[i]['download_url']
                         if not all([title, download_url]):
                             continue
 
-                        seeders = jdata[i]["seeders"]
-                        leechers = jdata[i]["leechers"]
+                        seeders = jdata[i]['seeders']
+                        leechers = jdata[i]['leechers']
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
-                        torrent_size = str(jdata[i]["size"]) + ' MB'
+                        torrent_size = str(jdata[i]['size']) + ' MB'
                         size = convert_size(torrent_size) or -1
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
                         if mode != 'RSS':
-                            logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
                     except StandardError:

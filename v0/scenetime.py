@@ -8,7 +8,7 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "SceneTime")
+        TorrentProvider.__init__(self, 'SceneTime')
 
         self.username = None
         self.password = None
@@ -25,7 +25,7 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         self.url = self.urls['base_url']
 
-        self.categories = "&c2=1&c43=13&c9=1&c63=1&c77=1&c79=1&c100=1&c101=1"
+        self.categories = '&c2=1&c43=13&c9=1&c63=1&c77=1&c79=1&c100=1&c101=1'
 
     def login(self):
         if any(dict_from_cookiejar(self.session.cookies).values()):
@@ -36,11 +36,11 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u"Unable to connect to provider", logger.WARNING)
+            logger.log(u'Unable to connect to provider', logger.WARNING)
             return False
 
         if re.search('Username or password incorrect', response):
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
             return False
 
         return True
@@ -52,11 +52,11 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         for mode in search_params:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_params[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_url = self.urls['search'] % (quote(search_string), self.categories)
@@ -66,14 +66,14 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
-                    torrent_table = html.find('div', id="torrenttable")
+                    torrent_table = html.find('div', id='torrenttable')
                     torrent_rows = []
                     if torrent_table:
-                        torrent_rows = torrent_table.select("tr")
+                        torrent_rows = torrent_table.select('tr')
 
                     # Continue only if one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log(u"Data returned from provider does not contain any torrents", logger.DEBUG)
+                        logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     # Scenetime apparently uses different number of cells in #torrenttable based
@@ -86,10 +86,10 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             cells = result.find_all('td')
 
                             link = cells[labels.index('Name')].find('a')
-                            torrent_id = link['href'].replace('details.php?id=', '').split("&")[0]
+                            torrent_id = link['href'].replace('details.php?id=', '').split('&')[0]
 
                             title = link.get_text(strip=True)
-                            download_url = self.urls['download'] % (torrent_id, "%s.torrent" % title.replace(" ", "."))
+                            download_url = self.urls['download'] % (torrent_id, '%s.torrent' % title.replace(' ', '.'))
 
                             seeders = try_int(cells[labels.index('Seeders')].get_text(strip=True))
                             leechers = try_int(cells[labels.index('Leechers')].get_text(strip=True))
@@ -106,13 +106,13 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                         # Filter unseeded torrent
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
 

@@ -92,11 +92,11 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
                 with BS4Parser(data, 'html5lib') as html:
                     torrent_table = html.find(id='sortabletable')
-                    torrent_rows = torrent_table.find_all("tr") if torrent_table else []
+                    torrent_rows = torrent_table.find_all('tr') if torrent_table else []
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log("Data returned from provider does not contain any torrents", logger.DEBUG)
+                        logger.log('Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     labels = [label.img['title'] if label.img else label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]

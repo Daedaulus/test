@@ -8,7 +8,7 @@ class BTNProvider(TorrentProvider):
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "BTN")
+        TorrentProvider.__init__(self, 'BTN')
 
         self.supports_absolute_numbering = True
 
@@ -23,7 +23,7 @@ class BTNProvider(TorrentProvider):
 
     def _check_auth(self):
         if not self.api_key:
-            logger.log(u"Invalid api key. Check your settings", logger.WARNING)
+            logger.log(u'Invalid api key. Check your settings', logger.WARNING)
 
         return True
 
@@ -33,9 +33,9 @@ class BTNProvider(TorrentProvider):
             return self._check_auth()
 
         if 'api-error' in parsedJSON:
-            logger.log(u"Incorrect authentication credentials: % s" % parsedJSON['api-error'], logger.DEBUG)
+            logger.log(u'Incorrect authentication credentials: % s' % parsedJSON['api-error'], logger.DEBUG)
             raise AuthException(
-                "Your authentication credentials for " + self.name + " are incorrect, check your config.")
+                'Your authentication credentials for ' + self.name + ' are incorrect, check your config.')
 
         return True
 
@@ -49,15 +49,15 @@ class BTNProvider(TorrentProvider):
 
         # age in seconds
         if age:
-            params['age'] = "<=" + str(int(age))
+            params['age'] = '<=' + str(int(age))
 
         if search_params:
             params.update(search_params)
-            logger.log(u"Search string: %s" % search_params, logger.DEBUG)
+            logger.log(u'Search string: %s' % search_params, logger.DEBUG)
 
         parsedJSON = self._api_call(apikey, params)
         if not parsedJSON:
-            logger.log(u"No data returned from provider", logger.DEBUG)
+            logger.log(u'No data returned from provider', logger.DEBUG)
             return results
 
         if self._checkAuthFromData(parsedJSON):
@@ -91,7 +91,7 @@ class BTNProvider(TorrentProvider):
                 (title, url) = self._get_title_and_url(torrent_info)
 
                 if title and url:
-                    logger.log(u"Found result: %s " % title, logger.DEBUG)
+                    logger.log(u'Found result: %s ' % title, logger.DEBUG)
                     results.append(torrent_info)
 
         # FIXME SORT RESULTS
@@ -108,24 +108,24 @@ class BTNProvider(TorrentProvider):
 
         except jsonrpclib.jsonrpc.ProtocolError, error:
             if error.message == 'Call Limit Exceeded':
-                logger.log(u"You have exceeded the limit of 150 calls per hour, per API key which is unique to your user account", logger.WARNING)
+                logger.log(u'You have exceeded the limit of 150 calls per hour, per API key which is unique to your user account', logger.WARNING)
             else:
-                logger.log(u"JSON-RPC protocol error while accessing provicer. Error: %s " % repr(error), logger.ERROR)
+                logger.log(u'JSON-RPC protocol error while accessing provicer. Error: %s ' % repr(error), logger.ERROR)
             parsedJSON = {'api-error': ex(error)}
             return parsedJSON
 
         except socket.timeout:
-            logger.log(u"Timeout while accessing provider", logger.WARNING)
+            logger.log(u'Timeout while accessing provider', logger.WARNING)
 
         except socket.error, error:
             # Note that sometimes timeouts are thrown as socket errors
-            logger.log(u"Socket error while accessing provider. Error: %s " % error[1], logger.WARNING)
+            logger.log(u'Socket error while accessing provider. Error: %s ' % error[1], logger.WARNING)
 
         except Exception, error:
             errorstring = str(error)
             if errorstring.startswith('<') and errorstring.endswith('>'):
                 errorstring = errorstring[1:-1]
-            logger.log(u"Unknown error while accessing provider. Error: %s " % errorstring, logger.WARNING)
+            logger.log(u'Unknown error while accessing provider. Error: %s ' % errorstring, logger.WARNING)
 
         return parsedJSON
 
@@ -159,7 +159,7 @@ class BTNProvider(TorrentProvider):
             url = parsedJSON['DownloadURL']
             if url:
                 # unescaped / is valid in JSON, but it can be escaped
-                url = url.replace("\\/", "/")
+                url = url.replace('\\/', '/')
 
         return title, url
 
@@ -172,7 +172,7 @@ class BTNProvider(TorrentProvider):
             # Search for the year of the air by date show
             current_params['name'] = str(ep_obj.airdate).split('-')[0]
         elif ep_obj.show.is_anime:
-            current_params['name'] = "%d" % ep_obj.scene_absolute_number
+            current_params['name'] = '%d' % ep_obj.scene_absolute_number
         else:
             current_params['name'] = 'Season ' + str(ep_obj.scene_season)
 
@@ -206,10 +206,10 @@ class BTNProvider(TorrentProvider):
             # combined with the series identifier should result in just one episode
             search_params['name'] = date_str.replace('-', '.')
         elif ep_obj.show.anime:
-            search_params['name'] = "%i" % int(ep_obj.scene_absolute_number)
+            search_params['name'] = '%i' % int(ep_obj.scene_absolute_number)
         else:
             # Do a general name search for the episode, formatted like SXXEYY
-            search_params['name'] = u"{ep}".format(ep=episode_num(ep_obj.scene_season, ep_obj.scene_episode))
+            search_params['name'] = u'{ep}'.format(ep=episode_num(ep_obj.scene_season, ep_obj.scene_episode))
 
         # search
         if ep_obj.show.indexer == 1:
@@ -261,10 +261,10 @@ class BTNCache(tvcache.TVCache):
         if seconds_since_last_update < seconds_minTime:
             seconds_since_last_update = seconds_minTime
 
-        # Set maximum to 24 hours (24 * 60 * 60 = 86400 seconds) of "RSS" data search, older things will need to be done through backlog
+        # Set maximum to 24 hours (24 * 60 * 60 = 86400 seconds) of 'RSS' data search, older things will need to be done through backlog
         if seconds_since_last_update > 86400:
             logger.log(
-                u"The last known successful update was more than 24 hours ago, only trying to fetch the last 24 hours!",
+                u'The last known successful update was more than 24 hours ago, only trying to fetch the last 24 hours!',
                 logger.DEBUG)
             seconds_since_last_update = 86400
 

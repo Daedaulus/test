@@ -8,7 +8,7 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
     def __init__(self):
 
-        TorrentProvider.__init__(self, "BitSoup")
+        TorrentProvider.__init__(self, 'BitSoup')
 
         self.urls = {
             'base_url': 'https://www.bitsoup.me',
@@ -28,12 +28,12 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
         self.cache = tvcache.TVCache(self)
 
         self.search_params = {
-            "c42": 1, "c45": 1, "c49": 1, "c7": 1
+            'c42': 1, 'c45': 1, 'c49': 1, 'c7': 1
         }
 
     def _check_auth(self):
         if not self.username or not self.password:
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
 
         return True
 
@@ -49,11 +49,11 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u"Unable to connect to provider", logger.WARNING)
+            logger.log(u'Unable to connect to provider', logger.WARNING)
             return False
 
         if re.search('Username or password incorrect', response):
-            logger.log(u"Invalid username or password. Check your settings", logger.WARNING)
+            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
             return False
 
         return True
@@ -65,10 +65,10 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            logger.log(u"Search Mode: {}".format(mode), logger.DEBUG)
+            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    logger.log(u"Search string: {}".format(search_string.decode("utf-8")),
+                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 self.search_params['search'] = search_string
@@ -78,13 +78,13 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                     continue
 
                 try:
-                    with BS4Parser(data, "html.parser") as html:
+                    with BS4Parser(data, 'html.parser') as html:
                         torrent_table = html.find('table', attrs={'class': 'koptekst'})
                         torrent_rows = torrent_table.find_all('tr') if torrent_table else []
 
                         # Continue only if one Release is found
                         if len(torrent_rows) < 2:
-                            logger.log(u"Data returned from provider does not contain any torrents", logger.DEBUG)
+                            logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                             continue
 
                         for result in torrent_rows[1:]:
@@ -108,7 +108,7 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                                 # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u"Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})".format
+                                    logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
 
@@ -117,12 +117,12 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u"Found result: %s with %s seeders and %s leechers" % (title, seeders, leechers), logger.DEBUG)
+                                logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
 
                 except Exception:
-                    logger.log(u"Failed parsing provider. Traceback: %s" % traceback.format_exc(), logger.WARNING)
+                    logger.log(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.WARNING)
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)
