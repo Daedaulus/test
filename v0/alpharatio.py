@@ -51,14 +51,13 @@ class AlphaRatioProvider:
             log.warn('Unable to connect to provider')
             return False
 
-        if re.search('Invalid Username/password', response) \
-                or re.search('<title>Login :: AlphaRatio.cc</title>', response):
+        if re.search('Invalid Username/password', response) or re.search('<title>Login :: AlphaRatio.cc</title>', response):
             log.warn('Invalid username or password. Check your settings')
             return False
 
         return True
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings):
         results = []
         if not self.login():
             return results
@@ -74,12 +73,12 @@ class AlphaRatioProvider:
         }
 
         def process_column_header(td):
-            result = ''
+            col_header = ''
             if td.a and td.a.img:
-                result = td.a.img.get('title', td.a.get_text(strip=True))
-            if not result:
-                result = td.get_text(strip=True)
-            return result
+                col_header = td.a.img.get('title', td.a.get_text(strip=True))
+            if not col_header:
+                col_header = td.get_text(strip=True)
+            return col_header
 
         for mode in search_strings:
             items = []
