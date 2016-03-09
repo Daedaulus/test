@@ -35,7 +35,7 @@ class ShazbatProvider:
 
     def _check_auth(self):
         if not self.passkey:
-            raise AuthException('Your authentication credentials are missing, check your config.')
+            raise Exception('Your authentication credentials are missing, check your config.')
 
         return True
 

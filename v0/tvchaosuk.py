@@ -38,7 +38,7 @@ class TVChaosUKProvider:
         if self.username and self.password:
             return True
 
-        raise AuthException('Your authentication credentials for ' + self.name + ' are missing, check your config.')
+        raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
 
     def login(self):
         if len(self.session.cookies) >= 4:

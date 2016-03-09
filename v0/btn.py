@@ -41,8 +41,7 @@ class BTNProvider:
 
         if 'api-error' in parsedJSON:
             log.debug('Incorrect authentication credentials: % s' % parsedJSON['api-error'])
-            raise AuthException(
-                'Your authentication credentials for ' + self.name + ' are incorrect, check your config.')
+            raise Exception('Your authentication credentials for ' + self.name + ' are incorrect, check your config.')
 
         return True
 
