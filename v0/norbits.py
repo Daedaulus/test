@@ -30,7 +30,7 @@ class NorbitsProvider:
     def _check_auth(self):
 
         if not self.username or not self.passkey:
-            raise AuthException(('Your authentication credentials for %s are missing, check your config.') % self.name)
+            raise AuthException('Your authentication credentials for %s are missing, check your config.') % self.name
 
         return True
 
@@ -60,9 +60,7 @@ class NorbitsProvider:
                 }
 
                 self._check_auth()
-                parsed_json = self.session.get(self.urls['search'],
-                                           post_data=json.dumps(post_data),
-                                           returns='json')
+                parsed_json = self.session.post(self.urls['search'], data=json.dumps(post_data)).json()
 
                 if not parsed_json:
                     return results

@@ -130,7 +130,6 @@ class TorrentRssProvider:
                     return False, 'Cookie is not correctly formatted: {}'.format(self.cookies)
                 add_dict_to_cookiejar(self.session.cookies, dict(x.rsplit('=', 1) for x in self.cookies.split(';')))
 
-
             # Access to a protected member of a client class
             data = self.cache._getRSSData()['entries']
             if not data:

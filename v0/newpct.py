@@ -104,8 +104,7 @@ class newpctProvider:
             url = re.search(r'http://tumejorserie.com/descargar/.+\.torrent', data, re.DOTALL).group()
 
         kwargs['returns'] = trickery
-        return super(newpctProvider, self).session.post(url, data=post_data, params=params,
-                                                   timeout=timeout, kwargs=kwargs)
+        return super(newpctProvider, self).session.post(url, data=post_data, params=params, timeout=timeout, kwargs=kwargs)
 
     def download_result(self, result):
         # check for auth
