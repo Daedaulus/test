@@ -43,19 +43,18 @@ class newpctProvider(TorrentProvider):
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             # Only search if user conditions are true
             if self.onlyspasearch and lang_info != 'es' and mode != 'RSS':
-                log.('Show info is not spanish, skipping provider search', logger.DEBUG)
+                log.debug('Show info is not spanish, skipping provider search')
                 continue
 
             search_params['bus_de_'] = 'All' if mode != 'RSS' else 'hoy'
 
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_params['q'] = search_string
 
@@ -69,7 +68,7 @@ class newpctProvider(TorrentProvider):
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 3:  # Headers + 1 Torrent + Pagination
-                        log.('Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.debug('Data returned from provider does not contain any torrents')
                         continue
 
                     # 'Fecha', 'Título', 'Tamaño', ''
@@ -93,7 +92,7 @@ class newpctProvider(TorrentProvider):
                             size = convert_size(torrent_size) or -1
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.('Found result: {}'.format(title), logger.DEBUG)
+                                log.debug('Found result: {}'.format(title))
 
                             items.append(item)
                         except (AttributeError, TypeError):
@@ -137,11 +136,11 @@ class newpctProvider(TorrentProvider):
             if url_torrent.startswith('http'):
                 self.headers.update({'Referer': '/'.join(url_torrent.split('/')[:3]) + '/'})
 
-            log.('Downloading a result from {}'.format(url))
+            log.info('Downloading a result from {}'.format(url))
 
             if helpers.download_file(url_torrent, filename, session=self.session, headers=self.headers):
                 if self._verify_download(filename):
-                    log.('Saved result to {}'.format(filename), logger.INFO)
+                    log.info('Saved result to {}'.format(filename))
                     return True
                 else:
                     log.warn('Could not download {}'.format(url))

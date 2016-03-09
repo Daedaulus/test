@@ -44,7 +44,7 @@ class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
         response = self.get_url(self.urls['login_page'], post_data=login_params, returns='json')
         if not response:
-            log.warn(u'Unable to connect to provider')
+            log.warn('Unable to connect to provider')
             return False
 
         if response and 'token' in response:
@@ -54,7 +54,7 @@ class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
             self.session.auth = T411Auth(self.token)
             return True
         else:
-            log.warn(u'Token not found in authentication response')
+            log.warn('Token not found in authentication response')
             return False
 
     def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-branches, too-many-locals, too-many-statements
@@ -64,12 +64,11 @@ class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
         for mode in search_params:
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_params[mode]:
 
                 if mode != 'RSS':
-                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_urlS = ([self.urls['search'] % (search_string, u) for u in self.subcategories], [self.urls['rss']])[mode == 'RSS']
                 for search_url in search_urlS:
@@ -79,13 +78,13 @@ class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
                     try:
                         if 'torrents' not in data and mode != 'RSS':
-                            log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                            log.debug('Data returned from provider does not contain any torrents')
                             continue
 
                         torrents = data['torrents'] if mode != 'RSS' else data
 
                         if not torrents:
-                            log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                            log.debug('Data returned from provider does not contain any torrents')
                             continue
 
                         for torrent in torrents:
@@ -107,27 +106,27 @@ class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
                                 # Filter unseeded torrent
                                 if seeders < self.minseed or leechers < self.minleech:
                                     if mode != 'RSS':
-                                        log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
+                                        log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                     continue
 
                                 if self.confirmed and not verified and mode != 'RSS':
-                                    log.(u'Found result ' + title + ' but that doesn't seem like a verified result so I'm ignoring it', logger.DEBUG)
+                                    log.debug('Found result ' + title + ' but that doesn\'t seem like a verified result so I\'m ignoring it')
                                     continue
 
                                 size = convert_size(torrent_size) or -1
                                 item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                                 if mode != 'RSS':
-                                    log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                                 items.append(item)
 
                             except Exception:
-                                log.(u'Invalid torrent data, skipping result: %s' % torrent, logger.DEBUG)
-                                log.(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.DEBUG)
+                                log.debug('Invalid torrent data, skipping result: %s' % torrent)
+                                log.debug('Failed parsing provider. Traceback: %s' % traceback.format_exc())
                                 continue
 
                     except Exception:
-                        log.(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.ERROR)
+                        log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
             # For each search mode sort all the items by seeders if available if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

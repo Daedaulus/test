@@ -52,11 +52,11 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            log.warn(u'Unable to connect to provider')
+            log.warn('Unable to connect to provider')
             return False
 
         if re.search('Username Incorrect', response) or re.search('Password Incorrect', response):
-            log.warn(u'Invalid username or password. Check your settings')
+            log.warn('Invalid username or password. Check your settings')
             return False
 
         return True
@@ -71,8 +71,7 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_params = {
                     'searchtext': search_string,
@@ -86,21 +85,21 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
 
                 data = self.get_url(self.urls['search'], params=search_params, returns='text')
                 if not data:
-                    log.(u'No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 try:
                     with BS4Parser(data, 'html5lib') as html:
                         torrent_table = html.find('table', {'id': 'torrent_table'})
                         if not torrent_table:
-                            log.(u'Data returned from %s does not contain any torrents' % self.name, logger.DEBUG)
+                            log.debug('Data returned from %s does not contain any torrents' % self.name)
                             continue
 
                         torrent_rows = torrent_table.findAll('tr', {'class': 'torrent'})
 
                         # Continue only if one Release is found
                         if not torrent_rows:
-                            log.(u'Data returned from %s does not contain any torrents' % self.name, logger.DEBUG)
+                            log.debug('Data returned from %s does not contain any torrents' % self.name)
                             continue
 
                         for torrent_row in torrent_rows:
@@ -130,9 +129,7 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.(u'Discarding torrent because it doesn't meet the'
-                                               u' minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             cells = torrent_row.find_all('td')
@@ -141,12 +138,11 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.(u'Found result: {} with {} seeders and {} leechers'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
                 except Exception:
-                    log.(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.ERROR)
+                    log.error('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
             # For each search mode sort all the items by seeders
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

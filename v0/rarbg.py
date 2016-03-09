@@ -70,7 +70,7 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             if mode == 'RSS':
                 search_params['sort'] = 'last'
                 search_params['mode'] = 'list'
@@ -88,13 +88,12 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
                     search_params['search_string'] = search_string
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 time.sleep(cpu_presets[sickbeard.CPU_PRESET])
                 data = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not isinstance(data, dict):
-                    log.('No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 error = data.get('error')
@@ -103,12 +102,12 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                 # List of errors: https://github.com/rarbg/torrentapi/issues/1#issuecomment-114763312
                 if error:
                     if try_int(error_code) != 20:
-                        log.(error)
+                        log.info(error)
                     continue
 
                 torrent_results = data.get('torrent_results')
                 if not torrent_results:
-                    log.('Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.debug('Data returned from provider does not contain any torrents')
                     continue
 
                 for item in torrent_results:
@@ -122,17 +121,14 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                         leechers = item.pop('leechers')
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                log.('Discarding torrent because it doesn't meet the'
-                                           ' minimum seeders or leechers: {} (S:{} L:{})'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         torrent_size = item.pop('size', -1)
                         size = convert_size(torrent_size) or -1
 
                         if mode != 'RSS':
-                            log.('Found result: {} with {} seeders and {} leechers'.format
-                                       (title, seeders, leechers), logger.DEBUG)
+                            log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                         result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                         items.append(result)

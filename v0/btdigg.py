@@ -27,19 +27,18 @@ class BTDiggProvider(TorrentProvider):
         search_params = {'p': 0}
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
                 search_params['q'] = search_string
                 if mode != 'RSS':
                     search_params['order'] = 0
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
                 else:
                     search_params['order'] = 2
 
                 jdata = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not jdata:
-                    log.('Provider did not return data', logger.DEBUG)
+                    log.debug('Provider did not return data')
                     continue
 
                 for torrent in jdata:
@@ -50,16 +49,14 @@ class BTDiggProvider(TorrentProvider):
                             continue
 
                         if float(torrent.pop('ff')):
-                            log.('Ignoring result for {} since it's been reported as fake (level = {})'.format
-                                       (title, torrent['ff']), logger.DEBUG)
+                            log.debug('Ignoring result for {} since it's been reported as fake (level = {})'.format(title, torrent['ff']))
                             continue
 
                         if not int(torrent.pop('files')):
-                            log.('Ignoring result for {} because it has no files'.format
-                                       (title), logger.DEBUG)
+                            log.debug('Ignoring result for {} because it has no files'.format(title))
                             continue
 
-                        # Provider doesn't provide seeders/leechers
+                        # Provider doesn\'t provide seeders/leechers
                         seeders = 1
                         leechers = 0
 
@@ -68,7 +65,7 @@ class BTDiggProvider(TorrentProvider):
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            log.('Found result: %s ' % title, logger.DEBUG)
+                            log.debug('Found result: %s ' % title)
 
                         items.append(item)
 

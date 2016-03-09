@@ -74,7 +74,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             for search_string in search_strings[mode]:
 
@@ -82,12 +82,12 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                     search_string = re.sub(ur'(.*)Season', ur'\1Series', search_string)
 
                 if mode != 'RSS':
-                    log.('Search string: {}'.format(search_string), logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string))
 
                 search_params['keywords'] = search_string
                 data = self.get_url(self.urls['search'], post_data=search_params, returns='text')
                 if not data:
-                    log.('No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -96,7 +96,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        log.('Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.debug('Data returned from provider does not contain any torrents')
                         continue
 
                     labels = [label.img['title'] if label.img else label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]
@@ -116,9 +116,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.('Discarding torrent because it doesn\'t meet the'
-                                               ' minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             # Chop off tracker/channel prefix or we cant parse the result!
@@ -139,8 +137,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             size = convert_size(torrent_size, units=units) or -1
 
                             if mode != 'RSS':
-                                log.('Found result: {} with {} seeders and {} leechers'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                             items.append(item)

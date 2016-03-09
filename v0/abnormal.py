@@ -69,13 +69,12 @@ class ABNormalProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 # Sorting: Available parameters: ReleaseName, Seeders, Leechers, Snatched, Size
                 search_params['order'] = ('Seeders', 'Time')[mode == 'RSS']
@@ -90,7 +89,7 @@ class ABNormalProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        log.('Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.debug('Data returned from provider does not contain any torrents')
                         continue
 
                     # Catégorie, Release, Date, DL, Size, C, S, L
@@ -114,8 +113,7 @@ class ABNormalProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             size_index = labels.index('Size') if 'Size' in labels else labels.index('Taille')
@@ -124,8 +122,7 @@ class ABNormalProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.('Found result: {} with {} seeders and {} leechers'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
                         except StandardError:

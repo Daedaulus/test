@@ -20,16 +20,16 @@ class StrikeProvider(TorrentProvider):
         results = []
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    log.(u'Search string: ' + search_string.strip(), logger.DEBUG)
+                    log.debug('Search string: ' + search_string.strip())
 
                 search_url = self.url + 'api/v2/torrents/search/?category=TV&phrase=' + search_string
                 jdata = self.get_url(search_url, returns='json')
                 if not jdata:
-                    log.(u'No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     return []
 
                 results = []
@@ -48,12 +48,11 @@ class StrikeProvider(TorrentProvider):
                     # Filter unseeded torrent
                     if seeders < self.minseed or leechers < self.minleech:
                         if mode != 'RSS':
-                            log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
-                                       (title, seeders, leechers), logger.DEBUG)
+                            log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                         continue
 
                     if mode != 'RSS':
-                        log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                        log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                     items.append(item)

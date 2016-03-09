@@ -46,12 +46,12 @@ class DanishbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            log.warn(u'Unable to connect to provider')
+            log.warn('Unable to connect to provider')
             self.session.cookies.clear()
             return False
 
         if '<title>Login :: Danishbits.org</title>' in response:
-            log.warn(u'Invalid username or password. Check your settings')
+            log.warn('Invalid username or password. Check your settings')
             self.session.cookies.clear()
             return False
 
@@ -82,19 +82,18 @@ class DanishbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_strings:
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_params['search'] = search_string
 
                 data = self.get_url(self.urls['search'], params=search_params, returns='text')
                 if not data:
-                    log.(u'No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -103,7 +102,7 @@ class DanishbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.debug('Data returned from provider does not contain any torrents')
                         continue
 
                     # Literal:     Navn, Størrelse, Kommentarer, Tilføjet, Snatches, Seeders, Leechers
@@ -127,9 +126,7 @@ class DanishbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.(u'Discarding torrent because it doesn't meet the'
-                                               u' minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             freeleech = result.find(class_='freeleech')
@@ -141,8 +138,7 @@ class DanishbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.(u'Found result: {} with {} seeders and {} leechers'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
                         except StandardError:

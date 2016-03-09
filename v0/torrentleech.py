@@ -75,13 +75,12 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                     categories = ['2', '7', '35']
                     categories += ['26', '32'] if mode == 'Episode' else ['27']
@@ -97,7 +96,7 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
                 data = self.get_url(self.urls['search'], params=search_params, returns='text')
                 if not data:
-                    log.('No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -106,7 +105,7 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        log.('Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.debug('Data returned from provider does not contain any torrents')
                         continue
 
                     labels = [process_column_header(label) for label in torrent_rows[0].find_all('th')]
@@ -125,9 +124,7 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.('Discarding torrent because it doesn't meet the'
-                                               ' minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             torrent_size = result.find_all('td')[labels.index('Size')].get_text()
@@ -135,8 +132,7 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.('Found result: {} with {} seeders and {} leechers'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
                         except StandardError:

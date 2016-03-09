@@ -103,7 +103,7 @@ class TorrentRssProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                 name = values[0]
                 url = values[1]
         except ValueError:
-            log.('Skipping RSS Torrent provider string: {}, incorrect format'.format(config), logger.ERROR)
+            log.error('Skipping RSS Torrent provider string: {}, incorrect format'.format(config))
             return None
 
         new_provider = TorrentRssProvider(
@@ -162,10 +162,10 @@ class TorrentRssProvider(TorrentProvider):  # pylint: disable=too-many-instance-
             fileOut.close()
             helpers.chmodAsParent(dumpName)
         except IOError as error:
-            log.('Unable to save the file: {}'.format(ex(error)), logger.ERROR)
+            log.error('Unable to save the file: {}'.format(ex(error)))
             return False
 
-        log.('Saved custom_torrent html dump {} '.format(dumpName), logger.INFO)
+        log.info('Saved custom_torrent html dump {} '.format(dumpName))
         return True
 
 

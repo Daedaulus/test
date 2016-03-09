@@ -25,8 +25,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
     def _check_auth(self):
 
         if not self.username or not self.passkey:
-            raise AuthException(('Your authentication credentials for %s are '
-                                 'missing, check your config.') % self.name)
+            raise AuthException(('Your authentication credentials for %s are missing, check your config.') % self.name)
 
         return True
 
@@ -46,12 +45,11 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_params:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
 
             for search_string in search_params[mode]:
                 if mode != 'RSS':
-                    log.('Search string: {}'.format
-                               (search_string.decode('utf-8')), logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 post_data = {
                     'username': self.username,
@@ -71,8 +69,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                 if self._checkAuthFromData(parsed_json):
                     json_items = parsed_json.get('data', '')
                     if not json_items:
-                        log.('Resulting JSON from provider is not correct, '
-                                   'not parsing it', logger.ERROR)
+                        log.error('Resulting JSON from provider is not correct, not parsing it')
 
                     for item in json_items.get('torrents', []):
                         title = item.pop('name', '')
@@ -87,9 +84,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         leechers = try_int(item.pop('leechers', 0))
 
                         if seeders < self.minseed or leechers < self.minleech:
-                            log.('Discarding torrent because it does not meet '
-                                       'the minimum seeders or leechers: {} (S:{} L:{})'.format
-                                       (title, seeders, leechers), logger.DEBUG)
+                            log.debug('Discarding torrent because it does not meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         info_hash = item.pop('info_hash', '')
@@ -97,8 +92,8 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
-                            log.('Found result: {} with {} seeders and {} leechers'.format(
-                                title, seeders, leechers), logger.DEBUG)
+                            log.debug('Found result: {} with {} seeders and {} leechers'.format(
+                                title, seeders, leechers))
 
                         items.append(item)
             # For each search mode sort all the items by seeders if available

@@ -41,7 +41,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
                 if self.freeleech:
                     search_params['fl'] = 'true'
@@ -49,19 +49,19 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                     search_params.pop('fl', '')
 
                 if mode != 'RSS':
-                    log.(u'Search string: ' + search_string.strip(), logger.DEBUG)
+                    log.debug('Search string: ' + search_string.strip())
                     search_params['search'] = search_string
                 else:
                     search_params.pop('search', '')
 
                 jdata = self.get_url(self.urls['search'], params=search_params, returns='json')
                 if not jdata:
-                    log.(u'No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 try:
                     if jdata['0']['total_results'] == 0:
-                        log.(u'Provider has no results for this search', logger.DEBUG)
+                        log.debug('Provider has no results for this search')
                         continue
                 except StandardError:
                     continue
@@ -77,8 +77,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         leechers = jdata[i]['leechers']
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
-                                           (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         torrent_size = str(jdata[i]['size']) + ' MB'
@@ -86,7 +85,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
                         if mode != 'RSS':
-                            log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                            log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                         items.append(item)
                     except StandardError:

@@ -33,7 +33,7 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
     def _check_auth(self):
         if not self.username or not self.password:
-            log.warn(u'Invalid username or password. Check your settings')
+            log.warn('Invalid username or password. Check your settings')
 
         return True
 
@@ -49,11 +49,11 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            log.warn(u'Unable to connect to provider')
+            log.warn('Unable to connect to provider')
             return False
 
         if re.search('Username or password incorrect', response):
-            log.warn(u'Invalid username or password. Check your settings')
+            log.warn('Invalid username or password. Check your settings')
             return False
 
         return True
@@ -65,11 +65,10 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 self.search_params['search'] = search_string
 
@@ -84,7 +83,7 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                         # Continue only if one Release is found
                         if len(torrent_rows) < 2:
-                            log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                            log.debug('Data returned from provider does not contain any torrents')
                             continue
 
                         for result in torrent_rows[1:]:
@@ -108,8 +107,7 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                                 # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
-                                               (title, seeders, leechers), logger.DEBUG)
+                                    log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
 
                             if seeders >= 32768 or leechers >= 32768:
@@ -117,12 +115,12 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                                log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
 
                             items.append(item)
 
                 except Exception:
-                    log.warn(u'Failed parsing provider. Traceback: %s' % traceback.format_exc())
+                    log.warn('Failed parsing provider. Traceback: %s' % traceback.format_exc())
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

@@ -35,7 +35,7 @@ class OmgwtfnzbsProvider(NZBProvider):
             return self._check_auth()
 
         if is_XML:
-            # provider doesn't return xml on error
+            # provider doesn\'t return xml on error
             return True
         else:
             if 'notice' in parsed_data:
@@ -48,7 +48,7 @@ class OmgwtfnzbsProvider(NZBProvider):
                     return True
 
                 else:
-                    log.('Unknown error: %s' % description_text, logger.DEBUG)
+                    log.debug('Unknown error: %s' % description_text)
                     return False
 
             return True
@@ -74,16 +74,15 @@ class OmgwtfnzbsProvider(NZBProvider):
 
         for mode in search_strings:
             items = []
-            log.('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
                 search_params['search'] = search_string
                 if mode != 'RSS':
-                    log.('Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 data = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not data:
-                    log.('No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 if not self._checkAuthFromData(data, is_XML=False):
@@ -93,7 +92,7 @@ class OmgwtfnzbsProvider(NZBProvider):
                     if not self._get_title_and_url(item):
                         continue
 
-                    log.('Found result: {}'.format(item.get('title')), logger.DEBUG)
+                    log.debug('Found result: {}'.format(item.get('title')))
                     items.append(item)
 
             results += items

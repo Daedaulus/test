@@ -54,11 +54,11 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
             response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
             if not response:
-                log.warn(u'Unable to connect to provider')
+                log.warn('Unable to connect to provider')
                 return False
 
             if re.search('You tried too often', response):
-                log.warn(u'Too many login access attempts')
+                log.warn('Too many login access attempts')
                 return False
 
             try:
@@ -71,7 +71,7 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
             except Exception:
                 pass
 
-            log.warn(u'Unable to obtain cookie')
+            log.warn('Unable to obtain cookie')
             return False
 
     def search(self, search_params, age=0, ep_obj=None):  # pylint: disable=too-many-locals
@@ -81,12 +81,11 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_params:
             items = []
-            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.debug('Search Mode: {}'.format(mode))
             for search_string in search_params[mode]:
 
                 if mode != 'RSS':
-                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
-                               logger.DEBUG)
+                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_string = '+'.join(search_string.split())
 
@@ -98,13 +97,13 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
                 parsedJSON = self.get_url(self.urls['search'], post_data=post_data, returns='json')
                 if not parsedJSON:
-                    log.(u'No data returned from provider', logger.DEBUG)
+                    log.debug('No data returned from provider')
                     continue
 
                 try:
                     torrents = parsedJSON.get('Fs', [])[0].get('Cn', {}).get('torrents', [])
                 except Exception:
-                    log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.debug('Data returned from provider does not contain any torrents')
                     continue
 
                 for torrent in torrents:
@@ -121,7 +120,7 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                     # Filter unseeded torrent
                     if seeders < self.minseed or leechers < self.minleech:
                         if mode != 'RSS':
-                            log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
+                            log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                         continue
 
                     torrent_size = torrent['size']
@@ -130,8 +129,7 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
                     if mode != 'RSS':
-                        log.(u'Found result: {} with {} seeders and {} leechers'.format
-                                   (title, seeders, leechers), logger.DEBUG)
+                        log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                     items.append(item)
 
