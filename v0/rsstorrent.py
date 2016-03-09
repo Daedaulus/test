@@ -140,7 +140,7 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
             if url.startswith('magnet:') and re.search(r'urn:btih:([\w]{32,40})', url):
                 return True, 'RSS feed Parsed correctly'
             else:
-                torrent_file = self.get_url(url, returns='content')
+                torrent_file = self.session.get(url, returns='content')
                 try:
                     bdecode(torrent_file)
                 except Exception as error:
@@ -171,7 +171,7 @@ class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
 
 class TorrentRssCache(tvcache.TVCache):
     def _getRSSData(self):
-        if self.provider.cookies:
-            add_dict_to_cookiejar(self.provider.session.cookies, dict(x.rsplit('=', 1) for x in self.provider.cookies.split(';')))
+        if self.cookies:
+            add_dict_to_cookiejar(self.session.cookies, dict(x.rsplit('=', 1) for x in self.cookies.split(';')))
 
-        return self.getRSSFeed(self.provider.url)
+        return self.getRSSFeed(self.url)

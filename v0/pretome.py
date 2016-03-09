@@ -45,7 +45,7 @@ class PretomeProvider:  # pylint: disable=too-many-instance-attributes
                         'password': self.password,
                         'login_pin': self.pin}
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -71,7 +71,7 @@ class PretomeProvider:  # pylint: disable=too-many-instance-attributes
 
                 search_url = self.urls['search'] % (quote(search_string), self.categories)
 
-                data = self.get_url(search_url, returns='text')
+                data = self.session.get(search_url, returns='text')
                 if not data:
                     continue
 

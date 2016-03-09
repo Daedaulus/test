@@ -79,7 +79,7 @@ class BinSearchCache(tvcache.TVCache):
         cl = []
         for group in ['alt.binaries.hdtv', 'alt.binaries.hdtv.x264', 'alt.binaries.tv', 'alt.binaries.tvseries', 'alt.binaries.teevee']:
             search_params = {'max': 50, 'g': group}
-            data = self.getRSSFeed(self.provider.urls['rss'], search_params)['entries']
+            data = self.getRSSFeed(self.urls['rss'], search_params)['entries']
             if not data:
                 log.debug('No data returned from provider')
                 continue

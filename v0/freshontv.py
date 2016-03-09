@@ -48,7 +48,7 @@ class FreshOnTVProvider:  # pylint: disable=too-many-instance-attributes
                             'password': self.password,
                             'login': 'submit'}
 
-            response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+            response = self.session.post(self.urls['login'], data=login_params, returns='text')
             if not response:
                 log.warn('Unable to connect to provider')
                 return False
@@ -92,7 +92,7 @@ class FreshOnTVProvider:  # pylint: disable=too-many-instance-attributes
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_url = self.urls['search'] % (freeleech, search_string)
-                init_html = self.get_url(search_url, returns='text')
+                init_html = self.session.get(search_url, returns='text')
                 max_page_number = 0
 
                 if not init_html:
@@ -136,7 +136,7 @@ class FreshOnTVProvider:  # pylint: disable=too-many-instance-attributes
                         time.sleep(1)
                         page_search_url = search_url + '&page=' + str(i)
                         # log.debug('Search string: ' + page_search_url)
-                        page_html = self.get_url(page_search_url, returns='text')
+                        page_html = self.session.get(page_search_url, returns='text')
 
                         if not page_html:
                             continue

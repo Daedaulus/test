@@ -51,7 +51,7 @@ class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
                 'submit.y': 0
             }
 
-            response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+            response = self.session.post(self.urls['login'], data=login_params, returns='text')
             if not response:
                 log.warn('Unable to connect to provider')
                 return False
@@ -94,7 +94,7 @@ class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
                 if self.freeleech:
                     post_data.update({'free': 'on'})
 
-                parsedJSON = self.get_url(self.urls['search'], post_data=post_data, returns='json')
+                parsedJSON = self.session.get(self.urls['search'], post_data=post_data, returns='json')
                 if not parsedJSON:
                     log.debug('No data returned from provider')
                     continue

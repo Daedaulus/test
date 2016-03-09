@@ -48,7 +48,7 @@ class HDSpaceProvider:  # pylint: disable=too-many-instance-attributes
         login_params = {'uid': self.username,
                         'pwd': self.password}
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -76,7 +76,7 @@ class HDSpaceProvider:  # pylint: disable=too-many-instance-attributes
                 if mode != 'RSS':
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
-                data = self.get_url(search_url, returns='text')
+                data = self.session.get(search_url, returns='text')
                 if not data or 'please try later' in data:
                     log.debug('No data returned from provider')
                     continue

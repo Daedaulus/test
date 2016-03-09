@@ -42,7 +42,7 @@ class TVChaosUKProvider:  # pylint: disable=too-many-instance-attributes
             'returnto': '/browse.php'
         }
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -83,7 +83,7 @@ class TVChaosUKProvider:  # pylint: disable=too-many-instance-attributes
                     log.debug('Search string: {}'.format(search_string))
 
                 search_params['keywords'] = search_string
-                data = self.get_url(self.urls['search'], post_data=search_params, returns='text')
+                data = self.session.get(self.urls['search'], post_data=search_params, returns='text')
                 if not data:
                     log.debug('No data returned from provider')
                     continue

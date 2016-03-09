@@ -44,7 +44,7 @@ class HDTorrentsProvider:  # pylint: disable=too-many-instance-attributes
                         'pwd': self.password,
                         'submit': 'Confirm'}
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -74,7 +74,7 @@ class HDTorrentsProvider:  # pylint: disable=too-many-instance-attributes
                 if self.freeleech:
                     search_url = search_url.replace('active=1', 'active=5')
 
-                data = self.get_url(search_url, returns='text')
+                data = self.session.get(search_url, returns='text')
                 if not data or 'please try later' in data:
                     log.debug('No data returned from provider')
                     continue

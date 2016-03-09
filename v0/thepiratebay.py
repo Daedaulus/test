@@ -70,9 +70,9 @@ class ThePirateBayProvider:  # pylint: disable=too-many-instance-attributes
                     search_params['q'] = search_string
                     log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
-                    data = self.get_url(search_url, params=search_params, returns='text')
+                    data = self.session.get(search_url, params=search_params, returns='text')
                 else:
-                    data = self.get_url(search_url, returns='text')
+                    data = self.session.get(search_url, returns='text')
 
                 if not data:
                     log.debug('URL did not return data, maybe try a custom url, or a different one')

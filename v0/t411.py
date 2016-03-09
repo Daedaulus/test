@@ -40,7 +40,7 @@ class T411Provider:  # pylint: disable=too-many-instance-attributes
         login_params = {'username': self.username,
                         'password': self.password}
 
-        response = self.get_url(self.urls['login_page'], post_data=login_params, returns='json')
+        response = self.session.get(self.urls['login_page'], post_data=login_params, returns='json')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -70,7 +70,7 @@ class T411Provider:  # pylint: disable=too-many-instance-attributes
 
                 search_urlS = ([self.urls['search'] % (search_string, u) for u in self.subcategories], [self.urls['rss']])[mode == 'RSS']
                 for search_url in search_urlS:
-                    data = self.get_url(search_url, returns='json')
+                    data = self.session.get(search_url, returns='json')
                     if not data:
                         continue
 

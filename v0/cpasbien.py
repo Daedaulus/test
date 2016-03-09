@@ -30,7 +30,7 @@ class CpasbienProvider:
                 else:
                     search_url = self.url + '/view_cat.php?categorie=series&trie=date-d'
 
-                data = self.get_url(search_url, returns='text')
+                data = self.session.get(search_url, returns='text')
                 if not data:
                     continue
 

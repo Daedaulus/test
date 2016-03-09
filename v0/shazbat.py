@@ -45,13 +45,13 @@ class ShazbatProvider:
 class ShazbatCache(tvcache.TVCache):
     def _getRSSData(self):
         params = {
-            'passkey': self.provider.passkey,
+            'passkey': self.passkey,
             'fname': 'true',
             'limit': 100,
             'duration': '2 hours'
         }
 
-        return self.getRSSFeed(self.provider.urls['rss_recent'], params=params)
+        return self.getRSSFeed(self.urls['rss_recent'], params=params)
 
     def _checkAuth(self, data):
-        return self.provider._checkAuthFromData(data)  # pylint: disable=protected-access
+        return self._checkAuthFromData(data)  # pylint: disable=protected-access

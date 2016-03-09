@@ -53,7 +53,7 @@ class KatProvider:  # pylint: disable=too-many-instance-attributes
                         return results
                     search_url = urljoin(self.custom_url, search_url.split(self.url)[1])
 
-                data = self.get_url(search_url, params=search_params, returns='text')
+                data = self.session.get(search_url, params=search_params, returns='text')
                 if not data:
                     log.debug('URL did not return data, maybe try a custom url, or a different one')
                     continue

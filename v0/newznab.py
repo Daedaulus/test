@@ -129,7 +129,7 @@ class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many
         if self.needs_auth and self.key:
             url_params['apikey'] = self.key
 
-        data = self.get_url(urljoin(self.url, 'api'), params=url_params, returns='text')
+        data = self.session.get(urljoin(self.url, 'api'), params=url_params, returns='text')
         if not data:
             error_string = 'Error getting caps xml for [{}]'.format(self.name)
             log.warn(error_string)
@@ -284,7 +284,7 @@ class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many
                         search_params['q'] = search_string
 
                 time.sleep(cpu_presets[sickbeard.CPU_PRESET])
-                data = self.get_url(urljoin(self.url, 'api'), params=search_params, returns='text')
+                data = self.session.get(urljoin(self.url, 'api'), params=search_params, returns='text')
                 if not data:
                     break
 

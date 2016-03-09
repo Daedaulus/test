@@ -33,7 +33,7 @@ class BTDiggProvider:
                 else:
                     search_params['order'] = 2
 
-                jdata = self.get_url(self.urls['api'], params=search_params, returns='json')
+                jdata = self.session.get(self.urls['api'], params=search_params, returns='json')
                 if not jdata:
                     log.debug('Provider did not return data')
                     continue

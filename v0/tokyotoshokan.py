@@ -40,7 +40,7 @@ class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
                     'type': 1,  # get anime types
                 }
 
-                data = self.get_url(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params, returns='text')
                 if not data:
                     continue
 

@@ -34,7 +34,7 @@ class WombleCache(tvcache.TVCache):
         search_params_list = [{'sec': 'tv-x264'}, {'sec': 'tv-hd'}, {'sec': 'tv-sd'}, {'sec': 'tv-dvd'}]
         for search_params in search_params_list:
             search_params.update({'fr': 'false'})
-            data = self.getRSSFeed(self.provider.urls['rss'], params=search_params)['entries']
+            data = self.getRSSFeed(self.urls['rss'], params=search_params)['entries']
             if not data:
                 log.debug('No data returned from provider')
                 continue

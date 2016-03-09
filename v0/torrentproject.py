@@ -53,7 +53,7 @@ class TorrentProjectProvider:  # pylint: disable=too-many-instance-attributes
                 else:
                     search_url = self.url
 
-                torrents = self.get_url(search_url, params=search_params, returns='json')
+                torrents = self.session.get(search_url, params=search_params, returns='json')
                 if not (torrents and 'total_found' in torrents and int(torrents['total_found']) > 0):
                     log.debug('Data returned from provider does not contain any torrents')
                     continue
@@ -89,7 +89,7 @@ class TorrentProjectProvider:  # pylint: disable=too-many-instance-attributes
 
                         trackers_url = urljoin(trackers_url, t_hash)
                         trackers_url = urljoin(trackers_url, '/trackers_json')
-                        jdata = self.get_url(trackers_url, returns='json')
+                        jdata = self.session.get(trackers_url, returns='json')
 
                         assert jdata != 'maintenance'
                         download_url = 'magnet:?xt=urn:btih:' + t_hash + '&dn=' + title + ''.join(['&tr=' + s for s in jdata])

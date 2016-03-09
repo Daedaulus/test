@@ -54,7 +54,7 @@ class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
                 else:
                     search_params.pop('search', '')
 
-                jdata = self.get_url(self.urls['search'], params=search_params, returns='json')
+                jdata = self.session.get(self.urls['search'], params=search_params, returns='json')
                 if not jdata:
                     log.debug('No data returned from provider')
                     continue

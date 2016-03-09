@@ -37,7 +37,7 @@ class ExtraTorrentProvider:  # pylint: disable=too-many-instance-attributes
                 self.search_params.update({'type': ('search', 'rss')[mode == 'RSS'], 'search': search_string})
                 search_url = self.urls['rss'] if not self.custom_url else self.urls['rss'].replace(self.urls['index'], self.custom_url)
 
-                data = self.get_url(search_url, params=self.search_params, returns='text')
+                data = self.session.get(search_url, params=self.search_params, returns='text')
                 if not data:
                     log.debug('No data returned from provider')
                     continue

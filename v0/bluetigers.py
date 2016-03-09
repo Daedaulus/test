@@ -39,10 +39,10 @@ class BlueTigersProvider:  # pylint: disable=too-many-instance-attributes
             'take_login': '1'
         }
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
 
         if not response:
-            check_login = self.get_url(self.urls['base_url'], returns='text')
+            check_login = self.session.get(self.urls['base_url'], returns='text')
             if re.search('account-logout.php', check_login):
                 return True
             else:
@@ -70,7 +70,7 @@ class BlueTigersProvider:  # pylint: disable=too-many-instance-attributes
 
                 self.search_params['search'] = search_string
 
-                data = self.get_url(self.urls['search'], params=self.search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=self.search_params, returns='text')
                 if not data:
                     continue
 

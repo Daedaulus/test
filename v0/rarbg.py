@@ -34,7 +34,7 @@ class RarbgProvider:  # pylint: disable=too-many-instance-attributes
             'app_id': 'sickrage2'
         }
 
-        response = self.get_url(self.urls['api'], params=login_params, returns='json')
+        response = self.session.get(self.urls['api'], params=login_params, returns='json')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -89,7 +89,7 @@ class RarbgProvider:  # pylint: disable=too-many-instance-attributes
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 time.sleep(cpu_presets[sickbeard.CPU_PRESET])
-                data = self.get_url(self.urls['api'], params=search_params, returns='json')
+                data = self.session.get(self.urls['api'], params=search_params, returns='json')
                 if not isinstance(data, dict):
                     log.debug('No data returned from provider')
                     continue

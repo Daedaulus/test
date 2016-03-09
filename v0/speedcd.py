@@ -41,7 +41,7 @@ class SpeedCDProvider:  # pylint: disable=too-many-instance-attributes
             'password': self.password,
         }
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -97,7 +97,7 @@ class SpeedCDProvider:  # pylint: disable=too-many-instance-attributes
 
                 search_params['search'] = search_string
 
-                data = self.get_url(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params, returns='text')
                 if not data:
                     continue
 

@@ -56,7 +56,7 @@ class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
                 }
 
                 self._check_auth()
-                parsed_json = self.get_url(self.urls['search'],
+                parsed_json = self.session.get(self.urls['search'],
                                            post_data=json.dumps(post_data),
                                            returns='json')
 

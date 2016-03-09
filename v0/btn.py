@@ -267,4 +267,4 @@ class BTNCache(tvcache.TVCache):
             seconds_since_last_update = 86400
 
         self.search_params = None  # BTN cache does not use search params
-        return {'entries': self.provider.search(search_params=self.search_params, age=seconds_since_last_update)}
+        return {'entries': self.search(search_params=self.search_params, age=seconds_since_last_update)}

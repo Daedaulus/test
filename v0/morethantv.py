@@ -52,7 +52,7 @@ class MoreThanTVProvider:  # pylint: disable=too-many-instance-attributes
             'login': 'Log in',
         }
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -100,7 +100,7 @@ class MoreThanTVProvider:  # pylint: disable=too-many-instance-attributes
 
                 search_params['searchstr'] = search_string
 
-                data = self.get_url(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params, returns='text')
                 if not data:
                     log.debug('No data returned from provider')
                     continue

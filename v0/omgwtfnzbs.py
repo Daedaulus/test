@@ -80,7 +80,7 @@ class OmgwtfnzbsProvider:
                 if mode != 'RSS':
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
-                data = self.get_url(self.urls['api'], params=search_params, returns='json')
+                data = self.session.get(self.urls['api'], params=search_params, returns='json')
                 if not data:
                     log.debug('No data returned from provider')
                     continue
@@ -119,5 +119,5 @@ class OmgwtfnzbsCache(tvcache.TVCache):
             'eng': 1,
             'catid': '19,20'  # SD,HD
         }
-        return self.getRSSFeed(self.provider.urls['rss'], params=search_params)
+        return self.getRSSFeed(self.urls['rss'], params=search_params)
 

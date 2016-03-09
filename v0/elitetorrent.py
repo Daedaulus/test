@@ -60,7 +60,7 @@ class elitetorrentProvider:
                 search_string = re.sub(r'S0*(\d*)E(\d*)', r'\1x\2', search_string)
                 search_params['buscar'] = search_string.strip() if mode != 'RSS' else ''
 
-                data = self.get_url(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params, returns='text')
                 if not data:
                     continue
 

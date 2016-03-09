@@ -44,7 +44,7 @@ class BitCannonProvider:
                     log.debug('Search string: {}'.format(search_string))
 
                 search_url = urljoin(url, 'api/search')
-                parsed_json = self.get_url(search_url, params=search_params, returns='json')
+                parsed_json = self.session.get(search_url, params=search_params, returns='json')
                 if not parsed_json:
                     log.debug('No data returned from provider')
                     continue

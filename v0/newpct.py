@@ -58,7 +58,7 @@ class newpctProvider:
 
                 search_params['q'] = search_string
 
-                data = self.get_url(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params, returns='text')
                 if not data:
                     continue
 
@@ -110,11 +110,11 @@ class newpctProvider:
         trickery = kwargs.pop('returns', '')
         if trickery == 'content':
             kwargs['returns'] = 'text'
-            data = super(newpctProvider, self).get_url(url, post_data=post_data, params=params, timeout=timeout, kwargs=kwargs)
+            data = super(newpctProvider, self).session.post(url, data=post_data, params=params, timeout=timeout, kwargs=kwargs)
             url = re.search(r'http://tumejorserie.com/descargar/.+\.torrent', data, re.DOTALL).group()
 
         kwargs['returns'] = trickery
-        return super(newpctProvider, self).get_url(url, post_data=post_data, params=params,
+        return super(newpctProvider, self).session.post(url, data=post_data, params=params,
                                                    timeout=timeout, kwargs=kwargs)
 
     def download_result(self, result):
@@ -130,7 +130,7 @@ class newpctProvider:
 
         for url in urls:
             # Search results don't return torrent files directly, it returns show sheets so we must parse showSheet to access torrent.
-            data = self.get_url(url, returns='text')
+            data = self.session.get(url, returns='text')
             url_torrent = re.search(r'http://tumejorserie.com/descargar/.+\.torrent', data, re.DOTALL).group()
 
             if url_torrent.startswith('http'):

@@ -37,7 +37,7 @@ class BitSnoopProvider:  # pylint: disable=too-many-instance-attributes
                 try:
                     search_url = (self.urls['rss'], self.urls['search'] + search_string + '/s/d/1/?fmt=rss')[mode != 'RSS']
 
-                    data = self.get_url(search_url, returns='text')
+                    data = self.session.get(search_url, returns='text')
                     if not data:
                         log.debug('No data returned from provider')
                         continue

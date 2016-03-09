@@ -62,7 +62,7 @@ class HDBitsProvider:
 
         self._check_auth()
 
-        parsedJSON = self.get_url(self.urls['search'], post_data=search_params, returns='json')
+        parsedJSON = self.session.post(self.urls['search'], data=search_params, returns='json')
         if not parsedJSON:
             return []
 
@@ -159,9 +159,9 @@ class HDBitsCache(tvcache.TVCache):
         results = []
 
         try:
-            parsedJSON = self.provider.getURL(self.provider.urls['rss'], post_data=self.provider._make_post_data_JSON(), returns='json')
+            parsedJSON = self.session.post(self.urls['rss'], data=self._make_post_data_JSON(), returns='json')
 
-            if self.provider._checkAuthFromData(parsedJSON):
+            if self._checkAuthFromData(parsedJSON):
                 results = parsedJSON['data']
         except Exception:
             pass

@@ -43,7 +43,7 @@ class TorrentzProvider:  # pylint: disable=too-many-instance-attributes
                 if mode != 'RSS':
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
-                data = self.get_url(search_url, params={'q': search_string}, returns='text')
+                data = self.session.get(search_url, params={'q': search_string}, returns='text')
                 if not data:
                     log.debug('No data returned from provider')
                     continue

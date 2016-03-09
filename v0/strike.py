@@ -26,7 +26,7 @@ class StrikeProvider:
                     log.debug('Search string: ' + search_string.strip())
 
                 search_url = self.url + 'api/v2/torrents/search/?category=TV&phrase=' + search_string
-                jdata = self.get_url(search_url, returns='json')
+                jdata = self.session.get(search_url, returns='json')
                 if not jdata:
                     log.debug('No data returned from provider')
                     return []

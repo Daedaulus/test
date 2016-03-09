@@ -44,7 +44,7 @@ class SCCProvider:  # pylint: disable=too-many-instance-attributes
             'submit': 'come on in'
         }
 
-        response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
+        response = self.session.post(self.urls['login'], data=login_params, returns='text')
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -77,7 +77,7 @@ class SCCProvider:  # pylint: disable=too-many-instance-attributes
                 search_url = self.urls['search'] % (quote(search_string), self.categories[mode])
 
                 try:
-                    data = self.get_url(search_url, returns='text')
+                    data = self.session.get(search_url, returns='text')
                     time.sleep(cpu_presets[sickbeard.CPU_PRESET])
                 except Exception as e:
                     log.warn('Unable to fetch data. Error: %s' % repr(e))
@@ -102,7 +102,7 @@ class SCCProvider:  # pylint: disable=too-many-instance-attributes
 
                             title = link.string
                             if re.search(r'\.\.\.', title):
-                                data = self.get_url(urljoin(self.url, link['href']), returns='text')
+                                data = self.session.get(urljoin(self.url, link['href']), returns='text')
                                 if data:
                                     with BS4Parser(data) as details_html:
                                         title = re.search('(?<=').+(?<!')', details_html.title.string).group(0)
