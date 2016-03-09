@@ -44,9 +44,6 @@ class ThePirateBayProvider:
             'category': 200
         }
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         def process_column_header(th):
             result = ''
             if th.a:

@@ -82,9 +82,6 @@ class GFTrackerProvider:
             'search': '',
         }
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         def process_column_header(td):
             result = ''
             if td.a and td.a.img:

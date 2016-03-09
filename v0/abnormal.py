@@ -67,9 +67,6 @@ class ABNormalProvider:
             'way': 'DESC'
         }
 
-        # Units
-        units = ['O', 'KO', 'MO', 'GO', 'TO', 'PO']
-
         for mode in search_strings:
             items = []
             log.debug('Search Mode: {}'.format(mode))

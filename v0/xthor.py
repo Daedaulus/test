@@ -72,9 +72,6 @@ class XthorProvider:
             'c16': 1, 'c17': 1, 'c32': 1
         }
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         def process_column_header(td):
             result = ''
             if td.a:

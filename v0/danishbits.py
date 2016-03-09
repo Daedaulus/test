@@ -70,9 +70,6 @@ class DanishbitsProvider:
             'search': '',
         }
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         def process_column_header(td):
             result = ''
             if td.img:

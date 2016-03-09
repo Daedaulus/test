@@ -65,9 +65,6 @@ class TorrentLeechProvider:
         # TV, Episodes, BoxSets, Episodes HD, Animation, Anime, Cartoons
         # 2,26,27,32,7,34,35
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         def process_column_header(td):
             result = ''
             if td.a:

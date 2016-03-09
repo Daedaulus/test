@@ -77,9 +77,6 @@ class TVChaosUKProvider:
             'submit': 'search'
         }
 
-        # Units
-        units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
         for mode in search_strings:
             items = []
             log.debug('Search Mode: {}'.format(mode))
