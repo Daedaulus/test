@@ -52,14 +52,14 @@ class BTDiggProvider:
                             continue
 
                         if float(torrent.pop('ff')):
-                            log.debug('Ignoring result for {} since it's been reported as fake (level = {})'.format(title, torrent['ff']))
+                            log.debug('Ignoring result for {} since it\'s been reported as fake (level = {})'.format(title, torrent['ff']))
                             continue
 
                         if not int(torrent.pop('files')):
                             log.debug('Ignoring result for {} because it has no files'.format(title))
                             continue
 
-                        # Provider doesn\'t provide seeders/leechers
+                        # Provider doesn't provide seeders/leechers
                         seeders = 1
                         leechers = 0
 
