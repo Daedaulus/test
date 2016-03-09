@@ -1,10 +1,11 @@
 import logging
-import re
+# import re
+import traceback
 
 from requests import Session
-from requests.compat import urljoin
-from requests.utils import dict_from_cookiejar
-
+# from requests.compat import urljoin
+# from requests.utils import dict_from_cookiejar
+#
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
@@ -53,7 +54,7 @@ class BitSnoopProvider:
                         log.info('Expected xml but got something else, is your mirror failing?')
                         continue
 
-                    data = BeautifulSoup(data, 'html5lib')
+                    data = BS4Parser(data, 'html5lib')
                     for item in data.findAll('item'):
                         try:
                             if not item.category.text.endswith(('TV', 'Anime')):
