@@ -113,7 +113,7 @@ class BTNProvider:
             parsedJSON = server.getTorrents(apikey, params or {}, int(results_per_page), int(offset))
             time.sleep(cpu_presets[sickbeard.CPU_PRESET])
 
-        except jsonrpclib.jsonrpc.ProtocolError, error:
+        except jsonrpclib.jsonrpc.ProtocolError as error:
             if error.message == 'Call Limit Exceeded':
                 log.warn('You have exceeded the limit of 150 calls per hour, per API key which is unique to your user account')
             else:
@@ -124,11 +124,11 @@ class BTNProvider:
         except socket.timeout:
             log.warn('Timeout while accessing provider')
 
-        except socket.error, error:
+        except socket.error as error:
             # Note that sometimes timeouts are thrown as socket errors
             log.warn('Socket error while accessing provider. Error: %s ' % error[1])
 
-        except Exception, error:
+        except Exception as error:
             errorstring = str(error)
             if errorstring.startswith('<') and errorstring.endswith('>'):
                 errorstring = errorstring[1:-1]

@@ -194,7 +194,7 @@ class NewznabProvider:
         try:
             err_desc = data.error.attrs['description']
             if not err_desc:
-                raise
+                raise ValueError('No error description')
         except (AttributeError, TypeError):
             return self._check_auth()
 
