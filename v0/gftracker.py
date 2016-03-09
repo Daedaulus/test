@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class GFTrackerProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'GFTracker')
 
         # Credentials
         self.username = None
@@ -156,6 +153,3 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
             results += items
 
         return results
-
-
-provider = GFTrackerProvider()

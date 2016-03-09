@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class ExtraTorrentProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'ExtraTorrent')
 
         self.urls = {
             'index': 'http://extratorrent.cc',
@@ -89,6 +87,3 @@ class ExtraTorrentProvider(TorrentProvider):  # pylint: disable=too-many-instanc
             results += items
 
         return results
-
-
-provider = ExtraTorrentProvider()

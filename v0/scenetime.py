@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class SceneTimeProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'SceneTime')
 
         self.username = None
         self.password = None
@@ -122,6 +120,3 @@ class SceneTimeProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
             results += items
 
         return results
-
-
-provider = SceneTimeProvider()

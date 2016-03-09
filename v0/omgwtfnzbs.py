@@ -6,10 +6,8 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class OmgwtfnzbsProvider(NZBProvider):
+class OmgwtfnzbsProvider:
     def __init__(self):
-        NZBProvider.__init__(self, 'OMGWTFNZBs')
-
         self.username = None
         self.api_key = None
 
@@ -123,4 +121,3 @@ class OmgwtfnzbsCache(tvcache.TVCache):
         }
         return self.getRSSFeed(self.provider.urls['rss'], params=search_params)
 
-provider = OmgwtfnzbsProvider()

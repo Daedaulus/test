@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class BitSnoopProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'BitSnoop')
 
         self.urls = {
             'index': 'http://bitsnoop.com',
@@ -99,6 +97,3 @@ class BitSnoopProvider(TorrentProvider):  # pylint: disable=too-many-instance-at
             results += items
 
         return results
-
-
-provider = BitSnoopProvider()

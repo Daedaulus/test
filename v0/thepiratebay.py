@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class ThePirateBayProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class ThePirateBayProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'ThePirateBay')
 
         # Credentials
         self.public = True
@@ -140,6 +137,3 @@ class ThePirateBayProvider(TorrentProvider):  # pylint: disable=too-many-instanc
             results += items
 
         return results
-
-
-provider = ThePirateBayProvider()

@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class elitetorrentProvider(TorrentProvider):
+class elitetorrentProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'EliteTorrent')
-
         self.onlyspasearch = None
         self.minseed = None
         self.minleech = None
@@ -133,5 +130,3 @@ class elitetorrentProvider(TorrentProvider):
         title += '-ELITETORRENT'
 
         return title.strip()
-
-provider = elitetorrentProvider()

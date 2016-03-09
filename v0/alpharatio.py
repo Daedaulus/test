@@ -6,13 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class AlphaRatioProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class AlphaRatioProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'AlphaRatio')
-
         # Credentials
         self.username = None
         self.password = None
@@ -148,5 +144,3 @@ class AlphaRatioProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         return results
 
-
-provider = AlphaRatioProvider()

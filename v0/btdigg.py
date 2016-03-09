@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BTDiggProvider(TorrentProvider):
+class BTDiggProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'BTDigg')
 
         self.public = True
         self.url = 'https://btdigg.org'
@@ -77,6 +75,3 @@ class BTDiggProvider(TorrentProvider):
             results += items
 
         return results
-
-
-provider = BTDiggProvider()

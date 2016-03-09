@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class LimeTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class LimeTorrentsProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'LimeTorrents')
 
         self.urls = {
             'index': 'https://www.limetorrents.cc/',
@@ -116,6 +114,3 @@ class LimeTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instanc
             results += items
 
         return results
-
-
-provider = LimeTorrentsProvider()

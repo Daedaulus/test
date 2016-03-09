@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class WombleProvider(NZBProvider):
+class WombleProvider:
 
     def __init__(self):
-
-        NZBProvider.__init__(self, 'Womble\'s Index')
 
         self.public = True
 
@@ -50,5 +48,3 @@ class WombleCache(tvcache.TVCache):
 
     def _checkAuth(self, data):
         return data if data['feed'] and data['feed']['title'] != 'Invalid Link' else None
-
-provider = WombleProvider()

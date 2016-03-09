@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TNTVillageProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TNTVillageProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'TNTVillage')
 
         self._uid = None
         self._hash = None
@@ -345,6 +343,3 @@ class TNTVillageProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                 results += items
 
         return results
-
-
-provider = TNTVillageProvider()

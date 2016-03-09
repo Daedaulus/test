@@ -6,13 +6,11 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentRssProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TorrentRssProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self, name, url, cookies='',  # pylint: disable=too-many-arguments
                  titleTAG='title', search_mode='eponly', search_fallback=False,
                  enable_daily=False, enable_backlog=False):
-
-        TorrentProvider.__init__(self, name)
 
         self.cache = TorrentRssCache(self, min_time=15)
         self.url = url.rstrip('/')

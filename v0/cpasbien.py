@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class CpasbienProvider(TorrentProvider):
+class CpasbienProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Cpasbien')
 
         self.public = True
         self.minseed = None
@@ -73,6 +71,3 @@ class CpasbienProvider(TorrentProvider):
             results += items
 
         return results
-
-
-provider = CpasbienProvider()

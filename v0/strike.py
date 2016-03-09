@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class StrikeProvider(TorrentProvider):
+class StrikeProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Strike')
 
         self.public = True
         self.url = 'https://getstrike.net/'
@@ -65,6 +63,3 @@ class StrikeProvider(TorrentProvider):
             results += items
 
         return results
-
-
-provider = StrikeProvider()

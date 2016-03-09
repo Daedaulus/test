@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TransmitTheNetProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'TransmitTheNet')
 
         # Credentials
         self.username = None
@@ -151,6 +148,3 @@ class TransmitTheNetProvider(TorrentProvider):  # pylint: disable=too-many-insta
             results += items
 
         return results
-
-
-provider = TransmitTheNetProvider()

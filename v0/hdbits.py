@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class HDBitsProvider(TorrentProvider):
+class HDBitsProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'HDBits')
 
         self.username = None
         self.passkey = None
@@ -167,5 +165,3 @@ class HDBitsCache(tvcache.TVCache):
             pass
 
         return {'entries': results}
-
-provider = HDBitsProvider()

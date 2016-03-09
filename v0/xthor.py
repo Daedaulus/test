@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class XthorProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'Xthor')
 
         # Credentials
         self.username = None
@@ -162,6 +159,3 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
             results += items
 
         return results
-
-
-provider = XthorProvider()

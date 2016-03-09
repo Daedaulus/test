@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
-    """Main provider object"""
+class NorbitsProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-        """ Initialize the class """
-        TorrentProvider.__init__(self, 'Norbits')
 
         self.username = None
         self.passkey = None
@@ -104,6 +101,3 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = NorbitsProvider()  # pylint: disable=invalid-name

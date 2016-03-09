@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class SCCProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class SCCProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'SceneAccess')
 
         self.username = None
         self.password = None
@@ -137,6 +135,3 @@ class SCCProvider(TorrentProvider):  # pylint: disable=too-many-instance-attribu
             results += items
 
         return results
-
-
-provider = SCCProvider()

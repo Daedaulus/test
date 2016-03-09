@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class PretomeProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class PretomeProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Pretome')
 
         self.username = None
         self.password = None
@@ -141,6 +139,3 @@ class PretomeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = PretomeProvider()

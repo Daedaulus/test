@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class PhxBitProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'PhxBit')
 
         # Credentials
         self.username = None
@@ -143,6 +140,3 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
             results += items
 
         return results
-
-
-provider = PhxBitProvider()

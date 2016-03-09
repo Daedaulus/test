@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class ShazbatProvider(TorrentProvider):
+class ShazbatProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Shazbat.tv')
 
         self.supports_backlog = False
 
@@ -55,5 +53,3 @@ class ShazbatCache(tvcache.TVCache):
 
     def _checkAuth(self, data):
         return self.provider._checkAuthFromData(data)  # pylint: disable=protected-access
-
-provider = ShazbatProvider()

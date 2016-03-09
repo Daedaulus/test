@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class KatProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class KatProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'KickAssTorrents')
 
         self.public = True
 
@@ -113,6 +111,3 @@ class KatProvider(TorrentProvider):  # pylint: disable=too-many-instance-attribu
             results += items
 
         return results
-
-
-provider = KatProvider()

@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class newpctProvider(TorrentProvider):
+class newpctProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Newpct')
 
         self.onlyspasearch = None
 
@@ -180,5 +178,3 @@ class newpctProvider(TorrentProvider):
         title += '-NEWPCT'
 
         return title.strip()
-
-provider = newpctProvider()

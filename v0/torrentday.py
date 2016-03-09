@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TorrentDayProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'TorrentDay')
 
         # Credentials
         self.username = None
@@ -140,6 +137,3 @@ class TorrentDayProvider(TorrentProvider):  # pylint: disable=too-many-instance-
             results += items
 
         return results
-
-
-provider = TorrentDayProvider()

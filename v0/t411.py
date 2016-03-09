@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class T411Provider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class T411Provider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'T411')
 
         self.username = None
         self.password = None
@@ -146,5 +144,3 @@ class T411Auth(AuthBase):  # pylint: disable=too-few-public-methods
     def __call__(self, r):
         r.headers['Authorization'] = self.token
         return r
-
-provider = T411Provider()

@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class HD4FreeProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'HD4Free')
 
         self.url = 'https://hd4free.xyz'
         self.urls = {'search': urljoin(self.url, '/searchapi.php')}
@@ -99,6 +97,3 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = HD4FreeProvider()

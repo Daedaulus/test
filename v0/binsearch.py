@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BinSearchProvider(NZBProvider):
+class BinSearchProvider:
 
     def __init__(self):
-
-        NZBProvider.__init__(self, 'BinSearch')
-
         self.url = 'https://www.binsearch.info'
         self.urls = {'rss': urljoin(self.url, 'rss.php')}
 
@@ -98,4 +95,3 @@ class BinSearchCache(tvcache.TVCache):
     def _checkAuth(self, data):
         return data if data['feed'] and data['feed']['title'] != 'Invalid Link' else None
 
-provider = BinSearchProvider()

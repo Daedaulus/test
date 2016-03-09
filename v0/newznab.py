@@ -6,7 +6,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attributes, too-many-arguments
+class NewznabProvider:  # pylint: disable=too-many-instance-attributes, too-many-arguments
     """
     Generic provider for built in and custom providers who expose a newznab
     compatible api.
@@ -16,8 +16,6 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
 
     def __init__(self, name, url, key='0', catIDs='5030,5040', search_mode='eponly',
                  search_fallback=False, enable_daily=True, enable_backlog=False):
-
-        NZBProvider.__init__(self, name)
 
         self.url = url
         self.key = key

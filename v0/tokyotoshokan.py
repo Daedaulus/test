@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TokyoToshokanProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TokyoToshokanProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'TokyoToshokan')
 
         self.public = True
         self.supports_absolute_numbering = True
@@ -94,5 +92,3 @@ class TokyoToshokanProvider(TorrentProvider):  # pylint: disable=too-many-instan
             results += items
 
         return results
-
-provider = TokyoToshokanProvider()

@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class HDSpaceProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class HDSpaceProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'HDSpace')
 
         self.username = None
         self.password = None
@@ -140,6 +138,3 @@ class HDSpaceProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = HDSpaceProvider()

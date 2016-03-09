@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class RarbgProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'Rarbg')
 
         self.public = True
         self.minseed = None
@@ -142,6 +140,3 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
             results += items
 
         return results
-
-
-provider = RarbgProvider()

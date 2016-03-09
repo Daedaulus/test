@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class SpeedCDProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'Speedcd')
 
         # Credentials
         self.username = None
@@ -151,6 +148,3 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = SpeedCDProvider()

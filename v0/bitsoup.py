@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class BitSoupProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'BitSoup')
 
         self.urls = {
             'base_url': 'https://www.bitsoup.me',
@@ -130,6 +128,3 @@ class BitSoupProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
             results += items
 
         return results
-
-
-provider = BitSoupProvider()

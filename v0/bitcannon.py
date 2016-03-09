@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class BitCannonProvider(TorrentProvider):
+class BitCannonProvider:
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'BitCannon')
 
         self.minseed = None
         self.minleech = None
@@ -101,4 +99,3 @@ class BitCannonProvider(TorrentProvider):
 
         return True
 
-provider = BitCannonProvider()

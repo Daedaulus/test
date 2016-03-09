@@ -6,12 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class TorrentLeechProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        # Provider Init
-        TorrentProvider.__init__(self, 'TorrentLeech')
 
         # Credentials
         self.username = None
@@ -145,6 +142,3 @@ class TorrentLeechProvider(TorrentProvider):  # pylint: disable=too-many-instanc
             results += items
 
         return results
-
-
-provider = TorrentLeechProvider()

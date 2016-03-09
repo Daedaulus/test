@@ -6,11 +6,9 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
 
 
-class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attributes
+class NyaaProvider:  # pylint: disable=too-many-instance-attributes
 
     def __init__(self):
-
-        TorrentProvider.__init__(self, 'NyaaTorrents')
 
         self.public = True
         self.supports_absolute_numbering = True
@@ -91,6 +89,3 @@ class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
             results += items
 
         return results
-
-
-provider = NyaaProvider()
