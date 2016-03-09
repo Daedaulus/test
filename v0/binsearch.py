@@ -3,9 +3,9 @@ import re
 
 from requests import Session
 from requests.compat import urljoin
-from requests.utils import dict_from_cookiejar
-
-from v0 import BS4Parser
+# from requests.utils import dict_from_cookiejar
+#
+# from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
@@ -23,13 +23,12 @@ class BinSearchProvider:
         self.public = True
         self.supports_backlog = False
 
-        self.cache = BinSearchCache(self, min_time=30)  # only poll Binsearch every 30 minutes max
+        self.cache = BinSearchCache(min_time=30)  # only poll Binsearch every 30 minutes max
 
 
 class BinSearchCache:
-    def __init__(self, provider_obj, **kwargs):
+    def __init__(self, **kwargs):
         kwargs.pop('search_params', None)  # does not use _getRSSData so strip param from kwargs...
-        search_params = None  # ...and pass None instead
 
         # compile and save our regular expressions
 
@@ -63,7 +62,7 @@ class BinSearchCache:
 
         return title, url
 
-    def updateCache(self):
+    def update_cache(self):
         # check if we should update
         if not self.shouldUpdate():
             return
@@ -91,6 +90,6 @@ class BinSearchCache:
             cache_db_con = self._getDB()
             cache_db_con.mass_action(cl)
 
-    def _checkAuth(self, data):
+    @staticmethod
+    def _check_auth(data):
         return data if data['feed'] and data['feed']['title'] != 'Invalid Link' else None
-
