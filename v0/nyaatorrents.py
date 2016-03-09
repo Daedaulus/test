@@ -31,10 +31,10 @@ class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format
+                    log.(u'Search string: {}'.format
                                (search_string.decode('utf-8')), logger.DEBUG)
 
                 search_params = {
@@ -49,7 +49,7 @@ class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
                 results = []
                 data = self.cache.getRSSFeed(self.url, params=search_params)['entries']
                 if not data:
-                    logger.log('Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.('Data returned from provider does not contain any torrents', logger.DEBUG)
 
                 for curItem in data:
                     try:
@@ -60,7 +60,7 @@ class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
                         item_info = self.regex.search(curItem['summary'])
                         if not item_info:
-                            logger.log('There was a problem parsing an item summary, skipping: {}'.format
+                            log.('There was a problem parsing an item summary, skipping: {}'.format
                                        (title), logger.DEBUG)
                             continue
 
@@ -70,20 +70,20 @@ class NyaaProvider(TorrentProvider):  # pylint: disable=too-many-instance-attrib
 
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log('Discarding torrent because it doesn\'t meet the'
+                                log.('Discarding torrent because it doesn\'t meet the'
                                            ' minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         if self.confirmed and not verified and mode != 'RSS':
-                            logger.log('Found result {} but that doesn\'t seem like a verified result so I\'m ignoring it'.format
+                            log.('Found result {} but that doesn\'t seem like a verified result so I\'m ignoring it'.format
                                        (title), logger.DEBUG)
                             continue
 
                         size = convert_size(torrent_size) or -1
                         result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
                         if mode != 'RSS':
-                            logger.log('Found result: {} with {} seeders and {} leechers'.format
+                            log.('Found result: {} with {} seeders and {} leechers'.format
                                        (title, seeders, leechers), logger.DEBUG)
 
                         items.append(result)

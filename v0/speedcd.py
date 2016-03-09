@@ -44,11 +44,11 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u'Unable to connect to provider', logger.WARNING)
+            log.warn(u'Unable to connect to provider')
             return False
 
         if re.search('Incorrect username or Password. Please try again.', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -89,12 +89,12 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_params['search'] = search_string
@@ -109,7 +109,7 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     labels = [process_column_header(label) for label in torrent_rows[0].find_all('th')]
@@ -130,7 +130,7 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
+                                    log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
                                 continue
 
                             torrent_size = cells[labels.index('Size')].get_text()
@@ -139,7 +139,7 @@ class SpeedCDProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                                log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
                         except StandardError:

@@ -24,7 +24,7 @@ class OmgwtfnzbsProvider(NZBProvider):
     def _check_auth(self):
 
         if not self.username or not self.api_key:
-            logger.log('Invalid api key. Check your settings', logger.WARNING)
+            log.warn('Invalid api key. Check your settings')
             return False
 
         return True
@@ -42,13 +42,13 @@ class OmgwtfnzbsProvider(NZBProvider):
                 description_text = parsed_data.get('notice')
 
                 if 'information is incorrect' in parsed_data.get('notice'):
-                    logger.log('Invalid api key. Check your settings', logger.WARNING)
+                    log.warn('Invalid api key. Check your settings')
 
                 elif '0 results matched your terms' in parsed_data.get('notice'):
                     return True
 
                 else:
-                    logger.log('Unknown error: %s' % description_text, logger.DEBUG)
+                    log.('Unknown error: %s' % description_text, logger.DEBUG)
                     return False
 
             return True
@@ -74,16 +74,16 @@ class OmgwtfnzbsProvider(NZBProvider):
 
         for mode in search_strings:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 search_params['search'] = search_string
                 if mode != 'RSS':
-                    logger.log('Search string: {}'.format(search_string.decode('utf-8')),
+                    log.('Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 data = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not data:
-                    logger.log('No data returned from provider', logger.DEBUG)
+                    log.('No data returned from provider', logger.DEBUG)
                     continue
 
                 if not self._checkAuthFromData(data, is_XML=False):
@@ -93,7 +93,7 @@ class OmgwtfnzbsProvider(NZBProvider):
                     if not self._get_title_and_url(item):
                         continue
 
-                    logger.log('Found result: {}'.format(item.get('title')), logger.DEBUG)
+                    log.('Found result: {}'.format(item.get('title')), logger.DEBUG)
                     items.append(item)
 
             results += items

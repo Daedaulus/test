@@ -81,7 +81,7 @@ class BinSearchCache(tvcache.TVCache):
             search_params = {'max': 50, 'g': group}
             data = self.getRSSFeed(self.provider.urls['rss'], search_params)['entries']
             if not data:
-                logger.log('No data returned from provider', logger.DEBUG)
+                log.('No data returned from provider', logger.DEBUG)
                 continue
 
             for item in data:

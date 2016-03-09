@@ -38,7 +38,7 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
         response = self.get_url(self.urls['api'], params=login_params, returns='json')
         if not response:
-            logger.log('Unable to connect to provider', logger.WARNING)
+            log.warn('Unable to connect to provider')
             return False
 
         self.token = response.get('token', None)
@@ -70,7 +70,7 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
         for mode in search_strings:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
             if mode == 'RSS':
                 search_params['sort'] = 'last'
                 search_params['mode'] = 'list'
@@ -88,13 +88,13 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
                     search_params['search_string'] = search_string
-                    logger.log('Search string: {}'.format(search_string.decode('utf-8')),
+                    log.('Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 time.sleep(cpu_presets[sickbeard.CPU_PRESET])
                 data = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not isinstance(data, dict):
-                    logger.log('No data returned from provider', logger.DEBUG)
+                    log.('No data returned from provider', logger.DEBUG)
                     continue
 
                 error = data.get('error')
@@ -103,12 +103,12 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                 # List of errors: https://github.com/rarbg/torrentapi/issues/1#issuecomment-114763312
                 if error:
                     if try_int(error_code) != 20:
-                        logger.log(error)
+                        log.(error)
                     continue
 
                 torrent_results = data.get('torrent_results')
                 if not torrent_results:
-                    logger.log('Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.('Data returned from provider does not contain any torrents', logger.DEBUG)
                     continue
 
                 for item in torrent_results:
@@ -122,7 +122,7 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                         leechers = item.pop('leechers')
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log('Discarding torrent because it doesn't meet the'
+                                log.('Discarding torrent because it doesn't meet the'
                                            ' minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
@@ -131,7 +131,7 @@ class RarbgProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                         size = convert_size(torrent_size) or -1
 
                         if mode != 'RSS':
-                            logger.log('Found result: {} with {} seeders and {} leechers'.format
+                            log.('Found result: {} with {} seeders and {} leechers'.format
                                        (title, seeders, leechers), logger.DEBUG)
 
                         result = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}

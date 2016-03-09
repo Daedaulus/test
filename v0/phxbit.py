@@ -43,11 +43,11 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u'Unable to connect to provider', logger.WARNING)
+            log.warn(u'Unable to connect to provider')
             return False
 
         if not re.search('dons.php', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -77,14 +77,14 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
                     # Use exact=1 parameter if we're doing a backlog or manual search
                     search_params['exact'] = 1
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_params['q'] = search_string
@@ -99,7 +99,7 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     # Catégorie, Nom,  DL, Com, Taille, C, Seed, Leech,	Share
@@ -123,7 +123,7 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
+                                    log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers), logger.DEBUG)
                                 continue
 
                             torrent_size = cells[labels.index('Taille')].get_text(strip=True)
@@ -131,7 +131,7 @@ class PhxBitProvider(TorrentProvider):  # pylint: disable=too-many-instance-attr
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                                log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
                         except StandardError:

@@ -33,7 +33,7 @@ class HDBitsProvider(TorrentProvider):
 
         if 'status' in parsedJSON and 'message' in parsedJSON:
             if parsedJSON.get('status') == 5:
-                logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+                log.warn(u'Invalid username or password. Check your settings')
 
         return True
 
@@ -56,7 +56,7 @@ class HDBitsProvider(TorrentProvider):
         # FIXME
         results = []
 
-        logger.log(u'Search string: %s' % search_params, logger.DEBUG)
+        log.(u'Search string: %s' % search_params, logger.DEBUG)
 
         self._check_auth()
 
@@ -68,7 +68,7 @@ class HDBitsProvider(TorrentProvider):
             if parsedJSON and 'data' in parsedJSON:
                 items = parsedJSON['data']
             else:
-                logger.log(u'Resulting JSON from provider isn't correct, not parsing it', logger.ERROR)
+                log.(u'Resulting JSON from provider isn't correct, not parsing it', logger.ERROR)
                 items = []
 
             for item in items:

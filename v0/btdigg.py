@@ -27,19 +27,19 @@ class BTDiggProvider(TorrentProvider):
         search_params = {'p': 0}
         for mode in search_strings:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 search_params['q'] = search_string
                 if mode != 'RSS':
                     search_params['order'] = 0
-                    logger.log('Search string: {}'.format(search_string.decode('utf-8')),
+                    log.('Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
                 else:
                     search_params['order'] = 2
 
                 jdata = self.get_url(self.urls['api'], params=search_params, returns='json')
                 if not jdata:
-                    logger.log('Provider did not return data', logger.DEBUG)
+                    log.('Provider did not return data', logger.DEBUG)
                     continue
 
                 for torrent in jdata:
@@ -50,12 +50,12 @@ class BTDiggProvider(TorrentProvider):
                             continue
 
                         if float(torrent.pop('ff')):
-                            logger.log('Ignoring result for {} since it's been reported as fake (level = {})'.format
+                            log.('Ignoring result for {} since it's been reported as fake (level = {})'.format
                                        (title, torrent['ff']), logger.DEBUG)
                             continue
 
                         if not int(torrent.pop('files')):
-                            logger.log('Ignoring result for {} because it has no files'.format
+                            log.('Ignoring result for {} because it has no files'.format
                                        (title), logger.DEBUG)
                             continue
 
@@ -68,7 +68,7 @@ class BTDiggProvider(TorrentProvider):
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            logger.log('Found result: %s ' % title, logger.DEBUG)
+                            log.('Found result: %s ' % title, logger.DEBUG)
 
                         items.append(item)
 

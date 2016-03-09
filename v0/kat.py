@@ -37,30 +37,30 @@ class KatProvider(TorrentProvider):  # pylint: disable=too-many-instance-attribu
 
         for mode in search_strings:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 search_params['q'] = search_string if mode != 'RSS' else ''
                 search_params['field'] = 'seeders' if mode != 'RSS' else 'time_add'
 
                 if mode != 'RSS':
-                    logger.log('Search string: {}'.format(search_string.decode('utf-8')),
+                    log.('Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_url = self.urls['search'] % ('usearch' if mode != 'RSS' else search_string)
                 if self.custom_url:
                     if not validators.url(self.custom_url):
-                        logger.log('Invalid custom url: {}'.format(self.custom_url), logger.WARNING)
+                        log.warn('Invalid custom url: {}'.format(self.custom_url))
                         return results
                     search_url = urljoin(self.custom_url, search_url.split(self.url)[1])
 
                 data = self.get_url(search_url, params=search_params, returns='text')
                 if not data:
-                    logger.log('URL did not return data, maybe try a custom url, or a different one', logger.DEBUG)
+                    log.('URL did not return data, maybe try a custom url, or a different one', logger.DEBUG)
                     continue
 
                 if not data.startswith('<?xml'):
-                    logger.log('Expected xml but got something else, is your mirror failing?', logger.INFO)
+                    log.('Expected xml but got something else, is your mirror failing?', logger.INFO)
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -84,14 +84,14 @@ class KatProvider(TorrentProvider):  # pylint: disable=too-many-instance-attribu
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log('Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
+                                    log.('Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
 
                             verified = bool(try_int(item.find('torrent:verified').get_text(strip=True)))
                             if self.confirmed and not verified:
                                 if mode != 'RSS':
-                                    logger.log('Found result ' + title + ' but that doesn't seem like a verified result so I'm ignoring it', logger.DEBUG)
+                                    log.('Found result ' + title + ' but that doesn't seem like a verified result so I'm ignoring it', logger.DEBUG)
                                 continue
 
                             torrent_size = item.find('torrent:contentlength').get_text(strip=True)
@@ -100,7 +100,7 @@ class KatProvider(TorrentProvider):  # pylint: disable=too-many-instance-attribu
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                             if mode != 'RSS':
-                                logger.log('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                                log.('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)
 

@@ -23,7 +23,7 @@ class BTNProvider(TorrentProvider):
 
     def _check_auth(self):
         if not self.api_key:
-            logger.log(u'Invalid api key. Check your settings', logger.WARNING)
+            log.warn(u'Invalid api key. Check your settings')
 
         return True
 
@@ -33,7 +33,7 @@ class BTNProvider(TorrentProvider):
             return self._check_auth()
 
         if 'api-error' in parsedJSON:
-            logger.log(u'Incorrect authentication credentials: % s' % parsedJSON['api-error'], logger.DEBUG)
+            log.(u'Incorrect authentication credentials: % s' % parsedJSON['api-error'], logger.DEBUG)
             raise AuthException(
                 'Your authentication credentials for ' + self.name + ' are incorrect, check your config.')
 
@@ -53,11 +53,11 @@ class BTNProvider(TorrentProvider):
 
         if search_params:
             params.update(search_params)
-            logger.log(u'Search string: %s' % search_params, logger.DEBUG)
+            log.(u'Search string: %s' % search_params, logger.DEBUG)
 
         parsedJSON = self._api_call(apikey, params)
         if not parsedJSON:
-            logger.log(u'No data returned from provider', logger.DEBUG)
+            log.(u'No data returned from provider', logger.DEBUG)
             return results
 
         if self._checkAuthFromData(parsedJSON):
@@ -91,7 +91,7 @@ class BTNProvider(TorrentProvider):
                 (title, url) = self._get_title_and_url(torrent_info)
 
                 if title and url:
-                    logger.log(u'Found result: %s ' % title, logger.DEBUG)
+                    log.(u'Found result: %s ' % title, logger.DEBUG)
                     results.append(torrent_info)
 
         # FIXME SORT RESULTS
@@ -108,24 +108,24 @@ class BTNProvider(TorrentProvider):
 
         except jsonrpclib.jsonrpc.ProtocolError, error:
             if error.message == 'Call Limit Exceeded':
-                logger.log(u'You have exceeded the limit of 150 calls per hour, per API key which is unique to your user account', logger.WARNING)
+                log.warn(u'You have exceeded the limit of 150 calls per hour, per API key which is unique to your user account')
             else:
-                logger.log(u'JSON-RPC protocol error while accessing provicer. Error: %s ' % repr(error), logger.ERROR)
+                log.(u'JSON-RPC protocol error while accessing provicer. Error: %s ' % repr(error), logger.ERROR)
             parsedJSON = {'api-error': ex(error)}
             return parsedJSON
 
         except socket.timeout:
-            logger.log(u'Timeout while accessing provider', logger.WARNING)
+            log.warn(u'Timeout while accessing provider')
 
         except socket.error, error:
             # Note that sometimes timeouts are thrown as socket errors
-            logger.log(u'Socket error while accessing provider. Error: %s ' % error[1], logger.WARNING)
+            log.warn(u'Socket error while accessing provider. Error: %s ' % error[1])
 
         except Exception, error:
             errorstring = str(error)
             if errorstring.startswith('<') and errorstring.endswith('>'):
                 errorstring = errorstring[1:-1]
-            logger.log(u'Unknown error while accessing provider. Error: %s ' % errorstring, logger.WARNING)
+            log.warn(u'Unknown error while accessing provider. Error: %s ' % errorstring)
 
         return parsedJSON
 
@@ -263,7 +263,7 @@ class BTNCache(tvcache.TVCache):
 
         # Set maximum to 24 hours (24 * 60 * 60 = 86400 seconds) of 'RSS' data search, older things will need to be done through backlog
         if seconds_since_last_update > 86400:
-            logger.log(
+            log.(
                 u'The last known successful update was more than 24 hours ago, only trying to fetch the last 24 hours!',
                 logger.DEBUG)
             seconds_since_last_update = 86400

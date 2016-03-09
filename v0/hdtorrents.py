@@ -32,7 +32,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
     def _check_auth(self):
 
         if not self.username or not self.password:
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
 
         return True
 
@@ -46,11 +46,11 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u'Unable to connect to provider', logger.WARNING)
+            log.warn(u'Unable to connect to provider')
             return False
 
         if re.search('You need cookies enabled to log in.', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -62,12 +62,12 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
                     search_url = self.urls['search'] % (quote_plus(search_string), self.categories)
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
                 else:
                     search_url = self.urls['rss'] % self.categories
@@ -77,11 +77,11 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
                 data = self.get_url(search_url, returns='text')
                 if not data or 'please try later' in data:
-                    logger.log(u'No data returned from provider', logger.DEBUG)
+                    log.(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 if data.find('No torrents here') != -1:
-                    logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                     continue
 
                 # Search result page contains some invalid html that prevents html parser from returning all data.
@@ -90,14 +90,14 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                 try:
                     index = data.lower().index('<table class='mainblockcontenttt'')
                 except ValueError:
-                    logger.log(u'Could not find table of torrents mainblockcontenttt', logger.DEBUG)
+                    log.(u'Could not find table of torrents mainblockcontenttt', logger.DEBUG)
                     continue
 
                 data = data[index:]
 
                 with BS4Parser(data, 'html5lib') as html:
                     if not html:
-                        logger.log(u'No html data parsed from provider', logger.DEBUG)
+                        log.(u'No html data parsed from provider', logger.DEBUG)
                         continue
 
                     torrent_rows = []
@@ -106,7 +106,7 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         torrent_rows = torrent_table.find_all('tr')
 
                     if not torrent_rows:
-                        logger.log(u'Could not find results in returned data', logger.DEBUG)
+                        log.(u'Could not find results in returned data', logger.DEBUG)
                         continue
 
                     # Cat., Active, Filename, Dl, Wl, Added, Size, Uploader, S, L, C
@@ -135,13 +135,13 @@ class HDTorrentsProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         # Filter unseeded torrent
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
+                                log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                         if mode != 'RSS':
-                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                            log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
 

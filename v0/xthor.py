@@ -45,11 +45,11 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u'Unable to connect to provider', logger.WARNING)
+            log.warn(u'Unable to connect to provider')
             return False
 
         if not re.search('donate.php', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -92,7 +92,7 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             # Sorting: 1: Name, 3: Comments, 5: Size, 6: Completed, 7: Seeders, 8: Leechers (4: Time ?)
             search_params['sort'] = (7, 4)[mode == 'RSS']
@@ -100,14 +100,14 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format
+                    log.(u'Search string: {}'.format
                                (search_string.decode('utf-8')), logger.DEBUG)
 
                 search_params['search'] = search_string
 
                 data = self.get_url(self.urls['search'], params=search_params, returns='text')
                 if not data:
-                    logger.log(u'No data returned from provider', logger.DEBUG)
+                    log.(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -118,7 +118,7 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     # Catégorie, Nom du Torrent, (Download), (Bookmark), Com., Taille, Compl�t�, Seeders, Leechers
@@ -142,7 +142,7 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u'Discarding torrent because it doesn't meet the'
+                                    log.(u'Discarding torrent because it doesn't meet the'
                                                u' minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
@@ -152,7 +152,7 @@ class XthorProvider(TorrentProvider):  # pylint: disable=too-many-instance-attri
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u'Found result: {} with {} seeders and {} leechers'.format
+                                log.(u'Found result: {} with {} seeders and {} leechers'.format
                                            (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)

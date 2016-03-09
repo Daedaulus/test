@@ -52,11 +52,11 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
         self.get_url(self.url, returns='text')
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log(u'Unable to connect to provider', logger.WARNING)
+            log.warn(u'Unable to connect to provider')
             return False
 
         if re.search('Username or password incorrect', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -92,19 +92,19 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_params['search'] = search_string
 
                 data = self.get_url(self.urls['search'], params=search_params, returns='text')
                 if not data:
-                    logger.log(u'No data returned from provider', logger.DEBUG)
+                    log.(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -113,7 +113,7 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     labels = [process_column_header(label) for label in torrent_rows[0].find_all('td')]
@@ -136,7 +136,7 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log(u'Discarding torrent because it doesn't meet the'
+                                    log.(u'Discarding torrent because it doesn't meet the'
                                                u' minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
@@ -146,7 +146,7 @@ class GFTrackerProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                             if mode != 'RSS':
-                                logger.log(u'Found result: {} with {} seeders and {} leechers'.format
+                                log.(u'Found result: {} with {} seeders and {} leechers'.format
                                            (title, seeders, leechers), logger.DEBUG)
 
                             items.append(item)

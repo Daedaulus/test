@@ -40,19 +40,19 @@ class TorrentProjectProvider(TorrentProvider):  # pylint: disable=too-many-insta
 
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 search_params['s'] = search_string
 
                 if self.custom_url:
                     if not validators.url(self.custom_url):
-                        logger.log('Invalid custom url set, please check your settings', logger.WARNING)
+                        log.warn('Invalid custom url set, please check your settings')
                         return results
                     search_url = self.custom_url
                 else:
@@ -60,7 +60,7 @@ class TorrentProjectProvider(TorrentProvider):  # pylint: disable=too-many-insta
 
                 torrents = self.get_url(search_url, params=search_params, returns='json')
                 if not (torrents and 'total_found' in torrents and int(torrents['total_found']) > 0):
-                    logger.log(u'Data returned from provider does not contain any torrents', logger.DEBUG)
+                    log.(u'Data returned from provider does not contain any torrents', logger.DEBUG)
                     continue
 
                 del torrents['total_found']
@@ -72,7 +72,7 @@ class TorrentProjectProvider(TorrentProvider):  # pylint: disable=too-many-insta
                     leechers = try_int(torrents[i]['leechs'], 0)
                     if seeders < self.minseed or leechers < self.minleech:
                         if mode != 'RSS':
-                            logger.log(u'Torrent doesn't meet minimum seeds & leechers not selecting : %s' % title, logger.DEBUG)
+                            log.(u'Torrent doesn't meet minimum seeds & leechers not selecting : %s' % title, logger.DEBUG)
                         continue
 
                     t_hash = torrents[i]['torrent_hash']
@@ -82,11 +82,11 @@ class TorrentProjectProvider(TorrentProvider):  # pylint: disable=too-many-insta
                     try:
                         assert seeders < 10
                         assert mode != 'RSS'
-                        logger.log(u'Torrent has less than 10 seeds getting dyn trackers: ' + title, logger.DEBUG)
+                        log.(u'Torrent has less than 10 seeds getting dyn trackers: ' + title, logger.DEBUG)
 
                         if self.custom_url:
                             if not validators.url(self.custom_url):
-                                logger.log('Invalid custom url set, please check your settings', logger.WARNING)
+                                log.warn('Invalid custom url set, please check your settings')
                                 return results
                             trackers_url = self.custom_url
                         else:
@@ -107,7 +107,7 @@ class TorrentProjectProvider(TorrentProvider):  # pylint: disable=too-many-insta
                     item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': t_hash}
 
                     if mode != 'RSS':
-                        logger.log(u'Found result: {} with {} seeders and {} leechers'.format
+                        log.(u'Found result: {} with {} seeders and {} leechers'.format
                                    (title, seeders, leechers), logger.DEBUG)
 
                     items.append(item)

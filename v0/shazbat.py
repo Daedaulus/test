@@ -35,7 +35,7 @@ class ShazbatProvider(TorrentProvider):
         if not self.passkey:
             self._check_auth()
         elif not (data['entries'] and data['feed']):
-            logger.log('Invalid username or password. Check your settings', logger.WARNING)
+            log.warn('Invalid username or password. Check your settings')
 
         return True
 

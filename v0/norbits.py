@@ -35,8 +35,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         if 'status' in parsed_json and 'message' in parsed_json:
             if parsed_json.get('status') == 3:
-                logger.log('Invalid username or password. '
-                           'Check your settings', logger.WARNING)
+                log.warn('Invalid username or password. Check your settings')
 
         return True
 
@@ -47,11 +46,11 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_params:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_params[mode]:
                 if mode != 'RSS':
-                    logger.log('Search string: {}'.format
+                    log.('Search string: {}'.format
                                (search_string.decode('utf-8')), logger.DEBUG)
 
                 post_data = {
@@ -72,7 +71,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                 if self._checkAuthFromData(parsed_json):
                     json_items = parsed_json.get('data', '')
                     if not json_items:
-                        logger.log('Resulting JSON from provider is not correct, '
+                        log.('Resulting JSON from provider is not correct, '
                                    'not parsing it', logger.ERROR)
 
                     for item in json_items.get('torrents', []):
@@ -88,7 +87,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         leechers = try_int(item.pop('leechers', 0))
 
                         if seeders < self.minseed or leechers < self.minleech:
-                            logger.log('Discarding torrent because it does not meet '
+                            log.('Discarding torrent because it does not meet '
                                        'the minimum seeders or leechers: {} (S:{} L:{})'.format
                                        (title, seeders, leechers), logger.DEBUG)
                             continue
@@ -98,7 +97,7 @@ class NorbitsProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
                         if mode != 'RSS':
-                            logger.log('Found result: {} with {} seeders and {} leechers'.format(
+                            log.('Found result: {} with {} seeders and {} leechers'.format(
                                 title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)

@@ -132,13 +132,13 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
         data = self.get_url(urljoin(self.url, 'api'), params=url_params, returns='text')
         if not data:
             error_string = 'Error getting caps xml for [{}]'.format(self.name)
-            logger.log(error_string, logger.WARNING)
+            log.warn(error_string)
             return False, return_categories, error_string
 
         with BS4Parser(data, 'html5lib') as html:
             if not html.find('categories'):
                 error_string = 'Error parsing caps xml for [{}]'.format(self.name)
-                logger.log(error_string, logger.DEBUG)
+                log.(error_string, logger.DEBUG)
                 return False, return_categories, error_string
 
             self.set_caps(html.find('searching'))
@@ -155,7 +155,7 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
             return True, return_categories, ''
 
         error_string = 'Error getting xml for [{}]'.format(self.name)
-        logger.log(error_string, logger.WARNING)
+        log.warn(error_string)
         return False, return_categories, error_string
 
     @staticmethod
@@ -173,7 +173,7 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
         Returns: True/False
         """
         if self.needs_auth and not self.key:
-            logger.log('Invalid api key. Check your settings', logger.WARNING)
+            log.warn('Invalid api key. Check your settings')
             return False
 
         return True
@@ -193,7 +193,7 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
         except (AttributeError, TypeError):
             return self._check_auth()
 
-        logger.log(ss(err_desc))
+        log.(ss(err_desc))
 
         return False
 
@@ -219,7 +219,7 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
                 category_ids = values[3]
                 enabled = values[4]
         except ValueError:
-            logger.log('Skipping Newznab provider string: \'{}\', incorrect format'.format(config), logger.ERROR)
+            log.('Skipping Newznab provider string: \'{}\', incorrect format'.format(config), logger.ERROR)
             return None
 
         new_provider = NewznabProvider(
@@ -275,10 +275,10 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
                     search_params.pop('ep', '')
 
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if mode != 'RSS':
-                    logger.log('Search string: {}'.format(search_string.decode('utf-8')), logger.DEBUG)
+                    log.('Search string: {}'.format(search_string.decode('utf-8')), logger.DEBUG)
 
                     if search_params['t'] != 'tvsearch':
                         search_params['q'] = search_string

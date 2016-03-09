@@ -46,11 +46,11 @@ class BlueTigersProvider(TorrentProvider):  # pylint: disable=too-many-instance-
             if re.search('account-logout.php', check_login):
                 return True
             else:
-                logger.log(u'Unable to connect to provider', logger.WARNING)
+                log.warn(u'Unable to connect to provider')
                 return False
 
         if re.search('account-login.php', response):
-            logger.log(u'Invalid username or password. Check your settings', logger.WARNING)
+            log.warn(u'Invalid username or password. Check your settings')
             return False
 
         return True
@@ -62,11 +62,11 @@ class BlueTigersProvider(TorrentProvider):  # pylint: disable=too-many-instance-
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: {}'.format(search_string.decode('utf-8')),
+                    log.(u'Search string: {}'.format(search_string.decode('utf-8')),
                                logger.DEBUG)
 
                 self.search_params['search'] = search_string
@@ -80,7 +80,7 @@ class BlueTigersProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                         result_linkz = html.findAll('a', href=re.compile('torrents-details'))
 
                         if not result_linkz:
-                            logger.log(u'Data returned from provider do not contains any torrent', logger.DEBUG)
+                            log.(u'Data returned from provider do not contains any torrent', logger.DEBUG)
                             continue
 
                         if result_linkz:
@@ -99,18 +99,18 @@ class BlueTigersProvider(TorrentProvider):  # pylint: disable=too-many-instance-
                                 # Filter unseeded torrent
                                 # if seeders < self.minseed or leechers < self.minleech:
                                 #    if mode != 'RSS':
-                                #        logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
+                                #        log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                 #                   (title, seeders, leechers), logger.DEBUG)
                                 #    continue
 
                                 item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
                                 if mode != 'RSS':
-                                    logger.log(u'Found result: %s ' % title, logger.DEBUG)
+                                    log.(u'Found result: %s ' % title, logger.DEBUG)
 
                                 items.append(item)
 
                 except Exception:
-                    logger.log(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.ERROR)
+                    log.(u'Failed parsing provider. Traceback: %s' % traceback.format_exc(), logger.ERROR)
 
             # For each search mode sort all the items by seeders if available
             items.sort(key=lambda d: try_int(d.get('seeders', 0)), reverse=True)

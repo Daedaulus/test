@@ -25,7 +25,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
         if self.username and self.api_key:
             return True
 
-        logger.log('Your authentication credentials for %s are missing, check your config.' % self.name, logger.WARNING)
+        log.warn('Your authentication credentials for %s are missing, check your config.' % self.name)
         return False
 
     def search(self, search_strings, age=0, ep_obj=None):  # pylint: disable=too-many-locals, too-many-branches
@@ -41,7 +41,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
 
         for mode in search_strings:
             items = []
-            logger.log(u'Search Mode: {}'.format(mode), logger.DEBUG)
+            log.(u'Search Mode: {}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
                 if self.freeleech:
                     search_params['fl'] = 'true'
@@ -49,19 +49,19 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                     search_params.pop('fl', '')
 
                 if mode != 'RSS':
-                    logger.log(u'Search string: ' + search_string.strip(), logger.DEBUG)
+                    log.(u'Search string: ' + search_string.strip(), logger.DEBUG)
                     search_params['search'] = search_string
                 else:
                     search_params.pop('search', '')
 
                 jdata = self.get_url(self.urls['search'], params=search_params, returns='json')
                 if not jdata:
-                    logger.log(u'No data returned from provider', logger.DEBUG)
+                    log.(u'No data returned from provider', logger.DEBUG)
                     continue
 
                 try:
                     if jdata['0']['total_results'] == 0:
-                        logger.log(u'Provider has no results for this search', logger.DEBUG)
+                        log.(u'Provider has no results for this search', logger.DEBUG)
                         continue
                 except StandardError:
                     continue
@@ -77,7 +77,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         leechers = jdata[i]['leechers']
                         if seeders < self.minseed or leechers < self.minleech:
                             if mode != 'RSS':
-                                logger.log(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
+                                log.(u'Discarding torrent because it doesn't meet the minimum seeders or leechers: {} (S:{} L:{})'.format
                                            (title, seeders, leechers), logger.DEBUG)
                             continue
 
@@ -86,7 +86,7 @@ class HD4FreeProvider(TorrentProvider):  # pylint: disable=too-many-instance-att
                         item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
 
                         if mode != 'RSS':
-                            logger.log(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
+                            log.(u'Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers), logger.DEBUG)
 
                         items.append(item)
                     except StandardError:

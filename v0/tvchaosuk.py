@@ -46,11 +46,11 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         response = self.get_url(self.urls['login'], post_data=login_params, returns='text')
         if not response:
-            logger.log('Unable to connect to provider', logger.WARNING)
+            log.warn('Unable to connect to provider')
             return False
 
         if re.search('Error: Username or password incorrect!', response):
-            logger.log('Invalid username or password. Check your settings', logger.WARNING)
+            log.warn('Invalid username or password. Check your settings')
             return False
 
         return True
@@ -74,7 +74,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
         for mode in search_strings:
             items = []
-            logger.log('Search Mode: {}'.format(mode), logger.DEBUG)
+            log.('Search Mode: {}'.format(mode), logger.DEBUG)
 
             for search_string in search_strings[mode]:
 
@@ -82,12 +82,12 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                     search_string = re.sub(ur'(.*)Season', ur'\1Series', search_string)
 
                 if mode != 'RSS':
-                    logger.log('Search string: {}'.format(search_string), logger.DEBUG)
+                    log.('Search string: {}'.format(search_string), logger.DEBUG)
 
                 search_params['keywords'] = search_string
                 data = self.get_url(self.urls['search'], post_data=search_params, returns='text')
                 if not data:
-                    logger.log('No data returned from provider', logger.DEBUG)
+                    log.('No data returned from provider', logger.DEBUG)
                     continue
 
                 with BS4Parser(data, 'html5lib') as html:
@@ -96,7 +96,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
 
                     # Continue only if at least one Release is found
                     if len(torrent_rows) < 2:
-                        logger.log('Data returned from provider does not contain any torrents', logger.DEBUG)
+                        log.('Data returned from provider does not contain any torrents', logger.DEBUG)
                         continue
 
                     labels = [label.img['title'] if label.img else label.get_text(strip=True) for label in torrent_rows[0].find_all('td')]
@@ -116,7 +116,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             # Filter unseeded torrent
                             if seeders < self.minseed or leechers < self.minleech:
                                 if mode != 'RSS':
-                                    logger.log('Discarding torrent because it doesn\'t meet the'
+                                    log.('Discarding torrent because it doesn\'t meet the'
                                                ' minimum seeders or leechers: {} (S:{} L:{})'.format
                                                (title, seeders, leechers), logger.DEBUG)
                                 continue
@@ -139,7 +139,7 @@ class TVChaosUKProvider(TorrentProvider):  # pylint: disable=too-many-instance-a
                             size = convert_size(torrent_size, units=units) or -1
 
                             if mode != 'RSS':
-                                logger.log('Found result: {} with {} seeders and {} leechers'.format
+                                log.('Found result: {} with {} seeders and {} leechers'.format
                                            (title, seeders, leechers), logger.DEBUG)
 
                             item = {'title': title, 'link': download_url, 'size': size, 'seeders': seeders, 'leechers': leechers}
