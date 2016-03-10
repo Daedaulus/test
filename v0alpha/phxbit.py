@@ -17,44 +17,62 @@ log.addHandler(logging.NullHandler)
 
 class PhxBitProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://phxbit.com/'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'connect.php'),
+            'search': urljoin(self.url, 'sphinx.php')
+        }
 
         # Credentials
         self.username = None
         self.password = None
+        self.login_params = {
+            'username': self.username,
+            'password': self.password,
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
 
-        # URLs
-        self.url = 'https://phxbit.com'
-        self.urls = {
-            'login': urljoin(self.url, 'connect.php'),
-            'search': urljoin(self.url, 'sphinx.php')
+        # Search Params
+        self.search_params = {
+            'order': 'desc',
+            'sort': 'normal',
+            'group': 'series'
         }
+
+        # Categories
 
         # Proper Strings
         self.proper_strings = [
             'PROPER',
         ]
 
-        # Search Params
+        # Options
 
-    def search(self, search_strings):
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
             return results
-
-        # Search Params
-        search_params = {
-            'order': 'desc',
-            'sort': 'normal',
-            'group': 'series'
-        }
 
         def process_column_header(td):
             col_header = ''
@@ -129,14 +147,14 @@ class PhxBitProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True
-
-        login_params = {
-            'username': self.username,
-            'password': self.password,
-        }
 
         response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
@@ -149,3 +167,7 @@ class PhxBitProvider:
             return False
 
         return True
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

@@ -17,9 +17,18 @@ log.addHandler(logging.NullHandler)
 
 class NyaaProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'http://www.nyaa.se/'
+        self.urls = {
+            'base': self.url,
+        }
 
         # Credentials
         self.public = True
@@ -31,13 +40,26 @@ class NyaaProvider:
         self.min_leech = 0
         self.confirmed = False
 
-        # URLs
-        self.url = 'http://www.nyaa.se'
+        # Search Params
+
+        # Categories
+
+        # Proper Strings
+
+        # Options
 
         # Miscellaneous
         self.regex = re.compile(r'(\d+) seeder\(s\), (\d+) leecher\(s\), \d+ download\(s\) - (\d+.?\d* [KMGT]iB)(.*)', re.DOTALL)
 
-    def search(self, search_strings):
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if self.show and not self.show.is_anime:
@@ -102,3 +124,15 @@ class NyaaProvider:
             results += items
 
         return results
+
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        raise NotImplementedError
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

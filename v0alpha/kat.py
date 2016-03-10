@@ -17,9 +17,20 @@ log.addHandler(logging.NullHandler)
 
 class KatProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
+        # Connection
         self.session = Session()
+
+        # URLs
+        self.url = 'https://kat.cr'
+        self.urls = {
+            'base': self.url,
+            'search': urljoin(self.url, '%s/')
+        }
+        self.custom_url = None
 
         # Credentials
         self.public = True
@@ -29,24 +40,34 @@ class KatProvider:
         self.min_leech = None
         self.confirmed = True
 
-        # URLs
-        self.url = 'https://kat.cr'
-        self.urls = {
-            'search': urljoin(self.url, '%s/')
-        }
-        self.custom_url = None
-
-    def search(self, search_strings, ep_obj=None):
-        results = []
-
-        anime = (self.show and self.show.anime) or (ep_obj and ep_obj.show and ep_obj.show.anime) or False
-        search_params = {
+        # Search Params
+        self.search_params = {
             'q': '',
             'field': 'seeders',
             'sorder': 'desc',
             'rss': 1,
-            'category': ('tv', 'anime')[anime]
+            'category': ('tv', 'anime')
         }
+
+        # Categories
+
+        # Proper Strings
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
+        results = []
+
+        anime = (self.show and self.show.anime) or (ep_obj and ep_obj.show and ep_obj.show.anime) or False
+        search_params['category'] = search_params['category'][anime]
 
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
@@ -85,7 +106,7 @@ class KatProvider:
                             # because we want to use magnets if connecting direct to client
                             # so that proxies work.
                             download_url = item.enclosure['url']
-                            if sickbeard.TORRENT_METHOD != 'blackhole' or 'torcache' not in download_url:
+                            if torrent_method != 'blackhole' or 'torcache' not in download_url:
                                 download_url = item.find('torrent:magneturi').next.replace('CDATA', '').strip('[!]') + self._custom_trackers
 
                             if not (title and download_url):
@@ -121,3 +142,15 @@ class KatProvider:
             results += items
 
         return results
+
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        raise NotImplementedError
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

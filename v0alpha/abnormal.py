@@ -17,9 +17,20 @@ log.addHandler(logging.NullHandler)
 
 class ABNormalProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://abnormal.ws/'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'login.php'),
+            'search': urljoin(self.url, 'torrents.php'),
+        }
 
         # Credentials
         self.username = None
@@ -32,18 +43,6 @@ class ABNormalProvider:
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
-
-        # URLs
-        self.url = 'https://abnormal.ws'
-        self.urls = {
-            'login': urljoin(self.url, 'login.php'),
-            'search': urljoin(self.url, 'torrents.php'),
-        }
-
-        # Proper Strings
-        self.proper_strings = [
-            'PROPER',
-        ]
 
         # Search Params
         self.search_params = {
@@ -60,7 +59,24 @@ class ABNormalProvider:
             'way': 'DESC'  # Both ASC and DESC are available for sort direction
         }
 
-    def search(self, search_strings, search_params):
+        # Categories
+
+        # Proper Strings
+        self.proper_strings = [
+            'PROPER',
+        ]
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
@@ -131,11 +147,16 @@ class ABNormalProvider:
 
         return results
 
-    def login(self, session, login_params):
-        if any(dict_from_cookiejar(session.cookies).values()):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        if any(dict_from_cookiejar(self.session.cookies).values()):
             return True
 
-        response = session.post(self.urls['login'], data=login_params).text
+        response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
             log.warn('Unable to connect to provider')
             return False
@@ -146,3 +167,7 @@ class ABNormalProvider:
             return False
 
         return True
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

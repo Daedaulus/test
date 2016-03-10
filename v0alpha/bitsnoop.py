@@ -17,9 +17,21 @@ log.addHandler(logging.NullHandler)
 
 class BitSnoopProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'http://bitsnoop.com/'
+        self.urls = {
+            'base': self.url,
+            'index': self.url,
+            'search': urljoin(self.url, 'search/video/'),
+            'rss': urljoin(self.url, 'new_video.html?fmt=rss'),
+        }
 
         # Credentials
         self.public = True
@@ -28,13 +40,9 @@ class BitSnoopProvider:
         self.min_seed = None
         self.min_leech = None
 
-        # URLs
-        self.urls = {
-            'index': 'http://bitsnoop.com',
-            'search': 'http://bitsnoop.com/search/video/',
-            'rss': 'http://bitsnoop.com/new_video.html?fmt=rss'
-        }
-        self.url = self.urls['index']
+        # Search Params
+
+        # Categories
 
         # Proper Strings
         self.proper_strings = [
@@ -42,9 +50,17 @@ class BitSnoopProvider:
             'REPACK',
         ]
 
-        # Search Params
+        # Options
 
-    def search(self, search_strings, torrent_method):
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         for mode in search_strings:  # Mode = RSS, Season, Episode
@@ -73,7 +89,9 @@ class BitSnoopProvider:
                                 continue
 
                             title = item.title.text
-                            assert isinstance(title, unicode)
+                            # # For PY2:
+                            # assert isinstance(title, unicode)
+
                             # Use the torcache link bitsnoop provides,
                             # unless it is not torcache or we are not using blackhole
                             # because we want to use magnets if connecting direct to client
@@ -113,3 +131,15 @@ class BitSnoopProvider:
             results += items
 
         return results
+
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        raise NotImplementedError
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

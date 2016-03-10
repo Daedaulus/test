@@ -17,24 +17,38 @@ log.addHandler(logging.NullHandler)
 
 class TorrentLeechProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://torrentleech.org'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'user/account/login/'),
+            'search': urljoin(self.url, 'torrents/browse'),
+        }
 
         # Credentials
         self.username = None
         self.password = None
+        self.login_params = {
+            'username': self.username.encode('utf-8'),
+            'password': self.password.encode('utf-8'),
+            'login': 'submit',
+            'remember_me': 'on',
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
 
-        # URLs
-        self.url = 'https://torrentleech.org'
-        self.urls = {
-            'login': urljoin(self.url, 'user/account/login/'),
-            'search': urljoin(self.url, 'torrents/browse'),
-        }
+        # Search Params
+
+        # Categories
 
         # Proper Strings
         self.proper_strings = [
@@ -42,9 +56,17 @@ class TorrentLeechProvider:
             'REPACK',
         ]
 
-        # Search Params
+        # Options
 
-    def search(self, search_strings):
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
@@ -128,16 +150,14 @@ class TorrentLeechProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True
-
-        login_params = {
-            'username': self.username.encode('utf-8'),
-            'password': self.password.encode('utf-8'),
-            'login': 'submit',
-            'remember_me': 'on',
-        }
 
         response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
@@ -150,3 +170,7 @@ class TorrentLeechProvider:
             return False
 
         return True
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

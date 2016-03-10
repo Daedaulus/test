@@ -17,42 +17,38 @@ log.addHandler(logging.NullHandler)
 
 class RarbgProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://rarbg.com'  # Spec: https://torrentapi.org/apidocs_v2.txt
+        self.urls = {
+            'base': self.url,
+            'api': 'http://torrentapi.org/pubapi_v2.php'
+        }
 
         # Credentials
         self.public = True
         self.token = None
         self.token_expires = None
+        self.login_params = {
+            'get_token': 'get_token',
+            'format': 'json',
+            'app_id': 'medusa'
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
+
+        # Search Params
         self.ranked = None
         self.sorting = None
-
-        # URLs
-        self.url = 'https://rarbg.com'  # Spec: https://torrentapi.org/apidocs_v2.txt
-        self.urls = {
-            'api': 'http://torrentapi.org/pubapi_v2.php'
-        }
-
-        # Proper Strings
-        self.proper_strings = [
-            '{{PROPER|REPACK}}',
-        ]
-
-        # Search Params
-
-    def search(self, search_strings, ep_obj=None):
-        results = []
-
-        if not self.login():
-            return results
-
-        # Search Params
-        search_params = {
+        self.search_params = {
             'app_id': 'sickrage2',
             'category': 'tv',
             'min_seeders': self.min_seed,
@@ -62,6 +58,29 @@ class RarbgProvider:
             'ranked': self.ranked,
             'token': self.token,
         }
+
+        # Categories
+
+        # Proper Strings
+        self.proper_strings = [
+            '{{PROPER|REPACK}}',
+        ]
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
+        results = []
+
+        if not self.login():
+            return results
 
         if ep_obj is not None:
             ep_indexerid = ep_obj.show.indexerid
@@ -123,7 +142,7 @@ class RarbgProvider:
                         seeders = item.pop('seeders')
                         leechers = item.pop('leechers')
 
-                            # Filter unseeded torrent
+                        # Filter unseeded torrent
                         if seeders < self.min_seed or leechers < self.min_leech:
                             if mode != 'RSS':
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
@@ -145,15 +164,14 @@ class RarbgProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if self.token and self.token_expires and datetime.now() < self.token_expires:
             return True
-
-        login_params = {
-            'get_token': 'get_token',
-            'format': 'json',
-            'app_id': 'sickrage2'
-        }
 
         response = self.session.get(self.urls['api'], params=login_params).json()
         if not response:
@@ -164,3 +182,7 @@ class RarbgProvider:
         self.token_expires = datetime.now() + timedelta(minutes=14) if self.token else None
 
         return self.token is not None
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

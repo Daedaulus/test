@@ -17,27 +17,47 @@ log.addHandler(logging.NullHandler)
 
 class TokyoToshokanProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
-
-        # Credentials
-        self.public = True
-        self.supports_absolute_numbering = True
-        self.anime_only = True
-
-        # Torrent Stats
-        self.min_seed = None
-        self.min_leech = None
+        # Connection
+        self.session = kwargs.pop('session', Session())
 
         # URLs
         self.url = 'http://tokyotosho.info/'
         self.urls = {
-            'search': self.url + 'search.php',
-            'rss': self.url + 'rss.php'
+            'base': self.url,
+            'search': urljoin(self.url, 'search.php'),
+            'rss': urljoin(self.url, 'rss.php'),
         }
 
-    def search(self, search_strings):
+        # Credentials
+        self.public = True
+
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
+        self.supports_absolute_numbering = True
+        self.anime_only = True
+
+        # Search Params
+
+        # Categories
+
+        # Proper Strings
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
         if not self.show or not self.show.is_anime:
             return results
@@ -106,3 +126,15 @@ class TokyoToshokanProvider:
             results += items
 
         return results
+
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        raise NotImplementedError
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

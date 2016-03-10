@@ -17,25 +17,45 @@ log.addHandler(logging.NullHandler)
 
 class TorrentBytesProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://www.torrentbytes.net/'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'takelogin.php'),
+            'search': urljoin(self.url, 'browse.php')
+        }
 
         # Credentials
         self.username = None
         self.password = None
+        self.login_params = {
+            'username': self.username,
+            'password': self.password,
+            'login': 'Log in!'
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
         self.freeleech = False
 
-        # URLs
-        self.url = 'https://www.torrentbytes.net'
-        self.urls = {
-            'login': urljoin(self.url, 'takelogin.php'),
-            'search': urljoin(self.url, 'browse.php')
+        # Search Params
+        self.search_params = {
+            'c41': 1,
+            'c33': 1,
+            'c38': 1,
+            'c32': 1,
+            'c37': 1
         }
+
+        # Categories
 
         # Proper Strings
         self.proper_strings = [
@@ -43,18 +63,21 @@ class TorrentBytesProvider:
             'REPACK',
         ]
 
-        # Search Params
+        # Options
 
-    def search(self, search_strings):
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
             return results
-
-        # Search Params
-        search_params = {
-            'c41': 1, 'c33': 1, 'c38': 1, 'c32': 1, 'c37': 1
-        }
 
         for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
@@ -124,15 +147,14 @@ class TorrentBytesProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True
-
-        login_params = {
-            'username': self.username,
-            'password': self.password,
-            'login': 'Log in!'
-        }
 
         response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
@@ -145,3 +167,7 @@ class TorrentBytesProvider:
             return False
 
         return True
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError

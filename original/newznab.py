@@ -212,7 +212,7 @@ class NewznabProvider(NZBProvider):  # pylint: disable=too-many-instance-attribu
     def _checkAuthFromData(self, data):
         """
         Checks that the returned data is valid
-        Returns: _check_auth if valid otherwise False if there is an error
+        Returns: check_auth if valid otherwise False if there is an error
         """
         if data.find_all('categories') + data.find_all('item'):
             return self._check_auth()

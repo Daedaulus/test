@@ -17,26 +17,34 @@ log.addHandler(logging.NullHandler)
 
 class IPTorrentsProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'https://iptorrents.eu/'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'torrents/'),
+            'search': urljoin(self.url, 't?%s%s&q=%s&qf=#torrents'),
+        }
 
         # Credentials
         self.username = None
         self.password = None
+        self.login_params = {
+            'username': self.username,
+            'password': self.password,
+            'login': 'submit',
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
         self.freeleech = False
-
-        # URLs
-        self.urls = {
-            'base_url': 'https://iptorrents.eu',
-            'login': 'https://iptorrents.eu/torrents/',
-            'search': 'https://iptorrents.eu/t?%s%s&q=%s&qf=#torrents'
-        }
-        self.url = self.urls['base_url']
 
         # Proper Strings
 
@@ -45,7 +53,19 @@ class IPTorrentsProvider:
         # Categories
         self.categories = '73=&60='
 
-    def search(self, search_strings):
+        # Proper Strings
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
@@ -91,7 +111,7 @@ class IPTorrentsProvider:
                         for result in torrents[1:]:
                             try:
                                 title = result('td')[1].find('a').text
-                                download_url = self.urls['base_url'] + result('td')[3].find('a')['href']
+                                download_url = self.urls['base'] + result('td')[3].find('a')['href']
                                 seeders = int(result.find('td', attrs={'class': 'ac t_seeders'}).text)
                                 leechers = int(result.find('td', attrs={'class': 'ac t_leechers'}).text)
                                 torrent_size = result('td')[5].text
@@ -121,17 +141,16 @@ class IPTorrentsProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if any(dict_from_cookiejar(self.session.cookies).values()):
             return True
 
-        login_params = {
-            'username': self.username,
-            'password': self.password,
-            'login': 'submit',
-        }
-
-        self.session.get(self.urls['login']).text
+        _ = self.session.get(self.urls['login'])  # Using get first for cookies?
         response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
             log.warn('Unable to connect to provider')
@@ -149,9 +168,8 @@ class IPTorrentsProvider:
 
         return True
 
-    def _check_auth(self):
-
+    # Validate login
+    def check_auth(self):
         if not self.username or not self.password:
             raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
-
         return True

@@ -17,34 +17,39 @@ log.addHandler(logging.NullHandler)
 
 class TNTVillageProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
+        # Connection
+        self.session = kwargs.pop('session', Session())
+
+        # URLs
+        self.url = 'http://forum.tntvillage.scambioetico.org'
+        self.urls = {
+            'base': self.url,
+            'login': urljoin(self.url, 'index.php?act=Login&CODE=01'),
+            'search': urljoin(self.url, '?act=allreleases&%s'),
+            'search_page': urljoin(self.url, '?act=allreleases&st={0}&{1}'),
+            'detail': urljoin(self.url, 'index.php?showtopic=%s'),
+            'download': urljoin(self.url, 'index.php?act=Attach&type=post&id=%s')
+        }
 
         # Credentials
         self.username = None
         self.password = None
         self._uid = None
         self._hash = None
+        self.login_params = {
+            'UserName': self.username,
+            'PassWord': self.password,
+            'CookieDate': 1,
+            'submit': 'Connettiti al Forum'
+        }
 
         # Torrent Stats
         self.min_seed = None
         self.min_leech = None
-        self.cat = None
-        self.engrelease = None
-        self.page = 10
-        self.subtitle = None
-
-        # URLs
-        self.urls = {
-            'base_url': 'http://forum.tntvillage.scambioetico.org',
-            'login': 'http://forum.tntvillage.scambioetico.org/index.php?act=Login&CODE=01',
-            'detail': 'http://forum.tntvillage.scambioetico.org/index.php?showtopic=%s',
-            'search': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&%s',
-            'search_page': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&st={0}&{1}',
-            'download': 'http://forum.tntvillage.scambioetico.org/index.php?act=Attach&type=post&id=%s'
-        }
-        self.url = self.urls['base_url']
 
         # Proper Strings
         self.proper_strings = [
@@ -52,6 +57,9 @@ class TNTVillageProvider:
             'REPACK',
         ]
 
+        # Search Params
+
+        # Categories
         self.category_dict = {
             'Serie TV': 29,
             'Cartoni': 8,
@@ -61,12 +69,10 @@ class TNTVillageProvider:
             'All': 0
         }
         self.categories = 'cat=29'
-
         self.sub_string = [
             'sub',
             'softsub'
         ]
-
         self.hdtext = [
             ' - Versione 720p',
             ' Versione 720p',
@@ -82,7 +88,23 @@ class TNTVillageProvider:
             ' 720p',
         ]
 
-    def search(self, search_strings):
+        # Proper Strings
+
+        # Options
+        self.cat = None
+        self.engrelease = None
+        self.page = 10
+        self.subtitle = None
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         if not self.login():
@@ -206,17 +228,15 @@ class TNTVillageProvider:
 
         return results
 
-    def login(self):
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
         if len(self.session.cookies) >= 3:
             if self.session.cookies.get('pass_hash', '') not in ('0', 0) and self.session.cookies.get('member_id') not in ('0', 0):
                 return True
-
-        login_params = {
-            'UserName': self.username,
-            'PassWord': self.password,
-            'CookieDate': 1,
-            'submit': 'Connettiti al Forum'
-        }
 
         response = self.session.post(self.urls['login'], data=login_params).text
         if not response:
@@ -230,11 +250,10 @@ class TNTVillageProvider:
 
         return True
 
-    def _check_auth(self):
-
+    # Validate login
+    def check_auth(self):
         if not self.username or not self.password:
             raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
-
         return True
 
     @staticmethod
@@ -353,7 +372,6 @@ class TNTVillageProvider:
 
     @staticmethod
     def _is_season_pack(name):
-
         try:
             parse_result = NameParser(tryIndexers=True).parse(name)
         except (InvalidNameException, InvalidShowException) as error:

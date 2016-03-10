@@ -17,31 +17,46 @@ log.addHandler(logging.NullHandler)
 
 class TorrentzProvider:
 
-    def __init__(self):
+    def __init__(self, name, **kwargs):
+        # Name
+        self.name = name
 
-        self.session = Session()
-
-        # Credentials
-        self.public = True
-        self.confirmed = True
-
-        # Torrent Stats
-        self.min_seed = None
-        self.min_leech = None
+        # Connection
+        self.session = kwargs.pop('session', Session())
 
         # URLs
         self.url = 'https://torrentz.eu/'
         self.urls = {
-            'verified': 'https://torrentz.eu/feed_verified',
-            'feed': 'https://torrentz.eu/feed',
             'base': self.url,
+            'verified': urljoin(self.url, 'feed_verified'),
+            'feed': urljoin(self.url, 'feed'),
         }
 
-        # Proper Strings
+        # Credentials
+        self.public = True
+
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
+        self.confirmed = True
 
         # Search Params
 
-    def search(self, search_strings):
+        # Categories
+
+        # Proper Strings
+
+        # Options
+
+    # Search page
+    def search(
+        self,
+        search_strings,
+        search_params,
+        torrent_method=None,
+        ep_obj=None,
+        *args, **kwargs
+    ):
         results = []
 
         for mode in search_strings:  # Mode = RSS, Season, Episode
@@ -92,6 +107,18 @@ class TorrentzProvider:
             results += items
 
         return results
+
+    # Parse page for results
+    def parse(self):
+        raise NotImplementedError
+
+    # Log in
+    def login(self, login_params):
+        raise NotImplementedError
+
+    # Validate login
+    def check_auth(self):
+        raise NotImplementedError
 
     @staticmethod
     def _split_description(description):
