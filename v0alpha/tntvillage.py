@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -17,220 +21,80 @@ class TNTVillageProvider:
 
         self.session = Session()
 
-        self._uid = None
-        self._hash = None
+        # Credentials
         self.username = None
         self.password = None
+        self._uid = None
+        self._hash = None
+
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
         self.cat = None
         self.engrelease = None
         self.page = 10
         self.subtitle = None
-        self.minseed = None
-        self.minleech = None
 
-        self.hdtext = [' - Versione 720p',
-                       ' Versione 720p',
-                       ' V 720p',
-                       ' V 720',
-                       ' V HEVC',
-                       ' V  HEVC',
-                       ' V 1080',
-                       ' Versione 1080p',
-                       ' 720p HEVC',
-                       ' Ver 720',
-                       ' 720p HEVC',
-                       ' 720p']
-
-        self.category_dict = {'Serie TV': 29,
-                              'Cartoni': 8,
-                              'Anime': 7,
-                              'Programmi e Film TV': 1,
-                              'Documentari': 14,
-                              'All': 0}
-
-        self.urls = {'base_url': 'http://forum.tntvillage.scambioetico.org',
-                     'login': 'http://forum.tntvillage.scambioetico.org/index.php?act=Login&CODE=01',
-                     'detail': 'http://forum.tntvillage.scambioetico.org/index.php?showtopic=%s',
-                     'search': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&%s',
-                     'search_page': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&st={0}&{1}',
-                     'download': 'http://forum.tntvillage.scambioetico.org/index.php?act=Attach&type=post&id=%s'}
-
+        # URLs
+        self.urls = {
+            'base_url': 'http://forum.tntvillage.scambioetico.org',
+            'login': 'http://forum.tntvillage.scambioetico.org/index.php?act=Login&CODE=01',
+            'detail': 'http://forum.tntvillage.scambioetico.org/index.php?showtopic=%s',
+            'search': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&%s',
+            'search_page': 'http://forum.tntvillage.scambioetico.org/?act=allreleases&st={0}&{1}',
+            'download': 'http://forum.tntvillage.scambioetico.org/index.php?act=Attach&type=post&id=%s'
+        }
         self.url = self.urls['base_url']
 
-        self.sub_string = ['sub', 'softsub']
+        # Proper Strings
+        self.proper_strings = [
+            'PROPER',
+            'REPACK',
+        ]
 
-        self.proper_strings = ['PROPER', 'REPACK']
-
+        self.category_dict = {
+            'Serie TV': 29,
+            'Cartoni': 8,
+            'Anime': 7,
+            'Programmi e Film TV': 1,
+            'Documentari': 14,
+            'All': 0
+        }
         self.categories = 'cat=29'
 
-    def _check_auth(self):
+        self.sub_string = [
+            'sub',
+            'softsub'
+        ]
 
-        if not self.username or not self.password:
-            raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
+        self.hdtext = [
+            ' - Versione 720p',
+            ' Versione 720p',
+            ' V 720p',
+            ' V 720',
+            ' V HEVC',
+            ' V  HEVC',
+            ' V 1080',
+            ' Versione 1080p',
+            ' 720p HEVC',
+            ' Ver 720',
+            ' 720p HEVC',
+            ' 720p',
+        ]
 
-        return True
-
-    def login(self):
-        if len(self.session.cookies) >= 3:
-            if self.session.cookies.get('pass_hash', '') not in ('0', 0) and self.session.cookies.get('member_id') not in ('0', 0):
-                return True
-
-        login_params = {'UserName': self.username,
-                        'PassWord': self.password,
-                        'CookieDate': 1,
-                        'submit': 'Connettiti al Forum'}
-
-        response = self.session.post(self.urls['login'], data=login_params, returns='text')
-        if not response:
-            log.warn('Unable to connect to provider')
-            return False
-
-        if re.search('Sono stati riscontrati i seguenti errori', response) or re.search('<title>Connettiti</title>', response):
-            log.warn('Invalid username or password. Check your settings')
-            return False
-
-        return True
-
-    @staticmethod
-    def _reverseQuality(quality):
-
-        quality_string = ''
-
-        if quality == Quality.SDTV:
-            quality_string = ' HDTV x264'
-        if quality == Quality.SDDVD:
-            quality_string = ' DVDRIP'
-        elif quality == Quality.HDTV:
-            quality_string = ' 720p HDTV x264'
-        elif quality == Quality.FULLHDTV:
-            quality_string = ' 1080p HDTV x264'
-        elif quality == Quality.RAWHDTV:
-            quality_string = ' 1080i HDTV mpeg2'
-        elif quality == Quality.HDWEBDL:
-            quality_string = ' 720p WEB-DL h264'
-        elif quality == Quality.FULLHDWEBDL:
-            quality_string = ' 1080p WEB-DL h264'
-        elif quality == Quality.HDBLURAY:
-            quality_string = ' 720p Bluray x264'
-        elif quality == Quality.FULLHDBLURAY:
-            quality_string = ' 1080p Bluray x264'
-
-        return quality_string
-
-    @staticmethod
-    def _episodeQuality(torrent_rows):
-        file_quality = ''
-
-        img_all = (torrent_rows('td'))[1]('img')
-
-        if len(img_all) > 0:
-            for img_type in img_all:
-                try:
-                    file_quality = file_quality + ' ' + img_type['src'].replace('style_images/mkportal-636/', '').replace('.gif', '').replace('.png', '')
-                except Exception:
-                    log.error('Failed parsing quality. Traceback: %s' % traceback.format_exc())
-
-        else:
-            file_quality = (torrent_rows('td'))[1].get_text()
-            log.debug('Episode quality: %s' % file_quality)
-
-        def checkName(options, func):
-            return func([re.search(option, file_quality, re.I) for option in options])
-
-        dvdOptions = checkName(['dvd', 'dvdrip', 'dvdmux', 'DVD9', 'DVD5'], any)
-        bluRayOptions = checkName(['BD', 'BDmux', 'BDrip', 'BRrip', 'Bluray'], any)
-        sdOptions = checkName(['h264', 'divx', 'XviD', 'tv', 'TVrip', 'SATRip', 'DTTrip', 'Mpeg2'], any)
-        hdOptions = checkName(['720p'], any)
-        fullHD = checkName(['1080p', 'fullHD'], any)
-
-        if len(img_all) > 0:
-            file_quality = (torrent_rows('td'))[1].get_text()
-
-        webdl = checkName(['webdl', 'webmux', 'webrip', 'dl-webmux', 'web-dlmux', 'webdl-mux', 'web-dl', 'webdlmux', 'dlmux'], any)
-
-        if sdOptions and not dvdOptions and not fullHD and not hdOptions:
-            return Quality.SDTV
-        elif dvdOptions:
-            return Quality.SDDVD
-        elif hdOptions and not bluRayOptions and not fullHD and not webdl:
-            return Quality.HDTV
-        elif not hdOptions and not bluRayOptions and fullHD and not webdl:
-            return Quality.FULLHDTV
-        elif hdOptions and not bluRayOptions and not fullHD and webdl:
-            return Quality.HDWEBDL
-        elif not hdOptions and not bluRayOptions and fullHD and webdl:
-            return Quality.FULLHDWEBDL
-        elif bluRayOptions and hdOptions and not fullHD:
-            return Quality.HDBLURAY
-        elif bluRayOptions and fullHD and not hdOptions:
-            return Quality.FULLHDBLURAY
-        else:
-            return Quality.UNKNOWN
-
-    def _is_italian(self, torrent_rows):
-
-        name = str(torrent_rows('td')[1].find('b').find('span'))
-        if not name or name == 'None':
-            return False
-
-        subFound = italian = False
-        for sub in self.sub_string:
-            if re.search(sub, name, re.I):
-                subFound = True
-            else:
-                continue
-
-            if re.search('ita', name.split(sub)[0], re.I):
-                log.debug('Found Italian release:  ' + name)
-                italian = True
-                break
-
-        if not subFound and re.search('ita', name, re.I):
-            log.debug('Found Italian release:  ' + name)
-            italian = True
-
-        return italian
-
-    @staticmethod
-    def _is_english(torrent_rows):
-
-        name = str(torrent_rows('td')[1].find('b').find('span'))
-        if not name or name == 'None':
-            return False
-
-        english = False
-        if re.search('eng', name, re.I):
-            log.debug('Found English release:  ' + name)
-            english = True
-
-        return english
-
-    @staticmethod
-    def _is_season_pack(name):
-
-        try:
-            parse_result = NameParser(tryIndexers=True).parse(name)
-        except (InvalidNameException, InvalidShowException) as error:
-            log.debug('{}'.format(error))
-            return False
-
-        main_db_con = db.DBConnection()
-        sql_selection = 'select count(*) as count from tv_episodes where showid = ? and season = ?'
-        episodes = main_db_con.select(sql_selection, [parse_result.show.indexerid, parse_result.season_number])
-        if int(episodes[0]['count']) == len(parse_result.episode_numbers):
-            return True
-
-    def search(self, search_params, age=0, ep_obj=None):
+    def search(self, search_strings):
         results = []
+
         if not self.login():
             return results
 
         self.categories = 'cat=' + str(self.cat)
 
-        for mode in search_params:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
-            for search_string in search_params[mode]:
+
+            for search_string in search_strings[mode]:
 
                 if mode == 'RSS':
                     self.page = 2
@@ -249,14 +113,12 @@ class TNTVillageProvider:
                         break
 
                     if mode != 'RSS':
+                        log.debug('Search string: {}'.format(search_string.decode('utf-8')))
                         search_url = (self.urls['search_page'] + '&filter={2}').format(z, self.categories, search_string)
                     else:
                         search_url = self.urls['search_page'].format(z, self.categories)
 
-                    if mode != 'RSS':
-                        log.debug('Search string: {}'.format(search_string.decode('utf-8')))
-
-                    data = self.session.get(search_url, returns='text')
+                    data = self.session.get(search_url).text
                     if not data:
                         log.debug('No data returned from provider')
                         continue
@@ -266,7 +128,7 @@ class TNTVillageProvider:
                             torrent_table = html.find('table', attrs={'class': 'copyright'})
                             torrent_rows = torrent_table('tr') if torrent_table else []
 
-                            # Continue only if one Release is found
+                            # Continue only if at least one Release is found
                             if len(torrent_rows) < 3:
                                 log.debug('Data returned from provider does not contain any torrents')
                                 last_page = 1
@@ -275,6 +137,7 @@ class TNTVillageProvider:
                             if len(torrent_rows) < 42:
                                 last_page = 1
 
+                            # Skip column headers
                             for result in torrent_table('tr')[2:]:
 
                                 try:
@@ -289,7 +152,7 @@ class TNTVillageProvider:
                                 except (AttributeError, TypeError):
                                     continue
 
-                                filename_qt = self._reverseQuality(self._episodeQuality(result))
+                                filename_qt = self._reverse_quality(self._episode_quality(result))
                                 for text in self.hdtext:
                                     title1 = title
                                     title = title.replace(text, filename_qt)
@@ -324,14 +187,15 @@ class TNTVillageProvider:
                                     title = re.sub(r'([Ee][\d{1,2}\-?]+)', '', title)
 
                                 # Filter unseeded torrent
-                                if seeders < self.minseed or leechers < self.minleech:
+                                if seeders < self.min_seed or leechers < self.min_leech:
                                     if mode != 'RSS':
                                         log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                     continue
 
                                 item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+
                                 if mode != 'RSS':
-                                    log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
+                                    log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                                 items.append(item)
 
@@ -341,3 +205,163 @@ class TNTVillageProvider:
                 results += items
 
         return results
+
+    def login(self):
+        if len(self.session.cookies) >= 3:
+            if self.session.cookies.get('pass_hash', '') not in ('0', 0) and self.session.cookies.get('member_id') not in ('0', 0):
+                return True
+
+        login_params = {
+            'UserName': self.username,
+            'PassWord': self.password,
+            'CookieDate': 1,
+            'submit': 'Connettiti al Forum'
+        }
+
+        response = self.session.post(self.urls['login'], data=login_params).text
+        if not response:
+            log.warn('Unable to connect to provider')
+            return False
+
+        # Invalid username and password combination
+        if re.search('Sono stati riscontrati i seguenti errori', response) or re.search('<title>Connettiti</title>', response):
+            log.warn('Invalid username or password. Check your settings')
+            return False
+
+        return True
+
+    def _check_auth(self):
+
+        if not self.username or not self.password:
+            raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
+
+        return True
+
+    @staticmethod
+    def _reverse_quality(quality):
+
+        quality_string = ''
+
+        if quality == Quality.SDTV:
+            quality_string = ' HDTV x264'
+        if quality == Quality.SDDVD:
+            quality_string = ' DVDRIP'
+        elif quality == Quality.HDTV:
+            quality_string = ' 720p HDTV x264'
+        elif quality == Quality.FULLHDTV:
+            quality_string = ' 1080p HDTV x264'
+        elif quality == Quality.RAWHDTV:
+            quality_string = ' 1080i HDTV mpeg2'
+        elif quality == Quality.HDWEBDL:
+            quality_string = ' 720p WEB-DL h264'
+        elif quality == Quality.FULLHDWEBDL:
+            quality_string = ' 1080p WEB-DL h264'
+        elif quality == Quality.HDBLURAY:
+            quality_string = ' 720p Bluray x264'
+        elif quality == Quality.FULLHDBLURAY:
+            quality_string = ' 1080p Bluray x264'
+
+        return quality_string
+
+    @staticmethod
+    def _episode_quality(torrent_rows):
+        file_quality = ''
+
+        img_all = (torrent_rows('td'))[1]('img')
+
+        if len(img_all) > 0:
+            for img_type in img_all:
+                try:
+                    file_quality = file_quality + ' ' + img_type['src'].replace('style_images/mkportal-636/', '').replace('.gif', '').replace('.png', '')
+                except Exception:
+                    log.error('Failed parsing quality. Traceback: %s' % traceback.format_exc())
+
+        else:
+            file_quality = (torrent_rows('td'))[1].get_text()
+            log.debug('Episode quality: %s' % file_quality)
+
+        def check_name(options, func):
+            return func([re.search(option, file_quality, re.I) for option in options])
+
+        dvd_options = check_name(['dvd', 'dvdrip', 'dvdmux', 'DVD9', 'DVD5'], any)
+        bluray_options = check_name(['BD', 'BDmux', 'BDrip', 'BRrip', 'Bluray'], any)
+        sd_options = check_name(['h264', 'divx', 'XviD', 'tv', 'TVrip', 'SATRip', 'DTTrip', 'Mpeg2'], any)
+        hd_options = check_name(['720p'], any)
+        full_hd = check_name(['1080p', 'fullHD'], any)
+
+        if len(img_all) > 0:
+            file_quality = (torrent_rows('td'))[1].get_text()
+
+        webdl = check_name(['webdl', 'webmux', 'webrip', 'dl-webmux', 'web-dlmux', 'webdl-mux', 'web-dl', 'webdlmux', 'dlmux'], any)
+
+        if sd_options and not dvd_options and not full_hd and not hd_options:
+            return Quality.SDTV
+        elif dvd_options:
+            return Quality.SDDVD
+        elif hd_options and not bluray_options and not full_hd and not webdl:
+            return Quality.HDTV
+        elif not hd_options and not bluray_options and full_hd and not webdl:
+            return Quality.FULLHDTV
+        elif hd_options and not bluray_options and not full_hd and webdl:
+            return Quality.HDWEBDL
+        elif not hd_options and not bluray_options and full_hd and webdl:
+            return Quality.FULLHDWEBDL
+        elif bluray_options and hd_options and not full_hd:
+            return Quality.HDBLURAY
+        elif bluray_options and full_hd and not hd_options:
+            return Quality.FULLHDBLURAY
+        else:
+            return Quality.UNKNOWN
+
+    def _is_italian(self, torrent_rows):
+
+        name = str(torrent_rows('td')[1].find('b').find('span'))
+        if not name or name == 'None':
+            return False
+
+        sub_found = italian = False
+        for sub in self.sub_string:
+            if re.search(sub, name, re.I):
+                sub_found = True
+            else:
+                continue
+
+            if re.search('ita', name.split(sub)[0], re.I):
+                log.debug('Found Italian release:  ' + name)
+                italian = True
+                break
+
+        if not sub_found and re.search('ita', name, re.I):
+            log.debug('Found Italian release:  ' + name)
+            italian = True
+
+        return italian
+
+    @staticmethod
+    def _is_english(torrent_rows):
+
+        name = str(torrent_rows('td')[1].find('b').find('span'))
+        if not name or name == 'None':
+            return False
+
+        english = False
+        if re.search('eng', name, re.I):
+            log.debug('Found English release:  ' + name)
+            english = True
+
+        return english
+
+    @staticmethod
+    def _is_season_pack(name):
+
+        try:
+            parse_result = NameParser(tryIndexers=True).parse(name)
+        except (InvalidNameException, InvalidShowException) as error:
+            log.debug('{}'.format(error))
+            return False
+
+        main_db_con = db.DBConnection()
+        sql_selection = 'select count(*) as count from tv_episodes where showid = ? and season = ?'
+        episodes = main_db_con.select(sql_selection, [parse_result.show.indexerid, parse_result.season_number])
+        if int(episodes[0]['count']) == len(parse_result.episode_numbers):
+            return True

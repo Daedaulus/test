@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -17,18 +21,22 @@ class KatProvider:
 
         self.session = Session()
 
+        # Credentials
         self.public = True
 
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
         self.confirmed = True
-        self.minseed = None
-        self.minleech = None
 
+        # URLs
         self.url = 'https://kat.cr'
-        self.urls = {'search': urljoin(self.url, '%s/')}
-
+        self.urls = {
+            'search': urljoin(self.url, '%s/')
+        }
         self.custom_url = None
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings, ep_obj=None):
         results = []
 
         anime = (self.show and self.show.anime) or (ep_obj and ep_obj.show and ep_obj.show.anime) or False
@@ -40,9 +48,10 @@ class KatProvider:
             'category': ('tv', 'anime')[anime]
         }
 
-        for mode in search_strings:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
+
             for search_string in search_strings[mode]:
 
                 search_params['q'] = search_string if mode != 'RSS' else ''
@@ -58,7 +67,7 @@ class KatProvider:
                         return results
                     search_url = urljoin(self.custom_url, search_url.split(self.url)[1])
 
-                data = self.session.get(search_url, params=search_params, returns='text')
+                data = self.session.get(search_url, params=search_params).text
                 if not data:
                     log.debug('URL did not return data, maybe try a custom url, or a different one')
                     continue
@@ -86,7 +95,7 @@ class KatProvider:
                             leechers = item.find('torrent:peers').get_text(strip=True)
 
                             # Filter unseeded torrent
-                            if seeders < self.minseed or leechers < self.minleech:
+                            if seeders < self.min_seed or leechers < self.min_leech:
                                 if mode != 'RSS':
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue

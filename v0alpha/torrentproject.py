@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
-import re
+# import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -21,18 +25,21 @@ class TorrentProjectProvider:
         self.public = True
 
         # Torrent Stats
-        self.minseed = None
-        self.minleech = None
+        self.min_seed = None
+        self.min_leech = None
 
         # URLs
         self.url = 'https://torrentproject.se/'
-
         self.custom_url = None
-        self.headers.update({'User-Agent': USER_AGENT})
 
-    def search(self, search_strings, age=0, ep_obj=None):
+        # Proper Strings
+
+        # Search Params
+
+    def search(self, search_strings):
         results = []
 
+        # Search Params
         search_params = {
             'out': 'json',
             'filter': 2101,
@@ -58,7 +65,7 @@ class TorrentProjectProvider:
                 else:
                     search_url = self.url
 
-                torrents = self.session.get(search_url, params=search_params, returns='json')
+                torrents = self.session.get(search_url, params=search_params).json()
                 if not (torrents and 'total_found' in torrents and int(torrents['total_found']) > 0):
                     log.debug('Data returned from provider does not contain any torrents')
                     continue
@@ -70,7 +77,7 @@ class TorrentProjectProvider:
                     title = torrents[i]['title']
                     seeders = torrents[i]['seeds']
                     leechers = torrents[i]['leechs']
-                    if seeders < self.minseed or leechers < self.minleech:
+                    if seeders < self.min_seed or leechers < self.min_leech:
                         if mode != 'RSS':
                             log.debug('Torrent doesn\'t meet minimum seeds & leechers not selecting : %s' % title)
                         continue
@@ -93,7 +100,7 @@ class TorrentProjectProvider:
 
                         trackers_url = urljoin(trackers_url, t_hash)
                         trackers_url = urljoin(trackers_url, '/trackers_json')
-                        jdata = self.session.get(trackers_url, returns='json')
+                        jdata = self.session.get(trackers_url).json()
 
                         assert jdata != 'maintenance'
                         download_url = 'magnet:?xt=urn:btih:' + t_hash + '&dn=' + title + ''.join(['&tr=' + s for s in jdata])

@@ -1,11 +1,14 @@
+from datetime import datetime, timedelta
 import logging
-# import re
+import re
+from time import sleep
 import traceback
 
+import validators
 from requests import Session
-# from requests.compat import urljoin
-# from requests.utils import dict_from_cookiejar
-#
+from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
+
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
@@ -18,23 +21,33 @@ class BitSnoopProvider:
 
         self.session = Session()
 
+        # Credentials
+        self.public = True
+
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
+
+        # URLs
         self.urls = {
             'index': 'http://bitsnoop.com',
             'search': 'http://bitsnoop.com/search/video/',
             'rss': 'http://bitsnoop.com/new_video.html?fmt=rss'
         }
-
         self.url = self.urls['index']
 
-        self.public = True
-        self.minseed = None
-        self.minleech = None
+        # Proper Strings
+        self.proper_strings = [
+            'PROPER',
+            'REPACK',
+        ]
 
-        self.proper_strings = ['PROPER', 'REPACK']
+        # Search Params
 
     def search(self, search_strings, torrent_method):
         results = []
-        for mode in search_strings:
+
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
             for search_string in search_strings[mode]:
@@ -44,8 +57,7 @@ class BitSnoopProvider:
 
                 try:
                     search_url = (self.urls['rss'], self.urls['search'] + search_string + '/s/d/1/?fmt=rss')[mode != 'RSS']
-
-                    data = self.session.get(search_url, returns='text')
+                    data = self.session.get(search_url).text
                     if not data:
                         log.debug('No data returned from provider')
                         continue
@@ -83,14 +95,15 @@ class BitSnoopProvider:
                             continue
 
                             # Filter unseeded torrent
-                        if seeders < self.minseed or leechers < self.minleech:
+                        if seeders < self.min_seed or leechers < self.min_leech:
                             if mode != 'RSS':
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': info_hash}
+
                         if mode != 'RSS':
-                            log.debug('Found result: %s with %s seeders and %s leechers' % (title, seeders, leechers))
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                         items.append(item)
 

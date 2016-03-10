@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -17,49 +21,42 @@ class RarbgProvider:
 
         self.session = Session()
 
+        # Credentials
         self.public = True
-        self.minseed = None
-        self.ranked = None
-        self.sorting = None
-        self.minleech = None
         self.token = None
         self.token_expires = None
 
-        # Spec: https://torrentapi.org/apidocs_v2.txt
-        self.url = 'https://rarbg.com'
-        self.urls = {'api': 'http://torrentapi.org/pubapi_v2.php'}
+        # Torrent Stats
+        self.min_seed = None
+        self.min_leech = None
+        self.ranked = None
+        self.sorting = None
 
-        self.proper_strings = ['{{PROPER|REPACK}}']
-
-    def login(self):
-        if self.token and self.token_expires and datetime.datetime.now() < self.token_expires:
-            return True
-
-        login_params = {
-            'get_token': 'get_token',
-            'format': 'json',
-            'app_id': 'sickrage2'
+        # URLs
+        self.url = 'https://rarbg.com'  # Spec: https://torrentapi.org/apidocs_v2.txt
+        self.urls = {
+            'api': 'http://torrentapi.org/pubapi_v2.php'
         }
 
-        response = self.session.get(self.urls['api'], params=login_params, returns='json')
-        if not response:
-            log.warn('Unable to connect to provider')
-            return False
+        # Proper Strings
+        self.proper_strings = [
+            '{{PROPER|REPACK}}',
+        ]
 
-        self.token = response.get('token', None)
-        self.token_expires = datetime.datetime.now() + datetime.timedelta(minutes=14) if self.token else None
-        return self.token is not None
+        # Search Params
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings, ep_obj=None):
         results = []
+
         if not self.login():
             return results
 
+        # Search Params
         search_params = {
             'app_id': 'sickrage2',
             'category': 'tv',
-            'min_seeders': self.minseed,
-            'min_leechers': self.minleech,
+            'min_seeders': self.min_seed,
+            'min_leechers': self.min_leech,
             'limit': 100,
             'format': 'json_extended',
             'ranked': self.ranked,
@@ -73,7 +70,7 @@ class RarbgProvider:
             ep_indexerid = None
             ep_indexer = None
 
-        for mode in search_strings:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
             if mode == 'RSS':
@@ -91,12 +88,13 @@ class RarbgProvider:
                     search_params.pop('search_tvdb', None)
 
             for search_string in search_strings[mode]:
+
                 if mode != 'RSS':
                     search_params['search_string'] = search_string
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
-                time.sleep(cpu_presets[sickbeard.CPU_PRESET])
-                data = self.session.get(self.urls['api'], params=search_params, returns='json')
+                sleep(cpu_presets[sickbeard.CPU_PRESET])
+                data = self.session.get(self.urls['api'], params=search_params).json()
                 if not isinstance(data, dict):
                     log.debug('No data returned from provider')
                     continue
@@ -124,21 +122,45 @@ class RarbgProvider:
 
                         seeders = item.pop('seeders')
                         leechers = item.pop('leechers')
-                        if seeders < self.minseed or leechers < self.minleech:
+
+                            # Filter unseeded torrent
+                        if seeders < self.min_seed or leechers < self.min_leech:
                             if mode != 'RSS':
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
 
                         torrent_size = item.pop('size', -1)
 
+                        result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers}
+
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
-                        result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers}
                         items.append(result)
+
                     except Exception:
                         continue
 
             results += items
 
         return results
+
+    def login(self):
+        if self.token and self.token_expires and datetime.now() < self.token_expires:
+            return True
+
+        login_params = {
+            'get_token': 'get_token',
+            'format': 'json',
+            'app_id': 'sickrage2'
+        }
+
+        response = self.session.get(self.urls['api'], params=login_params).json()
+        if not response:
+            log.warn('Unable to connect to provider')
+            return False
+
+        self.token = response.get('token', None)
+        self.token_expires = datetime.now() + timedelta(minutes=14) if self.token else None
+
+        return self.token is not None

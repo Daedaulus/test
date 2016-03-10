@@ -1,12 +1,15 @@
+from datetime import datetime, timedelta
 import logging
-# import re
-# import traceback
+import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
-# from requests.compat import urljoin
-# from requests.utils import dict_from_cookiejar
-#
-# from v0 import BS4Parser
+from requests.compat import urljoin
+from requests.utils import dict_from_cookiejar
+
+from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler)
@@ -18,29 +21,49 @@ class BTDiggProvider:
 
         self.session = Session()
 
+        # Credentials
         self.public = True
-        self.url = 'https://btdigg.org'
-        self.urls = {'api': 'https://api.btdigg.org/api/private-341ada3245790954/s02'}
 
-        self.proper_strings = ['PROPER', 'REPACK']
+        # Torrent Stats
+
+        # URLs
+        self.url = 'https://btdigg.org'
+        self.urls = {
+            'api': 'https://api.btdigg.org/api/private-341ada3245790954/s02',
+        }
+
+        # Proper Strings
+        self.proper_strings = [
+            'PROPER',
+            'REPACK',
+        ]
+
+        # Search Params
 
     def search(self, search_strings):
         results = []
-        search_params = {'p': 0}
-        for mode in search_strings:
+
+        # Search Params
+        search_params = {
+            'p': 0
+        }
+
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
+
             for search_string in search_strings[mode]:
                 search_params['q'] = search_string
+
                 if mode != 'RSS':
-                    search_params['order'] = 0
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                    search_params['order'] = 0
                 else:
                     search_params['order'] = 2
 
-                jdata = self.session.get(self.urls['api'], params=search_params, returns='json')
+                jdata = self.session.get(self.urls['api'], params=search_params).json()
                 if not jdata:
-                    log.debug('Provider did not return data')
+                    log.debug('No data returned from provider')
                     continue
 
                 for torrent in jdata:
@@ -65,8 +88,9 @@ class BTDiggProvider:
                         torrent_size = torrent.pop('size')
 
                         item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+
                         if mode != 'RSS':
-                            log.debug('Found result: %s ' % title)
+                                log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                         items.append(item)
 

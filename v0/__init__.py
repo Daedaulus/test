@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from contextlib import ContextDecorator
 from bs4 import BeautifulSoup
 

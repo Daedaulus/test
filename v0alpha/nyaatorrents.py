@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -17,27 +21,34 @@ class NyaaProvider:
 
         self.session = Session()
 
+        # Credentials
         self.public = True
         self.supports_absolute_numbering = True
         self.anime_only = True
 
-        self.url = 'http://www.nyaa.se'
-
-        self.minseed = 0
-        self.minleech = 0
+        # Torrent Stats
+        self.min_seed = 0
+        self.min_leech = 0
         self.confirmed = False
 
+        # URLs
+        self.url = 'http://www.nyaa.se'
+
+        # Miscellaneous
         self.regex = re.compile(r'(\d+) seeder\(s\), (\d+) leecher\(s\), \d+ download\(s\) - (\d+.?\d* [KMGT]iB)(.*)', re.DOTALL)
 
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings):
         results = []
+
         if self.show and not self.show.is_anime:
             return results
 
-        for mode in search_strings:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
+
             for search_string in search_strings[mode]:
+
                 if mode != 'RSS':
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
@@ -69,7 +80,7 @@ class NyaaProvider:
 
                         seeders, leechers, torrent_size, verified = item_info.groups()
 
-                        if seeders < self.minseed or leechers < self.minleech:
+                        if seeders < self.min_seed or leechers < self.min_leech:
                             if mode != 'RSS':
                                 log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                             continue
@@ -79,10 +90,12 @@ class NyaaProvider:
                             continue
 
                         result = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers}
+
                         if mode != 'RSS':
                             log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                         items.append(result)
+
                     except Exception:
                         continue
 

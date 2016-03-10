@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -21,8 +25,8 @@ class ThePirateBayProvider:
         self.public = True
 
         # Torrent Stats
-        self.minseed = None
-        self.minleech = None
+        self.min_seed = None
+        self.min_leech = None
         self.confirmed = True
 
         # URLs
@@ -33,9 +37,14 @@ class ThePirateBayProvider:
         }
         self.custom_url = None
 
-    def search(self, search_strings, age=0, ep_obj=None):
+        # Proper Strings
+
+        # Search Params
+
+    def search(self, search_strings):
         results = []
 
+        # Search Params
         search_params = {
             'q': '',
             'type': 'search',
@@ -45,14 +54,14 @@ class ThePirateBayProvider:
         }
 
         def process_column_header(th):
-            result = ''
+            col_header = ''
             if th.a:
-                result = th.a.get_text(strip=True)
-            if not result:
-                result = th.get_text(strip=True)
-            return result
+                col_header = th.a.get_text(strip=True)
+            if not col_header:
+                col_header = th.get_text(strip=True)
+            return col_header
 
-        for mode in search_strings:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
 
@@ -68,10 +77,9 @@ class ThePirateBayProvider:
                     search_params['q'] = search_string
                     log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
-                    data = self.session.get(search_url, params=search_params, returns='text')
+                    data = self.session.get(search_url, params=search_params).text
                 else:
-                    data = self.session.get(search_url, returns='text')
-
+                    data = self.session.get(search_url).text
                 if not data:
                     log.debug('URL did not return data, maybe try a custom url, or a different one')
                     continue
@@ -104,7 +112,7 @@ class ThePirateBayProvider:
                             leechers = cells[labels.index('LE')].get_text(strip=True)
 
                             # Filter unseeded torrent
-                            if seeders < self.minseed or leechers < self.minleech:
+                            if seeders < self.min_seed or leechers < self.min_leech:
                                 if mode != 'RSS':
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
@@ -119,10 +127,12 @@ class ThePirateBayProvider:
                             torrent_size = re.sub(r'Size ([\d.]+).+([KMGT]iB)', r'\1 \2', torrent_size)
 
                             item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+
                             if mode != 'RSS':
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
+
                         except Exception:
                             continue
 

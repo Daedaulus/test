@@ -1,6 +1,10 @@
+from datetime import datetime, timedelta
 import logging
 import re
+from time import sleep
+import traceback
 
+import validators
 from requests import Session
 from requests.compat import urljoin
 from requests.utils import dict_from_cookiejar
@@ -22,8 +26,8 @@ class GFTrackerProvider:
         self.password = None
 
         # Torrent Stats
-        self.minseed = None
-        self.minleech = None
+        self.min_seed = None
+        self.min_leech = None
 
         # URLs
         self.url = 'https://www.thegft.org/'
@@ -33,43 +37,20 @@ class GFTrackerProvider:
         }
 
         # Proper Strings
-        self.proper_strings = ['PROPER', 'REPACK', 'REAL']
+        self.proper_strings = [
+            'PROPER',
+            'REPACK',
+            'REAL',
+        ]
 
-    def _check_auth(self):
+    # Search Params
 
-        if not self.username or not self.password:
-            raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
-
-        return True
-
-    def login(self):
-        if any(dict_from_cookiejar(self.session.cookies).values()):
-            return True
-
-        login_params = {
-            'username': self.username,
-            'password': self.password,
-        }
-
-        # Initialize session with a GET to have cookies
-        self.session.get(self.url, returns='text')
-        response = self.session.post(self.urls['login'], data=login_params, returns='text')
-        if not response:
-            log.warn('Unable to connect to provider')
-            return False
-
-        if re.search('Username or password incorrect', response):
-            log.warn('Invalid username or password. Check your settings')
-            return False
-
-        return True
-
-    def search(self, search_strings, age=0, ep_obj=None):
+    def search(self, search_strings):
         results = []
+
         if not self.login():
             return results
 
-        # https://www.thegft.org/browse.php?view=0&c26=1&c37=1&c19=1&c47=1&c17=1&c4=1&search=arrow
         # Search Params
         search_params = {
             'view': 0,  # BROWSE
@@ -83,14 +64,14 @@ class GFTrackerProvider:
         }
 
         def process_column_header(td):
-            result = ''
+            col_header = ''
             if td.a and td.a.img:
-                result = td.a.img.get('title', td.a.get_text(strip=True))
-            if not result:
-                result = td.get_text(strip=True)
-            return result
+                col_header = td.a.img.get('title', td.a.get_text(strip=True))
+            if not col_header:
+                col_header = td.get_text(strip=True)
+            return col_header
 
-        for mode in search_strings:
+        for mode in search_strings:  # Mode = RSS, Season, Episode
             items = []
             log.debug('Search Mode: {}'.format(mode))
 
@@ -100,8 +81,7 @@ class GFTrackerProvider:
                     log.debug('Search string: {}'.format(search_string.decode('utf-8')))
 
                 search_params['search'] = search_string
-
-                data = self.session.get(self.urls['search'], params=search_params, returns='text')
+                data = self.session.get(self.urls['search'], params=search_params).text
                 if not data:
                     log.debug('No data returned from provider')
                     continue
@@ -133,7 +113,7 @@ class GFTrackerProvider:
                             leechers = peers[1]
 
                             # Filter unseeded torrent
-                            if seeders < self.minseed or leechers < self.minleech:
+                            if seeders < self.min_seed or leechers < self.min_leech:
                                 if mode != 'RSS':
                                     log.debug('Discarding torrent because it doesn\'t meet the minimum seeders or leechers: {} (S:{} L:{})'.format(title, seeders, leechers))
                                 continue
@@ -141,13 +121,45 @@ class GFTrackerProvider:
                             torrent_size = cells[labels.index('Size/Snatched')].get_text(strip=True).split('/', 1)[0]
 
                             item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
+
                             if mode != 'RSS':
                                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
                             items.append(item)
+
                         except Exception:
                             continue
 
             results += items
 
         return results
+
+    def login(self):
+        if any(dict_from_cookiejar(self.session.cookies).values()):
+            return True
+
+        login_params = {
+            'username': self.username,
+            'password': self.password,
+        }
+
+        # Initialize session with a GET to have cookies
+        self.session.get(self.url).text
+        response = self.session.post(self.urls['login'], data=login_params).text
+        if not response:
+            log.warn('Unable to connect to provider')
+            return False
+
+        # Invalid username and password combination
+        if re.search('Username or password incorrect', response):
+            log.warn('Invalid username or password. Check your settings')
+            return False
+
+        return True
+
+    def _check_auth(self):
+
+        if not self.username or not self.password:
+            raise Exception('Your authentication credentials for ' + self.name + ' are missing, check your config.')
+
+        return True
