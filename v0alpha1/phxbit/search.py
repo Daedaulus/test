@@ -31,14 +31,12 @@ def search(
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
                 # Use exact=1 parameter if we're doing a backlog or manual search
                 search_params['exact'] = 1
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
             search_params['q'] = search_string
             data = self.session.get(self.urls['search'], params=search_params).text
             if not data:
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

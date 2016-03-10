@@ -24,10 +24,8 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    results = []
-
     if not self.login():
-        return results
+        return None
 
     if ep_obj is not None:
         ep_indexerid = ep_obj.show.indexerid
@@ -56,10 +54,9 @@ def search(
 
             if mode != 'RSS':
                 search_params['search_string'] = search_string
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
             sleep(cpu_presets[sickbeard.CPU_PRESET])
             data = self.session.get(self.urls['api'], params=search_params).json()
             if not isinstance(data, dict):
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

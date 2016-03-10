@@ -28,14 +28,12 @@ def search(
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
                 search_url = self.url + '/recherche/' + search_string.replace('.', '-').replace(' ', '-') + '.html,trie-seeds-d'
             else:
                 search_url = self.url + '/view_cat.php?categorie=series&trie=date-d'
 
             data = self.session.get(search_url)
             if not data:
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

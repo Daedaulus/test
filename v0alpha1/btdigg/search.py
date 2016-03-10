@@ -31,12 +31,11 @@ def search(
             search_params['q'] = search_string
 
             if mode != 'RSS':
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
                 search_params['order'] = 0
             else:
                 search_params['order'] = 2
 
             data = self.session.get(self.urls['api'], params=search_params)
             if not data:
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

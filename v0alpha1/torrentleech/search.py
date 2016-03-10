@@ -24,19 +24,15 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    results = []
-
     if not self.login():
-        return results
+        return None
 
     for mode in search_strings:  # Mode = RSS, Season, Episode
-        items = []
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
                 categories = ['2', '7', '35']
                 categories += ['26', '32'] if mode == 'Episode' else ['27']
@@ -49,8 +45,6 @@ def search(
                 'categories': ','.join(categories),
                 'query': search_string
             }
-
             data = self.session.get(self.urls['search'], params=search_params).text
             if not data:
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

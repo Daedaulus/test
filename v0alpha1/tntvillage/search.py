@@ -58,5 +58,4 @@ def search(
 
                 data = self.session.get(search_url).text
                 if not data:
-                    log.debug('No data returned from provider')
-                    continue
+                   log.debug('Data returned from provider does not contain any torrents')

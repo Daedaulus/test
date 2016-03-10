@@ -31,7 +31,6 @@ def search(
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
                 log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
@@ -39,5 +38,4 @@ def search(
             search_params['search'] = re.sub(r'[()]', '', search_string)
             data = self.session.get(self.urls['search'], params=search_params).text
             if not data:
-                log.debug('No data returned from provider')
-                continue
+                log.debug('Data returned from provider does not contain any torrents')

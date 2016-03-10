@@ -41,6 +41,10 @@ class TokyoToshokanProvider:
         self.anime_only = True
 
         # Search Params
+        self.search_params = {
+            'type': 1,  # get anime types
+        }
+
 
         # Categories
 

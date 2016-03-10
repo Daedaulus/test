@@ -16,7 +16,7 @@ log.addHandler(logging.NullHandler)
 
 
 # Parse page for results
-def parse(self, data, mode):
+def parse(self, data, mode, torrent_method):
     items = []
     data = re.sub(r'(?im)<button.+?<[/]button>', '', data, 0)
     with BS4Parser(data, 'html5lib') as html:
@@ -55,7 +55,6 @@ def parse(self, data, mode):
             torrent_size = result('td')[5].text
 
             item = {'title': title, 'link': download_url, 'size': torrent_size, 'seeders': seeders, 'leechers': leechers, 'hash': None}
-
             if mode != 'RSS':
                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 

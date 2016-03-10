@@ -59,4 +59,5 @@ def parse(self, data, mode, torrent_method):
                 log.debug('Found result: {} with {} seeders and {} leechers'.format(title, seeders, leechers))
 
             items.append(item)
+
     return items

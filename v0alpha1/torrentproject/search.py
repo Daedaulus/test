@@ -24,23 +24,19 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    results = []
-
     for mode in search_strings:  # Mode = RSS, Season, Episode
-        items = []
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
             search_params['s'] = search_string
 
             if self.custom_url:
                 if not validators.url(self.custom_url):
                     log.warn('Invalid custom url set, please check your settings')
-                    return results
+                    return None
                 search_url = self.custom_url
             else:
                 search_url = self.url
@@ -48,4 +44,3 @@ def search(
             torrents = self.session.get(search_url, params=search_params).json()
             if not (torrents and 'total_found' in torrents and int(torrents['total_found']) > 0):
                 log.debug('Data returned from provider does not contain any torrents')
-                continue

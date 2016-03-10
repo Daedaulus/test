@@ -24,23 +24,18 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    results = []
-
     if self.show and not self.show.is_anime:
-        return results
+        return None
 
     for mode in search_strings:  # Mode = RSS, Season, Episode
-        items = []
         log.debug('Search Mode: {}'.format(mode))
 
         for search_string in search_strings[mode]:
-
             if mode != 'RSS':
-                log.debug('Search string: {}'.format(search_string.decode('utf-8')))
+                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
 
             if mode != 'RSS':
                 search_params['term'] = search_string
-
             data = self.cache.getRSSFeed(self.url, params=search_params)['entries']
             if not data:
                 log.debug('Data returned from provider does not contain any torrents')
