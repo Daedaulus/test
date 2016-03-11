@@ -1,0 +1,2700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="all" /><title></title><meta name="description" content="A torrent search engine."/><meta name="Keywords" content="torrent search, torrents, torrent ,torrent search, search for torrents, bittorrent search"/><link rel="stylesheet" type="text/css" href="//torrentproject.se/style20150822.css" /><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+/* target small screens (mobile devices or small desktop windows) */
+@media only screen and (max-width: 480px) {
+
+/*front page start */
+table#torrent-search{
+	margin-left: auto;
+    margin-right: auto;
+}
+#sfcnt > form >div.tsf-p{
+	width: 98%;
+}		
+/*front page end */
+.tsf-p{
+	width: 70%;
+}
+#bottom-menu ul{
+	height: 52px;
+}
+#bottom-menu ul li {
+    display: inline-block;
+}
+#bottom-menu li {
+    margin-bottom: 12px;
+}	
+.mitem {
+    margin-bottom: 6px;
+}
+.gbh{
+	display: none;
+}
+.comments {
+    margin-left: -15px !important;
+    position: absolute;
+}
+a.gb4{
+	letter-spacing: -1px;
+}
+#words{
+	width: 100%;
+}
+#similarfiles div > span:first-child{
+	margin-left: 1px;
+}
+.tsf-p {
+    margin-left: 7px;
+    margin-right: 0;
+	padding-top: 0;
+}
+#about{
+	width: 100%;
+	}
+	#bottom-menu{
+	line-height: 1em;
+	}
+	.lsbb {
+	width: 52px;
+	}
+	.lsb {
+	width: 50px;
+	}
+	#outer {
+	display: none;
+	}
+#logo_ {
+    background-image: url('/images/logo_small.png');
+    height: 25px;
+    margin: 4px 8px 0;
+    position: absolute;
+    top: 0;
+    width: 54px;
+}	
+	#ghead{
+	width: 100%;
+	}
+	span.bl{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#guser {
+		font-size: smaller;
+		}
+#top {
+	width: 100%;
+    height: auto;
+    }
+h1 {
+    font-size: medium;
+}
+#cnt {
+    max-width: 100%;
+    width: 100%;
+} 
+.lsd {
+    font-size: smaller;
+    bottom: 5px;
+    width: 93px;
+} 
+.lsa {
+    height: 8px;
+}  
+.bc.torrent-size {
+    left: 210px;
+    width: auto;
+}
+.up_i, .down_i {
+	display:none;
+	}
+#main_content {
+	width: 100%;
+	}
+.maxseeders, #similarfiles div > span:first-child + span{
+	left: 178px;
+	}	
+#similarfiles div > span:first-child > a{
+	max-width: 177px;
+	text-overflow: unset;
+	}	
+#similarfiles div > span:first-child > span{
+	margin-left: 4px;
+	}	
+#similarfiles div > span:first-child > span:nth-child(2){
+	display:none;
+	}
+.maxleechers, #similarfiles div > span:first-child + span + span{
+	left: 249px;
+	margin-left: 0;
+	}	
+#similarfiles div > span:first-child + span + span + span + span{
+	left: 208px;
+	}
+#similarfiles div > span:first-child + span + span + span + span{
+    left: 292px;
+    width: 57px;
+	}	
+#similarfiles div > span:first-child + span + span + span{
+	display: none;	
+		}
+.liost{
+	width: 132px;
+	}	
+a.flt {
+	font-weight: normal;
+	letter-spacing: -1px;
+	}	
+.liost-td{
+	width: 150px;
+	}
+.tt{
+	width: 100%;
+	}
+.maxseeders {
+    display: none;
+}	
+.maxleechers{
+	display: none;
+	}
+.v {
+    float: right;
+    position: absolute;
+}	
+.votesnr, .thumb_up, .thumb_down{
+	display: none !important;
+	}
+/* advanced search */
+.miconp, .micon{
+	display: none;
+	}	
+#leftnav{
+	width: 62px;
+	}	
+#center_col {
+    margin: 0 47px 0 44px;
+	}
+.cated{
+	display:none;
+	}	
+.cate {
+    display:none;
+	}	
+.av {
+    margin-left: 32px;
+	}	
+div#resultStats {
+    margin-left: 6px;
+	}	
+/* trackers torrents */
+.titletorrentt{
+	width: 239px;
+	left: 4px;
+	}	
+.maxleecherst{
+	display: inline !important;
+	left: 273px !important;
+	}	
+.maxseederst{
+	left: 204px !important;
+	}
+.torrent_file_checked_datet{
+	display: none;
+	}	
+#main_content{
+	width: 100% !important;
+	}	
+.title_big{
+	font-size: 21px;
+	}	
+/* advanced search */
+#right_col{
+	display: none;
+	}	
+/*torrent results */
+#privateinternetaccess{
+	display: none;
+	}			
+/*remove the ads in the middle (tracker stats)*/
+#bannerad{
+	display: none;
+	}			
+}
+
+</style><link rel="canonical" href="http://torrentproject.se/?filter=&amp;s=&amp;out=json&amp;num=150"/>
+<link rel="index" href="http://torrentproject.se/?filter=&amp;s=&amp;out=json&amp;num=150"/>
+<link rel="Shortcut Icon" type="image/x-icon" href="//torrentproject.se/favicon.ico"/><link rel="search" type="application/opensearchdescription+xml" title="Torrent Project" href="//torrentproject.se/opensearch.xml"/>
+</head>
+<body id='torrents' class='search'>
+<div id='ghead'>
+	<div id='guser'>
+	    <a href='/' class='gb4'>Torrent Search</a>
+		<span class='bl'>|</span>
+		<a class='gb4' href='http://metasearch.torrentproject.com/' title='Torrent Meta Search'>Torrent Meta Search</a>	
+		<span class='bl'>|</span>	
+		<a href='//torrentproject.se/?widget' class='gb4'>Widgets</a>
+	</div>
+	<div class='gbh' style='left: 0pt;'></div>
+</div>
+<div id="cnt">
+	<div id="top">
+		<div id='logo_'>
+			<div id='outer'>
+				<div id='up'><a title='Torrent Search Engine' href='//torrentproject.se'>TORRENT</a></div>
+				<div id='down'><a href='//torrentproject.se'>PROJECT</a></div>
+			</div>
+		</div>
+			
+		<form method='get' id='tsf' action='//torrentproject.se/'>
+		<div id='hidden'>
+				<input type='hidden' name='hl' value='en'/>
+				<input type='hidden' name='num' value='20'/>
+				<input type='hidden' name='start' value='0'/>
+				<input type='hidden' name='filter' value='2101'/>
+				<input type='hidden' name='safe' value='on'/>
+				<input type='hidden' name='orderby' value='best'/>
+				</div>			
+			<div class='tsf-p'>
+				<table border='0' cellspacing='0' cellpadding='0' id='torrent-search'>
+					<tbody>
+						<tr>
+							<td class='liost-td'>
+								<div style='position: relative;'>
+									<input type='text' title='Search' value='' maxlength='2048' name='s' class='liost' id='torrentsearch' autofocus/>
+								</div>
+							</td>
+							<td>
+								<div class='ds'>
+									<div class='lsbb'>
+										<input type='submit' value='Search' class='lsb'/>
+									</div>
+								</div>
+							</td>						
+							<td>
+								<div class='prelsd'>
+									<div class='lsd lsc'>
+										<a class='flt' href='//torrentproject.se/?hl=en&amp;safe=off&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2101'>Safe Search is on</a>
+									</div>	
+								</div>		
+								<div class='prelsd'>					
+									<div class='lsd lsa'>									
+										<a class='flt' href='//torrentproject.se/?t='>Simple Search</a>								
+									</div>
+								</div>								
+							</td>												
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+		</form>
+		
+			
+		
+			<div id="resultStats" title="search for torrents completed in 0.262 seconds"> 971548 results in tv torrents</div>		
+ 
+	</div>
+	
+	<div style="position: relative;" id="nr_container">
+	<div id="leftnavc">
+	<div id="leftnav">
+		<div id="ms">
+			<ul>
+				<li class="mitem title"><span class="micon cats"></span>Order</li>			    
+			<li class="mitem msel">
+							<span class="micon miconbest"></span>Best
+						</li> 
+				<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=seeders&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconseeders"></span>Seeders
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=peers&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconpeers"></span>Peers
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=speed&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconspeed"></span>Speed
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=sizeD&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconsizeD"></span>Big &rarr; small
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=sizeA&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconsizeA"></span>Small &rarr; big
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=latest&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconlatest"></span>Latest
+									</a>
+								</li>
+						<li class="mitem">
+									<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=oldest&amp;s=&amp;filter=2101" class="q qs">
+									<span class="micon miconoldest"></span>Oldest
+									</a>
+								</li>
+							
+				
+			    <li class="mitem title"><span class="micon cats"></span>Categories</li>	
+			    <li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=9000" class="q qs">
+							<span class="miconp cat"></span>ALL
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=1000" class="q qs">
+							<span class="miconp cat"></span>Audio
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2000" class="q qs">
+							<span class="miconp cat"></span>Video
+							</a>
+						</li>
+						<li class="mitem filterX smallli mselp">
+								
+								<span class="miconp cat"></span>Tv
+								
+							</li>
+							<li class="mitem filterX smallli">
+								<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2102" class="q qs">
+								<span class="miconp cat"></span>Dvdrip
+								</a>
+							</li>
+							<li class="mitem filterX smallli">
+								<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2103" class="q qs">
+								<span class="miconp cat"></span>Hdrip
+								</a>
+							</li>
+							<li class="mitem filterX smallli">
+								<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2104" class="q qs">
+								<span class="miconp cat"></span>Dvd
+								</a>
+							</li>
+							<li class="mitem filterX smallli">
+								<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=2105" class="q qs">
+								<span class="miconp cat"></span>Lq
+								</a>
+							</li>
+							<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=3000" class="q qs">
+							<span class="miconp cat"></span>Ebooks
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=4000" class="q qs">
+							<span class="miconp cat"></span>Images
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=5000" class="q qs">
+							<span class="miconp cat"></span>Mobile
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=6000" class="q qs">
+							<span class="miconp cat"></span>Games
+							</a>
+						</li>
+						<li class="mitem">
+							<a href="?hl=en&amp;safe=on&amp;num=150&amp;start=0&amp;orderby=best&amp;s=&amp;filter=7000" class="q qs">
+							<span class="miconp cat"></span>Applications
+							</a>
+						</li>
+						
+			 </ul>
+		 </div>
+	     <div style="clear:both;overflow:hidden"></div> 
+	     
+    </div>
+</div>	
+	<div id="center_col">		
+		<div class="med" id="res">
+				<div id="ires">
+					<ol>
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e7a588744d3ea298197670f52ebd2cf8211adb92/Marvels-Agents-of-S-H-I-E-L-D-S03E11-HDTV-x264-KILLERS-ettv-torrent.html' title='Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS ettv torrent'>Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS ettv</a><span class="up_i"><span class="votesnr">9</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="down_i"><span class="votesnr">1</span><span class="thumb_down">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>8209</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>846</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">269 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvels.Agents.of.S.H.I.E.L.D.S03E11.HDTV.x264-KILLERS[ettv].mp4 269.39</span> Mb  Torrent-Downloaded- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/1b90f1a2e3281eb23f83c755a73697de83b96248/Limitless-S01E17-HDTV-x264-LOL-ettv-torrent.html' title='Limitless S01E17 HDTV x264 LOL ettv torrent'>Limitless S01E17 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>7501</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>811</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">285 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>limitless.117.hdtv-lol[ettv].mp4 284.7</span> Mb ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2ca05ea04d4b0d911955365efccd95ac9980893d/Lucifer-S01E07-HDTV-x264-KILLERS-ettv-torrent.html' title='Lucifer S01E07 HDTV x264 KILLERS ettv torrent'>Lucifer S01E07 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">6</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>8797</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1081</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">288 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Lucifer.S01E07.HDTV.x264-KILLERS[ettv].mp4 288.11</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/c8116c8a6d280de5c592ffa0cd73ba11910d6b42/The-Walking-Dead-S06E12-HDTV-x264-KILLERS-ettv-torrent.html' title='The Walking Dead S06E12 HDTV x264 KILLERS ettv torrent'>The Walking Dead S06E12 HDTV x264 KILLERS ettv</a><span class="up_i"><span class="votesnr">5</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="down_i"><span class="votesnr">1</span><span class="thumb_down">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>11249</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>467</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">425 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Walking.Dead.S06E12.HDTV.x264-KILLERS[ettv].mp4 425.04</span> Mb  Torrent-Downloaded-from- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/4c4cd5ca302f96ef240868789df8f50ffe8680eb/Gotham-S02E13-HDTV-x264-KILLERS-ettv-torrent.html' title='Gotham S02E13 HDTV x264 KILLERS ettv torrent'>Gotham S02E13 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>7635</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>978</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">306 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.HDTV.x264-KILLERS[ettv].mp4 306.43</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/5cc450f94df735c65a49ba474e932a216b4a753c/Blindspot-S01E12-HDTV-x264-KILLERS-ettv-torrent.html' title='Blindspot S01E12 HDTV x264 KILLERS ettv torrent'>Blindspot S01E12 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>5695</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>830</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">324 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Blindspot.S01E12.HDTV.x264-KILLERS[ettv].mp4 324.1</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/54361a959ac3c3e15f90703d0fcd117679f754fb/Of-Kings-and-Prophets-S01E01-HDTV-x264-KILLERS-ettv-torrent.html' title='Of Kings and Prophets S01E01 HDTV x264 KILLERS ettv torrent'>Of Kings and Prophets S01E01 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3907</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>691</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">389 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Of.Kings.and.Prophets.S01E01.HDTV.x264-KILLERS[ettv].mp4 388.88</span> Mb  Torrent-Downloaded-from- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/632c822ef7e22c67317d083e7d9c01f837943b8e/New-Girl-S05E10-HDTV-x264-W4F-ettv-torrent.html' title='New Girl S05E10 HDTV x264 W4F ettv torrent'>New Girl S05E10 HDTV x264 W4F ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3756</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>702</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">147 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>new.girl.s05e10.hdtv.x264-w4f[ettv].mp4 ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/43c0ea1de69810fe27f2ef6c1fcc8ff4b9f06d18/Teen-Wolf-S05E20-HDTV-XviD-AFG-torrent.html' title='Teen Wolf S05E20 HDTV XviD AFG torrent'>Teen Wolf S05E20 HDTV XviD AFG</a><span class="up_i"><span class="votesnr">2</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3461</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>370</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">209 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Teen Wolf S05E20 HDTV XviD-AFG(musicbolt.com).avi 209.29</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/cd7a4527dfc3ed24cbc4d61197de84da81d2e46c/Pretty-Little-Liars-S06E19-HDTV-x264-LOL-rarbg-torrent.html' title='Pretty Little Liars S06E19 HDTV x264 LOL rarbg torrent'>Pretty Little Liars S06E19 HDTV x264 LOL rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3100</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>277</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">216 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>pretty.little.liars.619.hdtv-lol.mp4 216.02</span> Mb<span class="st"><span class="fileicon empty"></span>pretty.little.liars.619 ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/92e1315a35598c1f3d6a2c179739e5e9bd408c50/Shadowhunters-S01E09-HDTV-x264-KILLERS-ettv-torrent.html' title='Shadowhunters S01E09 HDTV x264 KILLERS ettv torrent'>Shadowhunters S01E09 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2817</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>353</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">274 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Shadowhunters.S01E09.HDTV.x264-KILLERS[ettv].mp4 273.84</span> Mb  Torrent-Downloaded-from-ExtraTorrent ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/dc33477f5b82b58083b478852854ce0e8db3d447/Survivor-S32E04-HDTV-x264-FUM-ettv-torrent.html' title='Survivor S32E04 HDTV x264 FUM ettv torrent'>Survivor S32E04 HDTV x264 FUM ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2278</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>682</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">512 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Survivor.S32E04.HDTV.x264-FUM[ettv].mp4 511.55</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/c65f1d29a7326d5d7ce3bbe97f85a7c5ff2e07cc/Quantico-S01E12-HDTV-x264-KILLERS-ettv-torrent.html' title='Quantico S01E12 HDTV x264 KILLERS ettv torrent'>Quantico S01E12 HDTV x264 KILLERS ettv</a><span class="up_i"><span class="votesnr">2</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>4599</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>673</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">317 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Quantico.S01E12.HDTV.x264-KILLERS[ettv].mp4 316.68</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/85041505a3fbd14373af9c140d38bd40c676a7dd/Its-Always-Sunny-in-Philadelphia-S11E10-INTERNAL-HDTV-x264-KILLERS-ettv-torrent.html' title='Its Always Sunny in Philadelphia S11E10 INTERNAL HDTV x264 KILLERS ettv torrent'>Its Always Sunny in Philadelphia S11E10 INTERNAL HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1785</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>262</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">202 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Its.Always.Sunny.in.Philadelphia.S11E10.INTERNAL.HDTV.x264-KILLERS[ettv].mp4 201.57</span> Mb  Torrent- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/6844d8f4d07748d9e7cec11e685233e5b1c07b9a/Marvels-Agents-of-S-H-I-E-L-D-S03E11-HDTV-x264-KILLERS-eztv-torrent.html' title='Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS eztv torrent'>Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2114</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>144</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">269 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvels.Agents.of.S.H.I.E.L.D.S03E11.HDTV.x264-KILLERS[eztv].mp4 269.39</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/31832a13c922c78d4f93fc7c40976ed2b7fe676b/House-of-Cards-%282013%29-S04-Season-4-Complete-720p-WEBRip-5-1Ch-x264-KiMO-torrent.html' title='House of Cards (2013) S04 Season 4 Complete 720p WEBRip 5 1Ch x264 KiMO torrent'>House of Cards (2013) S04 Season 4 Complete 720p WEBRip 5 1Ch x264 KiMO</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3759</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>3215</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">5.07 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.S04E01.720p.WEBRip.5.1Ch.X264-KiMO.mkv 396.56</span> Mb  House.of.Cards.S04E01.720p. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/518edc9ce9dcfa70266cf665078884dc261bfd99/Better-Call-Saul-S02E04-HDTV-x264-KILLERS-rarbg-torrent.html' title='Better Call Saul S02E04 HDTV x264 KILLERS rarbg torrent'>Better Call Saul S02E04 HDTV x264 KILLERS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1857</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>75</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">232 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Better.Call.Saul.S02E04.HDTV.x264-KILLERS.mp4 231.5</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  better.call. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/a23e5d43ddc43f0141daf36f785a0ca03cdc4deb/Castle-%282009%29-S08E14-HDTV-XviD-FUM-ettv-torrent.html' title='Castle (2009) S08E14 HDTV XviD FUM ettv torrent'>Castle (2009) S08E14 HDTV XviD FUM ettv</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1975</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>213</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">347 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Castle.2009.S08E14.HDTV.XviD-FUM[ettv].avi 347.35</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/96f6b45b298f407ad663200094bafd4b6e4a6bbf/CSI-Cyber-S02E17-HDTV-x264-LOL-ettv-torrent.html' title='CSI Cyber S02E17 HDTV x264 LOL ettv torrent'>CSI Cyber S02E17 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1340</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>242</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">354 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>csi.cyber.217.hdtv-lol[ettv].mp4 354.22</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e1ce59f32aa16ea13c19de07726c25d949bf8f5e/Marvels-Agents-of-S-H-I-E-L-D-S03E11-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Marvels Agents of S H I E L D S03E11 720p HDTV x264 AVS rarbg torrent'>Marvels Agents of S H I E L D S03E11 720p HDTV x264 AVS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1528</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>166</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">983 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvels.Agents.of.S.H.I.E.L.D.S03E11.720p.HDTV.x264-AVS.mkv 983.09</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes   ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7d0778c13b99c1d61eecd430a1aaa99437bd929b/Shameless-US-S06E08-HDTV-x264-LOL-ettv-torrent.html' title='Shameless US S06E08 HDTV x264 LOL ettv torrent'>Shameless US S06E08 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">2</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2705</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>103</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">359 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>shameless.us.608.hdtv-lol[ettv].mp4 358.</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/29595bd2da58b69165965937f9556d0a8e317994/CSI-Cyber-S02E17-HDTV-x264-LOL-eztv-torrent.html' title='CSI Cyber S02E17 HDTV x264 LOL eztv torrent'>CSI Cyber S02E17 HDTV x264 LOL eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1299</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>239</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">354 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>CSI.Cyber.S02E17.HDTV.x264-LOL[eztv].mp4 354.22</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/bc6cdf30fc41b69e71228fe692450fa4b08de0ff/11-22-63-S01E04-WEBRip-XviD-FUM-ettv-torrent.html' title='11 22 63 S01E04 WEBRip XviD FUM ettv torrent'>11 22 63 S01E04 WEBRip XviD FUM ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1995</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>171</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">429 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>11.22.63.S01E04.WEBRip.XviD-FUM[ettv].avi 428.78</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d648e201077ce15102bff050cd95ef7aa5a2d6d3/Billions-S01E07-HDTV-x264-FUM-ettv-torrent.html' title='Billions S01E07 HDTV x264 FUM ettv torrent'>Billions S01E07 HDTV x264 FUM ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2402</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>273</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">296 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Billions.S01E07.HDTV.x264-FUM[ettv].mp4 295.79</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/a98c4b646f395688e3de7dee943572e213d6e2ec/Lucifer-S01E07-HDTV-x264-KILLERS-eztv-torrent.html' title='Lucifer S01E07 HDTV x264 KILLERS eztv torrent'>Lucifer S01E07 HDTV x264 KILLERS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1460</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>135</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">288 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Lucifer.S01E07.HDTV.x264-KILLERS[eztv].mp4 288.11</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/4df5c0ae5942f8d3e65b0c213745b3a9420204e4/Broad-City-S03E04-HDTV-x264-KILLERS-rarbg-torrent.html' title='Broad City S03E04 HDTV x264 KILLERS rarbg torrent'>Broad City S03E04 HDTV x264 KILLERS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1036</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>148</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">180 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Broad.City.S03E04.HDTV.x264-KILLERS.mp4 180.45</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  broad.city.s03e04. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/aa966c3e3ace8eaadd9b1bf80f07a4077f699886/The-Magicians-US-S01E08-HDTV-x264-FLEET-rarbg-torrent.html' title='The Magicians US S01E08 HDTV x264 FLEET rarbg torrent'>The Magicians US S01E08 HDTV x264 FLEET rarbg</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1352</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>95</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">249 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>The.Magicians.US.S01E08.HDTV.x264-FLEET.mp4 248.53</span> Mb<span class="st"><span class="fileicon empty"></span>the.magicians.us ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/159734206e7ad1bcb05fb25bc23b46b8223b68b1/Gotham-S02E13-HDTV-x264-KILLERS-eztv-torrent.html' title='Gotham S02E13 HDTV x264 KILLERS eztv torrent'>Gotham S02E13 HDTV x264 KILLERS eztv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1428</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>157</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">306 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.HDTV.x264-KILLERS[eztv].mp4 306.43</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/8bb22ebe455ff0931f0746588748a12db29cbea4/Marvels-Agents-of-S-H-I-E-L-D-S03E11-HDTV-x264-KILLERS-VTV-torrent.html' title='Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS VTV torrent'>Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS VTV</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1047</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>100</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">269 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvels.Agents.of.S.H.I.E.L.D.S03E11.HDTV.x264-KILLERS.[VTV].mp4 269.39</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0df88fe12bf3f935a05d82361b5ab1814e34629b/%ED%83%9C%EC%96%91%EC%9D%98-%ED%9B%84%EC%98%88-E06-160310-HDTV-H264-720p-WITH-torrent.html' title='태양의 후예 E06 160310 HDTV H264 720p WITH torrent'>태양의 후예 E06 160310 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>10401</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>3226</b></span></span>
+		  <span class="bc cated"> 17 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.02 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>태양의 후예.E06.160310.HDTV.H264.720p-WITH.mp4 1.02</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/6f7b572cd04c102afcd021afa1d07787674168eb/The-Voice-S10E04-3-08-16-torrent.html' title='The Voice S10E04 3 08 16 torrent'>The Voice S10E04 3 08 16</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1012</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>178</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">687 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The Voice S10E04.mp4 687.24</span> Mb<span class="st"><span class="fileicon srt"></span>The Voice S10E04.srt 189.92</span> Kb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/65417164c1792f2e141ed30f8a9cfd17193d4283/The-Walking-Dead-S06E12-720p-HDTV-x264-FLEET-rarbg-torrent.html' title='The Walking Dead S06E12 720p HDTV x264 FLEET rarbg torrent'>The Walking Dead S06E12 720p HDTV x264 FLEET rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1639</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>92</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.33 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>The.Walking.Dead.S06E12.720p.HDTV.x264-FLEET.mkv 1.33</span> Gb  the.walking. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/05dc2f9611c814f18cd713a0b75798fdca144f50/Last-Week-Tonight-With-John-Oliver-S03E04-HDTV-x264-BATV-rarbg-torrent.html' title='Last Week Tonight With John Oliver S03E04 HDTV x264 BATV rarbg torrent'>Last Week Tonight With John Oliver S03E04 HDTV x264 BATV rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1434</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>98</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">199 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Last.Week.Tonight.With.John.Oliver.S03E04.HDTV.x264-BATV.mp4 199.05</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3de712c44ad064f97243000412649fc7f5eeffc4/Its-Always-Sunny-in-Philadelphia-S11E10-720p-HDTV-x264-FLEET-rarbg-torrent.html' title='Its Always Sunny in Philadelphia S11E10 720p HDTV x264 FLEET rarbg torrent'>Its Always Sunny in Philadelphia S11E10 720p HDTV x264 FLEET rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>671</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>86</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">766 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Its.Always.Sunny.in.Philadelphia.S11E10.720p.HDTV.x264-FLEET.mkv 766.01</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/858b8502b4aef45635570c863e39ff304bc20539/Gotham-S02E13-720p-HDTV-x264-KILLERS-rarbg-torrent.html' title='Gotham S02E13 720p HDTV x264 KILLERS rarbg torrent'>Gotham S02E13 720p HDTV x264 KILLERS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>933</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>100</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.19 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.720p.HDTV.x264-KILLERS.mkv 1.19</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  gotham.s02e13.720p. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/467847bded837ef878b2feb768bd5822fecfb628/CpasBien-cm-Lucifer-S01E07-FASTSUB-VOSTFR-HDTV-XviD-ZT-torrent.html' title='CpasBien cm Lucifer S01E07 FASTSUB VOSTFR HDTV XviD ZT torrent'>CpasBien cm Lucifer S01E07 FASTSUB VOSTFR HDTV XviD ZT</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>820</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>37</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">359 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>[ www.CpasBien.cm ] Lucifer.S01E07.FASTSUB.VOSTFR.HDTV.XviD-ZT.avi 359.21</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7dddf4ee5adc63eb3a5c1514a47a8aab0cd94d29/Quantico-S01E12-HDTV-x264-KILLERS-eztv-torrent.html' title='Quantico S01E12 HDTV x264 KILLERS eztv torrent'>Quantico S01E12 HDTV x264 KILLERS eztv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1127</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>100</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">317 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Quantico.S01E12.HDTV.x264-KILLERS[eztv].mp4 316.68</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2f25d4845547ac0a3158922f0306a74f9b204973/Hells-Kitchen-US-S15E09-HDTV-x264-LOL-eztv-torrent.html' title='Hells Kitchen US S15E09 HDTV x264 LOL eztv torrent'>Hells Kitchen US S15E09 HDTV x264 LOL eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>599</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>111</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">430 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Hells.Kitchen.US.S15E09.HDTV.x264-LOL[eztv].mp4 430.39</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/1b34bcfd5ab5ce8bfbd8e14701be03b283edcbc8/Rizzoli-and-Isles-S06E17-HDTV-x264-LOL-ettv-torrent.html' title='Rizzoli and Isles S06E17 HDTV x264 LOL ettv torrent'>Rizzoli and Isles S06E17 HDTV x264 LOL ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>729</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>78</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">271 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>rizzoli.and.isles.617.hdtv-lol[ettv].mp4 ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2810d3c6b7846c35706a813ebd2522f0fe6e5916/Vikings-S04E04-HDTV-x264-KILLERS-ettv-torrent.html' title='Vikings S04E04 HDTV x264 KILLERS ettv torrent'>Vikings S04E04 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>6177</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>3848</b></span></span>
+		  <span class="bc cated"> 4 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">269 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  Vikings.S04E04.HDTV.x264-KILLERS[ettv]. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d5db812214b575d50daf80e53ca17719997a7ee9/Lucifer-S01E07-720p-HDTV-x264-KILLERS-rarbg-torrent.html' title='Lucifer S01E07 720p HDTV x264 KILLERS rarbg torrent'>Lucifer S01E07 720p HDTV x264 KILLERS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>884</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>126</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.19 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Lucifer.S01E07.720p.HDTV.x264-KILLERS.mkv 1.19</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  lucifer.s01e07.720p. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d2a6f4035b18b5eae337efc6ae3301c327f397c3/11-22-63-S01E04-HDTV-x264-LOL-ettv-torrent.html' title='11 22 63 S01E04 HDTV x264 LOL ettv torrent'>11 22 63 S01E04 HDTV x264 LOL ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>689</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>74</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">243 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>11.22.63.104.hdtv-lol[ettv].mp4 242.83</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/929c62e187b1dafcd8b1d6fac96baa3c18474931/The-Voice-S10E05-3-09-16-torrent.html' title='The Voice S10E05 3 09 16 torrent'>The Voice S10E05 3 09 16</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>516</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>139</b></span></span>
+		  <span class="bc cated"> 20 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">699 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The Voice S10E05.mp4 699.09</span> Mb<span class="st"><span class="fileicon srt"></span>The Voice S10E05.srt 196.98</span> Kb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2421bf9c157520b9d9e517be20cd071876593819/Once-Upon-a-Time-S05E12-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Once Upon a Time S05E12 720p HDTV x264 AVS rarbg torrent'>Once Upon a Time S05E12 720p HDTV x264 AVS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1129</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>89</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">994 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Once.Upon.a.Time.S05E12.720p.HDTV.x264-AVS.mkv 993.64</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  once.upon.a. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/81cf46d4b10caf0c94a001c4caa0101bc78052ef/Man-Seeking-Woman-S02E10-HDTV-x264-FLEET-rarbg-torrent.html' title='Man Seeking Woman S02E10 HDTV x264 FLEET rarbg torrent'>Man Seeking Woman S02E10 HDTV x264 FLEET rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>498</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>65</b></span></span>
+		  <span class="bc cated"> 20 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">170 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Man.Seeking.Woman.S02E10.HDTV.x264-FLEET.mp4 170.13</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  man.seeking. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e72424a27327a6f5c1559253f162f8b890b4db2d/DCs-Legends-of-Tomorrow-S01E08-HDTV-x264-LOL-ettv-torrent.html' title='DCs Legends of Tomorrow S01E08 HDTV x264 LOL ettv torrent'>DCs Legends of Tomorrow S01E08 HDTV x264 LOL ettv</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>5727</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>3795</b></span></span>
+		  <span class="bc cated"> 7 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">256 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  dcs.legends.of.tomorrow.108.hdtv-lol[ettv ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/ce8ba7415c98677990bd5d66ec68904048741d0f/Shameless-US-S06E08-HDTV-x264-LOL-eztv-torrent.html' title='Shameless US S06E08 HDTV x264 LOL eztv torrent'>Shameless US S06E08 HDTV x264 LOL eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1091</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>66</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">359 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Shameless.US.S06E08.HDTV.x264-LOL[eztv].mp4 358.81</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/ebbf03345124acd20f493911df21ceebda18eee0/Marvels-Agents-of-S-H-I-E-L-D-S03E11-HDTV-x264-KILLERS-rarbg-torrent.html' title='Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS rarbg torrent'>Marvels Agents of S H I E L D S03E11 HDTV x264 KILLERS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>611</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>41</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">269 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvels.Agents.of.S.H.I.E.L.D.S03E11.HDTV.x264-KILLERS.mp4 269.39</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes   ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0dd1f6383d6e0529a4aaa1e0883f0f5448bbfc7a/Young-and-Hungry-S03E06-HDTV-x264-FLEET-rarbg-torrent.html' title='Young and Hungry S03E06 HDTV x264 FLEET rarbg torrent'>Young and Hungry S03E06 HDTV x264 FLEET rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>521</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>111</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">203 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>Young.and.Hungry.S03E06.HDTV.x264-FLEET.mp4 202.71</span> Mb<span class="st"><span class="fileicon empty"></span>young.and.hungry ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2a7de1213f6db2920ea611400926ae35caf7eb5c/The-Walking-Dead-S06E12-INTERNAL-720p-HDTV-x264-KILLERS-ettv-torrent.html' title='The Walking Dead S06E12 INTERNAL 720p HDTV x264 KILLERS ettv torrent'>The Walking Dead S06E12 INTERNAL 720p HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1036</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>94</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">2.06 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Walking.Dead.S06E12.INTERNAL.720p.HDTV.x264-KILLERS[ettv].mkv 2.06</span> Gb  Torrent-Downloaded- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/26a0c28a5bc25866fd1dca9521d63a4df4c1c840/The-Bachelor-S20E10-03-07-16-torrent.html' title='The Bachelor S20E10 03 07 16 torrent'>The Bachelor S20E10 03 07 16</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>714</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>64</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">725 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The Bachelor S20E10.mp4 724.6</span> Mb<span class="st"><span class="fileicon srt"></span>The Bachelor S20E10.srt 209.8</span> Kb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f2dd0307dc526c71523edd42462b40b37ab54b53/Vinyl-S01E04-HDTV-x264-FLEET-rarbg-torrent.html' title='Vinyl S01E04 HDTV x264 FLEET rarbg torrent'>Vinyl S01E04 HDTV x264 FLEET rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1042</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>105</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">550 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>Vinyl.S01E04.HDTV.x264-FLEET.mp4 549.85</span> Mb  vinyl.s01e04.hdtv.x264- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d2c75e9a2aab467824684327389935404b7c2438/The-Big-Bang-Theory-S09E18-HDTV-x264-LOL-eztv-torrent.html' title='The Big Bang Theory S09E18 HDTV x264 LOL eztv torrent'>The Big Bang Theory S09E18 HDTV x264 LOL eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>5605</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1965</b></span></span>
+		  <span class="bc cated"> 7 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">120 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Big.Bang.Theory.S09E18.HDTV.x264-LOL[eztv].mp4 119.92</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/1f43f1263d07aab9f49e8f30dc3f85e980b295ec/The-Daily-Show-%282016%29-03-09-Sacha-Baron-Cohen-HDTV-x264-CROOKS-eztv-torrent.html' title='The Daily Show (2016) 03 09 Sacha Baron Cohen HDTV x264 CROOKS eztv torrent'>The Daily Show (2016) 03 09 Sacha Baron Cohen HDTV x264 CROOKS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>471</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>63</b></span></span>
+		  <span class="bc cated"> 19 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">158 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Daily.Show.2016.03.09.Sacha.Baron.Cohen.HDTV.x264-CROOKS[eztv].mp4 157.69</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f3bc500aa1d06ad4cda709f0dee8b08e9d5415c7/Teen-Wolf-S05E20-720p-HDTV-x264-SVA-rarbg-torrent.html' title='Teen Wolf S05E20 720p HDTV x264 SVA rarbg torrent'>Teen Wolf S05E20 720p HDTV x264 SVA rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>586</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>49</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">703 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>Teen.Wolf.S05E20.720p.HDTV.x264-SVA.mkv 703.38</span> Mb  teen.wolf.s05e20. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/a69a55a55fa4fcb379d59fb681b25a229fef1a13/House-of-Cards-%282013%29-S04E07-720p-WEBRip-X264-DEFLATE-ettv-torrent.html' title='House of Cards (2013) S04E07 720p WEBRip X264 DEFLATE ettv torrent'>House of Cards (2013) S04E07 720p WEBRip X264 DEFLATE ettv</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1644</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>312</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">943 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.2013.S04E07.720p.WEBRip.X264-DEFLATE[ettv].mkv 943.08</span> Mb  Torrent-Downloaded-from ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e1f9b8b52acdca99d66f07cea7c199e0875310cb/House-of-Cards-%282013%29-S04E08-720p-WEBRip-X264-DEFLATE-ettv-torrent.html' title='House of Cards (2013) S04E08 720p WEBRip X264 DEFLATE ettv torrent'>House of Cards (2013) S04E08 720p WEBRip X264 DEFLATE ettv</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1557</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>300</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">715 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.2013.S04E08.720p.WEBRip.X264-DEFLATE[ettv].mkv 715.2</span> Mb  Torrent-Downloaded-from- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/4579a699a0133df92b34fc1a03b01d1cf2df8c6e/The-Voice-S10E03-3-07-16-torrent.html' title='The Voice S10E03 3 07 16 torrent'>The Voice S10E03 3 07 16</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>592</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>106</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">704 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The Voice S10E03.mp4 703.49</span> Mb<span class="st"><span class="fileicon srt"></span>The Voice S10E03.srt 197.05</span> Kb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/11201779791553245e484732c68d2e8322fb0b6d/The-Big-Bang-Theory-S09E18-HDTV-x264-LOL-ettv-torrent.html' title='The Big Bang Theory S09E18 HDTV x264 LOL ettv torrent'>The Big Bang Theory S09E18 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>5146</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>2078</b></span></span>
+		  <span class="bc cated"> 6 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">120 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  the.big.bang.theory.918.hdtv-lol[ettv]. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/17b9d3a6594faf43527ef63dc41af935d933fb2e/Black-Sails-S03E07-WEBRip-x264-FUM-ettv-torrent.html' title='Black Sails S03E07 WEBRip x264 FUM ettv torrent'>Black Sails S03E07 WEBRip x264 FUM ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2427</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>297</b></span></span>
+		  <span class="bc cated"> 6 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">352 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Black.Sails.S03E07.WEBRip.x264-FUM[ettv].mp4 351.73</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/6f76da7193a35b2f189b00e9298249c751820988/Family-Guy-S14E15-HDTV-x264-KILLERS-eztv-torrent.html' title='Family Guy S14E15 HDTV x264 KILLERS eztv torrent'>Family Guy S14E15 HDTV x264 KILLERS eztv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>890</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>155</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">98 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Family.Guy.S14E15.HDTV.x264-KILLERS[eztv].mp4 98.42</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/9b4dd82e46d95de3b84658d24a92ea7ca6e013ef/%ED%83%9C%EC%96%91%EC%9D%98-%ED%9B%84%EC%98%88-E05-160309-HDTV-H264-720p-WITH-torrent.html' title='태양의 후예 E05 160309 HDTV H264 720p WITH torrent'>태양의 후예 E05 160309 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>6167</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>774</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.03 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>태양의 후예.E05.160309.HDTV.H264.720p-WITH.mp4 1.03</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/33a5c2f2eedf5fb74501839ce4507b6872aab5f0/House-of-Cards-%282013%29-S04E10-720p-WEBRip-X264-DEFLATE-ettv-torrent.html' title='House of Cards (2013) S04E10 720p WEBRip X264 DEFLATE ettv torrent'>House of Cards (2013) S04E10 720p WEBRip X264 DEFLATE ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1381</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>268</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">926 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.2013.S04E10.720p.WEBRip.X264-DEFLATE[ettv].mkv 925.86</span> Mb  Torrent-Downloaded-from ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7461b5b9522b81ff974b6692ce190db0f40a8243/%EB%8F%8C%EC%95%84%EC%99%80%EC%9A%94-%EC%95%84%EC%A0%80%EC%94%A8-E06-160310-HDTV-H264-720p-WITH-torrent.html' title='돌아와요 아저씨 E06 160310 HDTV H264 720p WITH torrent'>돌아와요 아저씨 E06 160310 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>4959</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1593</b></span></span>
+		  <span class="bc cated"> 18 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.05 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>돌아와요 아저씨.E06.160310.HDTV.H264.720p-WITH.mp4 1.05</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/34835f1aef2f1bccff4b5fd1ef3dc138b99f1139/The-Originals-S03E15-HDTV-x264-LOL-ettv-torrent.html' title='The Originals S03E15 HDTV x264 LOL ettv torrent'>The Originals S03E15 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">4</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3155</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>267</b></span></span>
+		  <span class="bc cated"> 6 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">183 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>the.originals.315.hdtv-lol[ettv].mp4 182.</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/79b69f83390b8afe434e78ec4fbef2bba52296a6/American-Dad-S12E07-HDTV-x264-FUM-ettv-torrent.html' title='American Dad S12E07 HDTV x264 FUM ettv torrent'>American Dad S12E07 HDTV x264 FUM ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>626</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>31</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">71 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>American.Dad.S12E07.HDTV.x264-FUM[ettv].mp4 71.31</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/165a7a34d8e99be4436442985cdb8f2b292ab598/The-Simpsons-S27E15-HDTV-x264-KILLERS-eztv-torrent.html' title='The Simpsons S27E15 HDTV x264 KILLERS eztv torrent'>The Simpsons S27E15 HDTV x264 KILLERS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>701</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>127</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">112 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Simpsons.S27E15.HDTV.x264-KILLERS[eztv].mp4 112.5</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0787ac3ac6d6866d09abb1c70070080a2282b868/Better-Call-Saul-S02E03-Amarillo-1080p-NF-WEBRip-Avg-Bitrate-1200-x265...-torrent.html' title='Better Call Saul S02E03 Amarillo 1080p NF WEBRip Avg Bitrate 1200 x265 HEVC AAC 5 1 Condo mkv torrent'>Better Call Saul S02E03 Amarillo 1080p NF WEBRip Avg Bitrate 1200 x265...</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>561</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>28</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">422 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Better.Call.Saul.S02E03.Amarillo.1080p.NF.WEBRip.Avg.Bitrate.1200.x265.HEVC.AAC.5.1.Condo.mkv 422</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/152508c304e49f2941a88af2aee8c4125b81d7a7/CSI-Cyber-S02E16-HDTV-x264-LOL-ettv-torrent.html' title='CSI Cyber S02E16 HDTV x264 LOL ettv torrent'>CSI Cyber S02E16 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>822</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>125</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">324 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>csi.cyber.216.hdtv-lol[ettv].mp4 323.64</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f6efc08a73ac85911347f7fdef32dde3afcf8c37/Grimm-S05E11-HDTV-x264-FLEET-rarbg-torrent.html' title='Grimm S05E11 HDTV x264 FLEET rarbg torrent'>Grimm S05E11 HDTV x264 FLEET rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1725</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>92</b></span></span>
+		  <span class="bc cated"> 6 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">305 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Grimm.S05E11.HDTV.x264-FLEET.mp4 304.6</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  grimm.s05e11.hdtv.x264-fleet ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f606a53b38128b2fef09999c92ccead17e04a3fe/11-22-63-S01E04-HDTV-x264-LOL-eztv-torrent.html' title='11 22 63 S01E04 HDTV x264 LOL eztv torrent'>11 22 63 S01E04 HDTV x264 LOL eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>473</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>53</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">243 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>11.22.63.S01E04.HDTV.x264-LOL[eztv].mp4 242.83</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3713ce7b4cd14c5f90cca027f90c82eb3ef739ef/American-Crime-Story-S01E06-720p-HDTV-x264-AVS-rarbg-torrent.html' title='American Crime Story S01E06 720p HDTV x264 AVS rarbg torrent'>American Crime Story S01E06 720p HDTV x264 AVS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>448</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>65</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.25 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>American.Crime.Story.S01E06.720p.HDTV.x264-AVS.mkv 1.25</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  american. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/c19255335df9588a10be087bb2ca62a1e9357364/Madam-Secretary-S02E16-HDTV-x264-LOL-ettv-torrent.html' title='Madam Secretary S02E16 HDTV x264 LOL ettv torrent'>Madam Secretary S02E16 HDTV x264 LOL ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>801</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>80</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">273 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>madam.secretary.216.hdtv-lol[ettv].mp4 ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7aea9f0d3c0857c1d09b771c2a7aebff1731d008/Of-Kings-and-Prophets-S01E01-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Of Kings and Prophets S01E01 720p HDTV x264 AVS rarbg torrent'>Of Kings and Prophets S01E01 720p HDTV x264 AVS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>423</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>54</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.36 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Of.Kings.and.Prophets.S01E01.720p.HDTV.x264-AVS.mkv 1.36</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  of.kings. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/8809c6447292f307abd6a9521e222bf3ec855be6/The-Walking-Dead-S06E12-HDTV-x264-KILLERS-rarbg-torrent.html' title='The Walking Dead S06E12 HDTV x264 KILLERS rarbg torrent'>The Walking Dead S06E12 HDTV x264 KILLERS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>736</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>52</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">425 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>The.Walking.Dead.S06E12.HDTV.x264-KILLERS.mp4 425.04</span> Mb  the.walking. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/86cc36275a90728c8f7173055051c3a14e318d0f/Vinyl-S01E04-INTERNAL-HDTV-x264-BATV-ettv-torrent.html' title='Vinyl S01E04 INTERNAL HDTV x264 BATV ettv torrent'>Vinyl S01E04 INTERNAL HDTV x264 BATV ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>669</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>114</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">541 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  Vinyl.S01E04.INTERNAL.HDTV.x264-BATV[ettv ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/4e3893ec361978e300e41e72ec26f67e321f6b5b/The-Magicians-US-S01E08-REPACK-HDTV-x264-FLEET-eztv-torrent.html' title='The Magicians US S01E08 REPACK HDTV x264 FLEET eztv torrent'>The Magicians US S01E08 REPACK HDTV x264 FLEET eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>453</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>36</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">250 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Magicians.US.S01E08.REPACK.HDTV.x264-FLEET[eztv].mp4 250.33</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/8d63cf0b883ab71f2c30949456c37cdb2c5bf310/The-100-S03E08-HDTV-x264-KILLERS-ettv-torrent.html' title='The 100 S03E08 HDTV x264 KILLERS ettv torrent'>The 100 S03E08 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3715</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>3975</b></span></span>
+		  <span class="bc cated"> 4 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">297 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.100.S03E08.HDTV.x264-KILLERS[ettv].mp4 296.74</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/ed28e5b68c1aa00385f0a7db15d28098b5bbc379/Of-Kings-and-Prophets-S01E01-HDTV-x264-KILLERS-eztv-torrent.html' title='Of Kings and Prophets S01E01 HDTV x264 KILLERS eztv torrent'>Of Kings and Prophets S01E01 HDTV x264 KILLERS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>386</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>43</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">389 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Of.Kings.and.Prophets.S01E01.HDTV.x264-KILLERS[eztv].mp4 388.88</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/4a066a1f24ca599564d2d35cf2961c5fccd9d578/Limitless-S01E17-HDTV-XviD-FUM-ettv-torrent.html' title='Limitless S01E17 HDTV XviD FUM ettv torrent'>Limitless S01E17 HDTV XviD FUM ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>419</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>29</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">349 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Limitless.S01E17.HDTV.XviD-FUM[ettv].avi 349.01</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/1c8291360ca19aac2fd4f41a10123cf827711da6/Marvels-Agents-of-S-H-I-E-L-D-S03E11-Bouncing-Back-1080p-WEB-DL-DD5-1-H264...-torrent.html' title='Marvels Agents of S H I E L D S03E11 Bouncing Back 1080p WEB DL DD5 1 H264 MAoS rarbg torrent'>Marvels Agents of S H I E L D S03E11 Bouncing Back 1080p WEB DL DD5 1 H264...</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>363</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>64</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.66 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Marvel&#039;s.Agents.of.S.H.I.E.L.D.S03E11.Bouncing.Back.1080p.WEB-DL.DD5.1.H.264-MAoS.mkv 1.</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/5298f2c3bf66d231b293fdd5cae3e3c6217783ca/CSI-Cyber-S02E17-720p-HDTV-X264-DIMENSION-rarbg-torrent.html' title='CSI Cyber S02E17 720p HDTV X264 DIMENSION rarbg torrent'>CSI Cyber S02E17 720p HDTV X264 DIMENSION rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>322</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>47</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.17 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>CSI.Cyber.S02E17.720p.HDTV.X264-DIMENSION.mkv 1.17</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  csi.cyber.217. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/ea864ca4fee2785dee29f55e8808c5a0effefcee/New-Girl-S05E10-720p-HDTV-x264-AVS-rarbg-torrent.html' title='New Girl S05E10 720p HDTV x264 AVS rarbg torrent'>New Girl S05E10 720p HDTV x264 AVS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>384</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>33</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">505 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>New.Girl.S05E10.720p.HDTV.x264-AVS.mkv 505.36</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  new.girl.s05e10.720p. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/546cce7b0d6f2fb82f374101fe051632ec1b9434/Greys-Anatomy-S12E13-HDTV-x264-LOL-eztv-torrent.html' title='Greys Anatomy S12E13 HDTV x264 LOL eztv torrent'>Greys Anatomy S12E13 HDTV x264 LOL eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3401</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1959</b></span></span>
+		  <span class="bc cated"> 8 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">256 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Greys.Anatomy.S12E13.HDTV.x264-LOL[eztv].mp4 256.18</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/b8d41b449f04119f11939750ccb8d72f7d984291/JTBC-%EC%8D%B0%EC%A0%84-E157-160310-HDTV-H264-720p-WITH-torrent.html' title='JTBC 썰전 E157 160310 HDTV H264 720p WITH torrent'>JTBC 썰전 E157 160310 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3492</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1341</b></span></span>
+		  <span class="bc cated"> 12 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.3 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>[JTBC] 썰전.E157.160310.HDTV.H264.720p-WITH.mp4 1.3</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e2079e89039d34dda96cf225ee6987776f32310a/Young-and-Hungry-S03E06-HDTV-x264-FLEET-eztv-torrent.html' title='Young and Hungry S03E06 HDTV x264 FLEET eztv torrent'>Young and Hungry S03E06 HDTV x264 FLEET eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>307</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>52</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">203 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Young.and.Hungry.S03E06.HDTV.x264-FLEET[eztv].mp4 202.71</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/92919a04a14735272b126a7f4aaebb578297a179/How-to-Get-Away-with-Murder-S02E14-HDTV-x264-LOL-ettv-torrent.html' title='How to Get Away with Murder S02E14 HDTV x264 LOL ettv torrent'>How to Get Away with Murder S02E14 HDTV x264 LOL ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3265</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>2554</b></span></span>
+		  <span class="bc cated"> 6 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">250 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  how.to.get.away.with.murder.214.hdtv-lol[ ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f7447db9f1cb9a1f5024937df5ed0f326bc75a14/CpasBien-cm-Quantico-S01E12-FASTSUB-VOSTFR-HDTV-XviD-ZT-torrent.html' title='CpasBien cm Quantico S01E12 FASTSUB VOSTFR HDTV XviD ZT torrent'>CpasBien cm Quantico S01E12 FASTSUB VOSTFR HDTV XviD ZT</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>380</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>17</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">355 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>[ www.CpasBien.cm ] Quantico.S01E12.FASTSUB.VOSTFR.HDTV.XviD-ZT.avi 354.88</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e5470d547831f4b97531476bb5f71e18a8b6d6aa/Broad-City-S03E04-HDTV-x264-KILLERS-eztv-torrent.html' title='Broad City S03E04 HDTV x264 KILLERS eztv torrent'>Broad City S03E04 HDTV x264 KILLERS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>272</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>48</b></span></span>
+		  <span class="bc cated"> 20 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">180 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Broad.City.S03E04.HDTV.x264-KILLERS[eztv].mp4 180.45</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/49fda7f3b1d9e9508d30dbf830f0a9990b5ea358/%ED%83%9C%EC%96%91%EC%9D%98-%ED%9B%84%EC%98%88-E06-160310-HDTV-H264-1080p-WITH-torrent.html' title='태양의 후예 E06 160310 HDTV H264 1080p WITH torrent'>태양의 후예 E06 160310 HDTV H264 1080p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3314</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>632</b></span></span>
+		  <span class="bc cated"> 18 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.57 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>태양의 후예.E06.160310.HDTV.H264.1080p-WITH.mp4 1.57</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2b959111e2fcf8bf459374ac5100be1c9938f1f8/The-Big-Bang-Theory-S09E18-HDTV-x264-LOL-rarbg-torrent.html' title='The Big Bang Theory S09E18 HDTV x264 LOL rarbg torrent'>The Big Bang Theory S09E18 HDTV x264 LOL rarbg</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3092</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>686</b></span></span>
+		  <span class="bc cated"> 8 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">120 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>the.big.bang.theory.918.hdtv-lol.mp4 119.92</span> Mb<span class="st"><span class="fileicon empty"></span>the.big.bang.theory.918 ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/b92620e841d77b3aa49d663c02d512badbd27271/DCs-Legends-of-Tomorrow-S01E08-HDTV-x264-LOL-eztv-torrent.html' title='DCs Legends of Tomorrow S01E08 HDTV x264 LOL eztv torrent'>DCs Legends of Tomorrow S01E08 HDTV x264 LOL eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2865</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>2240</b></span></span>
+		  <span class="bc cated"> 58 mins ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">256 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>DCs.Legends.of.Tomorrow.S01E08.HDTV.x264-LOL[eztv].mp4 255.78</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/59460c1a2bbc06c396982ae3d2339c9581687c95/El-Principe-2x13-HDTV-XviD-torrent.html' title='El Principe 2x13 HDTV XviD torrent'>El Principe 2x13 HDTV XviD</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2940</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>2437</b></span></span>
+		  <span class="bc cated"> 10 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">904 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>El.Principe.2x13.HDTV.XviD.[www.DivxTotaL.com].avi 903.8</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7f25eade6ed99551c0be3fbeec34b8fd36d563c7/X-Company-S02E07-HDTV-x264-CROOKS-ettv-torrent.html' title='X Company S02E07 HDTV x264 CROOKS ettv torrent'>X Company S02E07 HDTV x264 CROOKS ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>263</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>43</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">241 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  x.company.s02e07.hdtv.x264-crooks[ettv]. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/18885c115644610f2bda95607739a2cd130c8801/House-Of-Cards-%282013%29-S04E10-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E10 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E10 WEBRip x264 TURBO rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>982</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>92</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">201 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E10.WEBRip.x264-TURBO.mp4 200.59</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  house.of. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/39a1ea591ff7f41d83117dd00a247e52d744814f/Major-Crimes-S04E22-HDTV-x264-2HD-ettv-torrent.html' title='Major Crimes S04E22 HDTV x264 2HD ettv torrent'>Major Crimes S04E22 HDTV x264 2HD ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>378</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>50</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">256 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  major.crimes.s04e22.hdtv.x264-2hd[ettv]. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/df4c36d779ff6bb70922cb83edd549e21a60617d/Blindspot-S01E12-720p-HDTV-x264-KILLERS-rarbg-torrent.html' title='Blindspot S01E12 720p HDTV x264 KILLERS rarbg torrent'>Blindspot S01E12 720p HDTV x264 KILLERS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>374</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>36</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.05 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Blindspot.S01E12.720p.HDTV.x264-KILLERS.mkv 1.05</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  blindspot.s01e12. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3314cea004837cb5edddb4be8f2bf1e6262c0c85/MythBusters-S16E10-Duct-Tape-The-Return-HDTV-x264-W4F-ettv-torrent.html' title='MythBusters S16E10 Duct Tape The Return HDTV x264 W4F ettv torrent'>MythBusters S16E10 Duct Tape The Return HDTV x264 W4F ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>537</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>40</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">330 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  mythbusters.s16e10.duct.tape-the.return. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f2b4c1d9e5efc0f59bb822b99f899c488498c115/Gotham-S02E13-HDTV-XviD-FUM-ettv-torrent.html' title='Gotham S02E13 HDTV XviD FUM ettv torrent'>Gotham S02E13 HDTV XviD FUM ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>391</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>53</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">349 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.REPACK.HDTV.XviD-FUM[ettv].avi 348.96</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/01d26a7b12cbbbf1d4a970890dbcea73fd8344a2/CpasBien-cm-Shadowhunters-S01E09-SUBFRENCH-WEBRip-XviD-Yn1D-torrent.html' title='CpasBien cm Shadowhunters S01E09 SUBFRENCH WEBRip XviD Yn1D torrent'>CpasBien cm Shadowhunters S01E09 SUBFRENCH WEBRip XviD Yn1D</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>235</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>31</b></span></span>
+		  <span class="bc cated"> 19 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">525 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>[ www.CpasBien.cm ] Shadowhunters.S01E09.SUBFRENCH.WEBRip.XviD-Yn1D.avi 524.95</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/cd7a3c0972a1796c475ead1669310d0513727415/The-100-S03E08-HDTV-x264-KILLERS-eztv-torrent.html' title='The 100 S03E08 HDTV x264 KILLERS eztv torrent'>The 100 S03E08 HDTV x264 KILLERS eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2638</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>2716</b></span></span>
+		  <span class="bc cated"> 4 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">297 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.100.S03E08.HDTV.x264-KILLERS[eztv].mp4 296.74</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/331879efef757f553e8dd285283b9a6b245cd43a/House-of-Cards-%282013%29-S04E04-720p-WEBRip-X264-DEFLATE-ettv-torrent.html' title='House of Cards (2013) S04E04 720p WEBRip X264 DEFLATE ettv torrent'>House of Cards (2013) S04E04 720p WEBRip X264 DEFLATE ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>1866</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>142</b></span></span>
+		  <span class="bc cated"> 6 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">739 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.2013.S04E04.720p.WEBRip.X264-DEFLATE[ettv].mkv 738.55</span> Mb  Torrent-Downloaded-from ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0effdb31d8480c35b6053a47b7d4a05d75afef50/Gotham-S02E13-HDTV-x264-KILLERS-rarbg-torrent.html' title='Gotham S02E13 HDTV x264 KILLERS rarbg torrent'>Gotham S02E13 HDTV x264 KILLERS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>383</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>21</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">306 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.HDTV.x264-KILLERS.mp4 306.43</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  gotham.s02e13.hdtv.x264- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e65ea8dead55149805982d7859b8e084302ba8af/Face-Off-S10E09-Bottled-Up-HDTV-x264-CRiMSON-eztv-torrent.html' title='Face Off S10E09 Bottled Up HDTV x264 CRiMSON eztv torrent'>Face Off S10E09 Bottled Up HDTV x264 CRiMSON eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>244</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>27</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">301 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Face.Off.S10E09.Bottled.Up.HDTV.x264-CRiMSON[eztv].mp4 301.34</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/cfa6b50b78f6004f09ecf3c33ee337f4bdba3fea/Elementary-S04E16-HDTV-x264-LOL-ettv-torrent.html' title='Elementary S04E16 HDTV x264 LOL ettv torrent'>Elementary S04E16 HDTV x264 LOL ettv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2653</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1708</b></span></span>
+		  <span class="bc cated"> 6 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">245 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes<span class="st"><span class="fileicon divx"></span>elementary.416.hdtv-lol[ettv].mp4 244.65</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/250b9e65270cf5825bdf3167017f4682f8d7a884/How-to-Get-Away-with-Murder-S02E14-HDTV-x264-LOL-eztv-torrent.html' title='How to Get Away with Murder S02E14 HDTV x264 LOL eztv torrent'>How to Get Away with Murder S02E14 HDTV x264 LOL eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2631</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1748</b></span></span>
+		  <span class="bc cated"> 7 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">250 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>How.to.Get.Away.with.Murder.S02E14.HDTV.x264-LOL[eztv].mp4 250.31</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/fbde8514dfc36c4bec7d7bb896c043c6a624e372/CSI-Cyber-S02E17-HDTV-x264-LOL-rarbg-torrent.html' title='CSI Cyber S02E17 HDTV x264 LOL rarbg torrent'>CSI Cyber S02E17 HDTV x264 LOL rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>228</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>16</b></span></span>
+		  <span class="bc cated"> 24 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">354 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>csi.cyber.217.hdtv-lol.mp4 354.22</span> Mb<span class="st"><span class="fileicon srt"></span>csi.cyber.217.hdtv-lol.nfo 4.33</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/8f6fcd5a2f27a0424bb2396e433bd18f3384a195/Billions-S01E07-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Billions S01E07 720p HDTV x264 AVS rarbg torrent'>Billions S01E07 720p HDTV x264 AVS rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>457</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>21</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1010 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Billions.S01E07.720p.HDTV.x264-AVS.mkv 1010.05</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon empty"></span>billions.s01e07.720p ...</span> 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/cba728090c0174b716333d27ad7a3ee74a1d7894/Lucifer-S01E07-HDTV-x264-KILLERS-rarbg-torrent.html' title='Lucifer S01E07 HDTV x264 KILLERS rarbg torrent'>Lucifer S01E07 HDTV x264 KILLERS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>344</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>20</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">288 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Lucifer.S01E07.HDTV.x264-KILLERS.mp4 288.11</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  lucifer.s01e07.hdtv. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/f632fad91ac47521ec0db63703be562a87651495/Survivor-S32E04-HDTV-x264-CROOKS-rarbg-torrent.html' title='Survivor S32E04 HDTV x264 CROOKS rarbg torrent'>Survivor S32E04 HDTV x264 CROOKS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>214</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>18</b></span></span>
+		  <span class="bc cated"> 19 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">551 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>survivor.s32e04.hdtv.x264-crooks.mp4 550.95</span> Mb  survivor.s32e04.hdtv. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/113c26ac68b04e60feec2cabc8c7740da45b30a6/Jack-Irish-S03E05-PDTV-x264-W4F-eztv-torrent.html' title='Jack Irish S03E05 PDTV x264 W4F eztv torrent'>Jack Irish S03E05 PDTV x264 W4F eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>209</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>62</b></span></span>
+		  <span class="bc cated"> 19 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">408 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Jack.Irish.S03E05.PDTV.x264-W4F[eztv].mp4 407.7</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/bcb833c8436cfa5963e7efdf59795b1772e5f85d/House-Of-Cards-%282013%29-S04E11-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E11 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E11 WEBRip x264 TURBO rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>741</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>48</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">170 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E11.WEBRip.x264-TURBO.mp4 170.08</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/5c8de966a3bdc2aa6e555f2b19d752c8d72b2a22/11-22-63-S01E04-The-Eyes-Of-Texas-720p-HULU-WEBRip-AAC2-0-H-264-TOPKEK-mkv-torrent.html' title='11 22 63 S01E04 The Eyes Of Texas 720p HULU WEBRip AAC2 0 H 264 TOPKEK mkv torrent'>11 22 63 S01E04 The Eyes Of Texas 720p HULU WEBRip AAC2 0 H 264 TOPKEK mkv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>424</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>16</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">786 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>11.22.63.S01E04.The.Eyes.Of.Texas.720p.HULU.WEBRip.AAC2.0.H.264-TOPKEK.mkv 785.68</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/7f5dc12fa3125e4a2af6b039ae8c59c89f77d8fa/Crazy-Ex-Girlfriend-S01E14-HDTV-x264-KILLERS-ettv-torrent.html' title='Crazy Ex Girlfriend S01E14 HDTV x264 KILLERS ettv torrent'>Crazy Ex Girlfriend S01E14 HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>328</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>46</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">311 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Crazy.Ex-Girlfriend.S01E14.HDTV.x264-KILLERS[ettv].mp4 311.34</span> Mb  Torrent-Downloaded-from- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/de883f466d4501d0123050f2452dcf01fa55eab7/House-Of-Cards-%282013%29-S04E12-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E12 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E12 WEBRip x264 TURBO rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>748</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>98</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">151 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E12.WEBRip.x264-TURBO.mp4 151.48</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  house.of. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/b69272f3fc841b6ba37eae3d2e7128b2ed846f50/Castle-%282009%29-S08E14-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Castle (2009) S08E14 720p HDTV x264 AVS rarbg torrent'>Castle (2009) S08E14 720p HDTV x264 AVS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>308</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>16</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.04 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Castle.2009.S08E14.720p.HDTV.x264-AVS.mkv 1.04</span> Gb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  castle.2009.s08e14. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/51450305985d716e2437428ecc2173e47380c96b/Vikings-4x03-HDTV-XviD-torrent.html' title='Vikings 4x03 HDTV XviD torrent'>Vikings 4x03 HDTV XviD</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2484</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>538</b></span></span>
+		  <span class="bc cated"> 15 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">499 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Vikings.4x03.HDTV.XviD.[www.DivxTotaL.com].avi 498.98</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d3443e0229fa65351ccaa9e8b1f8d6b8db5045b3/House-Of-Cards-%282013%29-S04-COMPLETE-WEBRip-x264-TURBO-torrent.html' title='House Of Cards (2013) S04 COMPLETE WEBRip x264 TURBO torrent'>House Of Cards (2013) S04 COMPLETE WEBRip x264 TURBO</a><span class="up_i"><span class="votesnr">2</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="down_i"><span class="votesnr">2</span><span class="thumb_down">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>678</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>177</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">2.18 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.of.Cards.2013.S04E01.PROPER.WEBRip.X264-DEFLATE(musicbolt.com).mp4 210.76</span> Mb  House.Of. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/95e44d41fa6195652d3c8f62c13f6b84c86b9c88/House-Of-Cards-%282013%29-S04E09-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E09 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E09 WEBRip x264 TURBO rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>783</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>23</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">169 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E09.WEBRip.x264-TURBO.mp4 169.19</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  house.of. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/fa96e2255a1527a4bea69bebe407264b95abf430/House-Of-Cards-%282013%29-S04E07-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E07 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E07 WEBRip x264 TURBO rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>773</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>26</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">205 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E07.WEBRip.x264-TURBO.mp4 205.12</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  house.of. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/c82f5fdc6301b76ba58d514edfe6354e18cf50f3/CSI-Cyber-S02E16-HDTV-x264-LOL-eztv-torrent.html' title='CSI Cyber S02E16 HDTV x264 LOL eztv torrent'>CSI Cyber S02E16 HDTV x264 LOL eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>419</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>41</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">324 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>CSI.Cyber.S02E16.HDTV.x264-LOL[eztv].mp4 323.64</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/2c531e2acb89c01c321e1c870fd8bfbba7286d5d/Last-Week-Tonight-With-John-Oliver-S03E04-720p-HDTV-x264-BATV-rarbg-torrent.html' title='Last Week Tonight With John Oliver S03E04 720p HDTV x264 BATV rarbg torrent'>Last Week Tonight With John Oliver S03E04 720p HDTV x264 BATV rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>414</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>18</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">631 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Last.Week.Tonight.With.John.Oliver.S03E04.720p.HDTV.x264-BATV.mkv 630.97</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/97d0b3a4031aae5870184aa12478553578aabdb0/House-Of-Cards-%282013%29-S04E08-WEBRip-x264-TURBO-rarbg-torrent.html' title='House Of Cards (2013) S04E08 WEBRip x264 TURBO rarbg torrent'>House Of Cards (2013) S04E08 WEBRip x264 TURBO rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>752</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>28</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">153 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>House.Of.Cards.2013.S04E08.WEBRip.x264-TURBO.mp4 152.77</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/041a4b23b70bc2397c5e89006a49c83c285dd47e/The-Walking-Dead-S06E12-1080p-WEB-DL-DD5-1-H264-RARBG-torrent.html' title='The Walking Dead S06E12 1080p WEB DL DD5 1 H264 RARBG torrent'>The Walking Dead S06E12 1080p WEB DL DD5 1 H264 RARBG</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>374</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>32</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.65 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>RARBG.com.mp4 992.93</span> Kb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  The.Walking.Dead.S06E12.1080p.WEB-DL.DD5.1. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/8272fc8ad7f3ea1b99b357816cfd83f1480cf8b6/Better-Call-Saul-S02E04-HDTV-XviD-AFG-torrent.html' title='Better Call Saul S02E04 HDTV XviD AFG torrent'>Better Call Saul S02E04 HDTV XviD AFG</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>286</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>4</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">301 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Better Call Saul S02E04 HDTV XviD-AFG(musicbolt.com).avi 301.18</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/e6d6f4d910b92989fdc09d5352f16f5af93b50f5/CpasBien-cm-Colony-S01E08-FASTSUB-VOSTFR-HDTV-XviD-ZT-torrent.html' title='CpasBien cm Colony S01E08 FASTSUB VOSTFR HDTV XviD ZT torrent'>CpasBien cm Colony S01E08 FASTSUB VOSTFR HDTV XviD ZT</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>330</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>8</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">333 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>[ www.CpasBien.cm ] Colony.S01E08.FASTSUB.VOSTFR.HDTV.XviD-ZT.avi 333.03</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3ed3ab531135d410d2980af1a0605f36e7237005/2-Broke-Girls-S05E15-HDTV-x264-LOL-eztv-torrent.html' title='2 Broke Girls S05E15 HDTV x264 LOL eztv torrent'>2 Broke Girls S05E15 HDTV x264 LOL eztv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2142</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>1154</b></span></span>
+		  <span class="bc cated"> 6 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">135 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>2.Broke.Girls.S05E15.HDTV.x264-LOL[eztv].mp4 134.84</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/6fdc069b40869b90715d51a0c8388fe43264ca7d/Grandfathered-S01E19-HDTV-x264-KILLERS-ettv-torrent.html' title='Grandfathered S01E19 HDTV x264 KILLERS ettv torrent'>Grandfathered S01E19 HDTV x264 KILLERS ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>236</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>43</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">141 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Grandfathered.S01E19.HDTV.x264-KILLERS[ettv].mp4 141.44</span> Mb  Torrent-Downloaded-from-ExtraTorrent ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/5c4112424615a03e1098b0bfeec59730e3c86576/Gotham-S02E13-REPACK-720p-HDTV-x264-KILLERS-ettv-torrent.html' title='Gotham S02E13 REPACK 720p HDTV x264 KILLERS ettv torrent'>Gotham S02E13 REPACK 720p HDTV x264 KILLERS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>289</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>34</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.19 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.REPACK.720p.HDTV.x264-KILLERS[ettv].mkv 1.19</span> Gb  Torrent-Downloaded-from- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/b28b28a4f958b4e9d51aac0c2173e5c5ec20ddbb/Castle-%282009%29-S08E14-WEB-DL-x264-FUM-ettv-torrent.html' title='Castle (2009) S08E14 WEB DL x264 FUM ettv torrent'>Castle (2009) S08E14 WEB DL x264 FUM ettv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>235</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>57</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">268 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Castle.2009.S08E14.WEB-DL.x264-FUM[ettv].mp4 267.66</span> Mb  Torrent-Downloaded-from-ExtraTorrent.cc. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/c8614080401999ad6221b17d48caab940e23ace1/American-Crime-Story-S01E06-HDTV-x264-2HD-ettv-torrent.html' title='American Crime Story S01E06 HDTV x264 2HD ettv torrent'>American Crime Story S01E06 HDTV x264 2HD ettv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2943</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>328</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">294 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  american.crime.story.s01e06.hdtv.x264-2hd ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/9666b87f259423f2a45ba7a0a643850d8ef10072/The-Last-Man-On-Earth-S02E11-HDTV-x264-KILLERS-eztv-torrent.html' title='The Last Man On Earth S02E11 HDTV x264 KILLERS eztv torrent'>The Last Man On Earth S02E11 HDTV x264 KILLERS eztv</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>390</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>168</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">205 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Last.Man.On.Earth.S02E11.HDTV.x264-KILLERS[eztv].mp4 205.37</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d9308334b961ef057fc627084d94c72dd6ffcfbd/Bitten-S03E04-HDTV-x264-2HD-eztv-torrent.html' title='Bitten S03E04 HDTV x264 2HD eztv torrent'>Bitten S03E04 HDTV x264 2HD eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>240</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>18</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">242 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Bitten.S03E04.HDTV.x264-2HD[eztv].mp4 242.22</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/275a9d25505778322563cba40a7dd934e522eae3/Saturday-Night-Live-S41E14-Jonah-Hill-HDTV-x264-CROOKS-ettv-torrent.html' title='Saturday Night Live S41E14 Jonah Hill HDTV x264 CROOKS ettv torrent'>Saturday Night Live S41E14 Jonah Hill HDTV x264 CROOKS ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>514</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>36</b></span></span>
+		  <span class="bc cated"> 5 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">458 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  saturday.night.live.s41e14.jonah.hill. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/219ee71961ba1e25a33eee85c984304845b6f6d1/Damien-S01E01-HDTV-XviD-FUM-ettv-torrent.html' title='Damien S01E01 HDTV XviD FUM ettv torrent'>Damien S01E01 HDTV XviD FUM ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>280</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>18</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">348 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Damien.S01E01.HDTV.XviD-FUM[ettv].avi 348.46</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 288</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/09615839935b15fb34c933b0fc83848d5b5832b4/Ex-On-The-Beach-S04E08-HDTV-x264-C4TV-torrent.html' title='Ex On The Beach S04E08 HDTV x264 C4TV torrent'>Ex On The Beach S04E08 HDTV x264 C4TV</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>172</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>40</b></span></span>
+		  <span class="bc cated"> 19 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">385 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Ex.On.The.Beach.S04E08.HDTV.x264-C4TV.mp4 384.87</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0e5f44ee5807442569bebff90378f563164fad97/Gotham-S02E13-1080p-WEB-DL-DD5-1-H264-NTb-rarbg-torrent.html' title='Gotham S02E13 1080p WEB DL DD5 1 H264 NTb rarbg torrent'>Gotham S02E13 1080p WEB DL DD5 1 H264 NTb rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>215</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>29</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.66 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Gotham.S02E13.1080p.WEB-DL.DD5.1.H.264-NTb.mkv 1.66</span> Gb  Gotham.S02E13.1080p.WEB-DL.DD5.1.H.264- ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/dc74ee8907a39f5cc9497c6658973b5c354677f8/Family-Guy-S14E15-720p-HDTV-x264-AVS-rarbg-torrent.html' title='Family Guy S14E15 720p HDTV x264 AVS rarbg torrent'>Family Guy S14E15 720p HDTV x264 AVS rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>373</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>24</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">406 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Family.Guy.S14E15.720p.HDTV.x264-AVS.mkv 405.55</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  family.guy.s14e15. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3997f817f3cc7adf818bcd5d10eee09381485b48/WWE-Total-Divas-S05-E08-HDTV-x264-TJ-torrent.html' title='WWE Total Divas S05 E08 HDTV x264 TJ torrent'>WWE Total Divas S05 E08 HDTV x264 TJ</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>211</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>38</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">483 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>WWE.Total.Divas.S05.E08.HDTV.x264-TJ.nfo 3.14</span> Kb<span class="st"><span class="fileicon divx"></span>WWE.Total.Divas.S05.E08.HDTV.x264-TJ.mp4 482.</span> ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/d8a110010352fc52180c7078d6812ecdf8f6a640/The-Aliens-S01E01-PROPER-HDTV-x264-TLA-ettv-torrent.html' title='The Aliens S01E01 PROPER HDTV x264 TLA ettv torrent'>The Aliens S01E01 PROPER HDTV x264 TLA ettv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2246</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>756</b></span></span>
+		  <span class="bc cated"> 1 day ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">381 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 168</span> bytes  the.aliens.s01e01.proper.hdtv.x264-tla[ ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0e8c605932517d1d8a298a10263d313ccfb378ab/Schitts-Creek-S02E10-HDTV-x264-CROOKS-eztv-torrent.html' title='Schitts Creek S02E10 HDTV x264 CROOKS eztv torrent'>Schitts Creek S02E10 HDTV x264 CROOKS eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>217</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>19</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">144 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Schitts.Creek.S02E10.HDTV.x264-CROOKS[eztv].mp4 144.14</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/3043916125fb363b0e08203fa01f5b21354f785c/The-Venture-Bros-S06E06-HDTV-x264-BATV-ettv-torrent.html' title='The Venture Bros S06E06 HDTV x264 BATV ettv torrent'>The Venture Bros S06E06 HDTV x264 BATV ettv</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>362</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>14</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">130 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Venture.Bros.S06E06.HDTV.x264-BATV[ettv].mp4 130.44</span> Mb  Torrent-Downloaded-from-ExtraTorrent ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0d7df3b5f0c52374806acc2919b69d826c73f2ff/Damien-S01E01-HDTV-x264-FUM-ettv-torrent.html' title='Damien S01E01 HDTV x264 FUM ettv torrent'>Damien S01E01 HDTV x264 FUM ettv</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3485</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>321</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">275 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Damien.S01E01.HDTV.x264-FUM[ettv].mp4 275.3</span> Mb<span class="st"><span class="fileicon srt"></span>Torrent-Downloaded-from-ExtraTorrent.cc.txt 288</span>  ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/5f6753a807a4bdce6f260260083b49f6e02a9948/%ED%95%B4%ED%94%BC-%ED%88%AC%EA%B2%8C%EB%8D%94-E439-160310-HDTV-H264-720p-WITH-torrent.html' title='해피 투게더 E439 160310 HDTV H264 720p WITH torrent'>해피 투게더 E439 160310 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2066</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>852</b></span></span>
+		  <span class="bc cated"> 15 hours ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.27 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>해피 투게더.E439.160310.HDTV.H264.720p-WITH.mp4 1.27</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/94d039117a433bb4b1dd42baa5084d5335dd66f3/The-Walking-Dead-6x12-HDTV-XviD-torrent.html' title='The Walking Dead 6x12 HDTV XviD torrent'>The Walking Dead 6x12 HDTV XviD</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>3286</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>292</b></span></span>
+		  <span class="bc cated"> 3 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">481 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>The.Walking.Dead.6x12.HDTV.XviD.[www.DivxTotaL.com].avi 480.89</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/fefa5978bde0db9ab692cb975189f7f2d8a38c1a/Jane-the-Virgin-S02E14-HDTV-x264-FLEET-eztv-torrent.html' title='Jane the Virgin S02E14 HDTV x264 FLEET eztv torrent'>Jane the Virgin S02E14 HDTV x264 FLEET eztv</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>220</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>26</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">355 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Jane.the.Virgin.S02E14.HDTV.x264-FLEET[eztv].mp4 355.42</span> Mb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/0caddd620026bb9c40b2c10151b40ca3e8e89534/Once-upon-a-Time-S05E12-WEB-h264-WNN-rarbg-torrent.html' title='Once upon a Time S05E12 WEB h264 WNN rarbg torrent'>Once upon a Time S05E12 WEB h264 WNN rarbg</a><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>186</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>34</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">235 Mb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>Once.upon.a.Time.S05E12.WEB.h264-WNN.mkv 227.89</span> Mb<span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes  sample-once.upon.a. ... 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/dfd4cb447a166f30ba11b292800b0ff6d96af835/%ED%99%A9%EA%B8%88%EC%96%B4%EC%9E%A5-%EB%9D%BC%EB%94%94%EC%98%A4%EC%8A%A4%ED%83%80-E469-160309-HDTV-H264-720p-WITH-torrent.html' title='황금어장 라디오스타 E469 160309 HDTV H264 720p WITH torrent'>황금어장 라디오스타 E469 160309 HDTV H264 720p WITH</a><span class="up_i"><span class="votesnr">1</span><span class="thumb_up">&nbsp;&nbsp;&nbsp;</span></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2405</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>252</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.19 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>황금어장 라디오스타.E469.160309.HDTV.H264.720p-WITH.mp4 1.19</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/967c97e724353441c847e14b43a49b3eb7044b70/%EB%8F%8C%EC%95%84%EC%99%80%EC%9A%94-%EC%95%84%EC%A0%80%EC%94%A8-E05-160309-HDTV-H264-720p-WITH-torrent.html' title='돌아와요 아저씨 E05 160309 HDTV H264 720p WITH torrent'>돌아와요 아저씨 E05 160309 HDTV H264 720p WITH</a></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>2434</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>268</b></span></span>
+		  <span class="bc cated"> 2 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.06 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon divx"></span>돌아와요 아저씨.E05.160309.HDTV.H264.720p-WITH.mp4 1.06</span> Gb 
+	 </div>
+	</div>
+</li>
+
+ <li class="g w0">
+	<div class="torrent">		
+		<h3 class="r"><a class ='l tl' href='https://torrentproject.se/1201777901a83c695bafadc1aa28ba5f84d88571/Shameless-US-S06E08-720p-HDTV-X264-DIMENSION-rarbg-torrent.html' title='Shameless US S06E08 720p HDTV X264 DIMENSION rarbg torrent'>Shameless US S06E08 720p HDTV X264 DIMENSION rarbg</a><span title='verified' class='verified'>&nbsp;&nbsp;&nbsp;</span><span class="screenshot"></span></h3>
+		<div class="gl sti">
+		  <span class="bc seeders">seeders:<span class="gac_b"><b>312</b></span></span>
+		  <span class="bc leechers">leechers:<span class="gac_b"><b>35</b></span></span>
+		  <span class="bc cated"> 4 days ago</span>
+		  <span class="bc cate">Video Tv</span>
+    	  <span class="bc torrent-size">1.2 Gb  </span>
+		</div>
+		<div class="s gls gg"><span class="st"><span class="fileicon srt"></span>RARBG.com.txt 34</span> bytes<span class="st"><span class="fileicon divx"></span>Shameless.US.S06E08.720p.HDTV.X264-DIMENSION.mkv 1.2</span> Gb  shameless.us. ... 
+	 </div>
+	</div>
+</li>
+
+						</ol>
+					</div>
+				</div>
+			</div>
+		<div id='right_col' style='width: 137px; position: absolute; top: 0px; right: 0px;'></div><div id="navcnt" class='av'>
+						<table id="nav">
+							<tbody>
+								<tr valign="top"><td class="cur"> 1 </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=1' class='fl'> <span class="csb ch"></span> 2 </a>   </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=2' class='fl'> <span class="csb ch"></span> 3 </a>   </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=3' class='fl'> <span class="csb ch"></span> 4 </a>   </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=4' class='fl'> <span class="csb ch"></span> 5 </a>   </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=5' class='fl'> <span class="csb ch"></span> 6 </a>   </td><td><a href='?filter=2101&s=&out=json&num=150&amp;start=6' class='fl'> <span class="csb ch"></span> 7 </a>   </td>			</tr>
+						</tbody>
+					</table>
+				</div>
+	<div id='footer_white'>
+		<div id='bottom-menu'>
+			<ul>
+				
+				<li><a class='gb4' href='//torrentproject.se/DMCA'>Copyright/DMCA</a></li>
+				<li><a class='gb4' href='http://metasearch.torrentproject.com/' title='search all the torrents with one click'><b>Metasearch</b></a></li>
+				<li><a class='gb4' href='//torrentproject.se/trackers/' title='Trackers in torrentproject.se'>Trackers</a></li>
+				<li><a class='gb4' href='https://adblockplus.org/'>Block Annoying Ads</a></li>
+			</ul>	
+			<ul>
+				<li><a class='gb4' href='//torrentproject.se/browse' title='Browse all the torrents in torrentproject.se'>Browse</a></li>
+				<li><a class='gb4' href='//torrentproject.se/about' title='About torrentproject.se'>About</a></li>
+				<li><a class='gb4' href='//torrentproject.se/api' title='Search torrent feeds and other stuff in torrentproject.se'>Api</a></li>
+				<li><a class='gb4' href='//torrentproject.se/feedback'>Feedback/Contact</a></li>
+				<li><a class='gb4' href='https://www.privateinternetaccess.com/pages/buy-vpn/TPROJECT001'>Private Internet Access</a></li>
+				
+			</ul>
+		</div>
+	</div><br/></div></div></body></html>

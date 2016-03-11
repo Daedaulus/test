@@ -15,8 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class KatProvider:
-
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -28,7 +27,8 @@ class KatProvider:
         self.url = 'https://kat.cr'
         self.urls = {
             'base': self.url,
-            'search': urljoin(self.url, '%s/')
+            'search': urljoin(self.url, '/usearch/'),
+            'rss': self.url,
         }
         self.custom_url = None
 

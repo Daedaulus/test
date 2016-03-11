@@ -1,19 +1,17 @@
-# coding=utf-8
+# from v0alpha1 import (
+#     # providers
+#     abnormal, alpharatio, bitsnoop,  btdigg, cpasbien, extratorrent, gftracker, iptorrents, kat,
+#     limetorrents, nyaatorrents, phxbit, rarbg, thepiratebay, tntvillage, tokyotoshokan,
+#     torrentbytes, torrentleech, torrentproject, torrentz,
+# )
+from v0alpha1.context_managers import BS4Parser
 
-from contextlib import ContextDecorator
-from bs4 import BeautifulSoup
-
-
-class BS4Parser(BeautifulSoup, ContextDecorator):
-    def insert_before(self, successor):
-        pass
-
-    def insert_after(self, successor):
-        pass
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        _ = exc_type, exc_val, exc_tb
-        self.decompose()
+__all__ = [
+    # Utilities
+    'BS4Parser',
+    # Providers
+    '__base__',
+    'abnormal', 'alpharatio', 'bitsnoop', ' btdigg', 'cpasbien', 'extratorrent', 'gftracker', 'iptorrents', 'kat',
+    'limetorrents', 'nyaatorrents', 'phxbit', 'rarbg', 'thepiratebay', 'tntvillage', 'tokyotoshokan',
+    'torrentbytes', 'torrentleech', 'torrentproject', 'torrentz',
+]

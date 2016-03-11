@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class TokyoToshokanProvider:
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -44,7 +44,6 @@ class TokyoToshokanProvider:
         self.search_params = {
             'type': 1,  # get anime types
         }
-
 
         # Categories
 

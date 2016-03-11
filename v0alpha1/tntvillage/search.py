@@ -1,3 +1,4 @@
+from contextlib import suppress
 from datetime import datetime, timedelta
 import logging
 import re
@@ -17,45 +18,41 @@ log.addHandler(logging.NullHandler())
 
 # Search page
 def search(
-    self,
+    provider,
+    search_url,
     search_strings,
     search_params,
     torrent_method=None,
     ep_obj=None,
     *args, **kwargs
 ):
-    if not self.login():
-        return None
-
-    self.categories = 'cat=' + str(self.cat)
-
+    searches = []
+    with suppress(NotImplementedError, AttributeError):
+        if not provider.login(provider.login_params):
+            return searches
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
-
         for search_string in search_strings[mode]:
-
+            provider.categories = 'cat=' + str(provider.cat)
             if mode == 'RSS':
-                self.page = 2
-
+                provider.page = 2
             last_page = 0
-            y = int(self.page)
-
+            pages = int(provider.page)
             if search_string == '':
                 continue
-
             search_string = str(search_string).replace('.', ' ')
-
-            for x in range(0, y):
-                z = x * 20
+            for page in range(0, pages):
+                offset = page * 20
                 if last_page:
                     break
-
+                search_url = (
+                    provider.urls['search_page'].format(offset, provider.categories) if mode == 'RSS' else
+                    (provider.urls['search_page'] + '&filter={2}').format(offset, provider.categories, search_string)
+                )
                 if mode != 'RSS':
-                    log.debug('Search string: {}'.format(search_string.decode('utf-8')))
-                    search_url = (self.urls['search_page'] + '&filter={2}').format(z, self.categories, search_string)
-                else:
-                    search_url = self.urls['search_page'].format(z, self.categories)
-
-                data = self.session.get(search_url).text
-                if not data:
-                   log.debug('Data returned from provider does not contain any torrents')
+                    log.debug('Search string: {search}'.format(search=search_string))
+                data = provider.session.get(search_url, params=search_params)
+                if not data.content:
+                    log.debug('Data returned from provider does not contain any torrents')
+                searches.append(data)
+    return searches

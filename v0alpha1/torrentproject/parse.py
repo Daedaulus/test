@@ -17,8 +17,10 @@ log.addHandler(logging.NullHandler())
 
 # Parse page for results
 def parse(self, data, mode, torrent_method):
-    torrents = data
-    del torrents['total_found']
+    torrents = data.json()
+    if not (torrents and 'total_found' in torrents and int(torrents['total_found']) > 0):
+        log.debug('Data returned from provider does not contain any torrents')
+        del torrents['total_found']
 
     items = []
     for i in torrents:
@@ -48,9 +50,9 @@ def parse(self, data, mode, torrent_method):
 
             trackers_url = urljoin(trackers_url, t_hash)
             trackers_url = urljoin(trackers_url, '/trackers_json')
-            jdata = self.session.get(trackers_url).json()
+            torrents = self.session.get(trackers_url).json()
 
-            assert jdata != 'maintenance'
+            assert torrents != 'maintenance'
             download_url = 'magnet:?xt=urn:btih:' + t_hash + '&dn=' + title + ''.join(['&tr=' + s for s in jdata])
         except (Exception, AssertionError):
             download_url = 'magnet:?xt=urn:btih:' + t_hash + '&dn=' + title + self._custom_trackers

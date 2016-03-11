@@ -1,62 +1,80 @@
-from v0alpha1.bitsnoop import provider, search
-bitsnoop = provider.BitSnoopProvider('BitSnoop')
-bitsnoop.search = search.search
-
-from v0alpha1.btdigg import provider, search
-btdigg = provider.BTDiggProvider('BTDigg')
-btdigg.search = search.search
-
-from v0alpha1.cpasbien import provider, search
-cpasbien = provider.CPasBienProvider('CPasBien')
-cpasbien.search = search.search
-
-from v0alpha1.extratorrent import provider, search
-extratorrent = provider.ExtraTorrentProvider('ExtraTorrent')
-extratorrent.search = search.search
-
-from v0alpha1.iptorrents import provider, search
-iptorrent = provider.IPTorrentsProvider('IPTorrents')
-iptorrent.search = search.search
-
-from v0alpha1.kat import provider, search
-kat = provider.KatProvider('KickAssTorrents')
-kat.search = search.search
-
-from v0alpha1.limetorrents import provider, search
-limetorrents = provider.LimeTorrentsProvider('LimeTorrents')
-limetorrents.search = search.search
-
-from v0alpha1.nyaatorrents import provider, search
-nyaatorrents = provider.NyaaProvider('Nyaa')
-nyaatorrents.search = search.search
-
-from v0alpha1.thepiratebay import provider, search
-thepiratebay = provider.ThePirateBayProvider('ThePirateBay')
-thepiratebay.search = search.search
-
-from v0alpha1.tokyotoshokan import provider, search
-tokyotoshokan = provider.TokyoToshokanProvider('Tokyo')
-tokyotoshokan.search = search.search
-
-from v0alpha1.torrentproject import provider, search
-torrentproject = provider.TorrentProjectProvider('TorrentProject')
-torrentproject.search = search.search
-
 import logging
-log = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
-
-from v0 import BS4Parser
-
-search = {'RSS': ['']}
-provider_list = [
+from v0alpha1 import (
+    abnormal,
+    alpharatio,
     bitsnoop,
     btdigg,
     cpasbien,
     extratorrent,
+    gftracker,
+    iptorrents,
+    kat,
+    limetorrents,
+    nyaatorrents,
+    phxbit,
+    rarbg,
     thepiratebay,
+    tntvillage,
+    tokyotoshokan,
+    torrentbytes,
+    torrentleech,
+    torrentproject,
+    torrentz,
+)
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG)
+
+bitsnoop = bitsnoop.provider('BitSnoop')
+btdigg = btdigg.provider('BTDigg')
+cpasbien = cpasbien.provider('CPasBien')
+extratorrent = extratorrent.provider('ExtraTorrent')
+iptorrents = iptorrents.provider('IPTorrents')
+kat = kat.provider('KickAss')
+limetorrents = limetorrents.provider('Lime')
+nyaatorrents = nyaatorrents.provider('Nyaa')
+rarbg = rarbg.provider('RARBg')
+thepiratebay = thepiratebay.provider('ThePirateBay')
+tokyotoshokan = tokyotoshokan.provider('TokyoToshokan')
+torrentproject = torrentproject.provider('TorrentProject')
+torrentz = torrentz.provider('Torrentz')
+
+search = {'RSS': ['', ]}
+provider_list = [
+    # # *********** IN PROGRESS ***********
+    # # PUBLIC
+    kat,  # No attribute show
+    nyaatorrents,  # No attribute show
+    tokyotoshokan,  # No attribute show
+
+    # # LOGIN REQUIRED
+    # rarbg,  # Login Required
+    # torrentbytes,  # Login Required
+    # torrentleech,  # Login Required
+    # iptorrents,  # Login Required
+
+    # # LOGIN FAILED
+    # alpharatio,  # Login failed
+    # tntvillage,  # Login failed
+
+    # # CLOUD FLARE
+    # bitsnoop,  # cloud flare
+    # btdigg,  # cloud flare
+    # cpasbien,  # cloud flare
+
+    # # *********** WORKING ***********
+    # # WORKING PUBLIC
+    # extratorrent,
+    # limetorrents,
+    # thepiratebay,
     # torrentproject,
-    # tokyotoshokan,
+    # torrentz,
+
+    # # WORKING LOGIN REQUIRED
+    # gftracker,  # Login Required
+
+    # # WORKING BORROWED LOGIN REQUIRED
+    # abnormal,  # Login Required
+    # phxbit,  # Login Required
 ]
 
 for p in provider_list:
@@ -65,12 +83,29 @@ for p in provider_list:
     search_params = {}
     if hasattr(p, 'search_params'):
         search_params = p.search_params
-    for data in p.search(p, search, search_params, None):
+    for data in p.search(
+          search_url=p.urls.get('search', p.url),
+          search_strings=search,
+          search_params=search_params,
+          torrent_method=None
+    ):
         ext = 'txt'
-        if 'html' in data.text:
-            ext = 'html'
         if 'xml' in data.text:
             ext = 'xml'
+        if 'html' in data.text:
+            ext = 'html'
         with open('{location}{prov}.{num}.{type}'.format(location='results\\', prov=p.name, num=x, type=ext), 'wb') as result:
             result.write(data.content)
         x += 1
+
+# from bs4 import BeautifulSoup, Doctype
+#
+# for each in [
+#     # 'BTDigg',
+#     'ExtraTorrent',
+#     'ThePirateBay',
+#     'TorrentProject',
+# ]:
+#     with open('results\{}.0.xml'.format(each), 'rb') as source:
+#         data = BeautifulSoup(source, 'html5lib')
+#         print(data.contents[0])

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Tokyo Toshokan :: #tokyotosho @ irc.rizon.net :: Torrent Search</title><link rel="stylesheet" type="text/css" href="http://ttcdn.info/css12.php" title="Default" />
+		<link rel="alternate stylesheet" type="text/css" href="http://ttcdn.info/css_inverse.php" title="Inverse" />
+	<link rel="icon" type="image/png" href="http://ttcdn.info/favicon.png" />
+	
+	<link rel="shortcut icon" href="http://ttcdn.info/favicon.ico" /><link rel="stylesheet" type="text/css" href="http://ttcdn.info/20130401/clippyjs/build/clippy.css" media="all"><link rel="alternate" title="Tokyo Toshokan RSS" href="rss.php" type="application/rss+xml" />
+	<link rel="search" type="application/opensearchdescription+xml" title="Tokyo Toshokan" href="/tokyotosho-search.php" /></head><body><script type="text/javascript" src="http://ttcdn.info/styleswitcher.js"></script><div id="main">
+<h1>Tokyo <span title="Japanese: Libary">Toshokan</span></h1>
+<div class="centertext">東京 図書館</div>
+<h2><a class="h2" style="font-size: 9pt" href="irc://irc.rizon.net/tokyotosho">#tokyotosho @ irc.rizon.net</a><br />
+<span style="font-size: 8pt"><a href="http://tokyotosho.info">http://tokyotosho.info</a> <a href="http://tokyotosho.se">http://tokyotosho.se</a> <a href="http://tokyo-tosho.net">http://tokyo-tosho.net</a></span>
+</h2>
+<h3>A BitTorrent <span title="English: Toshokan">Library</span> for Japanese Media</h3>
+
+<ul class="menuwrapper">
+<li class="menu"><a class="head" title="Lost?" href="index.php">Home</a> (<a class="head" href="https://www.tokyotosho.info/">SSL</a>) ::</li>
+<li class="menu"><a class="head" href="settings.php">Customize</a> ::</li>
+<li class="menu"><a class="head" href="login.php">Register/Login</a> ::</li>
+<li class="menu"><a class="head" title="Tell us about a torrent we don't know about" href="new.php">Submit New Torrent</a> ::</li>
+<li class="menu"><a class="head" title="We probably have what you're looking for!" href="search.php">Search</a> ::</li>
+<li class="menu"><a class="head" title="Keep on top of the releases" href="rss.php">RSS</a> (<a class="head" title="Or just some of the releases" href="rss_customize.php">Customize</a>)<br /></li>
+<li class="menu"><a class="head" title="Post messages in me!" href="http://forums.tokyotosho.info/">Forums</a> ::</li>
+<li class="menu"><a class="head" title="Post messages in me!" href="/trac">Trac/Wiki</a> ::</li>
+<li class="menu"><a class="head" title="Chat or idle with us on IRC" href="irc://irc.rizon.net/tokyotosho">Chat</a> ::</li>
+<li class="menu"><a class="head" title="Did we mess something up?" href="/trac/report">Bug Reports</a> ::</li>
+<li class="menu"><a class="head" title="It's teh moniez" href="/donate.php">Donate!</a> ::</li>
+<li class="menu"><a class="head" title="Let's hear from you!" href="/contact.php">Contact</a> ::</li>
+<li class="menu"><strong><a class="head" href="https://www.privateinternetaccess.com/pages/protect-tt/">VPN Service</a></strong> ::</li>
+<li class="menu"><a class="head" href="http://idlerpg.tokyotosho.info">IdleRPG</a></li> ::
+<li class="menu"><a class="head" title="Off site status page" href="http://status.tokyotosho.info">Status Page</a></li>
+</ul>
+<table class="centertext" style="width: 100%; margin-left: auto; margin-right: auto; padding-bottom: 1em; margin: 0;">
+<tr><td id="tsearch">Torrent Search</td></tr>
+</table>
+<p class="centertext"><a href="https://www.privateinternetaccess.com/pages/protect-tt/"><img alt="Private Internet Access" src="http://ttcdn.info/pia_wide.png" /></a></p><table class="listing">
+
+</table><form action="/search.php" method="get" accept-charset="utf-8">
+<table class="centertext" cellspacing="0" cellpadding="0" style="width: 100%; padding-bottom: 1em; margin: 0;">
+<tr><td>
+Search Terms:
+<input size="60" type="text" name="terms" value="" />
+<select name="type">
+<option value="0">All</option>
+<option value="1" selected="selected">Anime</option>
+<option value="10">Non-English</option>
+<option value="8">Drama</option>
+<option value="3">Manga</option>
+<option value="2">Music</option>
+<option value="9">Music-Video</option>
+<option value="7">Raws</option>
+<option value="4">Hentai</option>
+<option value="11">Batch</option>
+<option value="5">Other</option>
+</select><br />
+Torrent Size (Min MB):
+<input size="4" type="text" name="size_min" value="" />
+(Max MB):
+<input size="4" type="text" name="size_max" value="" /><br />
+Submitter:
+<input size="12" type="text" name="username" value="" /><br />
+<input type="checkbox" name="comment" value="true" disabled="disabled" />Search comment
+<input type="submit" value="Search" /><br />
+<p>Tip: Use - to negate search terms, for example, -avi to exclude anything with "avi".</p>
+</td></tr>
+</table>
+</form>
+<script async>
+  (function() {
+    var cx = '013811262232679994351:WMX-1085218594';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div><p class="footer">
+<a href="https://www.privateinternetaccess.com/pages/protect-tt/"><img alt="Private Internet Access" src="http://ttcdn.info/pia.png" /></a><br />
+<br />
+Rolling visitor numbers <br />IPv4: 24h [42,345] 60min [3,261] 5min [421] 1min [139] - 5 minute rolling average [733]<br />
+IPv6: 24h [4,922] 60min [323] 5min [43] 1min [9] - 5 minute rolling average [68]
+
+<br />Hosted at:<br />
+<a class="sprite_serioustubes" href="http://serioustubes.org/"></a><br />Page generated in 2ms.<br />Haven’t rebooted in: 3 months, 23 days, 22 hours, 56 minutes, 39 seconds<br />You are connecting from: 98.230.238.56</p></body></html>

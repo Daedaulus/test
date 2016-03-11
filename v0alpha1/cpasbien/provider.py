@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class CPasBienProvider:
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -27,6 +27,8 @@ class CPasBienProvider:
         self.url = 'http://www.cpasbien.io/'
         self.urls = {
             'base': self.url,
+            'rss': urljoin(self.url, '/view_cat.php?categorie=series&trie=date-d'),
+            'search': urljoin(self.url, '/recherche/{search}.html,trie-seeds-d'),
         }
 
         # Credentials

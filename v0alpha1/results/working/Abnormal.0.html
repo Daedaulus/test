@@ -1,0 +1,1234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Parcourir les Torrents :: ABNORMAL TRACKER</title>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1;IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="msapplication-config" content="none" />
+	<link rel="shortcut icon" href="favicon.ico?v=3" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<link rel="stylesheet" type="text/css" href="static/styles/global.css?v=1453934982" />
+    <link rel="stylesheet" href="static/styles/wbbtheme.css" />
+	<link rel="stylesheet" href="static/styles/tooltipster/style.css?v=1453935108" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" title="proton" media="screen" href="static/styles/proton/style.css?v=1457355829" />
+	<script type="text/javascript">
+		//<![CDATA[
+		var authkey = "qxceapv604hrd2qx7ij0s7y104k1crqt";
+		var userid = 842;
+		//]]>
+	</script>
+	<script
+			src="static/functions/jquery.js?v=1453934972"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/script_start.js?v=1453934976"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/ajax.class.js?v=1453934968"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/global.js?v=1455522135"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/jquery.autocomplete.js?v=1453934971"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/autocomplete.js?v=1453934968"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/browse.js?v=1453981259"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/tooltipster.js?v=1453934977"
+			type="text/javascript"></script>
+	<script
+			src="static/functions/tooltipster_settings.js?v=1453934977"
+			type="text/javascript"></script>
+    <script type="text/javascript" src="static/functions/jquery.wysibb.min.js"></script>
+    <script type="text/javascript" src="static/functions/autoanonymize.js"></script>
+</head>
+<body id="torrents">
+	<div id="wrapper">
+		<h1 class="hidden">ABNORMAL TRACKER</h1>
+		<div id="header">
+			<div class="logo donation_state_4">
+				<a href="index.php" class="tooltip" title="Etat des donations : 26.67 %"></a>
+			</div>
+			<div id="userinfo">
+				<ul id="userinfo_username">
+					<li id="nav_userinfo" >
+						<a href="user.php?id=842" class="username userclass_Apprentice">Seviup</a>
+					</li>
+					<li id="nav_userclass">
+						<span class="hidden userclass">Apprentice</span>
+					</li>
+					<li id="nav_useredit" class="brackets">
+						<a href="user.php?action=edit&amp;userid=842"></a>
+					</li>
+					<li id="nav_logout" class="brackets">
+						<a href="logout.php?auth=qxceapv604hrd2qx7ij0s7y104k1crqt">Déconnexion</a>
+					</li>
+				</ul>
+				<ul id="userinfo_major">
+					<li id="nav_upload" class="brackets">
+						<a href="upload.php">Upload</a>
+					</li>
+					<li id="nav_invite" class="brackets">
+						<a href="user.php?action=invite">Invitations</a>
+					</li>
+					<li id="nav_donate" class="brackets">
+						<a href="donate.php">Faire un don</a>
+					</li>
+					
+				</ul>
+				<ul id="userinfo_stats">
+					<li id="stats_seeding">
+						<a href="torrents.php?type=seeding&amp;userid=842">Up</a>:
+						<span class="stat tooltip" title="47.97472 Go">47.97 Go</span>
+					</li>
+					<li id="stats_leeching">
+						<a href="torrents.php?type=leeching&amp;userid=842">Down</a>:
+						<span class="stat tooltip" title="0.00000 B">0.00 B</span>
+					</li>
+					<li id="stats_ratio">
+						Ratio: <span class="stat"><span class="tooltip r99" title="Infinite">∞</span></span>
+					</li>
+					<li id="stats_required">
+						<a href="rules.php?p=ratio">Requis</a>:
+						<span class="stat tooltip" title="0.00000">0.00</span>
+					</li>
+				</ul>
+
+                <ul id="userinfo_stats_others">
+                     <li id="chocos">
+						<span class="stat">
+							<a href="chocos.php">Choco's : 515.94</a>
+						</span>
+					</li>
+                </ul>
+
+
+				<ul id="userinfo_minor">
+					<li id="nav_inbox">
+						<a href="inbox.php">Messagerie</a>
+					</li>
+					<li id="nav_staffinbox">
+						<a href="staffpm.php">Contact Staff</a>
+					</li>
+					<li id="nav_uploaded">
+						<a href="torrents.php?type=uploaded&amp;userid=842">Uploads</a>
+					</li>
+					<li id="nav_bookmarks">
+						<a href="bookmarks.php?type=torrents">Abonnements</a>
+					</li>
+					<li id="nav_subscriptions">
+						<a href="userhistory.php?action=subscriptions">Suivis</a>
+					</li>
+					<li id="nav_comments">
+						<a href="comments.php">Commentaires</a></li>
+					<li id="nav_friends">
+						<a href="friends.php">Amis</a></li>
+                    <li id="nav_subtitles">
+						<a href="subtitles.php">ABN Subs Bêta</a></li>
+				</ul>
+			</div>
+			<div id="menu">
+				<h4 class="hidden">Site Menu</h4>
+				<ul>
+					<li id="nav_index">
+						<a href="index.php">Accueil</a>
+					</li>
+					<li id="nav_torrents" class="active">
+						<a href="torrents.php">Torrents</a>
+					</li>
+					<li id="nav_requests">
+						<a href="requests.php">Requêtes</a>
+					</li>
+                    <li id="nav_groups">
+						<a href="groups.php">Groupes</a>
+					</li>
+					<li id="nav_forums">
+						<a href="forums.php">Forums</a>
+					</li>
+					<li id="nav_top10">
+						<a href="top10.php">Tops</a>
+					</li>
+					<li id="nav_shoutbox">
+						<a href="shoutbox.php">Shoutbox</a>
+					</li>
+					<li id="nav_wiki">
+						<a href="wiki.php">Wiki</a>
+					</li>
+					<li id="nav_rules">
+						<a href="rules.php">Règles</a>
+					</li>
+                    <li id="nav_log">
+						<a href="log.php">Logs</a>
+					</li>
+				</ul>
+			</div>
+			<div id="searchbars">
+				<ul>
+					<li id="searchbar_torrents">
+						<span class="hidden">Torrents: </span>
+						<form class="search_form" name="torrents" action="torrents.php" method="get">
+                        	<input id="torrentssearch" accesskey="t" spellcheck="false"
+									onfocus="if (this.value == 'Torrents') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Torrents'; }"
+									value="Torrents" placeholder="Torrents" type="text" name="search" size="17" />
+						</form>
+					</li>
+					<li id="searchbar_requests">
+						<span class="hidden">Requests: </span>
+						<form class="search_form" name="requests" action="requests.php" method="get">
+							<input id="requestssearch" spellcheck="false"
+									onfocus="if (this.value == 'Requêtes') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Requêtes'; }"
+									value="Requêtes" placeholder="Requêtes" type="text" name="search" size="17" />
+						</form>
+					</li>
+					<li id="searchbar_forums">
+						<span class="hidden">Forums: </span>
+						<form class="search_form" name="forums" action="forums.php" method="get">
+							<input value="search" type="hidden" name="action" />
+							<input id="forumssearch"
+									onfocus="if (this.value == 'Forums') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Forums'; }"
+									value="Forums" placeholder="Forums" type="text" name="search" size="17" />
+						</form>
+					</li>
+					<li id="searchbar_wiki">
+						<span class="hidden">Wiki: </span>
+						<form class="search_form" name="wiki" action="wiki.php" method="get">
+							<input type="hidden" name="action" value="search" />
+							<input
+									onfocus="if (this.value == 'Wiki') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Wiki'; }"
+									value="Wiki" placeholder="Wiki" type="text" name="search" size="17" />
+						</form>
+					</li>
+					<li id="searchbar_log">
+						<span class="hidden">Log: </span>
+						<form class="search_form" name="log" action="log.php" method="get">
+							<input id="logsearch"
+									onfocus="if (this.value == 'Log') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Log'; }"
+									value="Log" placeholder="Log" type="text" name="search" size="17" />
+						</form>
+					</li>
+					<li id="searchbar_users">
+						<span class="hidden">Users: </span>
+						<form class="search_form" name="users" action="user.php" method="get">
+							<input type="hidden" name="action" value="search" />
+							<input
+									id="userssearch"
+									onfocus="if (this.value == 'Utilisateurs') { this.value = ''; }"
+									onblur="if (this.value == '') { this.value = 'Utilisateurs'; }"
+									value="Utilisateurs" placeholder="Utilisateurs" type="text" name="search" size="20" />
+						</form>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+<div class="thin widethin">
+    <div class="header">
+        <h2>Torrents</h2>
+    </div>
+    <form class="search_form" name="torrents" method="get" action="" onsubmit="$(this).disableUnset();">
+        <div class="box filter_torrents">
+            <div class="head">
+                <strong>
+                    <span>Catégories</span>
+                </strong>
+                <span style="float: right;">
+                    <a href="#" onclick="return toggleTorrentSearch(0);" id="ft_toggle" class="brackets">Cacher</a>
+                </span>
+            </div>
+            <div id="ft_container" class="pad">
+                <table class="layout cat_list ft_cat_list">
+                                        <tr>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_1" value="TV|SD|VOSTFR" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|SD|VOSTFR">TV|SD|VOSTFR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_2" value="TV|HD|VOSTFR" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|HD|VOSTFR">TV|HD|VOSTFR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_3" value="TV|SD|VF" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|SD|VF">TV|SD|VF</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_4" value="TV|HD|VF" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|HD|VF">TV|HD|VF</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_5" value="TV|PACK|FR" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|PACK|FR">TV|PACK|FR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_6" value="TV|PACK|VOSTFR" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|PACK|VOSTFR">TV|PACK|VOSTFR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_7" value="TV|EMISSIONS" checked="checked" />
+                            <a href="torrents.php?cat[]=TV|EMISSIONS">TV|EMISSIONS</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_8" value="DOCS" />
+                            <a href="torrents.php?cat[]=DOCS">DOCS</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_9" value="ANIME" checked="checked" />
+                            <a href="torrents.php?cat[]=ANIME">ANIME</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_10" value="MOVIE|DVDR" />
+                            <a href="torrents.php?cat[]=MOVIE|DVDR">MOVIE|DVDR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_11" value="MOVIE|DVDRIP" />
+                            <a href="torrents.php?cat[]=MOVIE|DVDRIP">MOVIE|DVDRIP</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_12" value="MOVIE|BDRIP" />
+                            <a href="torrents.php?cat[]=MOVIE|BDRIP">MOVIE|BDRIP</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_13" value="MOVIE|VOSTFR" />
+                            <a href="torrents.php?cat[]=MOVIE|VOSTFR">MOVIE|VOSTFR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_14" value="MOVIE|HD|720p" />
+                            <a href="torrents.php?cat[]=MOVIE|HD|720p">MOVIE|HD|720p</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_15" value="MOVIE|HD|1080p" />
+                            <a href="torrents.php?cat[]=MOVIE|HD|1080p">MOVIE|HD|1080p</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_16" value="MOVIE|REMUXBR" />
+                            <a href="torrents.php?cat[]=MOVIE|REMUXBR">MOVIE|REMUXBR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_17" value="MOVIE|FULLBR" />
+                            <a href="torrents.php?cat[]=MOVIE|FULLBR">MOVIE|FULLBR</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_18" value="PC|APP" />
+                            <a href="torrents.php?cat[]=PC|APP">PC|APP</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_19" value="PC|GAMES" />
+                            <a href="torrents.php?cat[]=PC|GAMES">PC|GAMES</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_20" value="MUSIC|FLAC" />
+                            <a href="torrents.php?cat[]=MUSIC|FLAC">MUSIC|FLAC</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_21" value="MUSIC|MP3" />
+                            <a href="torrents.php?cat[]=MUSIC|MP3">MUSIC|MP3</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_22" value="MUSIC|CONCERT" />
+                            <a href="torrents.php?cat[]=MUSIC|CONCERT">MUSIC|CONCERT</a>
+                        </td>
+                                                <td>
+                            <input type="checkbox" name="cat[]" id="cat_23" value="EBOOKS" />
+                            <a href="torrents.php?cat[]=EBOOKS">EBOOKS</a>
+                        </td>
+                                            </tr>
+                </table>
+            </div>
+            <br />
+            <div class="head">
+                <strong>
+                    <span>Genres</span> 
+                </strong>
+                <span style="float: right;">
+                    <a href="#" onclick="return toggleGenres();" id="togglegenres" class="brackets">Afficher</a>
+                </span>
+            </div>
+            <div id="genres" class="pad hidden">
+                <select id="genrestypes" >
+                                                <option value="MOVIE"  selected="selected">MOVIE</option>
+                                                    <option value="MUSIC" >MUSIC</option>
+                                                    <option value="GAME" >GAME</option>
+                                                    <option value="ANIME" >ANIME</option>
+                                                    <option value="TV" >TV</option>
+                                        </select>
+                <table class="layout cat_list ft_cat_list">
+                                        <tr>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_1" value="1" />
+                            <a href="torrents.php?genres[]=1">Action</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_2" value="2" />
+                            <a href="torrents.php?genres[]=2">Animation</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_3" value="3" />
+                            <a href="torrents.php?genres[]=3">Arts Martiaux</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_4" value="4" />
+                            <a href="torrents.php?genres[]=4">Aventure</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_5" value="5" />
+                            <a href="torrents.php?genres[]=5">Biopic</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_6" value="6" />
+                            <a href="torrents.php?genres[]=6">Bollywood</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_7" value="7" />
+                            <a href="torrents.php?genres[]=7">Classique</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_8" value="8" />
+                            <a href="torrents.php?genres[]=8">Com&eacute;die</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_9" value="9" />
+                            <a href="torrents.php?genres[]=9">Com&eacute;die dramatique</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_10" value="10" />
+                            <a href="torrents.php?genres[]=10">Com&eacute;die musicale</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_11" value="11" />
+                            <a href="torrents.php?genres[]=11">Concert</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_12" value="12" />
+                            <a href="torrents.php?genres[]=12">Dessin anim&eacute;</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_13" value="13" />
+                            <a href="torrents.php?genres[]=13">Documentaire</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_14" value="14" />
+                            <a href="torrents.php?genres[]=14">Drama</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_15" value="15" />
+                            <a href="torrents.php?genres[]=15">Drame</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_16" value="16" />
+                            <a href="torrents.php?genres[]=16">Epouvante-horreur</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_17" value="17" />
+                            <a href="torrents.php?genres[]=17">Erotique</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_18" value="18" />
+                            <a href="torrents.php?genres[]=18">Espionnage</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_19" value="19" />
+                            <a href="torrents.php?genres[]=19">Exp&eacute;rimental</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_20" value="20" />
+                            <a href="torrents.php?genres[]=20">Famille</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_21" value="21" />
+                            <a href="torrents.php?genres[]=21">Fantastique</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_22" value="22" />
+                            <a href="torrents.php?genres[]=22">Guerre</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_23" value="23" />
+                            <a href="torrents.php?genres[]=23">Historique</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_24" value="24" />
+                            <a href="torrents.php?genres[]=24">Judiciaire</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_25" value="25" />
+                            <a href="torrents.php?genres[]=25">Movie night</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_26" value="26" />
+                            <a href="torrents.php?genres[]=26">Musical</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_27" value="27" />
+                            <a href="torrents.php?genres[]=27">Opera</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_28" value="28" />
+                            <a href="torrents.php?genres[]=28">P&eacute;plum</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_29" value="29" />
+                            <a href="torrents.php?genres[]=29">Policier</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_30" value="30" />
+                            <a href="torrents.php?genres[]=30">Romance</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_31" value="31" />
+                            <a href="torrents.php?genres[]=31">Science fiction</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_32" value="32" />
+                            <a href="torrents.php?genres[]=32">Show</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_33" value="33" />
+                            <a href="torrents.php?genres[]=33">Sport event</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_34" value="34" />
+                            <a href="torrents.php?genres[]=34">Thriller</a>
+                        </td>
+                                                <td class="MOVIE">
+                            <input type="checkbox" name="genres[]" id="genre_35" value="35" />
+                            <a href="torrents.php?genres[]=35">Western</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_36" value="36" />
+                            <a href="torrents.php?genres[]=36">Rock</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_37" value="37" />
+                            <a href="torrents.php?genres[]=37">Electronic</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_38" value="38" />
+                            <a href="torrents.php?genres[]=38">Pop</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_39" value="39" />
+                            <a href="torrents.php?genres[]=39">Folk, World, &amp; Country</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_40" value="40" />
+                            <a href="torrents.php?genres[]=40">Funk / Soul</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_41" value="41" />
+                            <a href="torrents.php?genres[]=41">Jazz</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_42" value="42" />
+                            <a href="torrents.php?genres[]=42">Hip Hop</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_43" value="43" />
+                            <a href="torrents.php?genres[]=43">Classical</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_44" value="44" />
+                            <a href="torrents.php?genres[]=44">Reggae</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_45" value="45" />
+                            <a href="torrents.php?genres[]=45">Latin</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_46" value="46" />
+                            <a href="torrents.php?genres[]=46">Stage &amp; Screen</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_47" value="47" />
+                            <a href="torrents.php?genres[]=47">Blues</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_48" value="48" />
+                            <a href="torrents.php?genres[]=48">Non-Music</a>
+                        </td>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_49" value="49" />
+                            <a href="torrents.php?genres[]=49">Children&#39;s</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="MUSIC hidden">
+                            <input type="checkbox" name="genres[]" id="genre_50" value="50" />
+                            <a href="torrents.php?genres[]=50">Metal</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_51" value="51" />
+                            <a href="torrents.php?genres[]=51">Action</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_52" value="52" />
+                            <a href="torrents.php?genres[]=52">Action-Adventure</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_53" value="53" />
+                            <a href="torrents.php?genres[]=53">Adventure</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_54" value="54" />
+                            <a href="torrents.php?genres[]=54">Baseball</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_55" value="55" />
+                            <a href="torrents.php?genres[]=55">Basketball</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_56" value="56" />
+                            <a href="torrents.php?genres[]=56">Billiards</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_57" value="57" />
+                            <a href="torrents.php?genres[]=57">Block-Breaking</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_58" value="58" />
+                            <a href="torrents.php?genres[]=58">Bowling</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_59" value="59" />
+                            <a href="torrents.php?genres[]=59">Boxing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_60" value="60" />
+                            <a href="torrents.php?genres[]=60">Brawler</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_61" value="61" />
+                            <a href="torrents.php?genres[]=61">Card Game</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_62" value="62" />
+                            <a href="torrents.php?genres[]=62">Compilation</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_63" value="63" />
+                            <a href="torrents.php?genres[]=63">Cricket</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_64" value="64" />
+                            <a href="torrents.php?genres[]=64">Driving/Racing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_65" value="65" />
+                            <a href="torrents.php?genres[]=65">Dual-Joystick Shooter</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_66" value="66" />
+                            <a href="torrents.php?genres[]=66">Educational</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_67" value="67" />
+                            <a href="torrents.php?genres[]=67">Fighting</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_68" value="68" />
+                            <a href="torrents.php?genres[]=68">First-Person Shooter</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_69" value="69" />
+                            <a href="torrents.php?genres[]=69">Fishing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_70" value="70" />
+                            <a href="torrents.php?genres[]=70">Fitness</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_71" value="71" />
+                            <a href="torrents.php?genres[]=71">Football</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_72" value="72" />
+                            <a href="torrents.php?genres[]=72">Gambling</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_73" value="73" />
+                            <a href="torrents.php?genres[]=73">Golf</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_74" value="74" />
+                            <a href="torrents.php?genres[]=74">Hockey</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_75" value="75" />
+                            <a href="torrents.php?genres[]=75">Flight Simulator</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_76" value="76" />
+                            <a href="torrents.php?genres[]=76">Light-Gun Shooter</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_77" value="77" />
+                            <a href="torrents.php?genres[]=77">Minigame Collection</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_78" value="78" />
+                            <a href="torrents.php?genres[]=78">MMORPG</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_79" value="79" />
+                            <a href="torrents.php?genres[]=79">MOBA</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_80" value="80" />
+                            <a href="torrents.php?genres[]=80">Music/Rhythm</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_81" value="81" />
+                            <a href="torrents.php?genres[]=81">Pinball</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_82" value="82" />
+                            <a href="torrents.php?genres[]=82">Platformer</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_83" value="83" />
+                            <a href="torrents.php?genres[]=83">Puzzle</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_84" value="84" />
+                            <a href="torrents.php?genres[]=84">Real-Time Strategy</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_85" value="85" />
+                            <a href="torrents.php?genres[]=85">Role-Playing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_86" value="86" />
+                            <a href="torrents.php?genres[]=86">Shoot &#39;Em Up</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_87" value="87" />
+                            <a href="torrents.php?genres[]=87">Shooter</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_88" value="88" />
+                            <a href="torrents.php?genres[]=88">Simulation</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_89" value="89" />
+                            <a href="torrents.php?genres[]=89">Skateboarding</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_90" value="90" />
+                            <a href="torrents.php?genres[]=90">Snowboarding/Skiing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_91" value="91" />
+                            <a href="torrents.php?genres[]=91">Soccer</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_92" value="92" />
+                            <a href="torrents.php?genres[]=92">Sports</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_93" value="93" />
+                            <a href="torrents.php?genres[]=93">Strategy</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_94" value="94" />
+                            <a href="torrents.php?genres[]=94">Surfing</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_95" value="95" />
+                            <a href="torrents.php?genres[]=95">Tennis</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_96" value="96" />
+                            <a href="torrents.php?genres[]=96">Text Adventure</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_97" value="97" />
+                            <a href="torrents.php?genres[]=97">Track &amp; Field</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_98" value="98" />
+                            <a href="torrents.php?genres[]=98">Trivia/Board Game</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_99" value="99" />
+                            <a href="torrents.php?genres[]=99">Vehicular Combat</a>
+                        </td>
+                                                <td class="GAME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_100" value="100" />
+                            <a href="torrents.php?genres[]=100">Wrestling</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_101" value="101" />
+                            <a href="torrents.php?genres[]=101">Action</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_102" value="102" />
+                            <a href="torrents.php?genres[]=102">Adventure</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_103" value="103" />
+                            <a href="torrents.php?genres[]=103">Cars</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_104" value="104" />
+                            <a href="torrents.php?genres[]=104">Comedy</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_105" value="105" />
+                            <a href="torrents.php?genres[]=105">Dementia</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_106" value="106" />
+                            <a href="torrents.php?genres[]=106">Demons</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_107" value="107" />
+                            <a href="torrents.php?genres[]=107">Drama</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_108" value="108" />
+                            <a href="torrents.php?genres[]=108">Ecchi</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_109" value="109" />
+                            <a href="torrents.php?genres[]=109">Fantasy</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_110" value="110" />
+                            <a href="torrents.php?genres[]=110">Game</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_111" value="111" />
+                            <a href="torrents.php?genres[]=111">Harem</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_112" value="112" />
+                            <a href="torrents.php?genres[]=112">Hentai</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_113" value="113" />
+                            <a href="torrents.php?genres[]=113">Historical</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_114" value="114" />
+                            <a href="torrents.php?genres[]=114">Horror</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_115" value="115" />
+                            <a href="torrents.php?genres[]=115">Josei</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_116" value="116" />
+                            <a href="torrents.php?genres[]=116">Kids</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_117" value="117" />
+                            <a href="torrents.php?genres[]=117">Magic</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_118" value="118" />
+                            <a href="torrents.php?genres[]=118">Martial Arts</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_119" value="119" />
+                            <a href="torrents.php?genres[]=119">Mecha</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_120" value="120" />
+                            <a href="torrents.php?genres[]=120">Military</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_121" value="121" />
+                            <a href="torrents.php?genres[]=121">Music</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_122" value="122" />
+                            <a href="torrents.php?genres[]=122">Mystery</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_123" value="123" />
+                            <a href="torrents.php?genres[]=123">Parody</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_124" value="124" />
+                            <a href="torrents.php?genres[]=124">Police</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_125" value="125" />
+                            <a href="torrents.php?genres[]=125">Psychological</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_126" value="126" />
+                            <a href="torrents.php?genres[]=126">Romance</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_127" value="127" />
+                            <a href="torrents.php?genres[]=127">Samurai</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_128" value="128" />
+                            <a href="torrents.php?genres[]=128">School</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_129" value="129" />
+                            <a href="torrents.php?genres[]=129">Sci-Fi</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_130" value="130" />
+                            <a href="torrents.php?genres[]=130">Seinen</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_131" value="131" />
+                            <a href="torrents.php?genres[]=131">Shoujo</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_132" value="132" />
+                            <a href="torrents.php?genres[]=132">Shoujo Ai</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_133" value="133" />
+                            <a href="torrents.php?genres[]=133">Shounen</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_134" value="134" />
+                            <a href="torrents.php?genres[]=134">Shounen Ai</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_135" value="135" />
+                            <a href="torrents.php?genres[]=135">Slice of Life</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_136" value="136" />
+                            <a href="torrents.php?genres[]=136">Space</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_137" value="137" />
+                            <a href="torrents.php?genres[]=137">Sports</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_138" value="138" />
+                            <a href="torrents.php?genres[]=138">Super Power</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_139" value="139" />
+                            <a href="torrents.php?genres[]=139">Supernatural</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_140" value="140" />
+                            <a href="torrents.php?genres[]=140">Thriller</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_141" value="141" />
+                            <a href="torrents.php?genres[]=141">Vampire</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_142" value="142" />
+                            <a href="torrents.php?genres[]=142">Yaoi</a>
+                        </td>
+                                                <td class="ANIME hidden">
+                            <input type="checkbox" name="genres[]" id="genre_143" value="143" />
+                            <a href="torrents.php?genres[]=143">Yuri</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_144" value="144" />
+                            <a href="torrents.php?genres[]=144">Action</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_145" value="145" />
+                            <a href="torrents.php?genres[]=145">Animation</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_146" value="146" />
+                            <a href="torrents.php?genres[]=146">Arts Martiaux</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_147" value="147" />
+                            <a href="torrents.php?genres[]=147">Aventure</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_148" value="148" />
+                            <a href="torrents.php?genres[]=148">Biopic</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_149" value="149" />
+                            <a href="torrents.php?genres[]=149">Bollywood</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_150" value="150" />
+                            <a href="torrents.php?genres[]=150">Classique</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_151" value="151" />
+                            <a href="torrents.php?genres[]=151">Com&eacute;die</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_152" value="152" />
+                            <a href="torrents.php?genres[]=152">Com&eacute;die dramatique</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_153" value="153" />
+                            <a href="torrents.php?genres[]=153">Com&eacute;die musicale</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_154" value="154" />
+                            <a href="torrents.php?genres[]=154">Concert</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_155" value="155" />
+                            <a href="torrents.php?genres[]=155">Dessin anim&eacute;</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_156" value="156" />
+                            <a href="torrents.php?genres[]=156">Documentaire</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_157" value="157" />
+                            <a href="torrents.php?genres[]=157">Drama</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_158" value="158" />
+                            <a href="torrents.php?genres[]=158">Drame</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_159" value="159" />
+                            <a href="torrents.php?genres[]=159">Epouvante-horreur</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_160" value="160" />
+                            <a href="torrents.php?genres[]=160">Erotique</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_161" value="161" />
+                            <a href="torrents.php?genres[]=161">Espionnage</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_162" value="162" />
+                            <a href="torrents.php?genres[]=162">Exp&eacute;rimental</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_163" value="163" />
+                            <a href="torrents.php?genres[]=163">Famille</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_164" value="164" />
+                            <a href="torrents.php?genres[]=164">Fantastique</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_165" value="165" />
+                            <a href="torrents.php?genres[]=165">Guerre</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_166" value="166" />
+                            <a href="torrents.php?genres[]=166">Historique</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_167" value="167" />
+                            <a href="torrents.php?genres[]=167">Judiciaire</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_168" value="168" />
+                            <a href="torrents.php?genres[]=168">Movie night</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_169" value="169" />
+                            <a href="torrents.php?genres[]=169">Musical</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_170" value="170" />
+                            <a href="torrents.php?genres[]=170">Opera</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_171" value="171" />
+                            <a href="torrents.php?genres[]=171">P&eacute;plum</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_172" value="172" />
+                            <a href="torrents.php?genres[]=172">Policier</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_173" value="173" />
+                            <a href="torrents.php?genres[]=173">Romance</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_174" value="174" />
+                            <a href="torrents.php?genres[]=174">Science fiction</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_175" value="175" />
+                            <a href="torrents.php?genres[]=175">Show</a>
+                        </td>
+                                            </tr>
+                                        <tr>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_176" value="176" />
+                            <a href="torrents.php?genres[]=176">Sport event</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_177" value="177" />
+                            <a href="torrents.php?genres[]=177">Thriller</a>
+                        </td>
+                                                <td class="TV hidden">
+                            <input type="checkbox" name="genres[]" id="genre_178" value="178" />
+                            <a href="torrents.php?genres[]=178">Western</a>
+                        </td>
+                                            </tr>
+                </table>
+            </div>
+            <br />
+            <table class="layout">
+                <tr>
+                    <td><strong>Rechercher :</strong></td>
+                    <td>
+                        <input type="search" name="search" size="60" value="" />
+                    </td>
+                    <td><strong>Trier par :</strong></td>
+                    <td>
+                        <select name="order" class="ft_order_by">
+                                                        <option value="Time" selected="selected">Date</option>
+                                                        <option value="ReleaseName">Nom de la Release</option>
+                                                        <option value="Seeders">Seeders</option>
+                                                        <option value="Leechers">Leechers</option>
+                                                        <option value="Snatched">Complets</option>
+                                                        <option value="Size">Taille</option>
+                                                    </select>&nbsp;
+					
+                        <select name="way" class="ft_order_way">
+                                                        <option value="desc">Décroissant</option>
+                                                        <option value="asc">Croissant</option>
+                                                    </select>
+                    </td>
+                    <td>
+                        <div class="submit">
+                            <input type="submit" value="Valider" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <table class="torrent_table cats no_grouping" id="torrent_table">
+        <tr class="colhead">
+            <td style="width: 85px;">Catégorie
+            </td>
+            <td>
+                <a href="torrents.php?way=desc&amp;order=ReleaseName&amp;search=&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME">Release</a>
+            </td>
+            <td>
+                M
+            </td>
+            <td style="width: 15px;">DL
+            </td>
+            <td>
+                <a href="torrents.php?way=desc&amp;order=Size&amp;search=&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME">Taille</a>
+            </td>
+            <td>
+                <a href="torrents.php?way=desc&amp;order=Snatched&amp;search=&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME">C</a>
+            </td>
+            <td>
+                <a href="torrents.php?way=desc&amp;order=Seeders&amp;search=&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME">S</a>
+            </td>
+            <td>
+                <a href="torrents.php?way=desc&amp;order=Leechers&amp;search=&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME">L</a>
+            </td>
+        </tr>
+
+        <tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15013">Flaked.S01E01.FRENCH.720p.WEBRip.x264-SH0W <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15013&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>765.25 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15012">The.Politicians.Husband.S01E01.FRENCH.HDTV.x264-LiBERTY <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15012&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>375.17 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15011">The.Politicians.Husband.S01E03.FiNAL.FRENCH.720p.HDTV.x264-LiBERTY <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15011&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>897.47 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15010">The.Politicians.Husband.S01E02.FRENCH.720p.HDTV.x264-LiBERTY <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15010&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.00 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15009">The.Politicians.Husband.S01E01.FRENCH.720p.HDTV.x264-LiBERTY <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15009&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1,014.63 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=15008">NCIS.S13E04.FRENCH.720p.HDTV.x264-FRiES <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15008&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1,021.84 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|PACK|FR" class="tooltip" title="TV|PACK|FR"><div class="cats_tv-pack-fr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=15000">Fleming.The.Man.Who.Would.Be.Bond.S01.MULTi.1080p.BluRay.x264-Ryotox <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=15000&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>15.88 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14998">Rosewood.S01E11.FASTSUB.VOSTFR.HDTV.x264-KiLLERMiX <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14998&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>372.74 Mo</td><td>3</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14997">Rosewood.S01E11.FASTSUB.VOSTFR.720p.HDTV.x264-KiLLERMiX <img src="static/common/new_red.png" alt="New" title="New" style="vertical-align: bottom;"/></a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14997&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.27 Go</td><td>4</td><td style="color:green;">5</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14992">Outsiders.2016.S01E07.FASTSUB.VOSTFR.HDTV.x264-KiLLERMiX</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14992&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>343.33 Mo</td><td>4</td><td style="color:green;">5</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14991">Outsiders.2016.S01E07.FASTSUB.VOSTFR.720p.HDTV.x264-KiLLERMiX</a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14991&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.14 Go</td><td>6</td><td style="color:green;">7</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14990">NCIS.S13E04.FRENCH.1080p.WEB-DL.DD5.1.H264-LiBERTY</a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14990&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.58 Go</td><td>0</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|PACK|FR" class="tooltip" title="TV|PACK|FR"><div class="cats_tv-pack-fr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14989">Unforgettable.S04.FRENCH.1080p.WEB-DL.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14989&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>20.72 Go</td><td>1</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14988">NCIS.New.Orleans.S02E04.FRENCH.1080p.WEB-DL.DD5.1.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14988&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.55 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|PACK|FR" class="tooltip" title="TV|PACK|FR"><div class="cats_tv-pack-fr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14987">24.S09.FRENCH.720p.WEB-DL.DD5.1.H264-AUTHORiTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14987&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>16.00 Go</td><td>0</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14986">NCIS.New.Orleans.S02E04.FRENCH.720p.WEB-DL.DD5.1.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14986&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.26 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14985">NCIS.New.Orleans.S02E04.FRENCH.LD.WEB-DL.x264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14985&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>426.91 Mo</td><td>1</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14984">Young.and.Hungry.S03E06.FASTSUB.VOSTFR.HDTV.x264-KiLLERMiX</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14984&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>214.35 Mo</td><td>3</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14983">Limitless.S01E17.FASTSUB.VOSTFR.HDTV.x264-KiLLERMiX</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14983&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>321.33 Mo</td><td>5</td><td style="color:green;">6</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|PACK|FR" class="tooltip" title="TV|PACK|FR"><div class="cats_tv-pack-fr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14982">The.Shannara.Chronicles.S01.FRENCH.1080i.HDTV.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14982&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>12.18 Go</td><td>1</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14981">Happy.Valley.S02E05.FASTSUB.VOSTFR.HDTV.x264-KiLLERMiX</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14981&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>384.35 Mo</td><td>3</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14980">Young.and.Hungry.S03E06.FASTSUB.VOSTFR.720p.HDTV.x264-KiLLERMiX</a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14980&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>744.57 Mo</td><td>4</td><td style="color:green;">5</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14979">Limitless.S01E17.FASTSUB.VOSTFR.720p.HDTV.x264-KiLLERMiX</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14979&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>941.40 Mo</td><td>16</td><td style="color:green;">16</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14978">Happy.Valley.S02E05.FASTSUB.VOSTFR.720p.HDTV.x264-KiLLERMiX</a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14978&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.01 Go</td><td>4</td><td style="color:green;">5</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14977">Lost.Girl.S05E11.FRENCH.1080p.WEB-DL.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14977&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.64 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14976">NCIS.S13E04.FRENCH.720p.WEB-DL.DD5.1.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14976&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.29 Go</td><td>0</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14975">Lost.Girl.S05E10.FRENCH.1080p.WEB-DL.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14975&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.57 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14974">Lost.Girl.S05E11.FRENCH.720p.WEB-DL.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14974&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.30 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14973">NCIS.S13E04.FRENCH.HDTV.x264-FRiES</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14973&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>264.70 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VF" class="tooltip" title="TV|HD|VF"><div class="cats_tv-hd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14972">Lost.Girl.S05E10.FRENCH.720p.WEB-DL.H264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14972&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.30 Go</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14971">NCIS.S13E04.FRENCH.LD.WEB-DL.x264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14971&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>278.48 Mo</td><td>0</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14970">Afro.Samurai.Directors.Cut.S01.MULTi.BDRiP.x264-DEAL</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14970&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>2.68 Go</td><td>1</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VOSTFR" class="tooltip" title="TV|SD|VOSTFR"><div class="cats_tv-sd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14968">Arrow.S04E13.VOSTFR.HDTV.x264-Visual</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14968&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>294.33 Mo</td><td>5</td><td style="color:green;">6</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14967">Arrow.S04E13.VOSTFR.720p.HDTV.x264-Visual</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14967&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>876.29 Mo</td><td>2</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14966">Arrow.S04E13.VOSTFR.1080p.HDTV.x264-Visual</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14966&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>2.78 Go</td><td>1</td><td style="color:green;">2</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14965">Arrow.S04E13.VOSTFR.720p.WEB-DL.DD5.1.H.264-Visual</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14965&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.29 Go</td><td>3</td><td style="color:green;">4</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|HD|VOSTFR" class="tooltip" title="TV|HD|VOSTFR"><div class="cats_tv-hd-vostfr"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14964">Arrow.S04E13.VOSTFR.1080p.WEB-DL.DD5.1.H.264-Visual</a></td><td>1</td><td><a href="torrents.php?action=download&amp;id=14964&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.57 Go</td><td>4</td><td style="color:green;">5</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14963">Lost.Girl.S05E11.FRENCH.LD.WEB-DL.x264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14963&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>301.11 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=TV|SD|VF" class="tooltip" title="TV|SD|VF"><div class="cats_tv-sd-vf"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14962">Lost.Girl.S05E10.FRENCH.LD.WEB-DL.x264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14962&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>264.73 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=TV|PACK|FR" class="tooltip" title="TV|PACK|FR"><div class="cats_tv-pack-fr"></div></a></td><td style="padding:0px;"><img src="static/common/freeleech.png" alt="Freeleech" title="Freeleech" style="vertical-align: bottom;" /> <a href="torrents.php?id=14961">Hannibal.S03.FRENCH.WEB-DL.x264-LiBERTY</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14961&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>2.61 Go</td><td>1</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14960">Dragon.Ball.Z.Kai.E140.SUBFRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14960&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>775.83 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14959">Dragon.Ball.Z.Kai.E140.MULTi.1080p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14959&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.46 Go</td><td>2</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14958">Dragon.Ball.Z.Kai.E140.FRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14958&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>775.81 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14957">Dragon.Ball.Z.Kai.E139.SUBFRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14957&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>790.35 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14956">Dragon.Ball.Z.Kai.E139.MULTi.1080p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14956&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.55 Go</td><td>2</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14955">Dragon.Ball.Z.Kai.E139.FRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14955&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>742.64 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14954">Dragon.Ball.Z.Kai.E138.SUBFRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14954&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>778.14 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14953">Dragon.Ball.Z.Kai.E138.MULTi.1080p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14953&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>1.53 Go</td><td>2</td><td style="color:green;">3</td><td style="color:red;">0</td></tr><tr ><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14952">Dragon.Ball.Z.Kai.E138.FRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14952&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>778.12 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr><tr  class="tablerow-lightgrey"><td style="padding:0px;"><a href="torrents.php?cat[]=ANIME" class="tooltip" title="ANIME"><div class="cats_anime"></div></a></td><td style="padding:0px;"> <a href="torrents.php?id=14951">Dragon.Ball.Z.Kai.E137.SUBFRENCH.720p.BluRay.x264-KAZETV</a></td><td>0</td><td><a href="torrents.php?action=download&amp;id=14951&amp;authkey=qxceapv604hrd2qx7ij0s7y104k1crqt&amp;torrent_pass=e62ru807awv0jwt82jpyt6492iph3i80" class="tooltip" title="Download"><div class="torrent_download"></div></a></td><td>779.13 Mo</td><td>0</td><td style="color:green;">1</td><td style="color:red;">0</td></tr>    </table>
+    </div>
+<div class="linkbox"><strong>1-50</strong> | <a href="torrents.php?page=2&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>51-100</strong></a> | <a href="torrents.php?page=3&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>101-150</strong></a> | <a href="torrents.php?page=4&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>151-200</strong></a> | <a href="torrents.php?page=5&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>201-250</strong></a> | <a href="torrents.php?page=6&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>251-300</strong></a> | <a href="torrents.php?page=7&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>301-350</strong></a> | <a href="torrents.php?page=8&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>351-400</strong></a> | <a href="torrents.php?page=9&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>401-450</strong></a> | <a href="torrents.php?page=10&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>451-500</strong></a> | <a href="torrents.php?page=11&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong>501-550</strong></a> | <a href="torrents.php?page=2&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME" class="pager_next"><strong>Suivant &gt;</strong></a> <a href="torrents.php?page=184&amp;way=DESC&amp;search=&amp;order=Time&amp;cat%5B0%5D=TV%7CSD%7CVOSTFR&amp;cat%5B1%5D=TV%7CHD%7CVOSTFR&amp;cat%5B2%5D=TV%7CSD%7CVF&amp;cat%5B3%5D=TV%7CHD%7CVF&amp;cat%5B4%5D=TV%7CPACK%7CFR&amp;cat%5B5%5D=TV%7CPACK%7CVOSTFR&amp;cat%5B6%5D=TV%7CEMISSIONS&amp;cat%5B7%5D=ANIME"><strong> Dernier &gt;&gt;</strong></a></div>
+
+</div>
+
+
+<script type="text/javascript">
+    <!--
+    auto_anonymize();
+    //-->
+</script>
+
+<div id="footer">
+	<p>Site and design &copy; 2016 ABNORMAL TRACKER</p>
+	<p>
+		<a href="user.php?action=sessions">
+			<span class="tooltip" title="Manage sessions">Last activity: </span><span class="time tooltip" title="Mar 11 2016, 10:44">Il y a 50 mins</span><span class="tooltip" title="Manage sessions"> from 195.154.191.219.</span>
+		</a>
+	</p>
+	<p>
+		<strong>Time:</strong> <span>19.25182 ms</span>
+		<strong>Used:</strong> <span>2.00 Mo</span>
+		<strong>Load:</strong> <span>0.27 0.40 0.44</span>
+		<strong>Date:</strong> <span id="site_date">Mar 11 2016</span>, <span id="site_time">11:35</span>
+
+	</p>
+</div>
+
+</div>
+<div id="lightbox" class="lightbox hidden"></div>
+<div id="curtain" class="curtain hidden"></div>
+<!-- Extra divs, for stylesheet developers to add imagery -->
+<div id="extra1"><span></span></div>
+<div id="extra2"><span></span></div>
+<div id="extra3"><span></span></div>
+<div id="extra4"><span></span></div>
+<div id="extra5"><span></span></div>
+<div id="extra6"><span></span></div>
+</body>
+</html>

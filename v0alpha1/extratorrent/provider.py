@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class ExtraTorrentProvider:
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -27,8 +27,8 @@ class ExtraTorrentProvider:
         self.url = 'http://extratorrent.cc/'
         self.urls = {
             'base': self.url,
-            'index': self.url,
             'rss': urljoin(self.url, 'rss.xml'),
+            'search': self.url,
         }
         self.custom_url = None
 

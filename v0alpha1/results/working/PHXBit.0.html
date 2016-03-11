@@ -1,0 +1,1751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+<title>PhxBit : Rechercher sur PhxBit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="https://phxbit.com/static/images/favicon.ico" rel="shortcut icon" />
+
+<!-- CSS -->
+<link href="https://phxbit.com/static/css/base.css" rel="stylesheet" type="text/css" />
+<link href="https://phxbit.com/static/css/dev.css" rel="stylesheet" type="text/css" />
+<link href="https://phxbit.com/static/css/proton.css" rel="stylesheet" type="text/css" />
+<!-- Scripts JS-->
+<script src="https://phxbit.com/static/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="https://phxbit.com/static/js/global.js" type="text/javascript"></script>
+<script src="https://phxbit.com/static/js/notifier.js" type="text/javascript"></script>
+<script src="https://phxbit.com/static/js/autoanonymize.js" type="text/javascript"></script>
+
+</head>
+
+<body id="body" onload="ResizeThem()">
+	<div id="global">
+		<div id="entete">
+			<div id="header">
+				<ul id="ulglobal">
+					<li>
+						<!-- Logo -->
+						<ul id="logolink">
+							<li>
+							      <a href="/index.php"></a>
+							</li>
+						</ul>
+						<!-- First Column Links -->
+						<ul id="sitelink">
+							<li>
+								<a href="https://phxbit.com/index.php">Accueil</a>
+							</li>							
+							<li>
+								<a href="https://phxbit.com/forums.php">Forums</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/blog.php">Blog</a>
+							</li>							
+							<li>
+								<a href="https://phxbit.com/wiki.php">Wiki</a>
+							</li>
+							
+						</ul>
+						<!-- Link Important Torrent -->
+						<ul id="torrentlink">
+							<li>
+								 <a href="https://phxbit.com/contact.php">Staff</a>							</li>
+							<li>
+								<a href="https://phxbit.com/shoutbox.php">Shoutbox</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/videotheque.php">Vid&eacute;oth&egrave;que</a>
+							</li>								
+							<li>
+								<a href="https://phxbit.com/sphinx.php">Rechercher</a>
+							</li>
+						
+						</ul>
+						<!-- Seconde colonne Torrent -->
+						<ul id="torrentlink2">
+							<li>
+								<a href="https://phxbit.com/rss.php">RSS</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/stats.php">Stats</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/faq.php">F.A.Q</a> 
+							</li>
+							<li>						
+							     <a href="https://phxbit.com/rules.php">R&egrave;gles</a>						        
+							 </li>
+						</ul>
+						<!-- three colonne Torrent -->
+						<ul id="torrentlink3">
+							<li>
+								<a href="https://phxbit.com/req.php">Requ&ecirc;tes</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/dupe.php">Dupecheck</a>
+							</li>
+							<li>
+								<a href="https://phxbit.com/ups.php">Upload</a> 
+							</li>
+							<li>
+								<a href="https://phxbit.com/logs.php">Logs</a>
+							</li>
+						</ul>
+						<!-- User Links / Ratio -->
+						<ul id="userlink">
+							<li>  
+								<a href="/account.php?id=853"><span class="userclass_1">Ratopia</span></a> | Membre | <a href="https://phxbit.com/mailbox.php">Aucun Message</a>							</li>
+
+							<li>
+								Up: <span class="uploaded">36.38 GB</span> | Down: <span class="downloaded">1.00 MB</span>
+							</li>
+							<li>
+								Ratio: <span class="ratio">37248.35</span> | Karma: <a href="https://phxbit.com/karma.php">3033.624</a>
+							</li>
+							<li>
+						     Aura: 3.273 | <a href="/tweet.php">0</a> Tweet  | <a href="https://phxbit.com/logout.php">Se d&eacute;connecter</a>
+							</li>
+							<li>
+								<span id='countdown'></span>
+								<input type="hidden" id="countdown_end" value="Sat, 5 Mar 2016 21:14:00" /> 
+								<input type="hidden" id="pot_commun" value="72600" />
+								<input type="hidden" id="pot_commun_fl" value="200000" />
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+<div id="searchbars">
+	<ul>
+		<!-- Torrents -->
+		<li>
+			<span class="hidden">Torrents: </span>
+			<form action="https://phxbit.com/sphinx.php" method="get">
+				<div class="inline"><input onfocus="if (this.value == 'Torrents') this.value='';" onblur="if (this.value == '') this.value='Torrents';" value="Torrents" type="text" name="q" size="17" /></div>
+				<div class="hidden"><input value="Search" type="submit" class="hidden" /></div>
+			</form>
+		</li>
+		<!-- ReQuests -->
+		<li>
+			<span class="hidden">Requêtes: </span>
+			<form action="https://phxbit.com/req.php" method="get">
+				<div class="inline"><input onfocus="if (this.value == 'Requêtes') this.value='';" onblur="if (this.value == '') this.value='Requêtes';" value="Requêtes" type="text" name="q" size="17" /></div>
+				<div class="hidden"><input value="Search" type="submit" class="hidden" /></div>
+			</form>
+		</li>
+		<!-- Forums -->
+		<li>
+			<span class="hidden">Forums: </span>
+			<form action="https://phxbit.com/forums.php" method="get">
+				<div class="hidden">
+					<input value="search" type="hidden" name="action" />
+					<input value="title" type="hidden" name="type" />
+				</div>
+				<div class="inline"><input onfocus="if (this.value == 'Forums') this.value='';" onblur="if (this.value == '') this.value='Forums';" value="Forums" type="text" name="search" size="17" /></div>
+				<div class="hidden"><input value="search" type="submit" class="hidden" /></div>
+			</form>
+		</li>
+		<!-- Wiki -->
+		<li>
+			<span class="hidden">Wiki: </span>
+			<form action="https://phxbit.com/wiki.php" method="get">
+				<div class="inline"><input onfocus="if (this.value == 'Wiki') this.value='';" onblur="if (this.value == '') this.value='Wiki';" value="Wiki" name="q" size="17" type="text" /></div>
+				<div class="hidden"><input value="Search" class="hidden" type="submit" /></div>
+			</form>
+		</li>
+		<!-- Logs -->
+		<li>
+			<span class="hidden">Log: </span>
+			<form action="https://phxbit.com/logs.php" method="get">
+				<div class="hidden"><input value="search" type="hidden" name="action" /></div>	
+				<div class="inline"><input onfocus="if (this.value == 'Log') this.value='';" onblur="if (this.value == '') this.value='Log';" value="Log" type="text" name="q" size="17" /></div>
+				<div class="hidden"><input value="Search" type="submit" class="hidden" /></div>
+			</form>
+		</li>
+		<li>
+			<span class="hidden">Utilisateurs: </span>
+			<form action="https://phxbit.com/account.php" method="get">
+				<div class="hidden"><input value="q" type="hidden" name="" /></div>			
+				<div class="inline"><input onfocus="if (this.value == 'Utilisateurs') this.value='';" onblur="if (this.value == '') this.value='Utilisateurs';" value="Utilisateurs" type="text" name="usearch" size="17" /></div>
+				<div class="hidden"><input value="Search" type="submit" class="hidden" /></div> 
+			</form>
+		</li>		
+	</ul>
+</div>		</div>
+	<div id="centre">
+		<div id="navigation">
+	<p class="separate">
+Ratopia	</p>
+	<div id="navig_bloc_user">
+		<div id="avatar">
+<img src="https://phxbit.com/static/images/users/avatar.png" alt="Avatar" />		</div>
+		<ul>
+			<li><a href="https://phxbit.com/my.php">Mon Compte</a></li>
+			<li><a href="https://phxbit.com/my.php?action=badge">Mes Badges</a></li>
+			<li><a href="https://phxbit.com/bookmark.php">Mes BookMarks</a></li>			
+			<li><a href="https://phxbit.com/my.php?action=activity">Mon Activit&eacute;</a></li>	
+			<li><a href="https://phxbit.com/signals.php">Mes Signalements</a></li>		
+			<li><a href="https://phxbit.com/my.php?action=req">Mes Requ&ecirc;tes</a></li>
+			<li><a href="https://phxbit.com/series.php">Mes S&eacute;ries</a></li>												
+			<li><a href="https://phxbit.com/invite.php">Invitations</a></li>
+			<li><a href="https://phxbit.com/irc.php">Acc&egrave;s IRC</a></li>			
+			<li><a href="https://phxbit.com/switch.php">CSS Switch</a></li>
+			<li><a href="https://phxbit.com/autoget.php">AutoGet</a></li>			
+			<li><a href="https://phxbit.com/calendar.php">Calendrier s&eacute;ries (US)</a></li>				
+		</ul>
+	</div>
+	<p class="separate">
+Contributions	</p>
+<div id="contributions">
+                <a href="https://phxbit.com/dons.php">
+			<img src="https://phxbit.com/static/images/site/donate.png" alt="Contributions" />
+		</a>
+		<p>
+			L'objectif est atteint.
+		</p>
+		<p>
+			Merci aux contributeurs.
+		</p>
+</div>	<p class="separate">
+<a href="https://phxbit.com/my.php?action=settings">Menu personnalis&eacute;</a>	</p>
+<div id="custom_menu">
+	</div>		</div>
+		<div id="contenu">	<p class="separate">
+Rechercher sur PhxBit	</p>
+<div id="videotheque" class="videotheque second"><form id="form" class="search" action="https://phxbit.com/sphinx.php" method="get">
+	<div class="form_search" style="margin: 2px">
+		<strong>Tous</strong> les mots suivants : <input id="sphinxinput" size="100" width="50" type="text" autocomplete="off" maxlength="100" name="q" value=""/>
+		        <input type="submit" class="fine" value="Lancer la recherche" />
+			
+		<select name="exact" class="fine">
+<option name="" title="Defaut: recherche par defaut" value="0">Defaut</option>
+<option name="" title="Exacte: la recherche ne retournera aucun r&eacute;sultat si un des mots n'est pas trouv&eacute;" value="1">Exacte</option>
+<option name="" title="Etendu: recherche sur tous les mots" value="2">Etendu</option>
+	
+		</select>			
+			
+		<select name="sort" class="fine">
+<option value="normal"selected="selected">Par Pertinence</option>
+<option value="id">Par Date</option>
+<option value="coms">Par Commentaires</option>
+<option value="size">Par Taille</option>
+<option value="complets">Par Compl&eacute;t&eacute;s</option>
+<option value="seeders">Par Seeders</option>
+<option value="leechers">Par Leechers</option>
+		</select>
+		<select name="order" class="fine">
+<option value="desc"selected="selected">D&eacute;croissant</option>
+<option value="asc">Croissant</option>
+		</select>									
+</div>	
+<!--<div id="suggcontainer"><div id="suggestions"></div></div>-->
+<div class="form_menu"><a id="index" href="https://phxbit.com/sphinx.php" alt="Sphinx"class="">Tous les torrents</a>
+<a id="index" href="https://phxbit.com/sphinx.php?group=films" alt="Sphinx"class="">Films</a>
+<a id="series" href="https://phxbit.com/sphinx.php?group=series" alt="Sphinx"class="selected">S&eacute;ries</a>
+<a id="tv" href="https://phxbit.com/sphinx.php?group=tv" alt="Sphinx"class="">T&eacute;l&eacute;vision</a>
+<a id="jeux" href="https://phxbit.com/sphinx.php?group=jeux" alt="Sphinx"class="">Jeux</a>
+<a id="apps" href="https://phxbit.com/sphinx.php?group=apps" alt="Sphinx"class="">Apps</a>
+<a id="musiques" href="https://phxbit.com/sphinx.php?group=musiques" alt="Sphinx"class="">Musiques</a>
+<a id="livres" href="https://phxbit.com/sphinx.php?group=livres" alt="Sphinx"class="">Livres</a>
+</div><p class="hidden">
+				<input type="hidden" name="group" value="series" />
+			</p>
+<div class="categories_list_genre">	
+<form id="form" class="search" action="https://phxbit.com/sphinx.php" method="get">
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv28" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv28=1&amp;order=desc&amp;sort=normal" title="">Manga</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv12" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv12=1&amp;order=desc&amp;sort=normal" title="">TV PACK</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv26" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv26=1&amp;order=desc&amp;sort=normal" title="">TV PACK VOSTFR</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv15" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv15=1&amp;order=desc&amp;sort=normal" title="">TV-HD-VF</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv16" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv16=1&amp;order=desc&amp;sort=normal" title="">TV-HD-VOSTFR</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv13" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv13=1&amp;order=desc&amp;sort=normal" title="">TV-VF</a>
+<input style="margin: 5px 5px 0 0; display: block; float: left;" name="adv14" type="checkbox"  value="1" /><a class="" style="display: block; float: left; margin: 0 10px 0 0; line-height: 25px; font-size: 11px" href="/sphinx.php?q=&amp;group=series&amp;adv14=1&amp;order=desc&amp;sort=normal" title="">TV-VOSTFR</a>
+<input style="float: right; margin: 3px 10px 0 0" type="submit" class="fine" value="Filtrer les résultats" />	
+</div>
+
+</form>
+</div>
+
+<table cellpadding="0" cellspacing="0" id="torrent_list" summary="Torrent List">
+	<tr class="head_torrent">
+		<td class="cat_torrent_head">
+			Cat&eacute;gorie
+		</td>
+		<td class="name_torrent_head">
+			Nom
+		</td>
+		<td class="dl_torrent_head">
+			&nbsp;DL&nbsp;
+		</td>
+		<td class="comment_torrent_head">
+			&nbsp;Com&nbsp;
+		</td>
+		<td class="size_torrent_head">
+			Taille
+		</td>
+		<td class="completed_torrent_head">
+			&nbsp;C&nbsp;
+		</td>
+		<td class="seed_torrent_head">
+			<a href=""><img src="https://phxbit.com/static/images/torrents/seed.png" alt="Seed" /></a>
+		</td>
+		<td class="leech_torrent_head">
+			<img src="https://phxbit.com/static/images/torrents/leech.png" alt="Leech" />
+		</td>
+		<td class="share_torrent_head">
+			Share
+		</td>
+	</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12469" onclick="expand(12469)" />
+				<img src="https://phxbit.com/static/images/torrents/new_red.gif" alt="New !" title="New !" /><a title="Flaked.S01E01.FRENCH.WEBRip.x264-AMB3R" href="https://phxbit.com/torrent.php?id=12469">
+				&nbsp;<strong>Flaked.S01E01.FRENCH.WEBRip.x264-AMB3R</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12469&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12469#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				235.05 MB			</td>
+			<td class="completed_torrent_1">
+				2			</td>
+			<td class="seed_torrent_1">
+				3			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12469" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 11:08:53							| <a href="#" onclick="AutoBook('12469', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12469', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=442">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12468" onclick="expand(12468)" />
+				<img src="https://phxbit.com/static/images/torrents/new_red.gif" alt="New !" title="New !" /><a title="Flaked.S01E01.FRENCH.720p.WEBRip.x264-SH0W" href="https://phxbit.com/torrent.php?id=12468">
+				&nbsp;<strong>Flaked.S01E01.FRENCH.720p.WEBRip.x264-SH0W</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12468&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12468#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				765.25 MB			</td>
+			<td class="completed_torrent_0">
+				0			</td>
+			<td class="seed_torrent_0">
+				1			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12468" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 10:44:58							| <a href="#" onclick="AutoBook('12468', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12468', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=442">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12459" onclick="expand(12459)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Happy.Valley.S02E05.FASTSUB.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12459">
+				&nbsp;<strong>Happy.Valley.S02E05.FASTSUB.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12459&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12459#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				356.82 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				1			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr7.png" alt="70%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12459" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 09:49:46							| <a href="#" onclick="AutoBook('12459', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12459', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=382">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12458" onclick="expand(12458)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Happy.Valley.S02E05.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12458">
+				&nbsp;<strong>Happy.Valley.S02E05.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12458&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12458#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				1.01 GB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12458" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 09:49:12							| <a href="#" onclick="AutoBook('12458', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12458', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=382">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12453" onclick="expand(12453)" />
+				<a title="Greys.Anatomy.S11E24.FiNAL.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12453">
+				&nbsp;<strong>Greys.Anatomy.S11E24.FiNAL.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12453&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12453#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				908.84 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12453" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:46:23							| <a href="#" onclick="AutoBook('12453', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12453', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=332">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12452" onclick="expand(12452)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Arrow.S04E13.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12452">
+				&nbsp;<strong>Arrow.S04E13.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12452&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12452#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				224.92 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12452" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:43:39							| <a href="#" onclick="AutoBook('12452', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12452', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=9">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12451" onclick="expand(12451)" />
+				<a title="Greys.Anatomy.S11E23.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12451">
+				&nbsp;<strong>Greys.Anatomy.S11E23.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12451&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12451#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				944.67 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12451" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:43:37							| <a href="#" onclick="AutoBook('12451', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12451', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=332">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12450" onclick="expand(12450)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Arrow.S04E13.VOSTFR.720p.HDTV.X264-WEEDS" href="https://phxbit.com/torrent.php?id=12450">
+				&nbsp;<strong>Arrow.S04E13.VOSTFR.720p.HDTV.X264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12450&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12450#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				876.01 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12450" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:42:57							| <a href="#" onclick="AutoBook('12450', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12450', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=9">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12449" onclick="expand(12449)" />
+				<a title="Greys.Anatomy.S11E24.FiNAL.FRENCH.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12449">
+				&nbsp;<strong>Greys.Anatomy.S11E24.FiNAL.FRENCH.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12449&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12449#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				265.04 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12449" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:41:23							| <a href="#" onclick="AutoBook('12449', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12449', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=332">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12448" onclick="expand(12448)" />
+				<a title="Greys.Anatomy.S11E23.FRENCH.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12448">
+				&nbsp;<strong>Greys.Anatomy.S11E23.FRENCH.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12448&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12448#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				275.57 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12448" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:40:10							| <a href="#" onclick="AutoBook('12448', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12448', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=332">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12447" onclick="expand(12447)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Outsiders.S01E07.FASTSUB.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12447">
+				&nbsp;<strong>Outsiders.S01E07.FASTSUB.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12447&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12447#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				332.25 MB			</td>
+			<td class="completed_torrent_1">
+				2			</td>
+			<td class="seed_torrent_1">
+				3			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12447" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:39:51							| <a href="#" onclick="AutoBook('12447', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12447', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=324">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12446" onclick="expand(12446)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Outsiders.S01E07.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12446">
+				&nbsp;<strong>Outsiders.S01E07.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12446&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12446#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				1.14 GB			</td>
+			<td class="completed_torrent_0">
+				4			</td>
+			<td class="seed_torrent_0">
+				5			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12446" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:38:57							| <a href="#" onclick="AutoBook('12446', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12446', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=324">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12445" onclick="expand(12445)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Young.And.Hungry.S03E06.FASTSUB.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12445">
+				&nbsp;<strong>Young.And.Hungry.S03E06.FASTSUB.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12445&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12445#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				191.35 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12445" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:36:20							| <a href="#" onclick="AutoBook('12445', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12445', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=351">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12444" onclick="expand(12444)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Young.And.Hungry.S03E06.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12444">
+				&nbsp;<strong>Young.And.Hungry.S03E06.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12444&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12444#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				744.45 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12444" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:35:31							| <a href="#" onclick="AutoBook('12444', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12444', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=351">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12443" onclick="expand(12443)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Stan.Lees.Lucky.Man.S01E07.FASTSUB.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12443">
+				&nbsp;<strong>Stan.Lees.Lucky.Man.S01E07.FASTSUB.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12443&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12443#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				289.98 MB			</td>
+			<td class="completed_torrent_1">
+				3			</td>
+			<td class="seed_torrent_1">
+				4			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12443" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:32:54							| <a href="#" onclick="AutoBook('12443', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12443', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=341">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12442" onclick="expand(12442)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Stan.Lees.Lucky.Man.S01E07.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12442">
+				&nbsp;<strong>Stan.Lees.Lucky.Man.S01E07.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12442&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12442#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				941.06 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12442" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:32:03							| <a href="#" onclick="AutoBook('12442', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12442', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=341">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12441" onclick="expand(12441)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="The.Simpsons.S27E15.FASTSUB.VOSTFR.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12441">
+				&nbsp;<strong>The.Simpsons.S27E15.FASTSUB.VOSTFR.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12441&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12441#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				112.37 MB			</td>
+			<td class="completed_torrent_1">
+				3			</td>
+			<td class="seed_torrent_1">
+				4			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12441" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:28:41							| <a href="#" onclick="AutoBook('12441', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12441', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=199">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c16=1">					<img src="https://phxbit.com/static/images/categories/tv-hdvostfr.png" alt="TV-HD-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12440" onclick="expand(12440)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="The.Simpsons.S27E15.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS" href="https://phxbit.com/torrent.php?id=12440">
+				&nbsp;<strong>The.Simpsons.S27E15.FASTSUB.VOSTFR.720p.HDTV.x264-WEEDS</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12440&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12440#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				423.02 MB			</td>
+			<td class="completed_torrent_0">
+				2			</td>
+			<td class="seed_torrent_0">
+				3			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12440" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 08:27:56							| <a href="#" onclick="AutoBook('12440', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12440', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=199">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12436" onclick="expand(12436)" />
+				<a title="Je.Suis.Trans.S01E09.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12436">
+				&nbsp;<strong>Je.Suis.Trans.S01E09.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12436&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12436#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				207.51 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12436" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:51:03							| <a href="#" onclick="AutoBook('12436', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12436', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12435" onclick="expand(12435)" />
+				<a title="Je.Suis.Trans.S01E08.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12435">
+				&nbsp;<strong>Je.Suis.Trans.S01E08.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12435&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12435#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				210.43 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12435" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:51:00							| <a href="#" onclick="AutoBook('12435', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12435', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12434" onclick="expand(12434)" />
+				<a title="Je.Suis.Trans.S01E07.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12434">
+				&nbsp;<strong>Je.Suis.Trans.S01E07.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12434&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12434#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				226.32 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12434" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:58							| <a href="#" onclick="AutoBook('12434', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12434', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12433" onclick="expand(12433)" />
+				<a title="Je.Suis.Trans.S01E06.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12433">
+				&nbsp;<strong>Je.Suis.Trans.S01E06.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12433&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12433#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				218.42 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12433" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:56							| <a href="#" onclick="AutoBook('12433', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12433', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12432" onclick="expand(12432)" />
+				<a title="Je.Suis.Trans.S01E05.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12432">
+				&nbsp;<strong>Je.Suis.Trans.S01E05.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12432&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12432#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				235.62 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12432" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:54							| <a href="#" onclick="AutoBook('12432', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12432', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12431" onclick="expand(12431)" />
+				<a title="Je.Suis.Trans.S01E04.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12431">
+				&nbsp;<strong>Je.Suis.Trans.S01E04.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12431&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12431#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				219.52 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12431" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:51							| <a href="#" onclick="AutoBook('12431', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12431', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12430" onclick="expand(12430)" />
+				<a title="Je.Suis.Trans.S01E03.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12430">
+				&nbsp;<strong>Je.Suis.Trans.S01E03.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12430&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12430#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				208.90 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12430" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:49							| <a href="#" onclick="AutoBook('12430', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12430', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12429" onclick="expand(12429)" />
+				<a title="Je.Suis.Trans.S01E02.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12429">
+				&nbsp;<strong>Je.Suis.Trans.S01E02.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12429&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12429#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				227.50 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12429" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:47							| <a href="#" onclick="AutoBook('12429', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12429', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12428" onclick="expand(12428)" />
+				<a title="Je.Suis.Trans.S01E01.FRENCH.HDTV.x264-windz" href="https://phxbit.com/torrent.php?id=12428">
+				&nbsp;<strong>Je.Suis.Trans.S01E01.FRENCH.HDTV.x264-windz</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12428&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12428#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				231.43 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12428" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 06:50:44							| <a href="#" onclick="AutoBook('12428', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12428', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=441">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c14=1">					<img src="https://phxbit.com/static/images/categories/tv-vostfr.png" alt="TV-VOSTFR" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12425" onclick="expand(12425)" />
+				 <img src="https://phxbit.com/static/images/torrents/freeleech.png" border="0" alt="Torrent en FreeLeech" title="Torrent en FreeLeech" /><a title="Family.Guy.S14E15.FASTSUB.VOSTFR.HDTV.x264-N0TM3" href="https://phxbit.com/torrent.php?id=12425">
+				&nbsp;<strong>Family.Guy.S14E15.FASTSUB.VOSTFR.HDTV.x264-N0TM3</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12425&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12425#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				140.80 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12425" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 02:47:29							| <a href="#" onclick="AutoBook('12425', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12425', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=14">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12424" onclick="expand(12424)" />
+				<a title="Major.Crimes.S03E10.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12424">
+				&nbsp;<strong>Major.Crimes.S03E10.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12424&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12424#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				803.87 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12424" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 00:48:48							| <a href="#" onclick="AutoBook('12424', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12424', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=377">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12423" onclick="expand(12423)" />
+				<a title="Major.Crimes.S03E10.FRENCH.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12423">
+				&nbsp;<strong>Major.Crimes.S03E10.FRENCH.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12423&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12423#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				284.74 MB			</td>
+			<td class="completed_torrent_0">
+				1			</td>
+			<td class="seed_torrent_0">
+				2			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12423" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 00:30:51							| <a href="#" onclick="AutoBook('12423', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12423', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=377">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12422" onclick="expand(12422)" />
+				<a title="The.Politicians.Husband.S01E03.FINAL.FRENCH.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12422">
+				&nbsp;<strong>The.Politicians.Husband.S01E03.FINAL.FRENCH.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12422&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12422#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				342.18 MB			</td>
+			<td class="completed_torrent_1">
+				2			</td>
+			<td class="seed_torrent_1">
+				3			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12422" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 00:09:17							| <a href="#" onclick="AutoBook('12422', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12422', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=440">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12421" onclick="expand(12421)" />
+				<a title="The.Politicians.Husband.S01E03.FINAL.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12421">
+				&nbsp;<strong>The.Politicians.Husband.S01E03.FINAL.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12421&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12421#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				1.05 GB			</td>
+			<td class="completed_torrent_0">
+				0			</td>
+			<td class="seed_torrent_0">
+				1			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12421" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 00:07:30							| <a href="#" onclick="AutoBook('12421', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12421', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=440">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12420" onclick="expand(12420)" />
+				<a title="Major.Crimes.S03E09.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12420">
+				&nbsp;<strong>Major.Crimes.S03E09.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12420&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12420#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				752.02 MB			</td>
+			<td class="completed_torrent_1">
+				1			</td>
+			<td class="seed_torrent_1">
+				2			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12420" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-11 00:07:22							| <a href="#" onclick="AutoBook('12420', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12420', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=377">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_0">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c15=1">					<img src="https://phxbit.com/static/images/categories/hd-tv.png" alt="TV-HD-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_0">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12419" onclick="expand(12419)" />
+				<a title="NCIS.New.Orleans.S02E04.FRENCH.720p.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12419">
+				&nbsp;<strong>NCIS.New.Orleans.S02E04.FRENCH.720p.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_0">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12419&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_0">
+				<a href="https://phxbit.com/torrent.php?id=12419#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_0">
+				1.27 GB			</td>
+			<td class="completed_torrent_0">
+				0			</td>
+			<td class="seed_torrent_0">
+				1			</td>
+			<td class="leech_torrent_0">
+				0			</td>
+			<td class="share_torrent_0">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12419" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-10 23:58:39							| <a href="#" onclick="AutoBook('12419', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12419', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=49">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="cat_torrent_1">
+				<a href="/sphinx.php?q=&sort=normal&order=desc&c13=1">					<img src="https://phxbit.com/static/images/categories/tv-vf.png" alt="TV-VF" />
+				</a>
+			</td>
+			<td class="name_torrent_1">
+				&nbsp;<img src="themes/images/cross.gif" alt="+" id="expandoGif12418" onclick="expand(12418)" />
+				<a title="Major.Crimes.S03E09.FRENCH.HDTV.x264-FRiES" href="https://phxbit.com/torrent.php?id=12418">
+				&nbsp;<strong>Major.Crimes.S03E09.FRENCH.HDTV.x264-FRiES</strong></a>
+			</td>
+			
+			
+			
+			<td class="dl_torrent_1">
+				<a href="https://phxbit.com/get.php?action=torrent&amp;id=12418&amp;passkey=6f24e579f57e48dc05405ef8ccd3732d"><img src='https://phxbit.com/static/images/torrents/download.gif' alt='T&eacute;l&eacute;charger le torrent' title='T&eacute;l&eacute;charger le torrent' /></a>			</td>
+
+			<td class="comment_torrent_1">
+				<a href="https://phxbit.com/torrent.php?id=12418#torrent_comments">0</a>
+			</td>
+			<td class="size_torrent_1">
+				260.50 MB			</td>
+			<td class="completed_torrent_1">
+				2			</td>
+			<td class="seed_torrent_1">
+				3			</td>
+			<td class="leech_torrent_1">
+				0			</td>
+			<td class="share_torrent_1">
+				<img src="https://phxbit.com/static/images/progbar/sr10.png" alt="100%" />			</td>
+		</tr>
+		<tr>
+			<td class="alt1" colspan="11">
+				<div id="descr12418" style="margin-left:70px;display:none;">
+					<p class="added">
+						<strong>Ajout&eacute; le :</strong> 2016-03-10 23:48:40							| <a href="#" onclick="AutoBook('12418', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">BookMark It !</a>							  
+							| <a href="#" onclick="AutoGet('12418', 'f0b6e5fbb5b6a5feaec33796582b31f7516ffc5b');return false;">AutoGet It !</a>							  
+							| <a href="/summary.php?id=377">Consulter le Summary</a>
+					</p>
+				</div>
+			</td>
+		</tr>
+</table>
+<p class="pager_align"><strong>1</strong> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=1">2</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=2">3</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=3">4</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=4">5</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=5">6</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=6">7</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=7">8</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=8">9</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=9">10</a> | ... | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=55">56</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=56">57</a> | <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=57">58</a> <a href="/sphinx.php?q=&amp;group=series&amp;order=desc&amp;sort=normal&amp;group=series&amp;page=1"><img src="static/images/site/next.gif" alt="Next" /></a></p>
+		<!-- Fermeture div "contenu" -->
+		</div>
+	<!-- Fermeture div "center" -->
+	</div>
+
+	<script type="text/javascript">
+    	auto_anonymize();
+	</script>
+
+<div id="copyright">
+Served in 8.82292 853ms - Memory used 857.55 KB<br />Powered by SiFuture - Copyright &copy; 2015 <br />
+
+		</div>
+	</div>
+	</body>
+</html>

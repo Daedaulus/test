@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class IPTorrentsProvider:
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -32,8 +32,8 @@ class IPTorrentsProvider:
         }
 
         # Credentials
-        self.username = None
-        self.password = None
+        self.username = kwargs.pop('username', None)
+        self.password = kwargs.pop('password', None)
         self.login_params = {
             'username': self.username,
             'password': self.password,

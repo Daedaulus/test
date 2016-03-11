@@ -15,8 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class TorrentzProvider:
-
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name

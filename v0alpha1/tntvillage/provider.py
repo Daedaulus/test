@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
 
 
-class TNTVillageProvider:
+class Provider:
     def __init__(self, name, **kwargs):
         # Name
         self.name = name
@@ -35,8 +35,8 @@ class TNTVillageProvider:
         }
 
         # Credentials
-        self.username = None
-        self.password = None
+        self.username = kwargs.pop('username', None)
+        self.password = kwargs.pop('password', None)
         self._uid = None
         self._hash = None
         self.login_params = {

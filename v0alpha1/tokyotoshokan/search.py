@@ -1,3 +1,4 @@
+from contextlib import suppress
 from datetime import datetime, timedelta
 import logging
 import re
@@ -17,24 +18,32 @@ log.addHandler(logging.NullHandler())
 
 # Search page
 def search(
-    self,
+    provider,
+    search_url,
     search_strings,
     search_params,
     torrent_method=None,
     ep_obj=None,
     *args, **kwargs
 ):
-    if not self.show or not self.show.is_anime:
-        return None
-
+    # TEMPORARY HACK! Force anime
+    anime = kwargs.pop('is_anime', True)
+    searches = []
+    with suppress(NotImplementedError, AttributeError):
+        if not provider.login(provider.login_params):
+            return searches
+    if not anime:
+        return searches
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
-
         for search_string in search_strings[mode]:
+            search_url = provider.urls.get(mode.lower(), search_url)
             if mode != 'RSS':
-                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
-
-            search_params['terms'] = search_string
-            data = self.session.get(self.urls['search'], params=search_params).text
-            if not data:
+                search_params['terms'] = search_string
+            if mode != 'RSS':
+                log.debug('Search string: {search}'.format(search=search_string))
+            data = provider.session.get(search_url, params=search_params)
+            if not data.content:
                 log.debug('Data returned from provider does not contain any torrents')
+            searches.append(data)
+    return searches

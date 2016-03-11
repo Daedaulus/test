@@ -1,3 +1,4 @@
+from contextlib import suppress
 from datetime import datetime, timedelta
 import logging
 import re
@@ -17,16 +18,18 @@ log.addHandler(logging.NullHandler())
 
 # Search page
 def search(
-    self,
+    provider,
+    search_url,
     search_strings,
     search_params,
     torrent_method=None,
     ep_obj=None,
     *args, **kwargs
 ):
-    if not self.login():
-        return None
-
+    searches = []
+    with suppress(NotImplementedError, AttributeError):
+        if not provider.login(provider.login_params):
+            return searches
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
 
@@ -34,9 +37,11 @@ def search(
             if mode != 'RSS':
                 # Use exact=1 parameter if we're doing a backlog or manual search
                 search_params['exact'] = 1
-                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
-
             search_params['q'] = search_string
-            data = self.session.get(self.urls['search'], params=search_params).text
-            if not data:
+            if mode != 'RSS':
+                log.debug('Search string: {search}'.format(search=search_string))
+            data = provider.session.get(search_url, params=search_params)
+            if not data.content:
                 log.debug('Data returned from provider does not contain any torrents')
+            searches.append(data)
+    return searches

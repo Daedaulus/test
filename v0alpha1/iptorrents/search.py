@@ -1,3 +1,4 @@
+from contextlib import suppress
 from datetime import datetime, timedelta
 import logging
 import re
@@ -17,27 +18,49 @@ log.addHandler(logging.NullHandler())
 
 # Search page
 def search(
-    self,
+    provider,
+    search_url,
     search_strings,
     search_params,
     torrent_method=None,
     ep_obj=None,
     *args, **kwargs
 ):
-    if not self.login():
-        return None
+    # TODO: Enable Custom URL Support
 
-    freeleech = '&free=on' if self.freeleech else ''
+    searches = []
+    # Authenticate
+    with suppress(NotImplementedError, AttributeError):
+        if not provider.login(provider.login_params):
+            return searches
 
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
-
         for search_string in search_strings[mode]:
-            if mode != 'RSS':
-                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
+            # Select URL
+            search_url = provider.urls.get(mode.lower(), search_url)
+            search_url = search_url.format(
+                cat=provider.categories,
+                free='&free=on' if provider.freeleech else '',
+                search=search_string,
+            )
 
-            search_url = self.urls['search'] % (self.categories, freeleech, search_string)
-            search_url += ';o=seeders' if mode != 'RSS' else ''
-            data = self.session.get(search_url).text
-            if not data:
+            # Update params
+            if mode != 'RSS':
+                search_params['o'] = 'seeders'
+
+            # Log search string
+            if mode != 'RSS':
+                log.debug('Search string: {search}'.format(search=search_string))
+
+            # Execute Search
+            data = provider.session.get(search_url, params=search_params)
+
+            # Confirm content
+            if not data.content:
                 log.debug('Data returned from provider does not contain any torrents')
+                continue
+
+            # Append search result
+            searches.append(data)
+    return searches

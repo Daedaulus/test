@@ -1,3 +1,4 @@
+from contextlib import suppress
 from datetime import datetime, timedelta
 import logging
 import re
@@ -17,25 +18,46 @@ log.addHandler(logging.NullHandler())
 
 # Search page
 def search(
-    self,
+    provider,
+    search_url,
     search_strings,
     search_params,
     torrent_method=None,
     ep_obj=None,
     *args, **kwargs
 ):
+    # TODO: Enable Custom URL Support
+
     searches = []
+    # Authenticate
+    with suppress(NotImplementedError, AttributeError):
+        if not provider.login(provider.login_params):
+            return searches
+
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
-
         for search_string in search_strings[mode]:
-            if mode != 'RSS':
-                log.debug('Search string: {search}'.format(search=search_string.decode('utf-8')))
+            # Select URL
+            search_url = provider.urls.get(mode.lower(), search_url)
 
-            self.search_params.update({'type': ('search', 'rss')[mode == 'RSS'], 'search': search_string})
-            search_url = self.urls['rss'] if not self.custom_url else self.urls['rss'].replace(self.urls['index'], self.custom_url)
-            data = self.session.get(search_url, params=self.search_params)
+            # Update params
+            search_params.update({
+                'search': search_string,
+                'type': 'rss' if mode == 'RSS' else 'search'
+            })
+
+            # Log search string
+            if mode != 'RSS':
+                log.debug('Search string: {search}'.format(search=search_string))
+
+            # Execute Search
+            data = provider.session.get(search_url, params=search_params)
+
+            # Confirm content
             if not data.content:
                 log.debug('Data returned from provider does not contain any torrents')
+                continue
+
+            # Append search result
             searches.append(data)
     return searches
