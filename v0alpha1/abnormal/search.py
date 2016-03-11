@@ -12,7 +12,7 @@ from requests.utils import dict_from_cookiejar
 from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
-log.addHandler(logging.NullHandler)
+log.addHandler(logging.NullHandler())
 
 
 # Search page
@@ -24,9 +24,9 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
+    searches = []
     if not self.login():
-        return None
-
+        return searches
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
 
@@ -36,6 +36,8 @@ def search(
 
             search_params['order'] = ('Seeders', 'Time')[mode == 'RSS']
             search_params['search'] = re.sub(r'[()]', '', search_string)
-            data = self.session.get(self.urls['search'], params=search_params).text
-            if not data:
+            data = self.session.get(self.urls['search'], params=search_params)
+            if not data.content:
                 log.debug('Data returned from provider does not contain any torrents')
+            searches.append(data)
+    return searches

@@ -9,7 +9,7 @@ from requests.compat import urljoin
 # from v0 import BS4Parser
 
 log = logging.getLogger(__name__)
-log.addHandler(logging.NullHandler)
+log.addHandler(logging.NullHandler())
 
 
 class BitCannonProvider:
