@@ -26,10 +26,9 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    searches = []
-    # TEMPORARY HACK! Force anime
-    anime = kwargs.pop('is_anime', True)
+    # TODO: Enable Custom URL Support
 
+    searches = []
     # Authenticate
     with suppress(NotImplementedError, AttributeError):
         if not provider.login(provider.login_params):
@@ -38,18 +37,6 @@ def search(
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
         for search_string in search_strings[mode]:
-            categories = ['2', '7', '35', ]
-            categories += (
-                ['26', '27', '32', '34', ] if mode == 'RSS' else
-                ['26', '32'] if mode == 'Episode' else
-                ['27']
-            )
-            if anime:
-                categories += ['34']
-            search_params = {
-                'categories': ','.join(categories),
-                'query': search_string
-            }
             # Select URL
             search_url = provider.urls.get(mode.lower(), search_url)
 
@@ -59,8 +46,12 @@ def search(
             if mode != 'RSS':
                 log.debug('Search string: {search}'.format(search=search_string))
 
+            search_params['searchstr'] = search_string
+
             # Execute Search
-            data = provider.session.get(search_url, params=search_params)
+            log.debug('Searching provider')
+            log.debug('Session headers: {}'.format(provider.session.headers))
+            data = provider.session.get(search_url)
 
             # Confirm content
             if not data.content:

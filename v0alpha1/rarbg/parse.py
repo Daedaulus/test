@@ -18,6 +18,7 @@ log.addHandler(logging.NullHandler())
 # Parse page for results
 def parse(self, data, mode, torrent_method):
     items = []
+
     error = data.get('error')
     error_code = data.get('error_code')
     # Don't log when {'error':'No results found','error_code':20}

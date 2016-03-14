@@ -39,7 +39,7 @@ def search(
             search_url = provider.urls.get(mode.lower(), search_url)
 
             # Update params
-            search_params['q'] = search_string
+            search_params['q'] = search_string or 'x26'
             search_params['order'] = 0 if mode == 'RSS' else 2
 
             # Log search string

@@ -22,6 +22,7 @@ class Provider:
 
         # Connection
         self.session = kwargs.pop('session', Session())
+        self.session.headers['User-Agent'] = 'Medusa'
 
         # URLs
         self.url = 'http://bitsnoop.com/'

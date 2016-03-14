@@ -26,10 +26,9 @@ def search(
     ep_obj=None,
     *args, **kwargs
 ):
-    searches = []
-    # TEMPORARY HACK! Force anime
-    anime = kwargs.pop('is_anime', True)
+    # TODO: Enable Custom URL Support
 
+    searches = []
     # Authenticate
     with suppress(NotImplementedError, AttributeError):
         if not provider.login(provider.login_params):
@@ -37,23 +36,19 @@ def search(
 
     for mode in search_strings:  # Mode = RSS, Season, Episode
         log.debug('Search Mode: {}'.format(mode))
+        # Only search if user conditions are true
+        lang_info = '' if not ep_obj or not ep_obj.show else ep_obj.show.lang
+        if provider.onlyspasearch and lang_info != 'es' and mode != 'RSS':
+            log.debug('Show info is not spanish, skipping provider search')
+            continue
+
         for search_string in search_strings[mode]:
-            categories = ['2', '7', '35', ]
-            categories += (
-                ['26', '27', '32', '34', ] if mode == 'RSS' else
-                ['26', '32'] if mode == 'Episode' else
-                ['27']
-            )
-            if anime:
-                categories += ['34']
-            search_params = {
-                'categories': ','.join(categories),
-                'query': search_string
-            }
             # Select URL
             search_url = provider.urls.get(mode.lower(), search_url)
 
             # Update params
+            search_params['bus_de_'] = 'All' if mode != 'RSS' else 'hoy'
+            search_params['q'] = search_string
 
             # Log search string
             if mode != 'RSS':

@@ -22,31 +22,30 @@ class Provider:
 
         # Connection
         self.session = kwargs.pop('session', Session())
-        self.session.headers['User-Agent'] = 'Medusa'
 
         # URLs
-        self.url = 'http://www.cpasbien.cm/'
+        self.url = 'http://www.newpct.com'
         self.urls = {
             'base': self.url,
-            'rss': urljoin(self.url, '/view_cat.php?categorie=series&trie=date-d'),
-            'search': urljoin(self.url, '/recherche/{search}.html,trie-seeds-d'),
+            'search': urljoin(self.url, 'index.php')
         }
 
         # Credentials
-        self.public = True
 
         # Torrent Stats
-        self.min_seed = None
-        self.min_leech = None
 
         # Search Params
+        self.search_params = {
+            'l': 'doSearch',
+            'q': '',
+            'category_': 'All',
+            'idioma_': 1,
+            'bus_de_': 'All'
+        }
 
         # Categories
 
         # Proper Strings
-        self.proper_strings = [
-            'PROPER',
-            'REPACK',
-        ]
 
         # Options
+        self.onlyspasearch = None

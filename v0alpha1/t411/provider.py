@@ -22,36 +22,35 @@ class Provider:
 
         # Connection
         self.session = kwargs.pop('session', Session())
-        self.session.headers['User-Agent'] = 'Medusa'
+        self.headers.update({'User-Agent': USER_AGENT})
 
         # URLs
-        self.url = 'https://iptorrents.eu/'
-        self.urls = {
-            'base': self.url,
-            'login': urljoin(self.url, 'torrents/'),
-            'search': urljoin(self.url, 't?{cat}{free}&q={search}&qf=#torrents'),
-        }
+        self.urls = {'base_url': 'http://www.t411.ch/',
+                     'search': 'https://api.t411.ch/torrents/search/%s*?cid=%s&limit=100',
+                     'rss': 'https://api.t411.ch/torrents/top/today',
+                     'login_page': 'https://api.t411.ch/auth',
+                     'download': 'https://api.t411.ch/torrents/download/%s'}
+        self.url = self.urls['base_url']
 
         # Credentials
-        self.username = kwargs.pop('username', None)
-        self.password = kwargs.pop('password', None)
+        self.username = None
+        self.password = None
+        self.token = None
+        self.tokenLastUpdate = None
         self.login_params = {
             'username': self.username,
-            'password': self.password,
-            'login': 'submit',
+            'password': self.password
         }
 
         # Torrent Stats
-        self.min_seed = None
-        self.min_leech = None
-        self.freeleech = False
-
-        # Proper Strings
+        self.minseed = 0
+        self.minleech = 0
+        self.confirmed = False
 
         # Search Params
 
         # Categories
-        self.categories = '73=&60='
+        self.subcategories = [433, 637, 455, 639]
 
         # Proper Strings
 
